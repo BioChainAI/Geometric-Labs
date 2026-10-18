@@ -1,0 +1,274 @@
+{
+  "data": {
+    "form1_example": [
+      1,
+      -1,
+      1,
+      1
+    ],
+    "form2_value": 123456789,
+    "form3_value": 1.5,
+    "forms": [
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 0,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 0,
+        "hex": "4d2460c012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 1,
+          "gate_byte": 36,
+          "payload": 33489153,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 1,
+        "hex": "4d2461c001ff0101",
+        "semantics": "Hurwitz doubled coordinates"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 2,
+          "gate_byte": 36,
+          "payload": 521290309,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 2,
+        "hex": "4d2462c01f124245",
+        "semantics": "three 10-bit CRT residues"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 3,
+          "gate_byte": 36,
+          "payload": 1069547520,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 3,
+        "hex": "4d2463c03fc00000",
+        "semantics": "big-endian IEEE-754 binary32"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 4,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 4,
+        "hex": "4d2464c012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 5,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 5,
+        "hex": "4d2465c012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 6,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 6,
+        "hex": "4d2466c012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 7,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 7,
+        "hex": "4d2467c012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 8,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 8,
+        "hex": "4d2468c012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 9,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 9,
+        "hex": "4d2469c012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 10,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 10,
+        "hex": "4d246ac012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 11,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 11,
+        "hex": "4d246bc012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 12,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 12,
+        "hex": "4d246cc012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 13,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 13,
+        "hex": "4d246dc012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 14,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 14,
+        "hex": "4d246ec012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      },
+      {
+        "decoded": {
+          "cycle_step": 2,
+          "form_id": 15,
+          "gate_byte": 36,
+          "payload": 305419896,
+          "scale_reg": 0,
+          "step_mux": 6,
+          "stream_slot": 12,
+          "struct_sel": 1,
+          "wheel_idx": 3
+        },
+        "form": 15,
+        "hex": "4d246fc012345678",
+        "semantics": "opaque; shape semantics unspecified"
+      }
+    ]
+  },
+  "integer_encoding": "JSON decimal integers; uint64 tiles are fixed 16-digit hex strings",
+  "profile": "geometric-labs-reference-v1",
+  "quaternion_coordinates": "doubled integers, except explicitly labeled S5 ordinary coordinates",
+  "schema_version": 1
+}

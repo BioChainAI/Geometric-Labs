@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geometric Engine of Time | Zero-Point 8-Step Cycle Walkthrough (SHD-CCP)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Crimson+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+        :root {
+            --bg-primary: #07090e;
+            --panel-bg: rgba(13, 18, 30, 0.88);
+            --panel-border: rgba(148, 163, 184, 0.16);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+        }
+
+        body.academic-theme {
+            --bg-primary: #ffffff;
+            --panel-bg: rgba(255, 255, 255, 0.94);
+            --panel-border: rgba(15, 23, 42, 0.2);
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            font-family: 'Crimson Pro', Georgia, serif;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            overflow: hidden;
+            user-select: none;
+        }
+
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .math-serif { font-family: 'Crimson Pro', 'Times New Roman', serif; font-size: 1.05em; }
+        .math-eq { font-family: 'Crimson Pro', 'Times New Roman', serif; font-size: 14px; letter-spacing: 0.02em; line-height: 1.5; }
+        .math-eq i { font-style: italic; }
+
+        .engine-panel {
+            background: var(--panel-bg);
+            backdrop-filter: blur(14px);
+            border: 1px solid var(--panel-border);
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body.academic-theme .engine-panel {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        .step-pill { transition: all 0.2s ease; }
+        .step-pill.active {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.28), rgba(45, 212, 191, 0.22));
+            border-color: #a855f7;
+            box-shadow: 0 0 16px rgba(168, 85, 247, 0.35);
+        }
+        body.academic-theme .step-pill.active {
+            background: #f1f5f9; border-color: #0f172a; box-shadow: none;
+        }
+
+        input[type=range] {
+            -webkit-appearance: none; width: 100%; background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 15px; width: 15px; border-radius: 50%;
+            background: #a855f7; cursor: pointer; margin-top: -5px;
+            box-shadow: 0 0 10px rgba(168, 85, 247, 0.8); border: 2px solid #fff;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 5px; cursor: pointer; background: #334155; border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.25); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(148, 163, 184, 0.45); }
+
+        canvas { display: block; width: 100%; height: 100%; outline: none; cursor: grab; }
+        canvas:active { cursor: grabbing; }
+
+        /* Holographic Triplet CSS */
+        .bit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+        .bit-cell { aspect-ratio: 1; background: #334155; border-radius: 2px; transition: 0.1s; }
+        .bit-active { background: #00ffff; box-shadow: 0 0 5px #00ffff; }
+    </style>
+</head>
+<body class="h-screen w-screen flex flex-col">
+
+    <!-- Top Header -->
+    <header class="h-14 border-b border-slate-800/80 px-4 lg:px-6 flex items-center justify-between bg-slate-950/90 z-30 shrink-0">
+        <div class="flex items-center gap-3">
+            <div class="w-3 h-3 rounded-full bg-purple-500 shadow-[0_0_10px_#a855f7]" id="pulse-dot"></div>
+            <div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs md:text-sm font-bold tracking-wider text-slate-100 uppercase">The Geometric Engine of Time</span>
+                    <span class="hidden sm:inline-block text-[10px] mono px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/30">SHD-CCP</span>
+                </div>
+                <p class="text-[10px] text-slate-400 hidden md:block">Symbolic High-Dimensional Context Compression Protocol — Zero-Point 8-Step (<span class="math-serif"><i>&pi;</i>/4</span>) Cycle &amp; Hierarchical Chronometry</p>
+            </div>
+        </div>
+
+        <!-- Right Header Controls -->
+        <div class="flex items-center gap-2 sm:gap-2.5">
+            <button onclick="toggleCoupling()" id="coupling-badge" class="mono text-[10px] px-2.5 py-1 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/25 transition flex items-center gap-1.5" title="Toggle Geometric Synchronization between System I (Zero-Point Breath) and System II (5-Tier Stator & Solitons)">
+                <i class="fa-solid fa-link" id="coupling-icon"></i>
+                <span id="coupling-text">Sync: COUPLED (24:1)</span>
+            </button>
+
+            <button onclick="toggleSpinorCover()" id="spinor-badge" class="mono text-[10px] px-2.5 py-1 rounded-lg bg-cyan-500/15 text-cyan-300 border border-cyan-500/30 hover:bg-cyan-500/25 transition flex items-center gap-1.5" title="Toggle Spinor Double-Cover (Cycle A vs Cycle B)">
+                <i class="fa-solid fa-rotate"></i>
+                <span id="spinor-cover-text">Cycle A (0 &rarr; 2&pi; | &minus;I)</span>
+            </button>
+
+            <!-- Layer View Selector (48-Engine Tabs) -->
+            <div class="hidden xl:flex items-center bg-slate-900/90 p-0.5 rounded-lg border border-slate-800 text-[10px] mono">
+                <button onclick="setLayerMode('all')" id="mode-all" class="px-3 py-1 rounded-md bg-purple-600 text-white font-semibold transition">Full Stack (48)</button>
+                <button onclick="setLayerMode('I')" id="mode-I" class="px-3 py-1 rounded-md text-purple-400 hover:text-white transition">Struct I</button>
+                <button onclick="setLayerMode('A')" id="mode-A" class="px-3 py-1 rounded-md text-amber-400 hover:text-white transition">Struct A</button>
+                <button onclick="setLayerMode('ABAR')" id="mode-ABAR" class="px-3 py-1 rounded-md text-teal-400 hover:text-white transition">Struct Ā</button>
+                <button onclick="setLayerMode('E')" id="mode-E" class="px-3 py-1 rounded-md text-pink-400 hover:text-white transition">Struct E</button>
+            </div>
+
+            <button onclick="toggleLemmaModal()" class="text-[10px] mono px-2.5 py-1 rounded-lg bg-purple-500/20 hover:bg-purple-500/30 text-purple-200 border border-purple-500/40 transition flex items-center gap-1.5" title="Open Complete 15-Lemma & 48-Stream Memory Reference Table">
+                <i class="fa-solid fa-sitemap"></i>
+                <span class="hidden md:inline">15 Lemmas &amp; 48-Stream Guide</span>
+            </button>
+
+            <button onclick="toggleAcademicTheme()" id="theme-btn" class="text-[11px] mono px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition flex items-center gap-1.5" title="Switch between Dark Telemetry and Formal Academic White Proof Diagram mode">
+                <i class="fa-solid fa-book-open"></i>
+                <span class="hidden sm:inline" id="theme-btn-text">Proof Theme</span>
+            </button>
+        </div>
+    </header>
+
+    <div class="flex-1 flex overflow-hidden relative">
+
+        <!-- 3D WebGL Canvas Container -->
+        <main class="flex-1 relative w-full h-full" id="canvas-container">
+            <canvas id="engineCanvas"></canvas>
+
+            <!-- Top-Center Step Banner Overlay -->
+            <div class="absolute top-3 left-1/2 -translate-x-1/2 z-20 pointer-events-none w-[92%] max-w-xl">
+                <div class="engine-panel px-4 py-2.5 pointer-events-auto">
+                    <div class="flex items-center justify-between gap-2 mb-1">
+                        <span class="mono text-[10px] uppercase tracking-widest text-purple-400 font-bold" id="banner-phase">PHASE I: CUBIC EXPANSION &amp; HYPERBOLIC PROJECTION</span>
+                        <span class="mono text-[11px] font-bold px-2 py-0.5 rounded bg-slate-800/80 text-teal-300 border border-teal-500/30" id="banner-angle">0 &rarr; &pi;/4 (0&deg;&ndash;45&deg;)</span>
+                    </div>
+                    <div class="flex items-baseline justify-between gap-2">
+                        <h2 class="text-sm sm:text-base font-bold" id="banner-title">Step 1: The Fractal Seed &amp; Quaternionic Delta (&Delta;<i>q</i>)</h2>
+                        <span class="mono text-[10px] text-amber-400 shrink-0" id="banner-epistemic">[PROVEN: Group Closure]</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom-Center Dual-System Interactive Sequencer Bar -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-20 w-[96%] max-w-4xl">
+                <div class="engine-panel p-3 space-y-2">
+                    <div class="grid grid-cols-4 sm:grid-cols-8 gap-1.5" id="step-buttons-container"></div>
+
+                    <!-- Dual-System Transport & Scrubbers -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 pt-2 border-t border-slate-800/70">
+                        <!-- System I Controls -->
+                        <div class="flex items-center justify-between gap-2 bg-slate-900/60 px-2.5 py-1.5 rounded-lg border border-purple-500/25">
+                            <div class="flex items-center gap-1">
+                                <span class="mono text-[9px] uppercase font-bold text-purple-400 mr-1">Sys I (Breath):</span>
+                                <button onclick="prevStep()" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] mono transition"><i class="fa-solid fa-backward-step"></i></button>
+                                <button onclick="toggleBreathPlay()" id="breath-play-btn" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 text-[10px] mono font-bold transition flex items-center gap-1">
+                                    <i class="fa-solid fa-play" id="breath-play-icon"></i> <span id="breath-play-text">Paused</span>
+                                </button>
+                                <button onclick="nextStep()" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] mono transition"><i class="fa-solid fa-forward-step"></i></button>
+                            </div>
+                            
+                            <div class="flex items-center gap-1 bg-black/40 rounded px-1.5 py-0.5 border border-slate-700">
+                                <button onclick="adjustSpeed(-0.25)" class="text-slate-400 hover:text-white px-1"><i class="fa-solid fa-minus text-[8px]"></i></button>
+                                <span id="speed-readout" class="mono text-[9px] text-cyan-300 font-bold w-6 text-center">1.0x</span>
+                                <button onclick="adjustSpeed(0.25)" class="text-slate-400 hover:text-white px-1"><i class="fa-solid fa-plus text-[8px]"></i></button>
+                            </div>
+
+                            <div class="flex-1 flex items-center gap-1.5 min-w-[110px]">
+                                <input type="range" id="spinor-slider" min="0" max="720" value="0" oninput="scrubSpinor(this.value)">
+                                <span class="mono text-[10px] text-cyan-400 font-bold w-14 text-right shrink-0" id="spinor-tick-label">000/720</span>
+                            </div>
+                        </div>
+
+                        <!-- System II Controls -->
+                        <div class="flex items-center justify-between gap-2 bg-slate-900/60 px-2.5 py-1.5 rounded-lg border border-teal-500/25">
+                            <div class="flex items-center gap-1">
+                                <span class="mono text-[9px] uppercase font-bold text-teal-400 mr-1">Sys II (Stator):</span>
+                                <button onclick="stepMacroNode(-1)" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] mono transition"><i class="fa-solid fa-minus"></i></button>
+                                <button onclick="toggleMacroPlay()" id="macro-play-btn" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 text-[10px] mono font-bold transition flex items-center gap-1">
+                                    <i class="fa-solid fa-play" id="macro-play-icon"></i> <span id="macro-play-text">Paused</span>
+                                </button>
+                                <button onclick="stepMacroNode(1)" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[10px] mono transition"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                            <div class="flex-1 flex items-center gap-1.5 min-w-[110px]">
+                                <input type="range" id="macro-slider" min="0" max="720" value="0" oninput="scrubMacro(this.value)">
+                                <span class="mono text-[10px] text-teal-300 font-bold w-[70px] text-right shrink-0" id="macro-node-label">000/720 (N00)</span>
+                            </div>
+                            <div class="flex items-center gap-1">
+                                <button onclick="pauseAllSystems()" class="px-2 py-1 rounded bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 text-[10px] mono transition" title="Freeze Both Systems"><i class="fa-solid fa-stop"></i></button>
+                                <button onclick="triggerSolitonCollision()" class="px-2 py-1 rounded bg-teal-500/20 hover:bg-teal-500/30 text-teal-300 border border-teal-500/30 text-[10px] mono transition" title="Emit 40 Hz Scalar Sync Pulse"><i class="fa-solid fa-bolt"></i></button>
+                                <button onclick="resetCamera()" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] transition" title="Reset Camera"><i class="fa-solid fa-crosshairs"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Left Drawer -->
+        <aside id="left-drawer" class="w-80 lg:w-96 engine-panel m-3 flex flex-col z-20 absolute left-0 top-14 bottom-32 xl:static xl:h-auto xl:my-3 xl:ml-3 overflow-hidden transition-transform duration-300">
+            <div class="p-3 border-b border-slate-800/80 flex items-center justify-between bg-slate-900/40">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-cube text-purple-400 text-xs"></i>
+                    <h3 class="text-xs font-bold uppercase tracking-wider">System I: Zero-Point Engine</h3>
+                </div>
+                <button onclick="toggleDrawer('left-drawer')" class="xl:hidden text-slate-400 hover:text-white text-xs"><i class="fa-solid fa-chevron-left"></i></button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-3.5 space-y-3.5 text-xs">
+                <!-- Active Step -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] mono uppercase text-purple-400 font-semibold" id="step-tag">STEP 1 OF 8 &bull; EXPANSION (+)</span>
+                        <span class="text-[10px] mono px-1.5 py-0.5 rounded bg-slate-800 text-slate-300" id="step-group-axiom">Axiom: Closure</span>
+                    </div>
+                    <p class="text-xs leading-relaxed text-slate-300" id="step-description">Loading...</p>
+                    <div class="p-2.5 rounded bg-black/50 border border-slate-800/90 math-eq text-cyan-300 overflow-x-auto" id="step-equation">...</div>
+                </div>
+
+                <!-- Active Governing Lemmas -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-purple-500/30 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] mono uppercase font-bold text-purple-300"><i class="fa-solid fa-scale-balanced mr-1"></i>Governing Lemmas</span>
+                        <span class="text-[9px] mono px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-200" id="active-spinor-power">-</span>
+                    </div>
+                    <div id="active-lemmas-list" class="space-y-1.5 text-[11px]"></div>
+                </div>
+
+                <!-- 3-Folded Packet Visualizer -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-[10px] mono uppercase font-bold text-teal-400">3-Folded Packet (<span class="math-serif">2<sup>3</sup> = 8</span> Layers)</span>
+                    </div>
+                    <div class="grid grid-cols-8 gap-1 mb-2" id="folded-layers-bars"></div>
+                    <div class="grid grid-cols-3 gap-1 text-[10px] math-serif text-center">
+                        <div id="tq-win-1" class="p-1 rounded border border-purple-500/40 bg-purple-500/10 text-purple-300"><i>Q</i><sub>1</sub>(<i>x</i><sub>1..4</sub>)</div>
+                        <div id="tq-win-2" class="p-1 rounded border border-amber-500/40 bg-amber-500/10 text-amber-300"><i>Q</i><sub>2</sub>(<i>x</i><sub>3..6</sub>)</div>
+                        <div id="tq-win-3" class="p-1 rounded border border-teal-500/40 bg-teal-500/10 text-teal-300"><i>Q</i><sub>3</sub>(<i>x</i><sub>5..8</sub>)</div>
+                    </div>
+                </div>
+
+                <!-- TQF & Weitzenbock Ceiling -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] mono uppercase font-bold text-pink-400">TQF &amp; Causal Speed Limit</span>
+                        <span class="text-[11px] math-serif text-emerald-400 font-semibold" id="weitzenbock-readout">-</span>
+                    </div>
+                    <div class="grid grid-cols-3 gap-1.5 text-[11px] math-serif">
+                        <div class="p-1.5 rounded bg-purple-950/40 border border-purple-700/40">
+                            <div class="text-purple-400 font-bold mono text-[9px]">Stream &alpha;</div>
+                            <div id="q-alpha-val" class="text-slate-200 font-semibold">-</div>
+                        </div>
+                        <div class="p-1.5 rounded bg-amber-950/40 border border-amber-700/40">
+                            <div class="text-amber-400 font-bold mono text-[9px]">Stream &beta;</div>
+                            <div id="q-beta-val" class="text-slate-200 font-semibold">-</div>
+                        </div>
+                        <div class="p-1.5 rounded bg-teal-950/40 border border-teal-700/40">
+                            <div class="text-teal-400 font-bold mono text-[9px]">Stream &gamma;</div>
+                            <div id="q-gamma-val" class="text-slate-200 font-semibold">-</div>
+                        </div>
+                    </div>
+                    <div class="text-[11px] space-y-1 pt-1 border-t border-slate-800/80">
+                        <div class="flex justify-between"><span class="text-slate-400">Archimedean Quadrea:</span><span id="quadrea-val" class="text-slate-200 mono font-bold">-</span></div>
+                        <div class="flex justify-between"><span class="text-slate-400">Rotational Spread:</span><span id="spread-val" class="text-pink-400 mono font-bold">-</span></div>
+                        <div class="flex justify-between"><span class="text-slate-400">Gap Quadrance Residual:</span><span id="qgap-val" class="text-rose-400 mono font-bold">-</span></div>
+                    </div>
+                </div>
+
+                <!-- 64-Bit Einstein Tile -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800">
+                    <div class="flex items-center justify-between mb-1.5">
+                        <span class="text-[10px] mono uppercase font-bold text-amber-400">64-Bit Einstein Tile</span>
+                        <span class="text-[9px] mono text-cyan-300" id="tile-step-mux-label">-</span>
+                    </div>
+                    <div class="grid grid-cols-16 gap-0.5 mb-2" style="grid-template-columns: repeat(16, minmax(0, 1fr));" id="codex-bit-matrix"></div>
+                    <div class="grid grid-cols-2 gap-1 text-[9px] mono text-slate-400">
+                        <div><span class="inline-block w-2 h-2 rounded-full bg-purple-400 mr-1"></span>0&ndash;31: Core Word</div>
+                        <div><span class="inline-block w-2 h-2 rounded-full bg-amber-400 mr-1"></span>32&ndash;47: Control Info</div>
+                        <div><span class="inline-block w-2 h-2 rounded-full bg-teal-400 mr-1"></span>48&ndash;55: Gate/Flags</div>
+                        <div><span class="inline-block w-2 h-2 rounded-full bg-pink-400 mr-1"></span>56&ndash;63: South Halo</div>
+                    </div>
+                </div>
+
+                <!-- NEW: Holographic Triplet & Orthogonal Offload (Toda-Kogame) -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800 space-y-2 mt-2">
+                    <div class="flex items-center justify-between mb-1">
+                        <span class="text-[10px] mono uppercase font-bold text-cyan-400">Holographic Triplets (Orthogonal Offload)</span>
+                    </div>
+                    <p class="text-[10px] text-slate-400 leading-snug mb-2">
+                        Visualizing the 16 invisible projection streams via Toda-Kogame Lattice deformation at the Emergent Core (E).
+                    </p>
+                    <div class="flex items-center justify-between text-[10px] mb-1">
+                        <label class="text-slate-300 font-bold">Show Orthogonal Scope</label>
+                        <input type="checkbox" id="check-orthogonal-scope" checked class="accent-cyan-500 w-3 h-3 cursor-pointer">
+                    </div>
+                    <div class="space-y-2 mt-2">
+                        <div class="flex items-center justify-between text-[9px] mono">
+                            <span class="text-slate-400">Projection Scalar</span>
+                            <span id="val-scalar" class="text-emerald-400">1.00</span>
+                        </div>
+                        <input type="range" id="slider-scalar" min="0" max="2" step="0.01" value="1.0">
+                        
+                        <div class="flex items-center justify-between text-[9px] mono">
+                            <span class="text-slate-400">Lattice Tension</span>
+                            <span id="val-tension" class="text-amber-300">2.0</span>
+                        </div>
+                        <input type="range" id="slider-tension" min="0.1" max="5" step="0.1" value="2.0">
+                        
+                        <div class="flex items-center justify-between text-[9px] mono">
+                            <span class="text-slate-400">Compression Force</span>
+                            <span id="val-compression" class="text-rose-400">0.00</span>
+                        </div>
+                        <input type="range" id="slider-compression" min="0" max="1" step="0.01" value="0.0">
+                    </div>
+                    
+                    <div class="space-y-2 mt-3 pt-2 border-t border-slate-700">
+                        <div>
+                            <div class="flex justify-between text-[9px] mono mb-1"><span class="text-cyan-300">Q1 (Group A)</span></div>
+                            <div class="bit-grid" id="grid-q1"></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[9px] mono mb-1"><span class="text-pink-400">Q2 (Group B)</span></div>
+                            <div class="bit-grid" id="grid-q2"></div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-[9px] mono mb-1"><span class="text-yellow-400">Q3 (Group C)</span></div>
+                            <div class="bit-grid" id="grid-q3"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </aside>
+
+        <!-- Right Drawer -->
+        <aside id="right-drawer" class="w-80 lg:w-96 engine-panel m-3 flex flex-col z-20 absolute right-0 top-14 bottom-32 xl:static xl:h-auto xl:my-3 xl:mr-3 overflow-hidden transition-transform duration-300">
+            <div class="p-3 border-b border-slate-800/80 flex items-center justify-between bg-slate-900/40">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-layer-group text-teal-400 text-xs"></i>
+                    <h3 class="text-xs font-bold uppercase tracking-wider">System II &amp; III: Memory</h3>
+                </div>
+                <button onclick="toggleDrawer('right-drawer')" class="xl:hidden text-slate-400 hover:text-white text-xs"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+
+            <div class="flex-1 overflow-y-auto p-3.5 space-y-3 text-xs">
+                <!-- Vis Settings -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-700 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] mono font-bold uppercase text-slate-300">Visualization Settings</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-[9px] mono">
+                        <label class="flex items-center gap-1.5 text-slate-400 cursor-pointer">
+                            <input type="checkbox" checked onchange="STATE.showTracers = this.checked; if(STATE.tracersGroup) STATE.tracersGroup.visible = this.checked;" class="accent-teal-500"> Orbit Tracers
+                        </label>
+                        <label class="flex items-center gap-1.5 text-slate-400 cursor-pointer">
+                            <input type="checkbox" checked onchange="STATE.showWeave = this.checked;" class="accent-teal-500"> Holographic Weave
+                        </label>
+                        <label class="flex items-center gap-1.5 text-slate-400 cursor-pointer">
+                            <input type="checkbox" checked onchange="STATE.showCore = this.checked; if(coreCubeGroup) coreCubeGroup.visible = this.checked;" class="accent-teal-500"> Central Core
+                        </label>
+                        <label class="flex items-center gap-1.5 text-slate-400 cursor-pointer">
+                            <input type="checkbox" checked onchange="STATE.showStator = this.checked; if(statorTiersGroup) statorTiersGroup.visible = this.checked;" class="accent-teal-500"> 5-Tier Stator
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Coupling Bridge -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-emerald-500/30 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] mono font-bold uppercase text-emerald-400">Sync Bridge</span>
+                        <span class="text-[9px] mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300" id="sync-bridge-status">LOCKED (24:1)</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-1.5 text-[10px] mono pt-1">
+                        <div class="p-1.5 rounded bg-black/40 border border-slate-800">
+                            <div class="text-slate-400 text-[9px]">40 Hz Metronome</div>
+                            <div class="text-cyan-300 font-bold" id="metronome-readout">-</div>
+                        </div>
+                        <div class="p-1.5 rounded bg-black/40 border border-slate-800">
+                            <div class="text-slate-400 text-[9px]">Phase Slip</div>
+                            <div class="text-emerald-400 font-bold" id="phase-slip-readout">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 64-Stream Matrix -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-purple-500/40 space-y-2">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] mono font-bold uppercase text-purple-300"><i class="fa-solid fa-memory mr-1"></i>64-Stream Memory Matrix (48+16)</span>
+                    </div>
+                    <p class="text-[10px] text-slate-300 leading-snug">
+                        <b>Four-Structure Shell (4 &times; 12 Outer + 4 &times; 4 Inner):</b> Input (I), Balancers (A, Ā), and Emergent Core (E). The 48 outer engines twist the payload, while the 16 inner projection cores (w,x,y,z) act as <b>Orthogonal Offload Cubes</b>, absorbing the 8-step kinetic energy to compute net holonomy.
+                    </p>
+                    <div class="space-y-1" id="memory-12-grid"></div>
+                    <div class="p-2 rounded bg-black/50 border border-slate-800 text-[10px] mono space-y-1">
+                        <div class="flex items-center justify-between">
+                            <span class="text-slate-400">Parity Status:</span>
+                            <span id="memory-recovery-badge" class="text-emerald-400 font-bold">ALL INTACT (64 Streams)</span>
+                        </div>
+                        <div id="memory-recovery-formula" class="text-[10px] math-serif text-cyan-300 truncate">
+                            <i>H</i><sub>1</sub><i>H</i><sub>2</sub><i>H</i><sub>3</sub><i>H</i><sub>4</sub> = 1 &bull; <i>W</i> = <i>U</i><sub>3</sub><i>U</i><sub>2</sub><i>U</i><sub>1</sub><i>U</i><sub>0</sub> = <i>I</i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 30-Node Wheel -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] mono font-bold uppercase text-cyan-400">Scale 0 &amp; 4: <sup>133</sup>Cs Parity &amp; 30-Node Wheel</span>
+                        <span class="text-[9px] mono px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300" id="parity-status-badge">PARITY LOCKED</span>
+                    </div>
+                    <div class="grid grid-cols-2 gap-1.5 text-[10px] mono pt-1">
+                        <div class="p-1.5 rounded bg-black/40 border border-slate-800">
+                            <div class="text-slate-400 text-[9px]">Residual {<span class="math-serif"><i>N</i><sub>pulse</sub></span>}</div>
+                            <div class="text-amber-300 font-bold" id="cs-pulse-readout">153,210,529.5 (0.5)</div>
+                        </div>
+                        <div class="p-1.5 rounded bg-black/40 border border-slate-800">
+                            <div class="text-slate-400 text-[9px]">0.5 s (30-Node) Closure</div>
+                            <div class="text-emerald-400 font-bold">4,596,315,885 exact</div>
+                        </div>
+                    </div>
+                    <div class="pt-1">
+                        <div class="grid grid-cols-10 gap-1" id="wheel-30-grid"></div>
+                    </div>
+                </div>
+
+                <!-- 5-Tier Stator -->
+                <div class="p-3 rounded-lg bg-slate-900/60 border border-slate-800 space-y-1.5">
+                    <div class="flex items-center justify-between">
+                        <span class="text-[10px] mono font-bold uppercase text-amber-400">Scale 3: 5-Tier Stator (<span class="math-serif"><i>W</i><sub>&Sigma;</sub> = 60</span>)</span>
+                    </div>
+                    <div class="space-y-1 text-[10px] mono" id="stator-tiers-list"></div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="lemma-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="engine-panel w-full max-w-6xl max-h-[88vh] flex flex-col overflow-hidden border border-purple-500/40">
+            <div class="p-4 border-b border-slate-800 flex items-center justify-between bg-slate-900/80">
+                <div>
+                    <h2 class="text-sm sm:text-base font-bold text-slate-100 uppercase tracking-wider">
+                        <i class="fa-solid fa-book-journal-whills text-purple-400 mr-2"></i>The Fifteen Lemmas &amp; 64-Stream Memory Architecture across the 8-Step Cycle
+                    </h2>
+                </div>
+                <button onclick="toggleLemmaModal()" class="px-3 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs mono border border-slate-700">
+                    <i class="fa-solid fa-xmark mr-1"></i>Close
+                </button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-4 space-y-4 text-xs" id="lemma-modal-body"></div>
+        </div>
+    </div>
+
+    <script>
+        const EIGHT_STEPS = [
+            {
+                step: 1,
+                shortName: "Circle Lift",
+                angleRange: "0 &rarr; &pi;/4 (0&deg;&ndash;45&deg;)",
+                phaseTitle: "PHASE I: CUBIC EXPANSION &amp; CONFORMAL LIFT (LEMMAS 1, 8, 9, 13)",
+                stepTag: "STEP 1 OF 8 &bull; EXPANSION (+) &bull; (1+i)¹",
+                axiom: "Spinor: Q₁ = 1+i (N=2)",
+                epistemic: "[PROVEN: Lemmas 1, 8.1, 9, 13.4]",
+                title: "Step 1: Circle Phase Lift (&#8484;/9&#8484;) &amp; Projective Integer Spinor (1+<i>i</i>)",
+                description: "The Zero-Point cycle begins on the centered inner core <span class='math-serif'><i>K</i> = [&minus;1, 1]<sup>3</sup></span> (edge <span class='math-serif'>2<i>C</i><sub>0</sub> = <i>&lambda;</i>/8</span>). By <b>Lemma 8 (Step 1)</b>, the circle phase <span class='math-serif'><i>s</i> &isin; &#8484;/9&#8484;</span> lifts to the latitude circle <span class='math-serif'>&Vert;<i>x</i>(<i>s</i>)&Vert;<sup>2</sup> = 3</span> at <span class='math-serif'>40&deg;</span> spacing. By <b>Lemma 13 (Part 4)</b>, the Gaussian integer <span class='math-serif'><i>Q</i><sub>step</sub> = 1 + <i>i</i></span> induces an exact <span class='math-serif'>90&deg;</span> projective 3D rotation without irrational square roots.",
+                equation: "<i>x</i>(<i>s</i>) = &minus;&frac13;(1,1,1) + &radic;(8/3)(cos(2<i>&pi;s</i>/9)<i>u</i> + sin(2<i>&pi;s</i>/9)<i>v</i>) , &nbsp;&nbsp; <i>Q</i><sub>1</sub> = (1+<i>i</i>)<sup>1</sup>",
+                qAlpha: 13, qBeta: 13, qGamma: 13,
+                spreadDeg: 45.0, qGap: 0.120,
+                activeWindow: 1,
+                expansionScale: 1.15,
+                hyperbolicFactor: 0.0,
+                scalarPulse: 0.0,
+                spinorPowerText: "<i>q</i><sub>1</sub> = 1 + <i>i</i> (<i>N</i>=2)",
+                handshakeStatus: "Closed (Internal Lift)",
+                tileMuxText: "Bits 44&ndash;47: Circle Phase <i>s</i> &isin; {0..8}",
+                activeLemmas: [
+                    { id: "Lemma 8 (Step 1)", name: "Circle Phase Lift (ℤ/9ℤ → S²)", role: "Maps 9 discrete phases at 40° intervals onto the circumsphere latitude circle ||x(s)||² = 3 of Cube 1." },
+                    { id: "Lemma 13 (Part 4)", name: "Projective Integer Spinor (1+i)ᵏ", role: "Realizes exact 90° spatial steps via ρ(x) = QxQ̄/N(Q) in ℤ⁴ without floating-point drift." },
+                    { id: "Lemma 1 & Lemma 9", name: "Isotomic Conservation & Mod-30 CRT", role: "Establishes BD = CX = s−b tangency and O(1) Garner CRT addressing mod (881, 883, 887)." }
+                ]
+            },
+            {
+                step: 2,
+                shortName: "C₉ &amp; Onload",
+                angleRange: "&pi;/4 &rarr; &pi;/2 (45&deg;&ndash;90&deg;)",
+                phaseTitle: "PHASE I: CONFORMAL NULL-CONE &amp; ONLOAD HANDSHAKE (LEMMAS 2, 8.2, 8.3)",
+                stepTag: "STEP 2 OF 8 &bull; TWIST (+) &bull; ONLOAD WINDOW (k=2)",
+                axiom: "Spinor: q₂ = +i (|sin θ₂| = 1)",
+                epistemic: "[PROVEN: Lemmas 8.2, 8.3, Thm 7.5]",
+                title: "Step 2: <i>C</i><sub>9</sub> Nine-Ray Construction, <i>K</i><sub>5</sub> 4-Simplex &amp; Onload Handshake",
+                description: "At <span class='math-serif'><i>&theta;</i><sub>2</sub> = <i>&pi;</i>/2</span>, transverse amplitude hits its first apex (<span class='math-serif'>|sin <i>&theta;</i><sub>2</sub>| = 1</span>, gcd-reduced spinor <span class='math-serif'><i>q</i><sub>2</sub> = +<i>i</i></span>), opening the <b>Onload Handshake Window (Theorem 7.5)</b>. By <b>Lemma 8.2</b>, rotating <span class='math-serif'>&Delta;<sub>0</sub></span> by <span class='math-serif'>{0&deg;, 40&deg;, 80&deg;}</span> generates 9 peripheral rays on <span class='math-serif'>&Vert;<i>x</i>&Vert; = &radic;3<i>C</i><sub>0</sub></span> (3 hitting Cube 1 corners), while <b>Lemma 8.3</b> lifts <span class='math-serif'>&Delta;<sub>&alpha;</sub> &cup; {<i>O</i>}</span> to a non-degenerate <span class='math-serif'><i>K</i><sub>5</sub></span> 4-simplex.",
+                equation: "<i>X</i>(<i>x</i>) = (<i>x</i>, &frac12;&Vert;<i>x</i>&Vert;<sup>2</sup>, 1) &isin; &#8477;<sup>4,1</sup> , &nbsp;&nbsp; &minus;2<i>X</i>(<i>x</i>)&middot;<i>X</i>(<i>y</i>) = &Vert;<i>x</i> &minus; <i>y</i>&Vert;<sup>2</sup> , &nbsp;&nbsp; <i>W</i><sub>onload</sub> = <i>U</i><sub>3</sub><i>U</i><sub>2</sub><i>U</i><sub>1</sub><i>U</i><sub>0</sub>",
+                qAlpha: 17, qBeta: 19, qGamma: 13,
+                spreadDeg: 78.4, qGap: 1.840,
+                activeWindow: 1,
+                expansionScale: 1.45,
+                hyperbolicFactor: 0.15,
+                scalarPulse: 0.0,
+                spinorPowerText: "<i>q</i><sub>2</sub> = 2<i>i</i> &equiv; +<i>i</i> (180&deg; <i>x</i>-turn)",
+                handshakeStatus: "OPEN: ONLOAD WINDOW (k=2)",
+                tileMuxText: "Bits 44&ndash;47: C₉ Ray Index s &isin; {0..8}",
+                activeLemmas: [
+                    { id: "Lemma 8.2 & 8.2''", name: "C₉ Nine-Ray & Three-of-Nine Rule", role: "Generates 3 congruent tetrahedra Δ₁, Δ₂, Δ₃ at {0°,40°,80°}; exactly 3 rays (Δ₁) terminate on Cube 1 vertices." },
+                    { id: "Lemma 8.3 & Step 2.1", name: "Paraboloid K₅ Lift & Null Cone ℝ⁴˒¹", role: "Lifts 4 tetrahedron vertices + centroid O to (x, ||x||²) ∈ ℝ⁴ spanning a rank-4 K₅ 4-simplex." },
+                    { id: "Theorem 7.5 & Prop M2", name: "Onload Handshake Window (k=2)", role: "Spinor q₂ = +i opens the onload gate, pushing 64-stream data outward T₀ → T₄ with scale 31/3." }
+                ]
+            },
+            {
+                step: 3,
+                shortName: "16 Half-Cubes",
+                angleRange: "&pi;/2 &rarr; 3&pi;/4 (90&deg;&ndash;135&deg;)",
+                phaseTitle: "PHASE I: FOUR-FOLD SUBDIVISION &amp; HARMONIC BUNDLE (LEMMAS 3, 5, 8.3)",
+                stepTag: "STEP 3 OF 8 &bull; COMPRESSION (+) &bull; 1/16 SUBDIVISION",
+                axiom: "Bundle: (0, 2C₀; 4C₀, 4/3 C₀) = −1",
+                epistemic: "[PROVEN: Lemmas 3, 5.1–5.3, 8.3]",
+                title: "Step 3: Four-Fold 1/16 Subdivision (16 Half-Cubes) &amp; Apollonius Harmonic Gate",
+                description: "By <b>Lemma 8 (Step 3)</b>, four successive volume halvings yield <span class='math-serif'><i>A</i><sub>4</sub> = <i>A</i><sub>0</sub>/16</span>, partitioning the core into <span class='math-serif'>2&times;2&times;2 = 8</span> sub-cubes and <b>16 congruent half-cubes</b>. By <b>Lemma 5 (Parts 1&ndash;3)</b>, the symmedian foot divides the baseline at the <b>Klein-Wave Merge Gate</b> <span class='math-serif'><i>x</i><sub><i>F</i></sub> = (4/3)<i>C</i><sub>0</sub> = <i>&lambda;</i>/12</span> (phase <span class='math-serif'><i>&pi;</i>/6</span>), realized by the Apollonius circle of radius <span class='math-serif'>2&radic;2<i>C</i><sub>0</sub></span>.",
+                equation: "(<i>B</i>, <i>C</i>; <i>E</i>, <i>F</i>) = (0, 2<i>C</i><sub>0</sub>; 4<i>C</i><sub>0</sub>, &frac43;<i>C</i><sub>0</sub>) = &minus;1 , &nbsp;&nbsp; <i>R</i><sub>&#119964;</sub> = &radic;(<i>EB</i> &middot; <i>EC</i>) = 2&radic;2 <i>C</i><sub>0</sub>",
+                qAlpha: 19, qBeta: 23, qGamma: 17,
+                spreadDeg: 104.2, qGap: 0.920,
+                activeWindow: 2,
+                expansionScale: 1.75,
+                hyperbolicFactor: 0.55,
+                scalarPulse: 0.0,
+                spinorPowerText: "<i>q</i><sub>3</sub> = &minus;2+2<i>i</i> &equiv; &minus;1+<i>i</i>",
+                handshakeStatus: "Closed (Subdivision)",
+                tileMuxText: "Bits 44&ndash;47: Half-Cube Index l &isin; {0..15}",
+                activeLemmas: [
+                    { id: "Lemma 8 (Step 3)", name: "Four-Fold 1/16 Subdivision", role: "Halves volume 4 times (A₄ = A₀/16) into 16 congruent rectangular half-cubes." },
+                    { id: "Lemma 3 & Lemma 5 (1–3)", name: "Symmedian & Projective Harmonic Bundle", role: "Fixes Klein-wave merge boundary F = (4/3)C₀ = λ/12 (phase π/6) via (0, 2C₀; 4C₀, 4/3 C₀) = −1." },
+                    { id: "Lemma 5 (Part 2)", name: "Binary Octahedral Group 2O Scaling", role: "Maps core K = [−1,1]³ onto voxel cube V = [−2,2]³ via x ↦ 2ρ_g(x) iff g ∈ 2O (order 48)." }
+                ]
+            },
+            {
+                step: 4,
+                shortName: "2&times; Dilation",
+                angleRange: "3&pi;/4 &rarr; &pi; (135&deg;&ndash;180&deg;)",
+                phaseTitle: "PHASE I: CUBE 2 DILATION, 4D HURWITZ SIEVE &amp; 40 Hz PULSE (LEMMAS 5.4, 10, 14)",
+                stepTag: "STEP 4 OF 8 &bull; TWIST (&minus;) &bull; E_max = 4 &amp; 40Hz LOCK",
+                axiom: "Spinor: q₄ = −4 ≡ −1 (360° Inversion)",
+                epistemic: "[PROVEN: Lemmas 5.4, 8.4, 10, 14]",
+                title: "Step 4: 2&times; Dilation to Cube 2 (<i>E</i><sub>max</sub> = 4), Hurwitz Traps &amp; 40 Hz Scalar Pulse",
+                description: "By <b>Lemma 8 (Step 4)</b>, dilating <span class='math-serif'><i>K</i> = [&minus;1,1]<sup>3</sup> &mapsto; <i>V</i> = [&minus;2,2]<sup>3</sup></span> (<span class='math-serif'><i>&lambda;</i> = 2</span>) scales every quadrance energy functional by <span class='math-serif'><i>&lambda;</i><sup>2</sup> = 4</span> (<span class='math-serif'><i>E</i><sub>max</sub> = 4<i>E</i><sub>comp</sub></span>) and emits the <b>40 Hz Scalar Synchronization Pulse</b>. By <b>Lemma 14</b> and <b>Lemma 5 (Part 4)</b>, the 4D Hurwitz lattice resolves Legendre's <span class='math-serif'><i>p</i> &equiv; 7 (mod 8)</span> obstruction (capturing <span class='math-serif'>{2, 3, 5, 7, 13}</span> in <span class='math-serif'>[&minus;2,2]<sup>4</sup></span>).",
+                equation: "<i>Z</i><sub>&#8459;</sub>(<i>&beta;</i>) = 1 + &sum; 24<i>&sigma;</i><sub>odd</sub>(<i>n</i>)<i>e</i><sup>&minus;<i>&beta;V</i>(<i>n</i>)</sup> &lt; &infin; , &nbsp;&nbsp; dist(<i>V</i>, <i>T</i><sub>0</sub>) = (11 &minus; 2&radic;3)<i>C</i><sub>0</sub> &approx; 7.536<i>C</i><sub>0</sub>",
+                qAlpha: 23, qBeta: 23, qGamma: 19,
+                spreadDeg: 115.0, qGap: 0.310,
+                activeWindow: 2,
+                expansionScale: 2.00,
+                hyperbolicFactor: 1.0,
+                scalarPulse: 1.0,
+                spinorPowerText: "<i>q</i><sub>4</sub> = &minus;4 &equiv; &minus;1 (Cycle A &minus;<i>I</i>)",
+                handshakeStatus: "40 Hz Global Scalar Lock",
+                tileMuxText: "Bits 44&ndash;47: aff(3) Coord (40Hz Sync)",
+                activeLemmas: [
+                    { id: "Lemma 8 (Step 4)", name: "2× Radial Dilation & E_max = 4 Scaling", role: "Expands K = [−1,1]³ to V = [−2,2]³ (edge 4C₀ = λ/4), scaling quadrance energy by 2² = 4." },
+                    { id: "Lemma 14 & Lemma 5.4", name: "Fokker-Planck Gibbs/Trap Sieve & 4D Hurwitz", role: "Absorbing prime traps yield harmonic hitting measure H_{x₀}(p); 4D Hurwitz captures p ≡ 7 mod 8." },
+                    { id: "Lemma 10", name: "Global Nesting & 7.536 C₀ Separation Gap", role: "Proves M_lower (||x|| ≤ 2√3 C₀) and M_upper (T₀ ≥ 11 C₀) are strictly disjoint (gap 4.05 m)." }
+                ]
+            },
+            {
+                step: 5,
+                shortName: "Cube 3 &amp; H₄",
+                angleRange: "&pi; &rarr; 5&pi;/4 (180&deg;&ndash;225&deg;)",
+                phaseTitle: "PHASE II: SENSE-REVERSING FOLD, BINOMIAL CUBE 3 &amp; PARITY H₄ (LEMMAS 7, 8.5)",
+                stepTag: "STEP 5 OF 8 &bull; EXPANSION (&minus;) &bull; PARITY ENGINE H₄",
+                axiom: "Closure: H₁ H₂ H₃ H₄ = +1",
+                epistemic: "[PROVEN: Lemmas 7.1–7.3, 8.5, Prop M1]",
+                title: "Step 5: (+,&minus;,+) Sense-Reversing Fold, Fibonacci Cube 3 &amp; Implied Fourth <i>H</i><sub>4</sub>",
+                description: "By <b>Lemma 8 (Step 5)</b>, the inward recursion <span class='math-serif'><i>F</i><sub><i>r</i>+1</sub> = <i>P</i><sub><i>r</i></sub>(<i>F</i><sub><i>r</i></sub>)<sup><i>&sigma;</i><sub><i>r</i></sub></sup></span> reverses sense via <span class='math-serif'>(<i>&sigma;</i><sub>12</sub>, <i>&sigma;</i><sub>10</sub>, <i>&sigma;</i><sub>8</sub>) = (+1, &minus;1, +1)</span> inside Fibonacci Binomial <b>Cube 3</b> (<span class='math-serif'><i>W</i> = [&minus;4,4]<sup>3</sup></span>, <span class='math-serif'>8<sup>3</sup> = (5+3)<sup>3</sup> = 125+225+135+27</span>). By <b>Lemma 7 &amp; Prop. M1</b>, each 3-engine triad locks its <b>Implied Fourth Parity Engine</b> <span class='math-serif'><i>H</i><sub>4</sub> = (<i>H</i><sub>1</sub><i>H</i><sub>2</sub><i>H</i><sub>3</sub>)<sup>&minus;1</sup></span> across the 12-dimensional affine bundle <span class='math-serif'>&#120094;&#120099;&#120099;(3)</span>.",
+                equation: "<i>H</i><sub>4</sub> = (<i>H</i><sub>1</sub><i>H</i><sub>2</sub><i>H</i><sub>3</sub>)<sup>&minus;1</sup> = <i>H&#772;</i><sub>3</sub><i>H&#772;</i><sub>2</sub><i>H&#772;</i><sub>1</sub> &isin; <i>S</i><sup>3</sup> , &nbsp;&nbsp; dim(&#120094;&#120099;&#120099;(3)) = 9 + 3 = 12 , &nbsp;&nbsp; 8<sup>3</sup> = (5+3)<sup>3</sup>",
+                qAlpha: 19, qBeta: 19, qGamma: 19,
+                spreadDeg: 120.0, qGap: 0.000,
+                activeWindow: 2,
+                expansionScale: 1.70,
+                hyperbolicFactor: 0.65,
+                scalarPulse: 0.25,
+                spinorPowerText: "<i>q</i><sub>5</sub> = &minus;4&minus;4<i>i</i> &equiv; &minus;1&minus;<i>i</i>",
+                handshakeStatus: "64-Stream Parity Lock (H₄)",
+                tileMuxText: "Bits 44&ndash;47: aff(3) Frame (9L + 3t)",
+                activeLemmas: [
+                    { id: "Lemma 7 (Parts 1–3) & Prop M1", name: "9+3=12 Affine Bundle & Parity Engine H₄", role: "Forms 12D aff(3) = gl(3,ℝ) ⋉ ℝ³ and computes H₄ = (H₁H₂H₃)⁻¹ for single-erasure recovery in 64-stream structures." },
+                    { id: "Lemma 8 (Step 5)", name: "(+,−,+) Sense-Reversing Fold & Cube 3", role: "Inverts middle gear σ₁₀ = −1 and expands Fibonacci Binomial Cube 3: 8³ = 5³ + 3(5²·3) + 3(5·3²) + 3³." },
+                    { id: "Lemma 5 (Part 6a)", name: "Two-Product 128-Bit Gram-TQF", role: "Evaluates A_R = 4(Q₂Q₃ − ⟨u,v⟩²) ≥ 0 exactly without floating-point collinearity failure." }
+                ]
+            },
+            {
+                step: 6,
+                shortName: "{4,3,5} Ghosts",
+                angleRange: "5&pi;/4 &rarr; 3&pi;/2 (225&deg;&ndash;270&deg;)",
+                phaseTitle: "PHASE II: D₃ TREFOIL, {4,3,5} GHOST COLLAPSE &amp; OFFLOAD (LEMMA 8.6, PROP 7.17)",
+                stepTag: "STEP 6 OF 8 &bull; TWIST (&minus;) &bull; OFFLOAD WINDOW (k=6)",
+                axiom: "Spinor: q₆ = −i (|sin θ₆| = 1)",
+                epistemic: "[PROVEN: Lemma 8 Prop 6.1–6.5, Prop 7.17]",
+                title: "Step 6: <i>D</i><sub>3</sub> Trefoil Folding, {4,3,5} Ghost Map &amp; Offload Handshake",
+                description: "At <span class='math-serif'><i>&theta;</i><sub>6</sub> = 3<i>&pi;</i>/2</span>, transverse amplitude hits its second apex (<span class='math-serif'>|sin <i>&theta;</i><sub>6</sub>| = 1</span>, spinor <span class='math-serif'><i>q</i><sub>6</sub> = &minus;<i>i</i></span>), opening the <b>Offload Handshake Window (Theorem 7.5)</b>. By <b>Lemma 8 (Prop. 6.1&ndash;6.4)</b>, the <span class='math-serif'><i>D</i><sub>3</sub></span> trefoil folds into a <span class='math-serif'>1/6</span> fundamental arc via 6 integer matrices in <span class='math-serif'><i>O</i></span>, maps into <span class='math-serif'>&#8461;<sup>3</sup></span> via the rational Ghost Map <span class='math-serif'><i>G</i> = &Phi; &circ; <i>C</i><sub>rat</sub></span>, and collapses the <b>3 Ghost Tetrahedra</b> (<span class='math-serif'>cosh <i>&vartheta;</i> = <i>&phi;</i></span> in the <span class='math-serif'>{4,3,5}</span> honeycomb) back into the central cube (<b>Prop. 7.17</b>).",
+                equation: "<i>G</i>(<i>p</i>) = ((1+|<i>p</i>|<sup>2</sup>)/(1&minus;|<i>p</i>|<sup>2</sup>), 2<i>p</i>/(1&minus;|<i>p</i>|<sup>2</sup>)) &isin; &#8461;<sup>3</sup> , &nbsp;&nbsp; cosh <i>&vartheta;</i> = <i>&phi;</i> , &nbsp;&nbsp; <i>W</i><sup>&minus;1</sup> = <i>U</i><sub>0</sub><sup>&minus;1</sup><i>U</i><sub>1</sub><sup>&minus;1</sup><i>U</i><sub>2</sub><sup>&minus;1</sup><i>U</i><sub>3</sub><sup>&minus;1</sup>",
+                qAlpha: 17, qBeta: 17, qGamma: 17,
+                spreadDeg: 120.0, qGap: 0.000,
+                activeWindow: 3,
+                expansionScale: 1.35,
+                hyperbolicFactor: 0.35,
+                scalarPulse: 0.0,
+                spinorPowerText: "<i>q</i><sub>6</sub> = &minus;8<i>i</i> &equiv; &minus;<i>i</i> (180&deg; <i>x</i>-turn)",
+                handshakeStatus: "OPEN: OFFLOAD WINDOW (k=6)",
+                tileMuxText: "Bits 44&ndash;47: Ghost Cell B_{±k} &isin; {0..6}",
+                activeLemmas: [
+                    { id: "Lemma 8 (Prop 6.2–6.4)", name: "Ghost Map G & {4,3,5} Honeycomb Boosts", role: "Isometry G: Ball → ℍ³ with Q_h = sinh² d_ℍ; boosts B_{±k} (cosh ϑ = φ) populate 6 disjoint face-neighbour cells." },
+                    { id: "Proposition 7.17", name: "Three Ghost Tetrahedra Collapse at Step 6", role: "Inverse boosts B_{+k}⁻¹ collapse the 3 ghost tetrahedra back into the central cube (Δ₁ ∪ −Δ₁ = 8 vertices)." },
+                    { id: "Theorem 7.5 & Prop M2", name: "Offload Handshake & Inverse Tier Word", role: "Spinor −i offloads implied fourths through T₄ → T₀ with h̄hh̄h = 1 and exact scale 3/31 (zero bit growth)." }
+                ]
+            },
+            {
+                step: 7,
+                shortName: "5-Moment Bridge",
+                angleRange: "3&pi;/2 &rarr; 7&pi;/4 (270&deg;&ndash;315&deg;)",
+                phaseTitle: "PHASE II: CROSS-GAP VANDERMONDE MOMENTS &amp; WINDING DICHOTOMY (LEMMAS 4, 6, 11)",
+                stepTag: "STEP 7 OF 8 &bull; COMPRESSION (&minus;) &bull; 5-MOMENT LOCK",
+                axiom: "Moments: m = (M, I, J, S, C_p)",
+                epistemic: "[PROVEN: Lemmas 4, 6, 11, Prop M3]",
+                title: "Step 7: Cross-Gap 5-Moment Vandermonde Bridge &amp; Winding Dichotomy",
+                description: "By <b>Lemma 6</b> and <b>Theorem 7.7</b>, the <span class='math-serif'>7.536<i>C</i><sub>0</sub></span> separation gap between <span class='math-serif'>&#119976;<sub>lower</sub></span> and <span class='math-serif'>&#119976;<sub>upper</sub></span> is bridged without contact by matching the <b>5 Cumulative Radial Moments</b> <span class='math-serif'>&#120106; = (<i>M</i>, <i>I</i>, <i>J</i>, <i>S</i>, <i>C</i><sub><i>p</i></sub>)</span> via an invertible <span class='math-serif'>2+3</span> block Vandermonde Jacobian. By <b>Lemma 11</b>, rational stator windings close (<span class='math-serif'><i>W</i><sub>&Sigma;</sub> = 60</span>) while Golden Clifford subdivision (<span class='math-serif'><i>k</i>/<i>&phi;</i></span> mod 1 at Fibonacci <span class='math-serif'><i>N</i> = <i>F</i><sub><i>m</i></sub></span>) yields 2 exact gap lengths in ratio <span class='math-serif'><i>&phi;</i> : 1</span>.",
+                equation: "<i>B</i><i>c</i> + &#119980;(<i>c</i>,<i>c</i>) = <i>d</i> (det <i>B</i> &ne; 0) , &nbsp;&nbsp; <i>&rho;</i><sub><i>n</i></sub> + &#119986;<sub><i>n</i></sub> = 20<i>C</i><sub>0</sub> , &nbsp;&nbsp; <i>h</i> = (1 &minus; <i>i</i> + <i>j</i> + <i>k</i>)/2 (<i>h</i><sup>6</sup> = +1)",
+                qAlpha: 11, qBeta: 11, qGamma: 11,
+                spreadDeg: 120.0, qGap: 0.000,
+                activeWindow: 3,
+                expansionScale: 1.12,
+                hyperbolicFactor: 0.10,
+                scalarPulse: 0.0,
+                spinorPowerText: "<i>q</i><sub>7</sub> = 8&minus;8<i>i</i> &equiv; 1&minus;<i>i</i>",
+                handshakeStatus: "5-Moment Non-Contact Bridge",
+                tileMuxText: "Bits 44&ndash;47: aff(3) / Fibonacci F_m",
+                activeLemmas: [
+                    { id: "Lemma 6 & Theorem 7.7", name: "Cross-Gap 5-Moment Vandermonde Channel", role: "Matches (M, I, J, S, C_p) across 5 ordered radial bands via Banach contraction (α ∉ {−1/2, 1/2, 3/2})." },
+                    { id: "Lemma 4 & Proposition M3", name: "Upper Manifold Stator, Spinor h & 3rd Phase", role: "Enforces ρ_n + W_n = 20C₀, Order-6 Hurwitz unit h, and routes parity on the invariant 120° line s = a+b+c." },
+                    { id: "Lemma 11", name: "Winding Dichotomy & Steinhaus-Sós 2-Gap", role: "Separates rational clock closure (0.5 s = 30 pulses) from Golden Clifford ergodic subdivision." }
+                ]
+            },
+            {
+                step: 8,
+                shortName: "Holonomy &amp; Merkle",
+                angleRange: "7&pi;/4 &rarr; 2&pi; / 4&pi; (315&deg;&ndash;360&deg;/720&deg;)",
+                phaseTitle: "PHASE II: HOLONOMY TELESCOPING, BALANCERS &amp; MERKLE ROOT (LEMMAS 12, 13, 15)",
+                stepTag: "STEP 8 OF 8 &bull; TWIST (+) &bull; (1+i)⁸ = +16 RESET",
+                axiom: "Holonomy: H = Q⁽⁸⁾Q⁽¹⁰⁾Q⁽¹²⁾ = q₀ q₇₁₉⁻¹",
+                epistemic: "[PROVEN: Lemmas 12, 13.4, 15, §7.6–7.7]",
+                title: "Step 8: Right-Acting Holonomy Telescoping, 4-Structure Balancers &amp; Merkle Root",
+                description: "By <b>Lemma 12</b>, the 72 middle-gear blocks partition into <span class='math-serif'>(8,7,7,7,7,8,7,7,7,7)</span> and right-acting multiplication telescopes the 3-gear holonomy to <span class='math-serif'><i>H</i> = (<i>Q</i><sup>(12)</sup>)<sup>&minus;1</sup> = <i>q</i><sub>0</sub><i>q</i><sub>719</sub><sup>&minus;1</sup></span> in <span class='math-serif'><i>O</i>(log <i>k</i>)</span> depth. By <b>Lemma 13 (Part 4)</b>, <span class='math-serif'>(1+<i>i</i>)<sup>8</sup> = +16 &equiv; +1</span> completes the <span class='math-serif'>720&deg;</span> spinor double-cover. By <b>Lemma 15 &amp; §7.6&ndash;7.7</b>, the 4-structure balancer sandwich <span class='math-serif'><i>A</i><sub><i>j</i></sub><i>I</i><sub><i>j</i></sub><i>A</i><sub><i>j</i></sub><sup>&minus;1</sup><i>E</i><sub><i>j</i></sub> = 1</span> (64 streams) is certified under a 256-bit bottom-up Merkle root <span class='math-serif'><i>&tau;</i><sub>1</sub>(<i>G</i>)</span>.",
+                equation: "<i>H</i> = <i>Q</i><sup>(8)</sup><i>Q</i><sup>(10)</sup><i>Q</i><sup>(12)</sup> = <i>q</i><sub>0</sub><sup>(12)</sup>(<i>q</i><sub>719</sub><sup>(12)</sup>)<sup>&minus;1</sup> , &nbsp;&nbsp; (1+<i>i</i>)<sup>8</sup> = +16 , &nbsp;&nbsp; <i>&tau;</i><sub><i>d</i></sub> = <i>H</i>(<i>G</i><sub><i>d</i></sub> &Vert; <i>&tau;</i><sub><i>d</i>+1</sub>)",
+                qAlpha: 7, qBeta: 7, qGamma: 7,
+                spreadDeg: 120.0, qGap: 0.000,
+                activeWindow: 3,
+                expansionScale: 1.00,
+                hyperbolicFactor: 0.0,
+                scalarPulse: 0.5,
+                spinorPowerText: "<i>q</i><sub>8</sub> = +16 &equiv; +1 (720&deg; Dirac +<i>I</i>)",
+                handshakeStatus: "Merkle Root &amp; Holonomy Certified",
+                tileMuxText: "Bits 56&ndash;63: South Halo Cache Pre-Filter",
+                activeLemmas: [
+                    { id: "Lemma 12", name: "Right-Acting Holonomy Telescoping & {7,8} Blocks", role: "Partitions 72 middle frames into (8,7,7,7,7,8,7,7,7,7) and telescopes Q⁽¹⁰⁾Q⁽¹²⁾ = +1 in O(log k) parallel prefix depth." },
+                    { id: "Lemma 13 (Part 2 & 4)", name: "Niven's Bound & (1+i)⁸ = +16 Reset", role: "Proves finite rational unit orders ∈ {1,2,3,4,6} and completes the exact 8-step spinor double-cover." },
+                    { id: "Lemma 15 & §7.6–7.7", name: "12-Layer Merkle Root & 64-Stream Balancers", role: "Certifies 2⁷² nested configurations via τ_d = H(G_d || τ_{d+1}); enforces A_j I_j A_j⁻¹ E_j = 1 across 64 streams." }
+                ]
+            }
+        ];
+
+        const FIFTEEN_LEMMAS_CATALOGUE = [
+            { num: "Lemma 1", layer: "Layer I: Synthetic", status: "[ESTABLISHED / PROVEN]", steps: "S1", summary: "Incircle/Excircle Homothety & Isotomic Conservation: BD = CX = s − b ⟺ BX = CD = s − c." },
+            { num: "Lemma 2", layer: "Layer I: Synthetic", status: "[ESTABLISHED / PROVEN]", steps: "S2, S3", summary: "Miquel Circle Intersection & Paired Spiral Similarities: z₀ = (ad−bc)/(a−b−c+d), △OAC ∼ △OBD and △OAB ∼ △OCD." },
+            { num: "Lemma 3", layer: "Layer I: Projective", status: "[ESTABLISHED / PROVEN]", steps: "S3", summary: "Symmedian Quadrance Ratio BF/FC = Q₃/Q₂, Apollonius Circle EA² = EB·EC, and Projective Harmonic Bundle (B,C;E,F) = −1." },
+            { num: "Lemma 4", layer: "Layer II: Upper Manifold", status: "[PROVEN]", steps: "S2, S6, S7", summary: "M_upper Standardization: ρ_n + W_n = 20C₀, W_Σ = 60, 120° signed-permutation U_even, Order-6 Hurwitz unit h = (1−i+j+k)/2, Legendre mod-5 wheel split B_±, and det J_g = 14 torus separation." },
+            { num: "Lemma 5", layer: "Layer II: Lower Manifold", status: "[PROVEN]", steps: "S3, S4, S5", summary: "M_lower Standardization: Binary octahedral 2O scaling K → V, Klein-wave harmonic gate (4/3)C₀ = λ/12, Apollonius radius 2√2 C₀, 4D Hurwitz primes {2,3,5,7,13} in [−2,2]⁴, and 2-product 128-bit Gram-TQF." },
+            { num: "Lemma 6", layer: "Layer III: Cross-Gap", status: "[PROVEN]", steps: "S7", summary: "Cross-Gap 5-Moment Vandermonde Conservation: Invertibility of m = (M, I, J, S, C_p) across 5 radial bands (2+3 block Jacobian invertible iff α ∉ {−1/2, 1/2, 3/2}) and Banach fixed-point exterior locking." },
+            { num: "Lemma 7", layer: "Layer III: Frame & Pump", status: "[PROVEN]", steps: "S5, S7", summary: "9+3=12 Affine Frame Bundle aff(3) = gl(3,ℝ) ⋉ ℝ³, Central Tier T₂ (r₂=8, W₂=12), Markov Tree Current J > 0, and Unique Group Inverse H₄ = (H₁H₂H₃)⁻¹ Single-Erasure Parity Engine." },
+            { num: "Lemma 8", layer: "Layer III: 8-Step Cycle", status: "[PROVEN]", steps: "S1–S8", summary: "8-Step π-Cycle: S1 Circle Lift (ℤ/9ℤ), S2 Conformal Null Cone ℝ⁴˒¹ + C₉ 9-Rays + K₅ 4-Simplex, S3 16 Half-Cubes, S4 2× Dilation (E_max=4), S5 (+,−,+) Fold + Cube 3, S6 D₃ Trefoil + Ghost Map G + {4,3,5} Honeycomb Boosts (cosh ϑ = φ), S2/S6 Handshake Windows." },
+            { num: "Lemma 9", layer: "Layer IV: CRT & Crypto", status: "[PROVEN]", steps: "S1, S6", summary: "Prime-Triplet Mod-30 CRT Cubic Indexing: Triplets in (11,13,17) or (17,19,23) mod 30, closed-form Garner inverses (c₁₂, c₂₃, c₁₃), maximal 10-bit triplet (881,883,887), rational Cayley map C_rat, and ECDLP pigeonhole/torsion obstructions." },
+            { num: "Lemma 10", layer: "Layer II: Global Nesting", status: "[PROVEN]", steps: "S4, S5, S7", summary: "Global Nesting & Separation Theorem: Disjoint toroidal shells [11,19]…[143,167]C₀ with clearances {10,16,22,28}C₀, and strict separation dist(V, T₀) = (11 − 2√3)C₀ ≈ 7.536 C₀ (4.05 m) between M_lower and M_upper." },
+            { num: "Lemma 11", layer: "Layer II: Winding", status: "[ESTABLISHED / PROVEN]", steps: "S7", summary: "Winding Dichotomy Theorem: Rational stator closure vs. Golden Clifford ergodicity, Steinhaus-Sós Three-Distance Theorem (2 gap lengths in ratio φ:1 at Fibonacci N = F_m), and Prop 11.4 30-pulse (0.5 s) joint clock closure." },
+            { num: "Lemma 12", layer: "Layer III: Holonomy", status: "[PROVEN]", steps: "S8", summary: "Holonomy Telescoping & Right-Acting Ordering: Middle-gear partition (8,7,7,7,7,8,7,7,7,7), right-acting Q⁽¹⁰⁾ = (Q⁽¹²⁾)⁻¹, open-convention holonomy H = Q⁽⁸⁾Q⁽¹⁰⁾Q⁽¹²⁾ = q₀ q₇₁₉⁻¹, and O(log k) parallel prefix scan." },
+            { num: "Lemma 13", layer: "Layer IV: Exact Spinors", status: "[PROVEN]", steps: "S1, S2, S6, S8", summary: "Exact Quaternionic Arithmetic: Unbounded denominator 5ⁿ of ((3+4i)/5)ⁿ, Niven's finite-order bound ord(q) ∈ {1,2,3,4,6}, projective rotation QxQ̄/N(Q), and exact 8-step spinor cycle Q_k = (1+i)ᵏ ((1+i)⁸ = +16)." },
+            { num: "Lemma 14", layer: "Layer III: Prime Sieve", status: "[PROVEN]", steps: "S4", summary: "Fokker-Planck Lattice Master Equation: Unique Gibbs state π(x) ∝ e^{−βV(x)}, absorbing harmonic hitting measure H_{x₀}(p), 4D Hurwitz partition convergence Z_H(β) < ∞ for βα > 2, and the Helix A Circularity Boundary." },
+            { num: "Lemma 15", layer: "Layer IV: Merkle Security", status: "[PROVEN]", steps: "S8", summary: "Recursive Merkle Integrity & South Halo Bound: 2⁷²/2⁶⁴ = 256 preimages on 12-layer state, 2⁴⁸ payloads per 8-bit South Halo ID (fast L1/L2 cache pre-filter), and collision-resistant bottom-up Merkle chain τ_d = H(G_d || τ_{d+1})." },
+            { num: "Layer V (§7.1–7.7)", layer: "System & 48-Stream Memory", status: "[PROVEN]", steps: "S2, S5, S6, S8", summary: "Four-Structure 48-Engine System (Input I, Balancers A, Ā, Emergent Core E): Enforces A_j I_j A_j⁻¹ E_j = 1 across 64 streams. Handles inverse tier offload W = I and 3 Ghost Tetrahedra collapse at S6." }
+        ];
+
+        const TWELVE_ENGINES_DATA = [
+            { id: "1", role: "Data", slot: 0, pos: [1, 1, 0] },
+            { id: "2", role: "Data", slot: 1, pos: [-1, 1, 0] },
+            { id: "3", role: "Data", slot: 2, pos: [-1, -1, 0] },
+            { id: "F", role: "Parity (4th)", slot: 3, pos: [1, -1, 0] },
+            { id: "4", role: "Data", slot: 4, pos: [0, 1, 1] },
+            { id: "5", role: "Data", slot: 5, pos: [0, -1, 1] },
+            { id: "6", role: "Data", slot: 6, pos: [0, -1, -1] },
+            { id: "F", role: "Parity (4th)", slot: 7, pos: [0, 1, -1] },
+            { id: "7", role: "Data", slot: 8, pos: [1, 0, 1] },
+            { id: "8", role: "Data", slot: 9, pos: [-1, 0, 1] },
+            { id: "9", role: "Data", slot: 10, pos: [-1, 0, -1] },
+            { id: "F", role: "Parity (4th)", slot: 11, pos: [1, 0, -1] }
+        ];
+
+        const INNER_PROJECTION_DATA = [
+            { id: "w", pos: [0.3, 0.3, 0.3] },
+            { id: "x", pos: [-0.3, -0.3, 0.3] },
+            { id: "y", pos: [-0.3, 0.3, -0.3] },
+            { id: "z", pos: [0.3, -0.3, -0.3] }
+        ];
+
+        const STATOR_TIERS = [
+            { tier: 0, name: "<i>T</i><sub>0</sub> (Core)", R: 15, r: 4, W: 16, axis: "Rot<sub><i>x</i></sub>(<i>&pi;</i>/2)", ratio: "2.00&times;" },
+            { tier: 1, name: "<i>T</i><sub>1</sub>",        R: 35, r: 6, W: 14, axis: "Rot<sub><i>y</i></sub>(<i>&pi;</i>/2)", ratio: "1.75&times;" },
+            { tier: 2, name: "<i>T</i><sub>2</sub>",        R: 65, r: 8, W: 12, axis: "Rot<sub><i>x</i></sub>(<i>&pi;</i>/2)", ratio: "1.50&times;" },
+            { tier: 3, name: "<i>T</i><sub>3</sub>",        R: 105, r: 10, W: 10, axis: "Rot<sub><i>y</i></sub>(<i>&pi;</i>/2)", ratio: "1.25&times;" },
+            { tier: 4, name: "<i>T</i><sub>4</sub> (Outer)", R: 155, r: 12, W: 8,  axis: "Rot<sub><i>x</i></sub>(<i>&pi;</i>/2)", ratio: "1.00&times;" }
+        ];
+
+        const PRIME_WHEEL_30 = new Set([1, 7, 11, 13, 17, 19, 23, 29]);
+
+        const STATE = {
+            currentStepIndex: 0,
+            spinorTick: 0,
+            macroTick: 0,
+            spinorFloat: 0.0,
+            macroFloat: 0.0,
+            playbackSpeed: 1.0,
+            isBreathPlaying: false,
+            isMacroPlaying: false,
+            isCoupled: true,
+            layerMode: 'all',
+            academicTheme: false,
+            solitonFlash: 0.0,
+            pulseWaveProgress: 0.0,
+            erasedEngines: new Set(),
+            structs: {},
+            showTracers: true,
+            showWeave: true,
+            showCore: true,
+            showStator: true,
+            showOrthogonalScope: true,
+            scalarVal: 1.0,
+            tensionVal: 2.0,
+            compressionVal: 0.0
+        };
+
+        let scene, camera, renderer, controls;
+        let coreCubeGroup, voxelMeshes = [];
+        let hyperbolicSphereMesh, scalarPulseRing;
+        let nineRaysGroup, ghostHoneycombGroup, ghostCellsMeshes = [];
+        let memoryHierarchyGroup, tracersGroup, weaveLines;
+        let streamsGroup, tqfTriangleMesh, qGapLineMesh, impliedFourthArrow, centroidNodeMesh;
+        let solitonCubesGroup, solitonWavePackets = [];
+        let statorTiersGroup, statorMeshes = [];
+        let orthogonalScopeGroup, scopeNodes = [], scopeLinks = [];
+
+        function initThreeJS() {
+            const container = document.getElementById('canvas-container');
+            const canvas = document.getElementById('engineCanvas');
+
+            const w = container.clientWidth || (window.innerWidth - 640);
+            const h = container.clientHeight || (window.innerHeight - 56);
+
+            scene = new THREE.Scene();
+
+            camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 1000);
+            camera.position.set(22, 28, 48);
+
+            renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true });
+            renderer.setSize(w, h);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            controls = new THREE.OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+            scene.add(ambientLight);
+
+            const dirLight1 = new THREE.DirectionalLight(0xc084fc, 1.2);
+            dirLight1.position.set(20, 30, 25);
+            scene.add(dirLight1);
+
+            const dirLight2 = new THREE.DirectionalLight(0x2dd4bf, 0.9);
+            dirLight2.position.set(-25, -20, -15);
+            scene.add(dirLight2);
+
+            buildCoordinateAxes();
+            buildCoreZeroPointCube();
+            buildPhaseStreamsAndTQF();
+            buildNineRaysAndGhostCells();
+            buildSixtyFourStreamMemoryShell();
+            buildSolitonProjectionCubes();
+            buildFiveTierStator();
+            buildOrthogonalScope();
+
+            window.addEventListener('resize', onWindowResize);
+        }
+
+        function buildCoordinateAxes() {
+            const axesGroup = new THREE.Group();
+            const axisLen = 9.5;
+            const mat = new THREE.LineBasicMaterial({ color: 0x64748b, transparent: true, opacity: 0.45 });
+            const dirs = [
+                new THREE.Vector3(axisLen, 0, 0),
+                new THREE.Vector3(0, axisLen, 0),
+                new THREE.Vector3(0, 0, axisLen)
+            ];
+            dirs.forEach(d => {
+                const geom = new THREE.BufferGeometry().setFromPoints([ d.clone().negate(), d ]);
+                axesGroup.add(new THREE.Line(geom, mat));
+            });
+            scene.add(axesGroup);
+        }
+
+        function isPrime(n) {
+            if (n < 2) return false;
+            for (let i = 2; i * i <= n; i++) {
+                if (n % i === 0) return false;
+            }
+            return true;
+        }
+
+        function buildCoreZeroPointCube() {
+            coreCubeGroup = new THREE.Group();
+            scene.add(coreCubeGroup);
+
+            const boxGeom = new THREE.BoxGeometry(5.2, 5.2, 5.2);
+            const edges = new THREE.EdgesGeometry(boxGeom);
+            const edgeMat = new THREE.LineBasicMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.35 });
+            const wireBox = new THREE.LineSegments(edges, edgeMat);
+            wireBox.name = "boundingBoxWire";
+            coreCubeGroup.add(wireBox);
+
+            const voxelGeom = new THREE.BoxGeometry(0.42, 0.42, 0.42);
+            voxelMeshes = [];
+
+            for (let ix = 0; ix < 4; ix++) {
+                for (let iy = 0; iy < 4; iy++) {
+                    for (let iz = 0; iz < 4; iz++) {
+                        const qNorm = ix * ix + iy * iy + iz * iz;
+                        const primeNode = isPrime(qNorm);
+
+                        const basePos = new THREE.Vector3(
+                            (ix - 1.5) * 1.15,
+                            (iy - 1.5) * 1.15,
+                            (iz - 1.5) * 1.15
+                        );
+
+                        const color = primeNode ? 0x2dd4bf : 0x64748b;
+                        const mat = new THREE.MeshStandardMaterial({
+                            color: color,
+                            emissive: primeNode ? 0x0d9488 : 0x1e293b,
+                            emissiveIntensity: primeNode ? 0.5 : 0.1,
+                            transparent: true,
+                            opacity: primeNode ? 0.88 : 0.35,
+                            roughness: 0.25,
+                            metalness: 0.6
+                        });
+
+                        const mesh = new THREE.Mesh(voxelGeom, mat);
+                        mesh.position.copy(basePos);
+                        mesh.userData = { basePos, ix, iy, iz, qNorm, isPrime: primeNode, layerIdx: (ix + iy + iz) % 8 };
+                        coreCubeGroup.add(mesh);
+                        voxelMeshes.push(mesh);
+                    }
+                }
+            }
+
+            const sphereGeom = new THREE.SphereGeometry(4.4, 32, 24);
+            const sphereMat = new THREE.MeshBasicMaterial({ color: 0xa855f7, wireframe: true, transparent: true, opacity: 0.0 });
+            hyperbolicSphereMesh = new THREE.Mesh(sphereGeom, sphereMat);
+            coreCubeGroup.add(hyperbolicSphereMesh);
+
+            const ringGeom = new THREE.RingGeometry(0.5, 0.85, 64);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8, side: THREE.DoubleSide, transparent: true, opacity: 0.0 });
+            scalarPulseRing = new THREE.Mesh(ringGeom, ringMat);
+            scalarPulseRing.rotation.x = Math.PI / 2;
+            coreCubeGroup.add(scalarPulseRing);
+        }
+
+        function buildPhaseStreamsAndTQF() {
+            streamsGroup = new THREE.Group();
+            scene.add(streamsGroup);
+
+            const centroidGeom = new THREE.SphereGeometry(0.38, 24, 24);
+            const centroidMat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: 0xa855f7, emissiveIntensity: 0.8 });
+            centroidNodeMesh = new THREE.Mesh(centroidGeom, centroidMat);
+            streamsGroup.add(centroidNodeMesh);
+
+            const dir = new THREE.Vector3(0, 1, 0);
+            impliedFourthArrow = new THREE.ArrowHelper(dir, new THREE.Vector3(0, 0, 0), 5.6, 0xf8fafc, 0.65, 0.38);
+            streamsGroup.add(impliedFourthArrow);
+
+            const streamColors = [0xc084fc, 0xfbbf24, 0x2dd4bf];
+            const streamOffsets = [0, (2 * Math.PI) / 3, (4 * Math.PI) / 3];
+
+            for (let s = 0; s < 3; s++) {
+                const pts = [];
+                const segments = 180;
+                for (let i = 0; i <= segments; i++) {
+                    const t = (i / segments) * Math.PI * 2;
+                    const phase = streamOffsets[s];
+                    const scale = 1.65;
+                    const x = scale * (Math.sin(t + phase) + 2 * Math.sin(2 * t + phase));
+                    const z = scale * (Math.cos(t + phase) - 2 * Math.cos(2 * t + phase));
+                    const y = scale * (-Math.sin(3 * t + phase));
+                    pts.push(new THREE.Vector3(x, y, z));
+                }
+                const curve = new THREE.CatmullRomCurve3(pts, true);
+                const tubeGeom = new THREE.TubeGeometry(curve, 150, 0.11, 12, true);
+                const tubeMat = new THREE.MeshStandardMaterial({
+                    color: streamColors[s], emissive: streamColors[s], emissiveIntensity: 0.35,
+                    transparent: true, opacity: 0.85, roughness: 0.3
+                });
+                const mesh = new THREE.Mesh(tubeGeom, tubeMat);
+                streamsGroup.add(mesh);
+            }
+
+            const triGeom = new THREE.BufferGeometry();
+            const positions = new Float32Array(9);
+            triGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            const triMat = new THREE.MeshBasicMaterial({ color: 0xec4899, side: THREE.DoubleSide, transparent: true, opacity: 0.28 });
+            tqfTriangleMesh = new THREE.Mesh(triGeom, triMat);
+            streamsGroup.add(tqfTriangleMesh);
+
+            const gapGeom = new THREE.BufferGeometry();
+            gapGeom.setAttribute('position', new THREE.BufferAttribute(new Float32Array(9), 3));
+            const gapMat = new THREE.LineBasicMaterial({ color: 0xf43f5e, linewidth: 2 });
+            qGapLineMesh = new THREE.LineLoop(gapGeom, gapMat);
+            streamsGroup.add(qGapLineMesh);
+        }
+
+        function buildNineRaysAndGhostCells() {
+            nineRaysGroup = new THREE.Group();
+            scene.add(nineRaysGroup);
+
+            const uVec = new THREE.Vector3(2, -1, -1).normalize();
+            const vVec = new THREE.Vector3(0, 1, -1).normalize();
+            const centerOffset = new THREE.Vector3(-1/3, -1/3, -1/3);
+            const rLat = Math.sqrt(8 / 3);
+            const rayScale = 1.5;
+
+            const circlePts = [];
+            for (let s = 0; s <= 72; s++) {
+                const ang = (s / 72) * Math.PI * 2;
+                const pt = centerOffset.clone()
+                    .add(uVec.clone().multiplyScalar(rLat * Math.cos(ang)))
+                    .add(vVec.clone().multiplyScalar(rLat * Math.sin(ang)))
+                    .multiplyScalar(rayScale);
+                circlePts.push(pt);
+            }
+            const latCircleGeom = new THREE.BufferGeometry().setFromPoints(circlePts);
+            const latCircleMat = new THREE.LineBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.55 });
+            nineRaysGroup.add(new THREE.Line(latCircleGeom, latCircleMat));
+
+            for (let s = 0; s < 9; s++) {
+                const ang = (2 * Math.PI * s) / 9;
+                const endPt = centerOffset.clone()
+                    .add(uVec.clone().multiplyScalar(rLat * Math.cos(ang)))
+                    .add(vVec.clone().multiplyScalar(rLat * Math.sin(ang)))
+                    .multiplyScalar(rayScale);
+                const isCubeCorner = (s % 3 === 0);
+                const rayMat = new THREE.LineBasicMaterial({
+                    color: isCubeCorner ? 0xfbbf24 : 0x38bdf8,
+                    transparent: true, opacity: isCubeCorner ? 0.9 : 0.55
+                });
+                const rayGeom = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, 0, 0), endPt]);
+                nineRaysGroup.add(new THREE.Line(rayGeom, rayMat));
+
+                const tipGeom = new THREE.SphereGeometry(isCubeCorner ? 0.16 : 0.11, 12, 12);
+                const tipMat = new THREE.MeshBasicMaterial({ color: isCubeCorner ? 0xfbbf24 : 0x38bdf8 });
+                const tip = new THREE.Mesh(tipGeom, tipMat);
+                tip.position.copy(endPt);
+                nineRaysGroup.add(tip);
+            }
+
+            ghostHoneycombGroup = new THREE.Group();
+            scene.add(ghostHoneycombGroup);
+            ghostCellsMeshes = [];
+
+            const faceDirs = [
+                { dir: new THREE.Vector3(1, 0, 0), color: 0xc084fc, isPos: true },
+                { dir: new THREE.Vector3(0, 1, 0), color: 0xfbbf24, isPos: true },
+                { dir: new THREE.Vector3(0, 0, 1), color: 0x2dd4bf, isPos: true },
+                { dir: new THREE.Vector3(-1, 0, 0), color: 0x9333ea, isPos: false },
+                { dir: new THREE.Vector3(0, -1, 0), color: 0xd97706, isPos: false },
+                { dir: new THREE.Vector3(0, 0, -1), color: 0x0d9488, isPos: false }
+            ];
+
+            faceDirs.forEach((fd) => {
+                const cellHolder = new THREE.Group();
+                const boxG = new THREE.BoxGeometry(1.4, 1.4, 1.4);
+                const edgeG = new THREE.EdgesGeometry(boxG);
+                const edgeM = new THREE.LineBasicMaterial({ color: fd.color, transparent: true, opacity: fd.isPos ? 0.75 : 0.35 });
+                cellHolder.add(new THREE.LineSegments(edgeG, edgeM));
+
+                const tetG = new THREE.TetrahedronGeometry(0.65);
+                const tetM = new THREE.MeshStandardMaterial({
+                    color: fd.color, emissive: fd.color, emissiveIntensity: 0.45,
+                    wireframe: !fd.isPos, transparent: true, opacity: fd.isPos ? 0.65 : 0.3
+                });
+                const tetMesh = new THREE.Mesh(tetG, tetM);
+                cellHolder.add(tetMesh);
+
+                cellHolder.userData = { dir: fd.dir, baseDist: 4.15 };
+                cellHolder.position.copy(fd.dir.clone().multiplyScalar(4.15));
+                ghostHoneycombGroup.add(cellHolder);
+                ghostCellsMeshes.push(cellHolder);
+            });
+        }
+
+        function buildSixtyFourStreamMemoryShell() {
+            memoryHierarchyGroup = new THREE.Group();
+            scene.add(memoryHierarchyGroup);
+            STATE.structs = {};
+            
+            STATE.tracersGroup = new THREE.Group();
+            memoryHierarchyGroup.add(STATE.tracersGroup);
+
+            const shellScale = 2.4; 
+            const structConfigs = {
+                'I': { color: 0xc084fc, name: 'Input', phaseOffset: 0, isCentral: false },
+                'A': { color: 0xfbbf24, name: 'Balancer', phaseOffset: (2*Math.PI)/3, isCentral: false },
+                'ABAR': { color: 0x2dd4bf, name: 'Inverse', phaseOffset: (4*Math.PI)/3, isCentral: false },
+                'E': { color: 0xf472b6, name: 'Emergent', phaseOffset: 0, isCentral: true }
+            };
+
+            const groupIndices = [
+                { indices: [0, 1, 2, 3] },
+                { indices: [4, 5, 6, 7] },
+                { indices: [8, 9, 10, 11] }
+            ];
+
+            Object.entries(structConfigs).forEach(([key, config]) => {
+                const group = new THREE.Group();
+                const engines = [];
+
+                groupIndices.forEach(grp => {
+                    const pts = grp.indices.map(i => {
+                        const p = TWELVE_ENGINES_DATA[i].pos;
+                        return new THREE.Vector3(p[0] * shellScale, p[1] * shellScale, p[2] * shellScale);
+                    });
+                    pts.push(pts[0].clone());
+                    const loopG = new THREE.BufferGeometry().setFromPoints(pts);
+                    const loopM = new THREE.LineBasicMaterial({ color: config.color, transparent: true, opacity: 0.35 });
+                    group.add(new THREE.Line(loopG, loopM));
+                });
+
+                TWELVE_ENGINES_DATA.forEach((eng, idx) => {
+                    const isParity = eng.role.includes("Parity");
+                    const nodeHolder = new THREE.Group();
+                    const basePos = new THREE.Vector3(
+                        eng.pos[0] * shellScale, eng.pos[1] * shellScale, eng.pos[2] * shellScale
+                    );
+                    nodeHolder.position.copy(basePos);
+
+                    const geom = isParity ? new THREE.OctahedronGeometry(0.48, 0) : new THREE.BoxGeometry(0.55, 0.55, 0.55);
+                    const mat = new THREE.MeshStandardMaterial({
+                        color: config.color, emissive: config.color, emissiveIntensity: isParity ? 0.75 : 0.4,
+                        transparent: true, opacity: 0.9, roughness: 0.25, metalness: 0.6
+                    });
+                    const mesh = new THREE.Mesh(geom, mat);
+                    nodeHolder.add(mesh);
+
+                    const ringG = new THREE.TorusGeometry(0.68, 0.04, 8, 24);
+                    const ringM = new THREE.MeshBasicMaterial({ color: isParity ? 0xf472b6 : config.color, transparent: true, opacity: 0.55 });
+                    const ring = new THREE.Mesh(ringG, ringM);
+                    nodeHolder.add(ring);
+
+                    nodeHolder.userData = { engineData: eng, idx, basePos, mesh, ring, isParity };
+                    group.add(nodeHolder);
+                    engines.push({ id: eng.id, holder: nodeHolder, mesh, ring, isParity, isProj: false, baseColor: config.color });
+                });
+
+                const projGroup = new THREE.Group();
+                INNER_PROJECTION_DATA.forEach(proj => {
+                    const pNodeHolder = new THREE.Group();
+                    pNodeHolder.position.set(proj.pos[0] * shellScale, proj.pos[1] * shellScale, proj.pos[2] * shellScale);
+                    
+                    const pGeom = new THREE.SphereGeometry(0.25, 16, 16);
+                    const pMat = new THREE.MeshStandardMaterial({
+                        color: 0xffffff,
+                        emissive: config.color,
+                        emissiveIntensity: 0.9,
+                        transparent: true, opacity: 0.95
+                    });
+                    const pMesh = new THREE.Mesh(pGeom, pMat);
+                    pNodeHolder.add(pMesh);
+                    
+                    const pRing = new THREE.Group();
+                    pNodeHolder.add(pRing);
+
+                    projGroup.add(pNodeHolder);
+                    engines.push({ id: `Proj_${proj.id}`, holder: pNodeHolder, mesh: pMesh, ring: pRing, isParity: false, isProj: true, baseColor: 0xffffff });
+                });
+                group.add(projGroup);
+
+                STATE.structs[key] = { group, engines };
+                memoryHierarchyGroup.add(group);
+            });
+
+            const segments = 180;
+            const orbitScale = 18.0;
+            Object.keys(structConfigs).forEach(key => {
+                const config = structConfigs[key];
+                if (config.isCentral) return;
+                const pts = [];
+                for(let i=0; i<=segments; i++) {
+                    const t = (i/segments) * Math.PI * 2;
+                    const minorR = 6.0;
+                    const tubeAngle = 3 * t + config.phaseOffset;
+                    const torusAngle = 2 * t;
+                    const r = minorR * Math.cos(tubeAngle);
+                    const z = minorR * Math.sin(tubeAngle);
+                    const x = (orbitScale + r) * Math.cos(torusAngle);
+                    const y = (orbitScale + r) * Math.sin(torusAngle);
+                    pts.push(new THREE.Vector3(x, y, z * 1.2));
+                }
+                const geom = new THREE.BufferGeometry().setFromPoints(pts);
+                const mat = new THREE.LineBasicMaterial({ color: config.color, transparent: true, opacity: 0.3 });
+                STATE.tracersGroup.add(new THREE.Line(geom, mat));
+            });
+
+            const geom = new THREE.BufferGeometry();
+            const numLines = 3 * 12; 
+            const pts = new Float32Array(numLines * 2 * 3);
+            const colors = new Float32Array(numLines * 2 * 3);
+            geom.setAttribute('position', new THREE.BufferAttribute(pts, 3));
+            geom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            
+            weaveLines = new THREE.LineSegments(geom, new THREE.LineBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.25, blending: THREE.AdditiveBlending }));
+            memoryHierarchyGroup.add(weaveLines);
+        }
+
+        function buildSolitonProjectionCubes() {
+            solitonCubesGroup = new THREE.Group();
+            scene.add(solitonCubesGroup);
+            solitonWavePackets = [];
+
+            const packetColors = [0xc084fc, 0xfbbf24, 0x2dd4bf, 0x38bdf8, 0xf472b6, 0x4ade80];
+            for (let i = 0; i < 6; i++) {
+                const holder = new THREE.Group();
+                const geom = new THREE.BoxGeometry(1.35, 1.35, 1.35);
+                const edges = new THREE.EdgesGeometry(geom);
+                const lineMat = new THREE.LineBasicMaterial({ color: packetColors[i], transparent: true, opacity: 0.85 });
+                holder.add(new THREE.LineSegments(edges, lineMat));
+
+                const coreGeom = new THREE.OctahedronGeometry(0.42, 1);
+                const coreMat = new THREE.MeshStandardMaterial({
+                    color: packetColors[i], emissive: packetColors[i], emissiveIntensity: 0.6, transparent: true, opacity: 0.75
+                });
+                holder.add(new THREE.Mesh(coreGeom, coreMat));
+
+                holder.userData = { orbitIndex: i, sign: i % 2 === 0 ? 1 : -1, phaseOffset: (i * Math.PI) / 3 };
+                solitonCubesGroup.add(holder);
+                solitonWavePackets.push(holder);
+            }
+        }
+
+        function buildFiveTierStator() {
+            statorTiersGroup = new THREE.Group();
+            scene.add(statorTiersGroup);
+            statorMeshes = [];
+
+            const scaleFactor = 0.075;
+            const tierColors = [0xa855f7, 0x38bdf8, 0x2dd4bf, 0xfbbf24, 0xf43f5e];
+
+            STATOR_TIERS.forEach((t, n) => {
+                const R = t.R * scaleFactor + 5.0;
+                const r = t.r * scaleFactor * 0.65;
+                const torusGeom = new THREE.TorusGeometry(R, r, 16, 72);
+                const torusMat = new THREE.MeshBasicMaterial({ color: tierColors[n], wireframe: true, transparent: true, opacity: 0.32 });
+                const torusMesh = new THREE.Mesh(torusGeom, torusMat);
+
+                if (n % 2 === 0) torusMesh.rotation.x = Math.PI / 2;
+                else torusMesh.rotation.y = Math.PI / 2;
+
+                torusMesh.userData = { tierData: t };
+                statorTiersGroup.add(torusMesh);
+                statorMeshes.push(torusMesh);
+            });
+        }
+
+        function buildOrthogonalScope() {
+            orthogonalScopeGroup = new THREE.Group();
+            orthogonalScopeGroup.visible = STATE.showOrthogonalScope;
+            scene.add(orthogonalScopeGroup);
+
+            const matNode = new THREE.MeshBasicMaterial({ color: 0x00ffff });
+            const matLink = new THREE.LineBasicMaterial({ color: 0x00ffff, transparent: true, opacity: 0.5 });
+            const geomNode = new THREE.SphereGeometry(0.15, 8, 8);
+
+            for(let i=0; i<16; i++) {
+                const angle = (i / 16) * Math.PI * 2;
+                const r = 2.0;
+                const x = Math.cos(angle) * r;
+                const z = Math.sin(angle) * r; 
+                
+                const node = new THREE.Mesh(geomNode, matNode);
+                node.userData = { angle: angle }; 
+                node.position.set(x, 0, z);
+                orthogonalScopeGroup.add(node);
+                scopeNodes.push(node);
+            }
+            
+            for(let i=0; i<16; i++) {
+                const next = (i+1)%16;
+                const g = new THREE.BufferGeometry().setFromPoints([scopeNodes[i].position, scopeNodes[next].position]);
+                const l = new THREE.Line(g, matLink);
+                l.userData = { n1: i, n2: next };
+                orthogonalScopeGroup.add(l);
+                scopeLinks.push(l);
+                
+                const cross = (i+3)%16;
+                const g2 = new THREE.BufferGeometry().setFromPoints([scopeNodes[i].position, scopeNodes[cross].position]);
+                const l2 = new THREE.Line(g2, matLink);
+                l2.userData = { n1: i, n2: cross };
+                orthogonalScopeGroup.add(l2);
+                scopeLinks.push(l2);
+            }
+        }
+
+        function adjustSpeed(delta) {
+            STATE.playbackSpeed = Math.max(0.25, Math.min(4.0, STATE.playbackSpeed + delta));
+            const readout = document.getElementById('speed-readout');
+            if(readout) readout.innerText = STATE.playbackSpeed.toFixed(2) + 'x';
+        }
+
+        function setLayerMode(mode) {
+            STATE.layerMode = mode;
+            ['all', 'I', 'A', 'ABAR', 'E'].forEach(m => {
+                const btn = document.getElementById(`mode-${m}`);
+                if (!btn) return;
+                if (m === mode) {
+                    btn.className = "px-3 py-1 rounded-md bg-purple-600 text-white font-semibold transition";
+                } else {
+                    btn.className = `px-3 py-1 rounded-md hover:text-white transition text-slate-400`;
+                }
+            });
+
+            if (mode === 'all') {
+                Object.values(STATE.structs).forEach(s => s.group.visible = true);
+                if (weaveLines) weaveLines.visible = STATE.showWeave;
+                if (STATE.tracersGroup) STATE.tracersGroup.visible = STATE.showTracers;
+            } else {
+                Object.entries(STATE.structs).forEach(([k, s]) => {
+                    s.group.visible = (k === mode);
+                });
+                if (weaveLines) weaveLines.visible = false;
+                if (STATE.tracersGroup) STATE.tracersGroup.visible = false;
+            }
+        }
+
+        function evaluateMemoryRecovery() {
+            const groups = { A: ["A1", "A2", "A3", "FA"], B: ["B1", "B2", "B3", "FB"], C: ["C1", "C2", "C3", "FC"] };
+            const erasures = Array.from(STATE.erasedEngines);
+            const totalLosses = erasures.length;
+            
+            if (totalLosses === 0) return { status: "INTACT", badgeText: "ALL INTACT (64 Streams)", badgeClass: "text-emerald-400 font-bold", formulaHtml: "<i>H</i><sub>1</sub><i>H</i><sub>2</sub><i>H</i><sub>3</sub><i>H</i><sub>4</sub> = 1 &bull; <i>W</i> = <i>U</i><sub>3</sub><i>U</i><sub>2</sub><i>U</i><sub>1</sub><i>U</i><sub>0</sub> = <i>I</i>" };
+            if (totalLosses > 3) return { status: "UNRECOVERABLE", badgeText: "FATAL ERASURE", badgeClass: "text-rose-400 font-bold", formulaHtml: "Underdetermined" };
+            return { status: "RECOVERED", badgeText: `RECOVERED (${totalLosses} Erased)`, badgeClass: "text-amber-300 font-bold", formulaHtml: `${erasures.join(', ')} Rebuilt` };
+        }
+
+        function toggleEngineErasure(engineId) {
+            if (STATE.erasedEngines.has(engineId)) STATE.erasedEngines.delete(engineId);
+            else STATE.erasedEngines.add(engineId);
+            renderTwelveEngineMemoryUI();
+        }
+
+        function renderTwelveEngineMemoryUI() {
+            const container = document.getElementById('memory-12-grid');
+            if (!container) return;
+
+            const evalRes = evaluateMemoryRecovery();
+            const groupRows = [
+                { label: "Grp A (z=0)", ids: ["A1", "A2", "A3", "FA"], border: "border-purple-500/40", text: "text-purple-300" },
+                { label: "Grp B (x=0)", ids: ["B1", "B2", "B3", "FB"], border: "border-amber-500/40", text: "text-amber-300" },
+                { label: "Grp C (y=0)", ids: ["C1", "C2", "C3", "FC"], border: "border-teal-500/40", text: "text-teal-300" }
+            ];
+
+            container.innerHTML = '';
+            groupRows.forEach(row => {
+                const rowEl = document.createElement('div');
+                rowEl.className = "grid grid-cols-5 gap-1 items-center";
+                let html = `<span class="mono text-[9px] font-bold ${row.text}">${row.label}</span>`;
+                row.ids.forEach(id => {
+                    const isErased = STATE.erasedEngines.has(id);
+                    const isFourth = id.startsWith("F");
+                    let btnClass = isErased ? (evalRes.status === "UNRECOVERABLE" ? "bg-rose-950/80 border-rose-500 text-rose-300 line-through" : "bg-amber-950/80 border-amber-400 text-amber-200") : (isFourth ? `bg-slate-800/90 ${row.border} ${row.text} font-bold` : "bg-slate-900/80 border-slate-700 text-slate-200");
+                    const icon = isErased ? (evalRes.status === "UNRECOVERABLE" ? "fa-triangle-exclamation" : "fa-wrench") : (isFourth ? "fa-shield-halved" : "fa-cube");
+
+                    html += `<button onclick="toggleEngineErasure('${id}')" class="px-1.5 py-1 rounded border ${btnClass} mono text-[9px] flex items-center justify-between hover:brightness-125 transition"><span>${id}</span><i class="fa-solid ${icon} text-[8px] opacity-80"></i></button>`;
+                });
+                rowEl.innerHTML = html;
+                container.appendChild(rowEl);
+            });
+
+            const badgeEl = document.getElementById('memory-recovery-badge');
+            const formEl = document.getElementById('memory-recovery-formula');
+            if (badgeEl) { badgeEl.innerText = evalRes.badgeText; badgeEl.className = evalRes.badgeClass; }
+            if (formEl) formEl.innerHTML = evalRes.formulaHtml;
+        }
+
+        function scrubSpinor(val) {
+            STATE.spinorTick = parseInt(val, 10);
+            STATE.spinorFloat = STATE.spinorTick;
+            const angleInCycle = STATE.spinorTick % 360;
+            STATE.currentStepIndex = Math.min(7, Math.floor(angleInCycle / 45));
+            if (STATE.isCoupled) {
+                STATE.macroTick = STATE.spinorTick;
+                STATE.macroFloat = STATE.macroTick;
+                document.getElementById('macro-slider').value = STATE.macroTick;
+            }
+            updateStepUI();
+        }
+
+        function scrubMacro(val) {
+            STATE.macroTick = parseInt(val, 10);
+            STATE.macroFloat = STATE.macroTick;
+            if (STATE.isCoupled) {
+                STATE.spinorTick = STATE.macroTick;
+                STATE.spinorFloat = STATE.spinorTick;
+                document.getElementById('spinor-slider').value = STATE.spinorTick;
+                const angleInCycle = STATE.spinorTick % 360;
+                STATE.currentStepIndex = Math.min(7, Math.floor(angleInCycle / 45));
+            }
+            updateStepUI();
+        }
+
+        function toggleSpinorCover() {
+            STATE.spinorTick = (STATE.spinorTick < 360) ? STATE.spinorTick + 360 : STATE.spinorTick - 360;
+            STATE.spinorFloat = STATE.spinorTick;
+            document.getElementById('spinor-slider').value = STATE.spinorTick;
+            if (STATE.isCoupled) {
+                STATE.macroTick = STATE.spinorTick;
+                STATE.macroFloat = STATE.macroTick;
+                document.getElementById('macro-slider').value = STATE.macroTick;
+            }
+            updateStepUI();
+        }
+
+        function toggleBreathPlay() {
+            STATE.isBreathPlaying = !STATE.isBreathPlaying;
+            if (STATE.isCoupled) STATE.isMacroPlaying = STATE.isBreathPlaying;
+            updatePlayButtonsUI();
+        }
+
+        function toggleMacroPlay() {
+            STATE.isMacroPlaying = !STATE.isMacroPlaying;
+            if (STATE.isCoupled) STATE.isBreathPlaying = STATE.isMacroPlaying;
+            updatePlayButtonsUI();
+        }
+
+        function pauseAllSystems() {
+            STATE.isBreathPlaying = false; STATE.isMacroPlaying = false;
+            updatePlayButtonsUI();
+        }
+
+        function toggleCoupling() {
+            STATE.isCoupled = !STATE.isCoupled;
+            if (STATE.isCoupled) {
+                STATE.macroTick = STATE.spinorTick;
+                STATE.macroFloat = STATE.spinorTick;
+                STATE.isMacroPlaying = STATE.isBreathPlaying;
+                document.getElementById('macro-slider').value = STATE.macroTick;
+            }
+            updatePlayButtonsUI(); updateStepUI();
+        }
+
+        function stepMacroNode(deltaNode) {
+            STATE.isMacroPlaying = false;
+            if (STATE.isCoupled) STATE.isBreathPlaying = false;
+            STATE.macroTick = (STATE.macroTick + deltaNode * 24 + 720) % 720;
+            STATE.macroFloat = STATE.macroTick;
+            document.getElementById('macro-slider').value = STATE.macroTick;
+            if (STATE.isCoupled) {
+                STATE.spinorTick = STATE.macroTick;
+                STATE.spinorFloat = STATE.spinorTick;
+                document.getElementById('spinor-slider').value = STATE.spinorTick;
+                STATE.currentStepIndex = Math.min(7, Math.floor((STATE.spinorTick % 360) / 45));
+            }
+            updatePlayButtonsUI(); updateStepUI();
+        }
+        
+        function triggerSolitonCollision() {
+            STATE.solitonFlash = 1.0; STATE.pulseWaveProgress = 0.01;
+            if (!STATE.isCoupled) {
+                STATE.macroTick = STATE.spinorTick;
+                STATE.macroFloat = STATE.spinorTick;
+                document.getElementById('macro-slider').value = STATE.macroTick;
+                updateStepUI();
+            }
+        }
+
+        function resetCamera() {
+            camera.position.set(22, 28, 48);
+            controls.target.set(0, 0, 0);
+            setLayerMode('all');
+            controls.update();
+        }
+
+        function setupCameraInteractions(canvas) { /* Native OrbitControls handling */ }
+
+        function onWindowResize() {
+            const container = document.getElementById('canvas-container');
+            if (!container || !renderer || !camera) return;
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        }
+
+        function animateEngine() {
+            requestAnimationFrame(animateEngine);
+            let needsUIUpdate = false;
+
+            if (STATE.isBreathPlaying) {
+                STATE.spinorFloat += STATE.playbackSpeed;
+                if (STATE.spinorFloat >= 720) STATE.spinorFloat -= 720;
+                if (STATE.spinorFloat < 0) STATE.spinorFloat += 720;
+                
+                let newTick = Math.floor(STATE.spinorFloat);
+                if (newTick !== STATE.spinorTick) {
+                    STATE.spinorTick = newTick;
+                    document.getElementById('spinor-slider').value = STATE.spinorTick;
+                    const newStepIdx = Math.min(7, Math.floor((STATE.spinorTick % 360) / 45));
+                    if (newStepIdx !== STATE.currentStepIndex) {
+                        STATE.currentStepIndex = newStepIdx;
+                        if (STATE.currentStepIndex === 3) { STATE.solitonFlash = 1.0; STATE.pulseWaveProgress = 0.01; }
+                    }
+                    needsUIUpdate = true;
+                }
+
+                if (STATE.isCoupled) {
+                    STATE.macroTick = STATE.spinorTick;
+                    STATE.macroFloat = STATE.spinorFloat;
+                    document.getElementById('macro-slider').value = STATE.macroTick;
+                }
+            }
+
+            if (STATE.isMacroPlaying && !STATE.isCoupled) {
+                STATE.macroFloat += STATE.playbackSpeed;
+                if (STATE.macroFloat >= 720) STATE.macroFloat -= 720;
+                if (STATE.macroFloat < 0) STATE.macroFloat += 720;
+                
+                let newTick = Math.floor(STATE.macroFloat);
+                if (newTick !== STATE.macroTick) {
+                    STATE.macroTick = newTick;
+                    document.getElementById('macro-slider').value = STATE.macroTick;
+                    needsUIUpdate = true;
+                }
+            }
+
+            if (needsUIUpdate) updateStepUI();
+
+            const stepData = EIGHT_STEPS[STATE.currentStepIndex];
+            const breathPhaseRad = (STATE.spinorFloat / 360) * Math.PI * 2;
+            const macroPhaseRad = (STATE.macroFloat / 360) * Math.PI * 2;
+
+            if (coreCubeGroup && coreCubeGroup.visible) {
+                const expScale = stepData.expansionScale;
+                const hypBlend = stepData.hyperbolicFactor;
+
+                voxelMeshes.forEach(mesh => {
+                    const b = mesh.userData.basePos;
+                    
+                    mesh.position.copy(b); // Static Glass Box Geometry
+                    
+                    mesh.rotation.x = breathPhaseRad * 0.5 + mesh.userData.ix * 0.2;
+                    mesh.rotation.y = breathPhaseRad * 0.5 + mesh.userData.iy * 0.2;
+
+                    const forwardWave = Math.sin(breathPhaseRad - mesh.userData.layerIdx * Math.PI/4);
+                    const inverseWave = Math.sin(-breathPhaseRad - mesh.userData.layerIdx * Math.PI/4);
+                    const kineticEnergy = Math.abs(forwardWave - inverseWave); 
+                    
+                    mesh.material.emissiveIntensity = 0.2 + kineticEnergy * 0.8;
+                    mesh.material.opacity = 0.4 + kineticEnergy * 0.5;
+
+                    const isLayerActive = mesh.userData.layerIdx === STATE.currentStepIndex;
+                    mesh.scale.setScalar(1.0); 
+                
+                    if (isLayerActive) {
+                        mesh.material.color.setHex(0xffffff); 
+                    } else {
+                        mesh.material.color.setHex(mesh.userData.isPrime ? 0x2dd4bf : 0x64748b);
+                    }
+                });
+
+                hyperbolicSphereMesh.material.opacity = hypBlend * 0.28;
+                hyperbolicSphereMesh.rotation.y = breathPhaseRad * 0.25;
+
+                if (STATE.pulseWaveProgress > 0.0) {
+                    STATE.pulseWaveProgress += 0.025;
+                    if (STATE.pulseWaveProgress >= 1.0) {
+                        STATE.pulseWaveProgress = 0.0; scalarPulseRing.material.opacity = 0.0;
+                    } else {
+                        scalarPulseRing.scale.setScalar(1.0 + STATE.pulseWaveProgress * 11.0);
+                        scalarPulseRing.material.opacity = (1.0 - STATE.pulseWaveProgress) * 0.85;
+                    }
+                } else if (stepData.scalarPulse > 0.05) {
+                    scalarPulseRing.scale.setScalar(4.8); scalarPulseRing.material.opacity = stepData.scalarPulse * 0.45;
+                } else {
+                    scalarPulseRing.material.opacity = 0.0;
+                }
+            }
+
+            if (streamsGroup && streamsGroup.visible) {
+                const offsets = [0, (2 * Math.PI) / 3, (4 * Math.PI) / 3];
+                const slipFactor = stepData.qGap * 0.35;
+                const triPositions = tqfTriangleMesh.geometry.attributes.position.array;
+                const gapPositions = qGapLineMesh.geometry.attributes.position.array;
+                for (let s = 0; s < 3; s++) {
+                    const t = breathPhaseRad + offsets[s] + (s === 1 ? stepData.qGap * 0.35 : 0);
+                    const scale = 1.65;
+                    const x = scale * (Math.sin(t) + 2 * Math.sin(2 * t));
+                    const z = scale * (Math.cos(t) - 2 * Math.cos(2 * t));
+                    const y = scale * (-Math.sin(3 * t));
+                    triPositions[s * 3] = x; triPositions[s * 3 + 1] = y; triPositions[s * 3 + 2] = z;
+                    gapPositions[s * 3] = x; gapPositions[s * 3 + 1] = y; gapPositions[s * 3 + 2] = z;
+                }
+                tqfTriangleMesh.geometry.attributes.position.needsUpdate = true;
+                qGapLineMesh.geometry.attributes.position.needsUpdate = true;
+                impliedFourthArrow.scale.setScalar(STATE.currentStepIndex >= 4 ? 1.15 : 0.75);
+            }
+
+            if (nineRaysGroup && nineRaysGroup.visible) {
+                nineRaysGroup.scale.setScalar((STATE.currentStepIndex === 0 || STATE.currentStepIndex === 1) ? 1.08 : 0.95);
+            }
+
+            if (ghostHoneycombGroup && ghostHoneycombGroup.visible) {
+                const collapseFactor = (STATE.currentStepIndex === 5) ? 0.22 : (STATE.currentStepIndex === 7 ? 0.45 : 1.0);
+                ghostCellsMeshes.forEach(cell => {
+                    cell.position.copy(cell.userData.dir.clone().multiplyScalar(cell.userData.baseDist * collapseFactor));
+                    cell.rotation.y = breathPhaseRad * 0.25;
+                });
+            }
+
+            if (memoryHierarchyGroup && memoryHierarchyGroup.visible) {
+                const structKeys = ['I', 'A', 'ABAR', 'E'];
+                structKeys.forEach((key, idx) => {
+                    const struct = STATE.structs[key];
+                    if (key === 'E') {
+                        struct.group.position.set(0, 0, 0);
+                        struct.group.rotation.set(-breathPhaseRad * 0.5, -macroPhaseRad * 0.25, -breathPhaseRad * 0.5);
+                    } else {
+                        const phaseOffset = idx * (2 * Math.PI / 3);
+                        const minorR = 6.0;
+                        const tubeAngle = 3 * macroPhaseRad + phaseOffset;
+                        const torusAngle = 2 * macroPhaseRad;
+                        const r = minorR * Math.cos(tubeAngle);
+                        const zPos = minorR * Math.sin(tubeAngle);
+                        const xPos = (18.0 + r) * Math.cos(torusAngle);
+                        const yPos = (18.0 + r) * Math.sin(torusAngle);
+                        
+                        struct.group.position.set(xPos, yPos, zPos * 1.2);
+                        struct.group.rotation.set(breathPhaseRad + idx * 2, (breathPhaseRad + idx * 2) * 0.5, 0);
+                    }
+
+                    struct.engines.forEach(eng => {
+                        if (eng.isProj) {
+                            eng.mesh.material.emissiveIntensity = 0.6 + Math.sin(breathPhaseRad * 8) * 0.4;
+                            eng.mesh.rotation.y = breathPhaseRad * 2;
+                            eng.mesh.position.y = Math.sin(breathPhaseRad * 8 + idx) * 0.35; 
+                        } else {
+                            const isErased = STATE.erasedEngines.has(eng.id);
+                            eng.ring.rotation.x = breathPhaseRad; eng.ring.rotation.y = macroPhaseRad * 0.5;
+                            if (isErased) {
+                                eng.mesh.material.color.setHex(0xfbbf24);
+                                eng.mesh.material.opacity = 0.45;
+                                eng.holder.scale.setScalar(0.78);
+                            } else {
+                                eng.mesh.material.color.setHex(eng.baseColor);
+                                eng.mesh.material.opacity = 0.92;
+                                eng.holder.scale.setScalar(eng.isParity && (STATE.currentStepIndex === 1 || STATE.currentStepIndex === 4 || STATE.currentStepIndex === 5) ? 1.25 : 1.0);
+                            }
+                        }
+                    });
+                });
+
+                if (weaveLines && STATE.showWeave && STATE.layerMode === 'all') {
+                    weaveLines.visible = true;
+                    const posAttr = weaveLines.geometry.attributes.position.array;
+                    let pIdx = 0;
+                    const eEngines = STATE.structs['E'].engines;
+                    ['I', 'A', 'ABAR'].forEach(key => {
+                        const outerEngines = STATE.structs[key].engines;
+                        for(let i = 0; i < 12; i++) {
+                            if (outerEngines[i].isProj) continue;
+                            const oWorld = new THREE.Vector3(); outerEngines[i].mesh.getWorldPosition(oWorld);
+                            const eWorld = new THREE.Vector3(); eEngines[i].mesh.getWorldPosition(eWorld);
+                            oWorld.toArray(posAttr, pIdx); pIdx += 3;
+                            eWorld.toArray(posAttr, pIdx); pIdx += 3;
+                        }
+                    });
+                    weaveLines.geometry.attributes.position.needsUpdate = true;
+                } else if (weaveLines) {
+                    weaveLines.visible = false;
+                }
+            }
+
+            if (solitonCubesGroup && solitonCubesGroup.visible) {
+                solitonWavePackets.forEach((pkt, idx) => {
+                    const u = macroPhaseRad * pkt.userData.sign + pkt.userData.phaseOffset;
+                    const v = u * 1.6180339887;
+                    const R = 7.2 + (idx % 2) * 1.8; const r = 1.6;
+                    pkt.position.set((R + r * Math.cos(v)) * Math.cos(u), r * Math.sin(v), (R + r * Math.cos(v)) * Math.sin(u));
+                    pkt.rotation.set(u, v, 0);
+                    pkt.scale.setScalar(1.0 + STATE.solitonFlash * 0.9);
+                });
+            }
+
+            if (statorTiersGroup && statorTiersGroup.visible) {
+                statorMeshes.forEach((mesh, n) => { mesh.rotation.z = macroPhaseRad * ((16 - 2 * n) / 16); });
+            }
+
+            if (orthogonalScopeGroup && STATE.showOrthogonalScope) {
+                const baseR = 2.0 * STATE.scalarVal;
+                const safeTension = Math.max(0.1, STATE.tensionVal);
+                const r = baseR * (1 - (STATE.compressionVal / safeTension));
+                
+                scopeNodes.forEach((node) => {
+                    const twist = breathPhaseRad * 2; 
+                    const angle = node.userData.angle + twist;
+                    
+                    const deformation = 1 + (Math.cos(angle * 2) * 0.2 * STATE.compressionVal);
+                    const currR = r * deformation;
+                    
+                    node.position.x = Math.cos(angle) * currR;
+                    node.position.z = Math.sin(angle) * currR;
+                    node.position.y = Math.sin(angle * 3) * 0.5 * STATE.compressionVal; 
+                });
+                
+                scopeLinks.forEach(link => {
+                    const n1 = scopeNodes[link.userData.n1];
+                    const n2 = scopeNodes[link.userData.n2];
+                    const pos = link.geometry.attributes.position.array;
+                    pos[0] = n1.position.x; pos[1] = n1.position.y; pos[2] = n1.position.z;
+                    pos[3] = n2.position.x; pos[4] = n2.position.y; pos[5] = n2.position.z;
+                    link.geometry.attributes.position.needsUpdate = true;
+                });
+                
+                orthogonalScopeGroup.rotation.y = -breathPhaseRad;
+                orthogonalScopeGroup.rotation.x = breathPhaseRad * 0.5;
+            }
+
+            if (STATE.solitonFlash > 0.01) STATE.solitonFlash *= 0.92; else STATE.solitonFlash = 0.0;
+
+            let targetCamPos = new THREE.Vector3(0, 0, 0);
+            if (STATE.layerMode !== 'all' && STATE.structs[STATE.layerMode]) {
+                targetCamPos.copy(STATE.structs[STATE.layerMode].group.position);
+            }
+            controls.target.lerp(targetCamPos, 0.05);
+
+            if (renderer && scene && camera) {
+                renderer.render(scene, camera);
+                controls.update();
+            }
+        }
+
+        function updateStepUI() {
+            document.getElementById('spinor-tick-label').innerText = `${String(STATE.spinorTick).padStart(3, '0')}/720`;
+            const activeNode30 = Math.floor((STATE.macroTick / 720) * 30) % 30;
+            document.getElementById('macro-node-label').innerText = `N${String(activeNode30).padStart(2, '0')}/30`;
+            
+            const stepData = EIGHT_STEPS[STATE.currentStepIndex];
+            document.getElementById('banner-title').innerHTML = stepData.title;
+            document.getElementById('banner-phase').innerHTML = stepData.phaseTitle;
+            document.getElementById('step-tag').innerHTML = stepData.stepTag;
+            document.getElementById('step-equation').innerHTML = stepData.equation;
+            document.getElementById('step-description').innerHTML = stepData.description;
+
+            for (let i = 0; i < 8; i++) {
+                const btn = document.getElementById(`step-btn-${i}`);
+                if (btn) {
+                    if (i === STATE.currentStepIndex) btn.classList.add('active');
+                    else btn.classList.remove('active');
+                }
+            }
+            const activeChunk = STATE.currentStepIndex % 4;
+            for (let b = 0; b < 64; b++) {
+                const bitEl = document.getElementById(`codex-bit-${b}`);
+                if (!bitEl) continue;
+                const inChunk = Math.floor(b / 16) === activeChunk;
+                bitEl.style.opacity = inChunk ? "1.0" : "0.35";
+                bitEl.style.transform = inChunk ? "scaleY(1.25)" : "scaleY(1.0)";
+            }
+        }
+
+        function updatePlayButtonsUI() {
+            const bBtn = document.getElementById('breath-play-btn');
+            const bIcon = document.getElementById('breath-play-icon');
+            if (STATE.isBreathPlaying) {
+                bIcon.className = "fa-solid fa-pause";
+                bBtn.className = "px-2.5 py-1 rounded bg-purple-600 text-white text-[10px] mono font-bold transition flex items-center gap-1";
+            } else {
+                bIcon.className = "fa-solid fa-play";
+                bBtn.className = "px-2.5 py-1 rounded bg-slate-800 text-slate-200 border border-slate-600 text-[10px] mono font-bold transition flex items-center gap-1";
+            }
+
+            const mBtn = document.getElementById('macro-play-btn');
+            const mIcon = document.getElementById('macro-play-icon');
+            if (STATE.isMacroPlaying) {
+                mIcon.className = "fa-solid fa-pause";
+                mBtn.className = "px-2.5 py-1 rounded bg-teal-600 text-white text-[10px] mono font-bold transition flex items-center gap-1";
+            } else {
+                mIcon.className = "fa-solid fa-play";
+                mBtn.className = "px-2.5 py-1 rounded bg-slate-800 text-slate-200 border border-slate-600 text-[10px] mono font-bold transition flex items-center gap-1";
+            }
+        }
+
+        function toggleAcademicTheme() {
+            STATE.academicTheme = !STATE.academicTheme;
+            document.body.classList.toggle('academic-theme', STATE.academicTheme);
+        }
+
+        function toggleDrawer(id) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            el.classList.toggle('hidden');
+        }
+
+        function toggleLemmaModal() {
+            const modal = document.getElementById('lemma-modal');
+            if (modal) modal.classList.toggle('hidden');
+        }
+
+        function updateCubitMetrology(val) {
+            document.getElementById('temp-readout').innerHTML = `${val} &deg;C`;
+        }
+
+        function initUIElements() {
+            const stepBtnContainer = document.getElementById('step-buttons-container');
+            stepBtnContainer.innerHTML = '';
+            EIGHT_STEPS.forEach((s, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `step-btn-${idx}`;
+                btn.onclick = () => selectStep(idx, true);
+                btn.className = `step-pill p-1.5 rounded-lg border border-slate-700/80 bg-slate-900/70 text-left transition flex flex-col justify-between`;
+                btn.innerHTML = `<div class="flex items-center justify-between w-full"><span class="mono text-[9px] font-bold text-purple-400">S${s.step}</span><span class="mono text-[8px] text-slate-400">${s.step * 45}&deg;</span></div><div class="text-[10px] font-semibold truncate mt-0.5">${s.shortName}</div>`;
+                stepBtnContainer.appendChild(btn);
+            });
+
+            const codexGrid = document.getElementById('codex-bit-matrix');
+            codexGrid.innerHTML = '';
+            for (let b = 0; b < 64; b++) {
+                const bit = document.createElement('div');
+                bit.id = `codex-bit-${b}`;
+                let colorClass = b < 32 ? 'bg-purple-500/40' : (b < 40 ? 'bg-amber-500/40' : (b < 48 ? 'bg-teal-500/40' : 'bg-pink-500/40'));
+                bit.className = `h-2.5 rounded-[2px] ${colorClass} transition-all duration-200`;
+                codexGrid.appendChild(bit);
+            }
+
+            const wheelGrid = document.getElementById('wheel-30-grid');
+            wheelGrid.innerHTML = '';
+            for (let n = 0; n < 30; n++) {
+                const isPrimeAdmissible = PRIME_WHEEL_30.has(n);
+                const cell = document.createElement('div');
+                cell.id = `wheel-node-${n}`;
+                cell.className = `h-5 rounded flex items-center justify-center mono text-[9px] border transition-all ${isPrimeAdmissible ? 'border-purple-500/60 bg-purple-500/20 text-purple-200 font-bold' : 'border-slate-800 bg-slate-900/60 text-slate-500'}`;
+                cell.innerText = n;
+                wheelGrid.appendChild(cell);
+            }
+
+            ['q1', 'q2', 'q3'].forEach(id => {
+                const grid = document.getElementById('grid-'+id);
+                if(grid) {
+                    grid.innerHTML = '';
+                    for(let i=0; i<16; i++) {
+                        const d = document.createElement('div');
+                        d.className = 'bit-cell';
+                        if(Math.random()>0.5) d.classList.add('bit-active');
+                        grid.appendChild(d);
+                    }
+                }
+            });
+
+            const scopeCheck = document.getElementById('check-orthogonal-scope');
+            if (scopeCheck) {
+                scopeCheck.addEventListener('change', (e) => {
+                    STATE.showOrthogonalScope = e.target.checked;
+                    if (orthogonalScopeGroup) orthogonalScopeGroup.visible = STATE.showOrthogonalScope;
+                });
+            }
+
+            const bindSlider = (sliderId, valId, stateKey) => {
+                const el = document.getElementById(sliderId);
+                if(el) {
+                    el.addEventListener('input', (e) => {
+                        STATE[stateKey] = parseFloat(e.target.value);
+                        document.getElementById(valId).innerText = STATE[stateKey].toFixed(2);
+                    });
+                }
+            };
+            bindSlider('slider-scalar', 'val-scalar', 'scalarVal');
+            bindSlider('slider-tension', 'val-tension', 'tensionVal');
+            bindSlider('slider-compression', 'val-compression', 'compressionVal');
+
+            setInterval(() => {
+                if(STATE.isBreathPlaying && STATE.showOrthogonalScope) {
+                    ['q1', 'q2', 'q3'].forEach(id => {
+                        const grid = document.getElementById('grid-'+id);
+                        if(grid && grid.children.length > 0) {
+                            const idx = Math.floor(Math.random() * 16);
+                            grid.children[idx].classList.toggle('bit-active');
+                        }
+                    });
+                }
+            }, 150);
+
+            renderTwelveEngineMemoryUI();
+            updateStepUI();
+        }
+
+        window.onload = function () {
+            initThreeJS();
+            initUIElements();
+            onWindowResize();
+            animateEngine();
+        };
+    </script>
+</body>
+</html>

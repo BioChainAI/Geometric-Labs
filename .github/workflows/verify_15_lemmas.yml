@@ -1,0 +1,23 @@
+name: Five-pillar reference verification
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: make verify-all
+      - run: make test-pillars
+      - name: Verify standalone scripts without PYTHONPATH
+        shell: bash
+        run: |
+          for test in verification/0*/test_*.py; do
+            env -u PYTHONPATH python "$test"
+          done

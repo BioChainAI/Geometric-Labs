@@ -1,0 +1,325 @@
+{
+  "data": {
+    "cases": [
+      {
+        "residues": [
+          0,
+          0,
+          0
+        ],
+        "value": 0
+      },
+      {
+        "residues": [
+          1,
+          1,
+          1
+        ],
+        "value": 1
+      },
+      {
+        "residues": [
+          880,
+          880,
+          880
+        ],
+        "value": 880
+      },
+      {
+        "residues": [
+          0,
+          881,
+          881
+        ],
+        "value": 881
+      },
+      {
+        "residues": [
+          1,
+          882,
+          882
+        ],
+        "value": 882
+      },
+      {
+        "residues": [
+          880,
+          882,
+          886
+        ],
+        "value": 690017700
+      },
+      {
+        "residues": [
+          62,
+          779,
+          668
+        ],
+        "value": 35857643
+      },
+      {
+        "residues": [
+          100,
+          787,
+          48
+        ],
+        "value": 247465952
+      },
+      {
+        "residues": [
+          788,
+          654,
+          417
+        ],
+        "value": 202319795
+      },
+      {
+        "residues": [
+          67,
+          240,
+          674
+        ],
+        "value": 117779195
+      },
+      {
+        "residues": [
+          236,
+          100,
+          638
+        ],
+        "value": 543828321
+      },
+      {
+        "residues": [
+          357,
+          85,
+          351
+        ],
+        "value": 543888350
+      },
+      {
+        "residues": [
+          793,
+          338,
+          789
+        ],
+        "value": 188069625
+      },
+      {
+        "residues": [
+          168,
+          86,
+          463
+        ],
+        "value": 391331558
+      },
+      {
+        "residues": [
+          269,
+          350,
+          836
+        ],
+        "value": 10466549
+      },
+      {
+        "residues": [
+          775,
+          719,
+          406
+        ],
+        "value": 424771401
+      },
+      {
+        "residues": [
+          815,
+          699,
+          394
+        ],
+        "value": 658952694
+      },
+      {
+        "residues": [
+          715,
+          632,
+          868
+        ],
+        "value": 185571912
+      },
+      {
+        "residues": [
+          588,
+          284,
+          177
+        ],
+        "value": 620139131
+      },
+      {
+        "residues": [
+          79,
+          767,
+          150
+        ],
+        "value": 596363956
+      },
+      {
+        "residues": [
+          880,
+          310,
+          705
+        ],
+        "value": 21255886
+      },
+      {
+        "residues": [
+          650,
+          701,
+          664
+        ],
+        "value": 484235252
+      },
+      {
+        "residues": [
+          390,
+          566,
+          346
+        ],
+        "value": 96385314
+      },
+      {
+        "residues": [
+          105,
+          400,
+          380
+        ],
+        "value": 37599423
+      },
+      {
+        "residues": [
+          424,
+          805,
+          423
+        ],
+        "value": 537766348
+      },
+      {
+        "residues": [
+          829,
+          357,
+          396
+        ],
+        "value": 3320437
+      },
+      {
+        "residues": [
+          606,
+          574,
+          218
+        ],
+        "value": 565564723
+      },
+      {
+        "residues": [
+          517,
+          386,
+          651
+        ],
+        "value": 333398228
+      },
+      {
+        "residues": [
+          249,
+          15,
+          824
+        ],
+        "value": 185249000
+      },
+      {
+        "residues": [
+          448,
+          785,
+          599
+        ],
+        "value": 431988226
+      },
+      {
+        "residues": [
+          441,
+          528,
+          662
+        ],
+        "value": 573680330
+      },
+      {
+        "residues": [
+          194,
+          461,
+          596
+        ],
+        "value": 590715099
+      },
+      {
+        "residues": [
+          572,
+          102,
+          263
+        ],
+        "value": 639660313
+      },
+      {
+        "residues": [
+          848,
+          290,
+          292
+        ],
+        "value": 438995219
+      },
+      {
+        "residues": [
+          423,
+          695,
+          18
+        ],
+        "value": 46555987
+      },
+      {
+        "residues": [
+          99,
+          207,
+          81
+        ],
+        "value": 506380398
+      },
+      {
+        "residues": [
+          194,
+          326,
+          182
+        ],
+        "value": 676735058
+      },
+      {
+        "residues": [
+          420,
+          211,
+          654
+        ],
+        "value": 286757110
+      }
+    ],
+    "inverses": [
+      441,
+      665,
+      739
+    ],
+    "modulus": 690017701,
+    "primes": [
+      881,
+      883,
+      887
+    ]
+  },
+  "integer_encoding": "JSON decimal integers; uint64 tiles are fixed 16-digit hex strings",
+  "profile": "geometric-labs-reference-v1",
+  "quaternion_coordinates": "doubled integers, except explicitly labeled S5 ordinary coordinates",
+  "schema_version": 1
+}
