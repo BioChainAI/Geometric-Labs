@@ -1,0 +1,43 @@
+{
+ "schema_version": 1,
+ "id": "CR-0001",
+ "slug": "lamport-otp",
+ "title": "Lamport one-time passwords: geometric adaptation",
+ "stage": "experimental",
+ "status": "[HEURISTIC]",
+ "version": "0.1.0",
+ "created": "2026-10-19",
+ "updated": "2026-10-19",
+ "algorithm": {
+  "name": "Lamport hash-chain one-time password",
+  "family": "hash-based authentication",
+  "origin": "Lamport 1981, CACM 24(11)",
+  "standards": ["RFC 1760", "RFC 2289"],
+  "security_assumption": "preimage resistance of H (SHA-256)"
+ },
+ "upstream": {
+  "url": "https://github.com/Hanzxc/lamport-otp",
+  "commit": "e658632c850f63aeb5c14accc5d5b9fb94248e78",
+  "license": "none declared",
+  "relationship": "behavioural reference only; no code vendored"
+ },
+ "tracks": [
+  {"id": "B", "title": "Classical baseline (challenge model)", "status": "reference"},
+  {"id": "E1", "title": "Exact Hurwitz quaternion walk as one-way function", "status": "[FAILED]"},
+  {"id": "E2", "title": "Reduced expander-graph walks (LPS / isogeny)", "status": "[OPEN]"},
+  {"id": "E3", "title": "SHD-CCP nine-tile OTP frame", "status": "[HEURISTIC]"}
+ ],
+ "profiles": {
+  "frame": "cr-0001.otp-frame.v0",
+  "tile": "geometric-labs-reference-v1"
+ },
+ "dependencies": {
+  "python": ">=3.10",
+  "geometric_labs": "0.1.0 (repository src/)"
+ },
+ "entry_points": {
+  "tests": "tests",
+  "vectors": "vectors/generate_vectors.py",
+  "demo": "demo.py"
+ }
+}

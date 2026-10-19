@@ -1,0 +1,30 @@
+{
+ "schema_version": 1,
+ "id": "{{ID}}",
+ "slug": "{{SLUG}}",
+ "title": "{{TITLE}}",
+ "stage": "experimental",
+ "status": "[OPEN]",
+ "version": "0.0.1",
+ "created": "{{DATE}}",
+ "updated": "{{DATE}}",
+ "algorithm": {
+  "name": "TODO",
+  "family": "TODO",
+  "origin": "TODO",
+  "standards": [],
+  "security_assumption": "TODO"
+ },
+ "tracks": [
+  {"id": "B", "title": "Classical baseline", "status": "[OPEN]"}
+ ],
+ "profiles": {
+  "tile": "geometric-labs-reference-v1"
+ },
+ "dependencies": {
+  "python": ">=3.10"
+ },
+ "entry_points": {
+  "tests": "tests"
+ }
+}

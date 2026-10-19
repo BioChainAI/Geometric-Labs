@@ -62,6 +62,14 @@ The [paper intake manifest](docs/papers/README.md) awaits actual PDFs. The suppl
 [interactive walkthrough](interactive/geometric_engine_8_step_walkthrough.html)
 is preserved unchanged; browser assets may require Internet access.
 
+## Cryptographic research
+
+[`Cryptographic_Research/`](Cryptographic_Research/) adapts classical
+cryptographic algorithms to geometric computation and SHD-CCP 64-bit tile
+transport. It has its own registry, versioning rules and CI
+(`make -C Cryptographic_Research check`). The first item is
+[CR-0001, Lamport one-time passwords](Cryptographic_Research/experimental/CR-0001_lamport-otp/).
+
 ## Tooling
 
 CI runs on Python 3.10, 3.11, and 3.12 and checks standalone test execution.
