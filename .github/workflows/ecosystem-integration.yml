@@ -1,0 +1,32 @@
+name: Pinned ecosystem reference integration
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  reference:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Offline workspace and profile tests
+        run: make -C ecosystem test
+      - name: Restore exact independent dependency commits
+        run: python ecosystem/tools/glab.py sync --require-lock
+      - name: Validate lock
+        run: make -C ecosystem check-lock
+      - name: Execute baseline and integration acceptance
+        run: python ecosystem/tools/run_acceptance.py --output-dir /tmp/ecosystem-evidence
+      - name: Upload actual validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ecosystem-evidence-${{ matrix.python-version }}
+          path: /tmp/ecosystem-evidence
+          if-no-files-found: warn

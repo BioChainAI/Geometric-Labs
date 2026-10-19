@@ -1,0 +1,124 @@
+{
+  "schema": "biochain.geometric-labs.environment-profiles.v1",
+  "profiles": [
+    {
+      "repo": "SHD-CCP-core",
+      "language": [
+        "C11",
+        "Python",
+        "Rust-prototype",
+        "C#-prototype",
+        "TypeScript-prototype"
+      ],
+      "environment": "tile-reference",
+      "host": "local-cpu",
+      "recommended_tools": [
+        "python>=3.10",
+        "cc",
+        "git"
+      ],
+      "smoke_check": "Golden-vectors and C11 codec must agree; do not assume all language bindings compile",
+      "state": "reference"
+    },
+    {
+      "repo": "Kernel-Registry",
+      "language": [
+        "Python",
+        "JSON",
+        "YAML"
+      ],
+      "environment": "certification",
+      "host": "isolated-cpu",
+      "recommended_tools": [
+        "python>=3.10",
+        "git"
+      ],
+      "smoke_check": "Reject overlapping bit fields, unsigned approvals and reserved layouts",
+      "state": "prototype"
+    },
+    {
+      "repo": "CubiLoom",
+      "language": [
+        "Rust or Python planned",
+        "SQL"
+      ],
+      "environment": "distributed-fabric",
+      "host": "containers-or-linux",
+      "recommended_tools": [
+        "python>=3.10",
+        "git",
+        "docker-optional"
+      ],
+      "smoke_check": "Three-replica partition/rejoin, per-author ordering, Merkle anti-entropy and consent preservation",
+      "state": "design"
+    },
+    {
+      "repo": "PolyShard-Agent",
+      "language": [
+        "Python",
+        "Rust-optional"
+      ],
+      "environment": "edge-agent",
+      "host": "local-cpu",
+      "recommended_tools": [
+        "python>=3.10",
+        "git"
+      ],
+      "smoke_check": "Private RAG remains local; authorized SHD-CCP envelope emits; offline outbox replay",
+      "state": "reference"
+    },
+    {
+      "repo": "Polycentric-Orchestrator",
+      "language": [
+        "Python",
+        "Rust-or-Go-future"
+      ],
+      "environment": "coordinator",
+      "host": "local-cpu-or-container",
+      "recommended_tools": [
+        "python>=3.10",
+        "git"
+      ],
+      "smoke_check": "Three agents, policy gate, clock uncertainty, calibrated frames, event provenance",
+      "state": "reference"
+    },
+    {
+      "repo": "Manifold-Projection",
+      "language": [
+        "Python",
+        "WGSL",
+        "GLSL",
+        "CUDA future"
+      ],
+      "environment": "shader-projection",
+      "host": "cpu-then-gpu",
+      "recommended_tools": [
+        "python>=3.10",
+        "git",
+        "CUDA toolkit optional"
+      ],
+      "smoke_check": "CPU scene triangulation reference agrees with projection metadata; shaders not authorities",
+      "state": "reference"
+    },
+    {
+      "repo": "FractalOS-runtime",
+      "language": [
+        "C",
+        "Rust",
+        "assembly",
+        "CUDA",
+        "Lava-bridge"
+      ],
+      "environment": "systems-runtime",
+      "host": "QEMU then supported hardware",
+      "recommended_tools": [
+        "git",
+        "gcc or clang",
+        "qemu optional",
+        "cuda optional"
+      ],
+      "smoke_check": "Device capabilities and CPU exact fallback before first QEMU boot",
+      "state": "interface"
+    }
+  ]
+}

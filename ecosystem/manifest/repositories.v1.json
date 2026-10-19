@@ -1,0 +1,124 @@
+{
+  "schema": "biochain.geometric-labs.repository-manifest.v1",
+  "namespace": "BioChainAI",
+  "workspace_dir": "ecosystem/workspaces",
+  "description": "Seven core software repositories, Geometric-Labs is the 8th integration/verification repository",
+  "repositories": [
+    {
+      "name": "SHD-CCP-core",
+      "git_url": "https://github.com/BioChainAI/SHD-CCP-core.git",
+      "github_url": "https://github.com/BioChainAI/SHD-CCP-core",
+      "relative_path": "workspaces/SHD-CCP-core",
+      "role": "protocol",
+      "purpose": "Canonical SHD-CCP Einstein Tile, codecs, golden vectors, exact geometry",
+      "dependencies": [],
+      "status": "contract",
+      "required": true
+    },
+    {
+      "name": "Kernel-Registry",
+      "git_url": "https://github.com/BioChainAI/Kernel-Registry.git",
+      "github_url": "https://github.com/BioChainAI/Kernel-Registry",
+      "relative_path": "workspaces/Kernel-Registry",
+      "role": "certification",
+      "purpose": "Alternative layouts, proof/test status, approvals, registry releases",
+      "dependencies": [
+        "SHD-CCP-core"
+      ],
+      "status": "validation",
+      "required": true
+    },
+    {
+      "name": "CubiLoom",
+      "git_url": "https://github.com/BioChainAI/CubiLoom.git",
+      "github_url": "https://github.com/BioChainAI/CubiLoom",
+      "relative_path": "workspaces/CubiLoom",
+      "role": "fabric",
+      "purpose": "Distributed geometric event fabric: WarpGrid/DeltaWeft/ChronoShuttle/SealThread",
+      "dependencies": [
+        "SHD-CCP-core"
+      ],
+      "status": "planned",
+      "required": true
+    },
+    {
+      "name": "PolyShard-Agent",
+      "git_url": "https://github.com/BioChainAI/PolyShard-Agent.git",
+      "github_url": "https://github.com/BioChainAI/PolyShard-Agent",
+      "relative_path": "workspaces/PolyShard-Agent",
+      "role": "edge",
+      "purpose": "PolySpindle edge agent, RAG, local AI-DNA, observation envelopes",
+      "dependencies": [
+        "SHD-CCP-core"
+      ],
+      "status": "reference",
+      "required": true
+    },
+    {
+      "name": "Polycentric-Orchestrator",
+      "git_url": "https://github.com/BioChainAI/Polycentric-Orchestrator.git",
+      "github_url": "https://github.com/BioChainAI/Polycentric-Orchestrator",
+      "relative_path": "workspaces/Polycentric-Orchestrator",
+      "role": "control",
+      "purpose": "Purpose-bound coordination, federation, Mind\u2019s Eye scene state",
+      "dependencies": [
+        "SHD-CCP-core",
+        "Manifold-Projection"
+      ],
+      "status": "reference",
+      "required": true
+    },
+    {
+      "name": "Manifold-Projection",
+      "git_url": "https://github.com/BioChainAI/Manifold-Projection.git",
+      "github_url": "https://github.com/BioChainAI/Manifold-Projection",
+      "relative_path": "workspaces/Manifold-Projection",
+      "role": "projection",
+      "purpose": "Exact CPU projection interfaces and sandboxed display shaders",
+      "dependencies": [
+        "SHD-CCP-core"
+      ],
+      "status": "reference",
+      "required": true
+    },
+    {
+      "name": "FractalOS-runtime",
+      "git_url": "https://github.com/BioChainAI/FractalOS-runtime.git",
+      "github_url": "https://github.com/BioChainAI/FractalOS-runtime",
+      "relative_path": "workspaces/FractalOS-runtime",
+      "role": "compute",
+      "purpose": "Hardware backends and bare-metal microkernel research",
+      "dependencies": [
+        "SHD-CCP-core"
+      ],
+      "status": "interface",
+      "required": true
+    }
+  ],
+  "external_integrations": [
+    {
+      "name": "BioChain-AI",
+      "git_url": "https://github.com/BioChainAI/BioChain-AI.git",
+      "relative_path": "workspaces/BioChain-AI",
+      "purpose": "Existing BioMesh/Firebase platform; opt-in read/write adapter only with explicit authority; no database merge",
+      "required": false,
+      "profile": "legacy_biomesh"
+    }
+  ],
+  "source_of_truth": {
+    "tile_fields": "SHD-CCP-core",
+    "certification": "Kernel-Registry",
+    "federation_data": "CubiLoom",
+    "policy": "Polycentric-Orchestrator",
+    "local_agent_data": "PolyShard-Agent",
+    "visual_projection": "Manifold-Projection",
+    "device_hal": "FractalOS-runtime",
+    "test_results": "Geometric-Labs"
+  },
+  "demo_requirements": [
+    "SHD-CCP-core",
+    "PolyShard-Agent",
+    "Polycentric-Orchestrator",
+    "Manifold-Projection"
+  ]
+}

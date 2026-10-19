@@ -1,0 +1,2 @@
+python3 spec_sync/generate_golden_vectors.py --check
+Checked 5 vector files.

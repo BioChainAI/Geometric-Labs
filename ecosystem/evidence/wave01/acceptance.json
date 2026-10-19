@@ -1,0 +1,193 @@
+{
+  "branch": "codex/geometric-labs-ecosystem-integration",
+  "commands": [
+    {
+      "command": [
+        "make",
+        "verify-all"
+      ],
+      "log": "baseline.log",
+      "name": "baseline",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": [
+        40
+      ]
+    },
+    {
+      "command": [
+        "make",
+        "test-pillars"
+      ],
+      "log": "pillars.log",
+      "name": "pillars",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": [
+        40
+      ]
+    },
+    {
+      "command": [
+        "make",
+        "check-vectors"
+      ],
+      "log": "vectors.log",
+      "name": "vectors",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": []
+    },
+    {
+      "command": [
+        "make",
+        "-C",
+        "ecosystem",
+        "test"
+      ],
+      "log": "ecosystem-unit.log",
+      "name": "ecosystem-unit",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": [
+        20
+      ]
+    },
+    {
+      "command": [
+        "make",
+        "-C",
+        "ecosystem",
+        "geometry"
+      ],
+      "log": "geometry.log",
+      "name": "geometry",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": [
+        40
+      ]
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "ecosystem/tools/glab.py",
+        "doctor"
+      ],
+      "log": "doctor.log",
+      "name": "doctor",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": []
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "ecosystem/tools/glab.py",
+        "sync",
+        "--require-lock"
+      ],
+      "log": "sync-repeat.log",
+      "name": "sync-repeat",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": []
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "ecosystem/tools/glab.py",
+        "check-lock"
+      ],
+      "log": "check-lock.log",
+      "name": "check-lock",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": []
+    },
+    {
+      "command": [
+        "make",
+        "-C",
+        "ecosystem",
+        "integration"
+      ],
+      "log": "integration.log",
+      "name": "integration",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": [
+        4
+      ]
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "ecosystem/tools/protocol_compatibility.py",
+        "--output",
+        "/workspace/Geometric-Labs/ecosystem/evidence/wave01/protocol-compatibility.json"
+      ],
+      "log": "protocol.log",
+      "name": "protocol",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": []
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "ecosystem/simulator/reference_mesh.py",
+        "--output",
+        "/workspace/Geometric-Labs/ecosystem/evidence/wave01/reference-mesh.json"
+      ],
+      "log": "demo.log",
+      "name": "demo",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": []
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "log": "diff-check.log",
+      "name": "diff-check",
+      "returncode": 0,
+      "status": "PASS",
+      "test_counts": []
+    }
+  ],
+  "not_executed": [
+    "Python 3.10/3.11 locally",
+    "actual 32-bit host",
+    "Docker",
+    "GPU/H100",
+    "Loihi2",
+    "QEMU",
+    "production identity",
+    "CubiLoom persistence/replication"
+  ],
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "schema": "biochain.ecosystem-acceptance-report.v1",
+  "source_sha256": {
+    "contracts/INTERFACES.md": "8bba9c0a351a2da4552ec2f3ef26a68e36dc6acc2634fd28dc7c00c39c814f61",
+    "contracts/protocol_profiles.v1.json": "b56ba643e761d61633d61de194d86f03071c6850e54c2b9847cfe1491ec6781b",
+    "integration_tests/test_live_checkouts.py": "1ff4d2cb6e3d88c11120dd04eeacfedb79c2b39866a1fa074e22b83d87b771d3",
+    "locks/.gitkeep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "locks/commits.lock.json": "0ce95bda22e713f66acfde0157e3b2fe40e280c9085742b847cbc82474e5fdaa",
+    "manifest/repositories.v1.json": "99a576c1955027b0f710589186d3b469e7884be1a8d4c0d039271296ff66518a",
+    "simulator/reference_mesh.py": "a21535850a9c6fd0b50d0d0a03befaa4e59800a546a9a08cdb876890027aac63",
+    "tests/test_architecture.py": "8040f356f0cf2f05e618d9d997cfa04fdc199dcd0d55282d54058b6535749a8d",
+    "tests/test_protocol_profiles.py": "ee8fa18d78760545f74fbc676d09b837e4a3ccc192599907c25c974de682d673",
+    "tests/test_workspace_manager.py": "1c13a3ae9645693d7903443071a451770f9851733943acb0b298f5b2b5df6826",
+    "tools/glab.py": "5b229265a6d7483975e233e29cb917ffced2358bb47c0750e753ef261aa20ce5",
+    "tools/protocol_compatibility.py": "e82a97246785528ccdf258f31e7509c7658334b718fc6ee30c9377e9fdc4187f",
+    "tools/run_acceptance.py": "5d3f0ab96bd7b63bb8fd17943242d02908a5af67e9a6e0ae65ba42b334a818ea",
+    "tools/upstreams.py": "9ddc44060796b9e525c92506c27ec0defa79b2f5074cd7e380b379eba7652803"
+  },
+  "status": "PASS",
+  "validation_base_commit": "6361440517c4954a3e65b182851510082703c213"
+}

@@ -1,0 +1,37 @@
+{
+  "accepted_events": 3,
+  "clock": "simulated reference epoch; world frame pre-agreed",
+  "import_origins": {
+    "manifold_projection": "workspaces/Manifold-Projection/src/manifold_projection/__init__.py",
+    "polycentric": "workspaces/Polycentric-Orchestrator/src/polycentric/__init__.py",
+    "polyshard_agent": "workspaces/PolyShard-Agent/src/polyshard_agent/__init__.py",
+    "shdccp_core": "workspaces/SHD-CCP-core/src/shdccp_core/__init__.py"
+  },
+  "limitations": [
+    "no CubiLoom persistence/replication",
+    "no production identity or TLS",
+    "replay state in memory only",
+    "upstream handshake has protocol ID but no semantic-profile negotiation",
+    "frame certificates have no expiry contract; deferred to owning-repo wave"
+  ],
+  "memory_root": "7f5665ca2ec5cce3a79c04a1f1ace985ec8b72748c03c7448c1472164aa46470",
+  "negative_fixtures": {
+    "clock_skew": "clock_skew",
+    "clock_uncertainty": "clock_uncertainty",
+    "denied_purpose": "purpose_denied",
+    "duplicate_replay": "duplicate_event",
+    "missing_consent": "consent_missing",
+    "sequence_replay": "sequence_replay",
+    "tamper": "dev_mac_invalid",
+    "unknown_frame": "unknown_frame_transform",
+    "unregistered_agent": "unregistered_agent",
+    "wrong_form": "reference_only_accepts_form3",
+    "wrong_protocol": "protocol_incompatible"
+  },
+  "perspectives": 3,
+  "private_rag_exported": false,
+  "schema": "biochain.reference-mesh-report.v1",
+  "status": "PASS",
+  "tqf_area16": 576,
+  "transport": "loopback-only HTTP; ephemeral development HMAC"
+}
