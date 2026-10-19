@@ -1,0 +1,11 @@
+Python: 3.12.14 Git: /usr/local/bin/git
+C compiler: /usr/bin/cc
+FOUND SHD-CCP-core 154685b2cc65ed5120e36ad733c03f550760a09b
+FOUND Kernel-Registry c94efcd43f690fadce8b4be33126bdb699dadbde
+FOUND CubiLoom 9abafa43ce4a2fd61c35e2d05479a706e83118c9
+FOUND PolyShard-Agent 094c2856abaac02cdbef64c848fccea6e13cb95f
+FOUND Polycentric-Orchestrator bc0bbad6d28ebc54dee36b440be2b1db92898805
+FOUND Manifold-Projection 32a8bed5ce5a9ef4409ee9150f6f9911c3fa3c6d
+FOUND FractalOS-runtime e4e1d520631bdcc443428ca6abce719082f5dd02
+7/7 core checkouts
+LOCK OK (7 clean independent checkouts)

@@ -1,0 +1,20 @@
+{
+  "schema": "biochain.protocol-compatibility.v1",
+  "wire_format_id": "einstein-tile/1",
+  "byte_order": "big-endian",
+  "profiles": {
+    "glab-local-v1": {
+      "fixture_profile_alias": "geometric-labs-reference-v1",
+      "status": "local-reference",
+      "semantic_decoders": [1, 2, 3],
+      "opaque_forms": [0, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    },
+    "shdccp-proposed-v1": {
+      "status": "proposed-reference-encoding",
+      "semantic_decoders": [3],
+      "opaque_forms": [0, 1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    }
+  },
+  "cross_profile_semantic_equivalence": false,
+  "legacy_word_adapter": "not implemented; ZONE/TYPE/SEQ/PAYLOAD must not be reinterpreted"
+}

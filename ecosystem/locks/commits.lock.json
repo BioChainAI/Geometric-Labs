@@ -1,0 +1,35 @@
+{
+  "manifest_sha256": "2feedd0d69f6f7e62084b1f01f107f0e4e3eb9b54127280f205010ac5743838f",
+  "repositories": {
+    "CubiLoom": {
+      "commit": "9abafa43ce4a2fd61c35e2d05479a706e83118c9",
+      "git_url": "https://github.com/BioChainAI/CubiLoom.git"
+    },
+    "FractalOS-runtime": {
+      "commit": "e4e1d520631bdcc443428ca6abce719082f5dd02",
+      "git_url": "https://github.com/BioChainAI/FractalOS-runtime.git"
+    },
+    "Kernel-Registry": {
+      "commit": "c94efcd43f690fadce8b4be33126bdb699dadbde",
+      "git_url": "https://github.com/BioChainAI/Kernel-Registry.git"
+    },
+    "Manifold-Projection": {
+      "commit": "32a8bed5ce5a9ef4409ee9150f6f9911c3fa3c6d",
+      "git_url": "https://github.com/BioChainAI/Manifold-Projection.git"
+    },
+    "PolyShard-Agent": {
+      "commit": "094c2856abaac02cdbef64c848fccea6e13cb95f",
+      "git_url": "https://github.com/BioChainAI/PolyShard-Agent.git"
+    },
+    "Polycentric-Orchestrator": {
+      "commit": "bc0bbad6d28ebc54dee36b440be2b1db92898805",
+      "git_url": "https://github.com/BioChainAI/Polycentric-Orchestrator.git"
+    },
+    "SHD-CCP-core": {
+      "commit": "154685b2cc65ed5120e36ad733c03f550760a09b",
+      "git_url": "https://github.com/BioChainAI/SHD-CCP-core.git"
+    }
+  },
+  "schema": "biochain.geometric-labs.ecosystem-lock.v1",
+  "source_manifest": "manifest/repositories.v1.json"
+}

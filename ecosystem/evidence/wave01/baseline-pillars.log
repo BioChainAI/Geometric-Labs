@@ -1,0 +1,46 @@
+python3 -m unittest discover -s verification -p 'test_*.py' -v
+test_cancellation (01_accessibility.test_float64_vs_gram_tqf.Verification.test_cancellation) ... ok
+test_exact_and_unbounded (01_accessibility.test_float64_vs_gram_tqf.Verification.test_exact_and_unbounded) ... ok
+test_hurwitz_group_and_ring (01_accessibility.test_float64_vs_gram_tqf.Verification.test_hurwitz_group_and_ring) ... ok
+test_invalid_addresses (01_accessibility.test_multiplier_free_s5.Verification.test_invalid_addresses) ... ok
+test_random_reduced_words (01_accessibility.test_multiplier_free_s5.Verification.test_random_reduced_words) ... ok
+test_eight_steps (01_accessibility.test_projective_spinor_cycle.Verification.test_eight_steps) ... ok
+test_tier_is_order_six_not_three (01_accessibility.test_projective_spinor_cycle.Verification.test_tier_is_order_six_not_three) ... ok
+test_factorization_and_closure (02_calibration.test_caesium_30pulse_closure.Verification.test_factorization_and_closure) ... ok
+test_general_carriers (02_calibration.test_caesium_30pulse_closure.Verification.test_general_carriers) ... ok
+test_cubit_and_temperature (02_calibration.test_cramer_cubit_gum.Verification.test_cubit_and_temperature) ... ok
+test_six_term_gum (02_calibration.test_cramer_cubit_gum.Verification.test_six_term_gum) ... ok
+test_all_24_rotations_including_quarter_turns (02_calibration.test_nonlocal_horn_alignment.FullOctahedralAlignment.test_all_24_rotations_including_quarter_turns) ... ok
+test_coherence_sign_and_frame_invariance (02_calibration.test_nonlocal_horn_alignment.Verification.test_coherence_sign_and_frame_invariance) ... ok
+test_horn_fit_and_exact_snap (02_calibration.test_nonlocal_horn_alignment.Verification.test_horn_fit_and_exact_snap) ... ok
+test_bitmap_against_trial_division (03_certification_validation.test_bitmap_2017b_and_mr12.Verification.test_bitmap_against_trial_division) ... ok
+test_large_primes_pseudoprimes_and_bounds (03_certification_validation.test_bitmap_2017b_and_mr12.Verification.test_large_primes_pseudoprimes_and_bounds) ... ok
+test_geometry_is_not_a_certificate (03_certification_validation.test_dual_helix_circularity.Verification.test_geometry_is_not_a_certificate) ... ok
+test_wheel_bias_and_legendre_split (03_certification_validation.test_dual_helix_circularity.Verification.test_wheel_bias_and_legendre_split) ... ok
+test_default_and_general_triplets (03_certification_validation.test_garner_crt_closed_form.Verification.test_default_and_general_triplets) ... ok
+test_reject_noncanonical (03_certification_validation.test_garner_crt_closed_form.Verification.test_reject_noncanonical) ... ok
+test_lucas_checkpoints (04_quaternion_blockchain.test_fibonacci_lucas_torus_qcc.Verification.test_lucas_checkpoints) ... ok
+test_two_sided_phase_quadrances (04_quaternion_blockchain.test_fibonacci_lucas_torus_qcc.Verification.test_two_sided_phase_quadrances) ... ok
+test_noncommuting_prefix_all_sizes (04_quaternion_blockchain.test_holonomy_telescoping_scan.Verification.test_noncommuting_prefix_all_sizes) ... ok
+test_open_boundary_nonidentity_holonomy (04_quaternion_blockchain.test_holonomy_telescoping_scan.Verification.test_open_boundary_nonidentity_holonomy) ... ok
+test_headers_and_all_forms (04_quaternion_blockchain.test_south_halo_and_merkle12.Verification.test_headers_and_all_forms) ... ok
+test_merkle_every_layer_and_crc_affinity (04_quaternion_blockchain.test_south_halo_and_merkle12.Verification.test_merkle_every_layer_and_crc_affinity) ... ok
+test_typed_cores (04_quaternion_blockchain.test_south_halo_and_merkle12.Verification.test_typed_cores) ... ok
+test_all_cyclic_single_erasures (05_stream_threading.test_12engine_cubocta_erasure.Verification.test_all_cyclic_single_erasures) ... ok
+test_cascade_and_tier (05_stream_threading.test_12engine_cubocta_erasure.Verification.test_cascade_and_tier) ... ok
+test_exact_phase_roundtrips (05_stream_threading.test_24step_third_phase_mux.Verification.test_exact_phase_roundtrips) ... ok
+test_scheduler (05_stream_threading.test_24step_third_phase_mux.Verification.test_scheduler) ... ok
+test_64_routes_and_invariants (05_stream_threading.test_64stream_four_structure.Verification.test_64_routes_and_invariants) ... ok
+test_covering_and_disjoint_rectangles (05_stream_threading.test_soliton_mux_and_pruning.Verification.test_covering_and_disjoint_rectangles) ... ok
+test_lossless_pruning (05_stream_threading.test_soliton_mux_and_pruning.Verification.test_lossless_pruning) ... ok
+test_chain_and_hash_root (test_golden_vectors.GoldenConformance.test_chain_and_hash_root) ... ok
+test_crt (test_golden_vectors.GoldenConformance.test_crt) ... ok
+test_generator_detects_missing_and_drift (test_golden_vectors.GoldenConformance.test_generator_detects_missing_and_drift) ... ok
+test_stream_routes (test_golden_vectors.GoldenConformance.test_stream_routes) ... ok
+test_tiles (test_golden_vectors.GoldenConformance.test_tiles) ... ok
+test_unit_table_and_s5 (test_golden_vectors.GoldenConformance.test_unit_table_and_s5) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 0.434s
+
+OK

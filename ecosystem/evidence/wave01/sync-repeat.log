@@ -1,0 +1,7 @@
+KEEP SHD-CCP-core (no pull/reset/checkout)
+KEEP Kernel-Registry (no pull/reset/checkout)
+KEEP CubiLoom (no pull/reset/checkout)
+KEEP PolyShard-Agent (no pull/reset/checkout)
+KEEP Polycentric-Orchestrator (no pull/reset/checkout)
+KEEP Manifold-Projection (no pull/reset/checkout)
+KEEP FractalOS-runtime (no pull/reset/checkout)

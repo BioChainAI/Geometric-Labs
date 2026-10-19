@@ -1,0 +1,26 @@
+{
+  "selected_candidate_paths": [
+    "ecosystem/ARCHITECTURE.md",
+    "ecosystem/Makefile",
+    "ecosystem/README.md",
+    "ecosystem/contracts/INTERFACES.md",
+    "ecosystem/docs/MILESTONES.md",
+    "ecosystem/docs/REPOSITORY_BLUEPRINTS.md",
+    "ecosystem/environments/ENVIRONMENTS.md",
+    "ecosystem/environments/repository_profiles.v1.json",
+    "ecosystem/locks/.gitkeep",
+    "ecosystem/manifest/repositories.v1.json",
+    "ecosystem/simulator/reference_mesh.py",
+    "ecosystem/tests/test_architecture.py",
+    "ecosystem/tools/glab.py",
+    "ecosystem/workspaces/.gitignore"
+  ],
+  "excluded": [
+    "bytecode caches",
+    "COPY_INSTRUCTIONS.md",
+    "Docker/deployment profiles",
+    "devcontainer",
+    "unmodified candidate CI (replaced with tested pinned CI)"
+  ],
+  "collisions": []
+}
