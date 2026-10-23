@@ -1,0 +1,3 @@
+# Unsorted browser downloads stay local until `make ingest` files them.
+inbox/*
+!inbox/README.md

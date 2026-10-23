@@ -62,6 +62,15 @@ The [paper intake manifest](docs/papers/README.md) awaits actual PDFs. The suppl
 [interactive walkthrough](interactive/geometric_engine_8_step_walkthrough.html)
 is preserved unchanged; browser assets may require Internet access.
 
+## Research IDE and paper library
+
+[`Research_IDE/`](Research_IDE/README.md) holds the PDF-to-Markdown & LaTeX
+Research IDE (a single `index.html`) and the paper library that files its
+outputs: transcriptions, audits, Lean 4 modules, flowcharts, Cosmo-ID ledgers,
+workflows and post-processing data, one hash-checked folder per paper. Start
+with the [walkthrough](Research_IDE/WALKTHROUGH.md); `make -C Research_IDE check`
+validates the library.
+
 ## Tooling
 
 CI runs on Python 3.10, 3.11, and 3.12 and checks standalone test execution.
