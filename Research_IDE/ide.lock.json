@@ -1,0 +1,18 @@
+{
+ "file": "index.html",
+ "name": "Geometric Labs PDF-to-Markdown & LaTeX Research IDE",
+ "ide_version": "SHD-CCP IDE v3.2",
+ "upload_name": "geometric_labs_pdf_to_markdown_latex_research_ide_11.html",
+ "guide": "docs/MASTER_OPERATION_GUIDE.md",
+ "runtime_dependencies": [
+  "https://cdn.tailwindcss.com",
+  "https://cdn.jsdelivr.net/npm/katex@0.16.8",
+  "https://cdn.jsdelivr.net/npm/marked (unpinned)",
+  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174",
+  "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128",
+  "https://unpkg.com/lucide@latest (unpinned)"
+ ],
+ "sha256": "cf6014732eb39d4ae3019e5ca0e48e0b481586997a6b271f3f069012b673ed36",
+ "bytes": 343280,
+ "locked": "2026-10-23"
+}

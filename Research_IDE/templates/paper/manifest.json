@@ -1,0 +1,22 @@
+{
+ "schema_version": 1,
+ "id": "{{ID}}",
+ "slug": "{{SLUG}}",
+ "title": "{{TITLE}}",
+ "tier": "{{TIER}}",
+ "authors": [],
+ "source": {
+  "citation": "",
+  "url": "",
+  "license": "",
+  "pages": null
+ },
+ "tags": [],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "{{DATE}}",
+ "updated": "{{DATE}}",
+ "artifacts": []
+}
