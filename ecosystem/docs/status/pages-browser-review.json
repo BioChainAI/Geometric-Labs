@@ -1,0 +1,28 @@
+{
+  "browser": "system Chromium via Playwright",
+  "checks": [
+    "desktop: sections, filters, search, empty state, development-loop reset, evidence label",
+    "mobile 390px: no horizontal page overflow, keyboard skip link and filtering",
+    "homepage: no runtime errors or third-party network requests",
+    "project subpath: local CSS/JS/data, checkpoint, IDE and update guide resolve",
+    "untrusted commit text: rendered inert with textContent",
+    "data failure: accessible error state and source/checkpoint fallbacks"
+  ],
+  "screenshots_saved_locally": [
+    "/tmp/geometric-pages-browser-final/desktop.png",
+    "/tmp/geometric-pages-browser-final/mobile.png"
+  ],
+  "site_unit_tests": 12,
+  "source_sha256": {
+    "site/README.md": "e8feaf31e91177b00ed2659840f63265b70262aefc424b6acc84b33784bd0164",
+    "site/assets/favicon.svg": "a42386bf1526531f7abbc6a62d397275955fcce45c674ed1c817a4afa096a609",
+    "site/assets/site.css": "a9fcc2552164a1bab711968eadf226a44ce6e5c089b8e9414ac1e65603352a23",
+    "site/assets/site.js": "0cd5f9d60ee7b86a8eaba09f1dc2e8d606a149f03e0d0a57f76bfcb9d4889bfc",
+    "site/index.html": "46d39ef5958a81be84a9f1997ce0afbd347da4759155074baf5b9ca0138352b6",
+    "site/sections.json": "8f287697be66d2283a5b9231ee1b70723ed212220c051d603b1bba5d548dd044",
+    "tools/pages/browser_smoke.py": "27b6b50366982d33425eb5a715c1663f3b1f33b88dad16ab2c4e110c69174de6",
+    "tools/pages/build.py": "33f46eea8a617138fc6894952c50d96d3456aec7cdc11cf3ce81c79f95774809",
+    "tools/pages/tests/test_build.py": "b4e3dcb9b01b52020d0d9c19a53c02aae5a5d426ece49dbe9b40283ce19fefe6"
+  },
+  "status": "PASS"
+}

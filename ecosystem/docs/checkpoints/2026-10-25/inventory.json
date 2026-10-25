@@ -1,0 +1,1806 @@
+{
+  "base_commit": "5740846e07f313aed4bee9038ceb740436b50899",
+  "files": [
+    {
+      "bytes": 875,
+      "path": ".github/workflows/cryptographic-research.yml",
+      "section": "ci",
+      "sha256": "33157baa6bfd59196f5f8a0896d9c89dd2e0debd782dfd1d47275005342a0835"
+    },
+    {
+      "bytes": 1120,
+      "path": ".github/workflows/ecosystem-integration.yml",
+      "section": "ci",
+      "sha256": "914fa78b770fc7969139f3b68b1098ad580f33657a460d46856dbfe735ff83b7"
+    },
+    {
+      "bytes": 555,
+      "path": ".github/workflows/research-ide.yml",
+      "section": "ci",
+      "sha256": "8da9f42fa070adbb20b8ffd886980b59aced1f8c3639612ab39a5874d723d1b0"
+    },
+    {
+      "bytes": 653,
+      "path": ".github/workflows/verify_15_lemmas.yml",
+      "section": "ci",
+      "sha256": "a745b564fe871819c7a45392e9b077734c37071a881c1dbaa11f44b5d2c7390b"
+    },
+    {
+      "bytes": 55,
+      "path": ".gitignore",
+      "section": "foundation",
+      "sha256": "d7fb2df3c22b25195e563f453abe6734636808b197e7f4aaaec293f16d342a2b"
+    },
+    {
+      "bytes": 3179,
+      "path": "AGENTS.md",
+      "section": "foundation",
+      "sha256": "7aa992946cd811d20d72433f7da989383d105fc3ce291312c3596039473df3e1"
+    },
+    {
+      "bytes": 705,
+      "path": "Cryptographic_Research/CHANGELOG.md",
+      "section": "crypto",
+      "sha256": "06f21d3d858622c924652ed27156721af5611d1ecb35e53ddb5e78c6d45fb3ef"
+    },
+    {
+      "bytes": 2831,
+      "path": "Cryptographic_Research/CONTRIBUTING.md",
+      "section": "crypto",
+      "sha256": "0f88d159f79c003b5403793eaf1150fd565ed44f43eb6a611964e8f42e419419"
+    },
+    {
+      "bytes": 1039,
+      "path": "Cryptographic_Research/Makefile",
+      "section": "crypto",
+      "sha256": "3eec4f9a956f55b01625f6d9ad273d1f4547af7011b657adc2b0d94e21270a45"
+    },
+    {
+      "bytes": 3906,
+      "path": "Cryptographic_Research/README.md",
+      "section": "crypto",
+      "sha256": "78a1f490a165cab4d5e09decc412a480c16e97a3f809c6dad6771d93978d4b02"
+    },
+    {
+      "bytes": 217,
+      "path": "Cryptographic_Research/REGISTRY.json",
+      "section": "crypto",
+      "sha256": "0bbbc11488dddfb2867cff7d4a64e0539427eeea7c3ae56892a50781126eab86"
+    },
+    {
+      "bytes": 1639,
+      "path": "Cryptographic_Research/ROADMAP.md",
+      "section": "crypto",
+      "sha256": "577623afa1ceff6ba0ef2e812233e15ed63f0d12158cb6f05c7c174a1ec223f4"
+    },
+    {
+      "bytes": 3910,
+      "path": "Cryptographic_Research/VERSIONING.md",
+      "section": "crypto",
+      "sha256": "7649b6764d9ff2850b42fe044a768a251f3b9cec4fb5d11464c700c1390d712b"
+    },
+    {
+      "bytes": 302,
+      "path": "Cryptographic_Research/archived/README.md",
+      "section": "crypto",
+      "sha256": "4fa2dcf912f034b9bfc3015fb533792be8b61f29fc216bcd99a7244fdec25230"
+    },
+    {
+      "bytes": 756,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/CHANGELOG.md",
+      "section": "crypto",
+      "sha256": "703d0a087f38b7f05ff5978c6b0ece40748bf8cecdacb6ec3c00eb70c61ff8ca"
+    },
+    {
+      "bytes": 3637,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/README.md",
+      "section": "crypto",
+      "sha256": "2bea42f174afda16b3b6020fde7f8f7c6202c35715d6b178add9533fcae57b43"
+    },
+    {
+      "bytes": 1672,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/RESEARCH_LOG.md",
+      "section": "crypto",
+      "sha256": "188d8afe7ab68bb6b110770df48b7123c861860eabc9a03c527860ffbabb113c"
+    },
+    {
+      "bytes": 2698,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/demo.py",
+      "section": "crypto",
+      "sha256": "7879d30ebe8a9cafba8dec3fb23829b326af147e1dcd6f04365622eabc1a55a7",
+      "top_level_symbols": [
+        "short",
+        "run",
+        "main"
+      ]
+    },
+    {
+      "bytes": 3181,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/docs/00_upstream_analysis.md",
+      "section": "crypto",
+      "sha256": "c5167938cf3f6ef592fc7d30866024989b647638f5e0397989d7cfa850d9c6c4"
+    },
+    {
+      "bytes": 2172,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/docs/01_threat_model.md",
+      "section": "crypto",
+      "sha256": "0cf6c1b63ed285f9c83589fbd6a24546e02b330251e71c785950cc4b70b48751"
+    },
+    {
+      "bytes": 5185,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/docs/02_geometric_adaptation.md",
+      "section": "crypto",
+      "sha256": "408078147350f090b6d68f4eb2b807d2a93c0a6cd6e654ff0021cc9cc93fbfdf"
+    },
+    {
+      "bytes": 3311,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/docs/03_shd_ccp_tile_binding.md",
+      "section": "crypto",
+      "sha256": "d999bc6dcf5ee721325f20ebb5a5bf52d19a54dce3d13fa86b0f820d09687fac"
+    },
+    {
+      "bytes": 1971,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/docs/04_open_questions.md",
+      "section": "crypto",
+      "sha256": "e4c20f74a34434f432afd5ed5839ff142c8ad805a16a9ea58571bffd1d84c6e7"
+    },
+    {
+      "bytes": 1659,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/docs/references.md",
+      "section": "crypto",
+      "sha256": "c078c736894444d3ac6e0493d405284fa6af4a5bf012a9dafab06632146e9bf9"
+    },
+    {
+      "bytes": 1398,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/manifest.json",
+      "section": "crypto",
+      "sha256": "268d8b869c3127c5936c9ada52d06445101bb12d9900e494af9486868a80db23"
+    },
+    {
+      "bytes": 296,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/src/geometric_lamport/__init__.py",
+      "section": "crypto",
+      "sha256": "10dea00684ef54b7a58768f4af520f879f317de463fe9b846c19d79473a039af",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 4444,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/src/geometric_lamport/hurwitz_walk.py",
+      "section": "crypto",
+      "sha256": "9af655541fe8be46d9b804739c5ab8a7708b40a0a34b892097583f49015df6db",
+      "top_level_symbols": [
+        "walk_length",
+        "_allowed",
+        "digest_to_path",
+        "path_to_digest",
+        "walk_product",
+        "walk_encode",
+        "invert_walk",
+        "recover_digest"
+      ]
+    },
+    {
+      "bytes": 4649,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/src/geometric_lamport/lamport.py",
+      "section": "crypto",
+      "sha256": "6e278b660cb35fc3a17163450a79cff0c21b9ec62fb10766aec6a75bc875ddd5",
+      "top_level_symbols": [
+        "sha256",
+        "_require_bytes",
+        "chain_value",
+        "build_chain",
+        "new_seed",
+        "LamportClient",
+        "LamportServer"
+      ]
+    },
+    {
+      "bytes": 4001,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/src/geometric_lamport/tile_frame.py",
+      "section": "crypto",
+      "sha256": "4356ee85a187bb6d5661b00f0634ec33fc2fce8427fa258ebc575be381ac64ca",
+      "top_level_symbols": [
+        "_routing",
+        "encode_frame",
+        "decode_frame",
+        "FrameVerifier"
+      ]
+    },
+    {
+      "bytes": 2937,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/tests/test_hurwitz_walk.py",
+      "section": "crypto",
+      "sha256": "04858bb5c99a1d0f098f9e0224c94a08f63e144a046eb19f851fec5d99f9201a",
+      "top_level_symbols": [
+        "TestWalk",
+        "TestPreimageAttack"
+      ]
+    },
+    {
+      "bytes": 4130,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/tests/test_lamport.py",
+      "section": "crypto",
+      "sha256": "c27a93dc4a8667eb06ced4c334a893997812885eedefaf4fecee49c1624d117a",
+      "top_level_symbols": [
+        "TestChain",
+        "TestUpstreamEquivalence",
+        "TestAuthentication"
+      ]
+    },
+    {
+      "bytes": 5159,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/tests/test_tile_frame.py",
+      "section": "crypto",
+      "sha256": "ca901d576605c09ba3dfc9f8e85b9c0c8f9393a812d63b220fbbb9fda4c9ec93",
+      "top_level_symbols": [
+        "TestFrameCodec",
+        "TestFrameVerifier"
+      ]
+    },
+    {
+      "bytes": 1397,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/tests/test_vectors.py",
+      "section": "crypto",
+      "sha256": "a9f52eb35ed59f3986b482731f08dc38094e4b39d6b11ad848967512670d2c21",
+      "top_level_symbols": [
+        "TestGoldenVectors"
+      ]
+    },
+    {
+      "bytes": 4582,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/vectors/cr0001_v0.json",
+      "section": "crypto",
+      "sha256": "d8822b14ba6d7a0f2c43a5cb01034193b6805d141322c91c62a56ddac2cfd08a"
+    },
+    {
+      "bytes": 2587,
+      "path": "Cryptographic_Research/experimental/CR-0001_lamport-otp/vectors/generate_vectors.py",
+      "section": "crypto",
+      "sha256": "f83ffd0291407230ad150fe626603d7da3b5c52f4afba18ca277a6a71a8bf65b",
+      "top_level_symbols": [
+        "build",
+        "render",
+        "main"
+      ]
+    },
+    {
+      "bytes": 511,
+      "path": "Cryptographic_Research/experimental/README.md",
+      "section": "crypto",
+      "sha256": "2a35631d861aa9a089c75180b177c96786b0c95aad287594aa072a15ebae6548"
+    },
+    {
+      "bytes": 379,
+      "path": "Cryptographic_Research/published/README.md",
+      "section": "crypto",
+      "sha256": "6e68d8720804be3a256b3e2f0faf24ddfecfc265bf362657bce2bcb9e0f7be66"
+    },
+    {
+      "bytes": 256,
+      "path": "Cryptographic_Research/templates/experiment/CHANGELOG.md",
+      "section": "crypto",
+      "sha256": "4437d5583843207226933e93ff2cdcf1f9ae5657e5db2c4075e9d573730e64f5"
+    },
+    {
+      "bytes": 870,
+      "path": "Cryptographic_Research/templates/experiment/README.md",
+      "section": "crypto",
+      "sha256": "8d3437f04c9c42c4acad06107f754d26b5ed6e66298d22681afbaed913380899"
+    },
+    {
+      "bytes": 322,
+      "path": "Cryptographic_Research/templates/experiment/RESEARCH_LOG.md",
+      "section": "crypto",
+      "sha256": "7d51f9f415a4809c423cf472f76177e437ec73bf9d8aada4b892fed62709006d"
+    },
+    {
+      "bytes": 195,
+      "path": "Cryptographic_Research/templates/experiment/docs/00_upstream_analysis.md",
+      "section": "crypto",
+      "sha256": "0455624c7d6b7e964d111deb2198a00f81f55f3c2a4e7ea7f753d820831138a3"
+    },
+    {
+      "bytes": 191,
+      "path": "Cryptographic_Research/templates/experiment/docs/01_threat_model.md",
+      "section": "crypto",
+      "sha256": "100be59d382e5ac9ecf51d9e470a1a348ebd79761b1a159eace6ae320d5bb48e"
+    },
+    {
+      "bytes": 234,
+      "path": "Cryptographic_Research/templates/experiment/docs/02_geometric_adaptation.md",
+      "section": "crypto",
+      "sha256": "da9a50ab23a2237d3e5424fa58d70167c2b814d7fb2e2a248f9f2ede9532a752"
+    },
+    {
+      "bytes": 178,
+      "path": "Cryptographic_Research/templates/experiment/docs/03_shd_ccp_tile_binding.md",
+      "section": "crypto",
+      "sha256": "8e02869cba9b047e8cd9b2304d16f49d476b3b1799ca22b1bd4e1936db7ab3cf"
+    },
+    {
+      "bytes": 118,
+      "path": "Cryptographic_Research/templates/experiment/docs/04_open_questions.md",
+      "section": "crypto",
+      "sha256": "db194fed5883d5932a38b2c2703001f41a2782bfacf0f163fddcc94b64923247"
+    },
+    {
+      "bytes": 558,
+      "path": "Cryptographic_Research/templates/experiment/manifest.json",
+      "section": "crypto",
+      "sha256": "228bb955fe74806bdc218ec85a66ea0005f6d86567975ed891203e800f0579f6"
+    },
+    {
+      "bytes": 70,
+      "path": "Cryptographic_Research/templates/experiment/src/{{PACKAGE}}/__init__.py",
+      "section": "crypto",
+      "sha256": "59675fffc227000ce42e569414e879e6468476e025c3b7e75d711d5493955fce",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 427,
+      "path": "Cryptographic_Research/templates/experiment/tests/test_smoke.py",
+      "section": "crypto",
+      "sha256": "3e92ac720208a52643825c68ced1b4b50c0d9d501a47eacf219c60bed31cc528",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 190,
+      "path": "Cryptographic_Research/templates/experiment/vectors/README.md",
+      "section": "crypto",
+      "sha256": "d26681021c97c9cf1f15ad3d137495e5e8ddb48a863e1b2b29d1a0e03094f220"
+    },
+    {
+      "bytes": 3127,
+      "path": "Cryptographic_Research/tests/test_registry.py",
+      "section": "crypto",
+      "sha256": "0cfe0000c4b7917455619e293d7007e2c7669f738530eab739166a7729b9472a",
+      "top_level_symbols": [
+        "TestLiveTree",
+        "TestRules"
+      ]
+    },
+    {
+      "bytes": 8110,
+      "path": "Cryptographic_Research/tools/registry.py",
+      "section": "crypto",
+      "sha256": "50aa5452443ad634673a45c91a6d300d88a67d291d7483ea66d2c0dde7a28337",
+      "top_level_symbols": [
+        "load_json",
+        "check_item",
+        "check",
+        "scaffold",
+        "main"
+      ]
+    },
+    {
+      "bytes": 11358,
+      "path": "LICENSE",
+      "section": "foundation",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    },
+    {
+      "bytes": 679,
+      "path": "Makefile",
+      "section": "foundation",
+      "sha256": "8a4f5ae4e7a7e94775c5ced6896792f968aec65322ca71427d5563ea3639a065"
+    },
+    {
+      "bytes": 3775,
+      "path": "README.md",
+      "section": "foundation",
+      "sha256": "2549276148135e1dfefec8d84fa51cdd5382852debfe3d1d34f8669e3b3fd636"
+    },
+    {
+      "bytes": 97,
+      "path": "Research_IDE/.gitignore",
+      "section": "research_ide",
+      "sha256": "e635959e562558e078e55a51c102c542407c6880345ff98b286816bbbad57a2b"
+    },
+    {
+      "bytes": 63,
+      "path": "Research_IDE/CATALOG.json",
+      "section": "research_ide",
+      "sha256": "f97df23dc93c9ab9668952e1532b5bfe74b4edc365efdd88346d7e0dad238017"
+    },
+    {
+      "bytes": 205,
+      "path": "Research_IDE/CATALOG.md",
+      "section": "research_ide",
+      "sha256": "db33c4cdfb814d866f6a871bdfc7abfd57c8c72a9605dadb91b196853e98a6ce"
+    },
+    {
+      "bytes": 1196,
+      "path": "Research_IDE/CHANGELOG.md",
+      "section": "research_ide",
+      "sha256": "9987597d75c0479e195fc2cdf0bed91947887547e99ca8134e89f6e4c466fd11"
+    },
+    {
+      "bytes": 1079,
+      "path": "Research_IDE/Makefile",
+      "section": "research_ide",
+      "sha256": "0c99babe98d00a52a74e08a7cfb772c92a34736106de2684db4aae6ba28643b6"
+    },
+    {
+      "bytes": 6294,
+      "path": "Research_IDE/README.md",
+      "section": "research_ide",
+      "sha256": "54627e63c320b429482cf814b254782fe6c0a3d54c974f0f180b4c63fe664afe"
+    },
+    {
+      "bytes": 23278,
+      "path": "Research_IDE/WALKTHROUGH.md",
+      "section": "research_ide",
+      "sha256": "a2639b7e211736dba32ca3cdded82e9e36fc84c20026b13724b2eb844c1f703e"
+    },
+    {
+      "bytes": 41313,
+      "path": "Research_IDE/docs/MASTER_OPERATION_GUIDE.md",
+      "section": "research_ide",
+      "sha256": "da3342278fa260d8088a72c0d4d30cf79b3e13d5dc24e435baaefaadecc61f0a"
+    },
+    {
+      "bytes": 697,
+      "path": "Research_IDE/ide.lock.json",
+      "section": "research_ide",
+      "sha256": "186bcad23d24902b02e17738087defe1a798a1aa9b8943b982a21a32c0734a98"
+    },
+    {
+      "bytes": 585,
+      "path": "Research_IDE/inbox/README.md",
+      "section": "research_ide",
+      "sha256": "0ec138759d01381ffbf7cd3863718fbe48a22d29a99706b902e895af8721a68c"
+    },
+    {
+      "bytes": 343280,
+      "path": "Research_IDE/index.html",
+      "section": "research_ide",
+      "sha256": "cf6014732eb39d4ae3019e5ca0e48e0b481586997a6b271f3f069012b673ed36"
+    },
+    {
+      "bytes": 0,
+      "path": "Research_IDE/papers/.gitkeep",
+      "section": "research_ide",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1413,
+      "path": "Research_IDE/templates/paper/README.md",
+      "section": "research_ide",
+      "sha256": "ccb7e03147348cbc18e05debfbf3f8f796880ea37529d28e84c4627841581576"
+    },
+    {
+      "bytes": 290,
+      "path": "Research_IDE/templates/paper/RESEARCH_LOG.md",
+      "section": "research_ide",
+      "sha256": "91c678e9c1353a47729e2dc13d0229561a07e4f352979c1b2bef79d98dbd8f53"
+    },
+    {
+      "bytes": 372,
+      "path": "Research_IDE/templates/paper/manifest.json",
+      "section": "research_ide",
+      "sha256": "40e32c6e503936c4313f77f4e81079c34c364c140194e89f4a7f8db1e96a9dd5"
+    },
+    {
+      "bytes": 7533,
+      "path": "Research_IDE/tests/test_library.py",
+      "section": "research_ide",
+      "sha256": "82b7b1d5b709539c689949d668c0fa8f1e4fdd766fc9688f58e2bbf348117263",
+      "top_level_symbols": [
+        "TestLiveTree",
+        "TestLibrary"
+      ]
+    },
+    {
+      "bytes": 24566,
+      "path": "Research_IDE/tools/library.py",
+      "section": "research_ide",
+      "sha256": "6dabe87bc6bfc9106a416ce40cc792390a0955046cdaab5d4923313563705ff9",
+      "top_level_symbols": [
+        "today",
+        "load_json",
+        "dump_json",
+        "sha256",
+        "classify",
+        "normalize_id",
+        "paper_dirs",
+        "find_paper",
+        "lean_has_sorry",
+        "check_paper",
+        "check",
+        "build_catalog",
+        "render_catalog_md",
+        "write_index",
+        "scaffold",
+        "record",
+        "latest_cosmo_id",
+        "ingest",
+        "track",
+        "set_fields",
+        "lock_ide",
+        "main"
+      ]
+    },
+    {
+      "bytes": 23974,
+      "path": "docs/architecture_blueprint.md",
+      "section": "papers",
+      "sha256": "e12df16be52cee912994ab01aa5e59dad40bf83eb543b13d19bb86dcb3bc2f46"
+    },
+    {
+      "bytes": 1365,
+      "path": "docs/papers/README.md",
+      "section": "papers",
+      "sha256": "449e34f3a6d79f1eb2cb0951197d0520772af19faa387c9f6b96b8d7f1953ce1"
+    },
+    {
+      "bytes": 1,
+      "path": "docs/papers/core/.gitkeep",
+      "section": "papers",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "bytes": 1,
+      "path": "docs/papers/series/.gitkeep",
+      "section": "papers",
+      "sha256": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    },
+    {
+      "bytes": 4658,
+      "path": "docs/specification_status.md",
+      "section": "papers",
+      "sha256": "1ed7cea475773b20af93b3fb0f39d107aa7a6b5b50fd0778af27192f9aa5170a"
+    },
+    {
+      "bytes": 24,
+      "path": "ecosystem/.gitignore",
+      "section": "integration",
+      "sha256": "2c55efbaf0d7c125c445c1df94ff9c91500e703f9ce80ed2cfe053ff57401528"
+    },
+    {
+      "bytes": 11721,
+      "path": "ecosystem/ARCHITECTURE.md",
+      "section": "integration",
+      "sha256": "31870f719ec644b9919e8d309627a778a31f690f2b421ba04970b02d108bec1e"
+    },
+    {
+      "bytes": 865,
+      "path": "ecosystem/Makefile",
+      "section": "integration",
+      "sha256": "ac4bef8d017bc7fd731f5a17bd19e836aa30bf1c132309517442e45a348846ff"
+    },
+    {
+      "bytes": 3772,
+      "path": "ecosystem/README.md",
+      "section": "integration",
+      "sha256": "4c94afa383ed5b12f3af996bb002dc0110341ee994aba705347b657c1a1f20a6"
+    },
+    {
+      "bytes": 2794,
+      "path": "ecosystem/contracts/INTERFACES.md",
+      "section": "integration",
+      "sha256": "8bba9c0a351a2da4552ec2f3ef26a68e36dc6acc2634fd28dc7c00c39c814f61"
+    },
+    {
+      "bytes": 703,
+      "path": "ecosystem/contracts/protocol_profiles.v1.json",
+      "section": "integration",
+      "sha256": "b56ba643e761d61633d61de194d86f03071c6850e54c2b9847cfe1491ec6781b"
+    },
+    {
+      "bytes": 1348,
+      "path": "ecosystem/docs/ENVIRONMENT_SETUP.md",
+      "section": "ecosystem_docs",
+      "sha256": "0d7f0f296d08a63645769b3c5095a81681adb178fc32dcfc873e63c2af2c0756"
+    },
+    {
+      "bytes": 2930,
+      "path": "ecosystem/docs/IMPLEMENTATION_PLAN.md",
+      "section": "ecosystem_docs",
+      "sha256": "1e7a03563648f23440372fe3c9bd1c1fc0069787f2b6f5079805c75cb5e2c3ed"
+    },
+    {
+      "bytes": 3118,
+      "path": "ecosystem/docs/MILESTONES.md",
+      "section": "ecosystem_docs",
+      "sha256": "7a7e68f152f0c2e82b1d511a3e9598ada5dbe361fa5894c228d3b2ad9beb8348"
+    },
+    {
+      "bytes": 2615,
+      "path": "ecosystem/docs/PROTOCOL_COMPATIBILITY.md",
+      "section": "ecosystem_docs",
+      "sha256": "1876611a623ef52277803eb17ea8a84c7dc2a76e887785a34ffe11670ad494d4"
+    },
+    {
+      "bytes": 1967,
+      "path": "ecosystem/docs/PR_DESCRIPTION.md",
+      "section": "ecosystem_docs",
+      "sha256": "fe8b69aa2942e0b8039dc91876f253c019117b1717e5988b4a058ef6462fed41"
+    },
+    {
+      "bytes": 5071,
+      "path": "ecosystem/docs/REPOSITORY_BLUEPRINTS.md",
+      "section": "ecosystem_docs",
+      "sha256": "8cd9e20fa37159354e05686bb9f63cec434112dc50a002d82b345ec40a9159c6"
+    },
+    {
+      "bytes": 36268,
+      "path": "ecosystem/docs/resources/BioChainAI_Architecture.md",
+      "section": "ecosystem_docs",
+      "sha256": "24276d73add0db39ecf4415a09e2517ec253fa31c74113a7b215701d5b2fb692"
+    },
+    {
+      "bytes": 81778,
+      "path": "ecosystem/docs/resources/Geometric Labs Dev Flowchart.png",
+      "section": "ecosystem_docs",
+      "sha256": "ed2b637e7897f244e75daec0d7d2c6ed18811814062c67ba2416b99d5bb30175"
+    },
+    {
+      "bytes": 554212,
+      "path": "ecosystem/docs/resources/Geometric Labs Dev and Verify Architecture Flowchart.png",
+      "section": "ecosystem_docs",
+      "sha256": "002595661a988cba46db6f2ab44944a661689f642bcbdcf8cb0b47b58107733b"
+    },
+    {
+      "bytes": 3290,
+      "path": "ecosystem/docs/status/ALEXNETH_GEOT_RESTRUCTURE.md",
+      "section": "ecosystem_docs",
+      "sha256": "99847f1870a89b1b3a8c9b084cbbbfffff7c3f6dbef342ab0ddf4195d5217cac"
+    },
+    {
+      "bytes": 1008,
+      "path": "ecosystem/docs/status/ALEXNET_GET_PROPOSAL.md",
+      "section": "ecosystem_docs",
+      "sha256": "5b6b817937c7d3bd238d3b50e80431050850fd5fd620007d192207a0d03a00cb"
+    },
+    {
+      "bytes": 2336,
+      "path": "ecosystem/docs/status/W00_BASELINE.md",
+      "section": "ecosystem_docs",
+      "sha256": "2bba588d5ba191b77a257f16e39e8fb65753218a69e74064adbee60f141c7f9b"
+    },
+    {
+      "bytes": 5161,
+      "path": "ecosystem/docs/status/W01_INTEGRATION.md",
+      "section": "ecosystem_docs",
+      "sha256": "3006ad3e96b058cf39d061582b9915b3b4e93a2cf5811b90bf09f7519320a01c"
+    },
+    {
+      "bytes": 800,
+      "path": "ecosystem/docs/status/overlay-selection.json",
+      "section": "ecosystem_docs",
+      "sha256": "c9baaed23a0065e55c1e64421e320e932d915be06ee620fb365240c7989d9c9b"
+    },
+    {
+      "bytes": 8128,
+      "path": "ecosystem/docs/status/preservation.v1.json",
+      "section": "ecosystem_docs",
+      "sha256": "50162221e49647ca3b415316e74e3282f6630d11ce81e61aa4ad59ac8f4f1438"
+    },
+    {
+      "bytes": 3055,
+      "path": "ecosystem/environments/ENVIRONMENTS.md",
+      "section": "integration",
+      "sha256": "e2ffa4ca44f79cfac2c7d57298a6a9059954cacacb1c2c77db76853aaad8ba04"
+    },
+    {
+      "bytes": 3171,
+      "path": "ecosystem/environments/repository_profiles.v1.json",
+      "section": "integration",
+      "sha256": "02b4299102904ca9c49d0cd3594ed64613769ef317e924b94285a37c025f903e"
+    },
+    {
+      "bytes": 5368,
+      "path": "ecosystem/evidence/wave01/acceptance.json",
+      "section": "ecosystem_docs",
+      "sha256": "19f09484d257726b185497359ea58485932e4f6382aa0b3aa939c19057fad7bc"
+    },
+    {
+      "bytes": 9376,
+      "path": "ecosystem/evidence/wave01/baseline-baseline.log",
+      "section": "ecosystem_docs",
+      "sha256": "cb87c6a8d415bdc5b9f591c8ed6e857d87f7160e6c40121ca81b47dd125d592f"
+    },
+    {
+      "bytes": 9376,
+      "path": "ecosystem/evidence/wave01/baseline-current-main.log",
+      "section": "ecosystem_docs",
+      "sha256": "d952b813194406e0076f3377122af7f68381497366750fc199fa9124cc758a3e"
+    },
+    {
+      "bytes": 5100,
+      "path": "ecosystem/evidence/wave01/baseline-pillars.log",
+      "section": "ecosystem_docs",
+      "sha256": "23a2e075e36622fb4cee2d03a51b738547f90f684dc0f7a6ce98a9ef8e207105"
+    },
+    {
+      "bytes": 77,
+      "path": "ecosystem/evidence/wave01/baseline-vectors.log",
+      "section": "ecosystem_docs",
+      "sha256": "c3bf85f747cd307abf835213994bb9d736b1a1f6f653e6c1c218bddf4410f248"
+    },
+    {
+      "bytes": 9376,
+      "path": "ecosystem/evidence/wave01/baseline.log",
+      "section": "ecosystem_docs",
+      "sha256": "c5a029f7ec84162ea3cd46d5dbb3104b49e1aafddf508dd87bead48f1a8d698a"
+    },
+    {
+      "bytes": 40,
+      "path": "ecosystem/evidence/wave01/check-lock.log",
+      "section": "ecosystem_docs",
+      "sha256": "fbb152ab4a1559222d23ee62f9b44d746daef02aedb38a89509a980a7ee65228"
+    },
+    {
+      "bytes": 1549,
+      "path": "ecosystem/evidence/wave01/demo.log",
+      "section": "ecosystem_docs",
+      "sha256": "ea076a9aec0ce2f6a6f446b0921fe84ede4e72db6768d617b011379093f6b9e5"
+    },
+    {
+      "bytes": 0,
+      "path": "ecosystem/evidence/wave01/diff-check.log",
+      "section": "ecosystem_docs",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 569,
+      "path": "ecosystem/evidence/wave01/doctor.log",
+      "section": "ecosystem_docs",
+      "sha256": "cb809b3e9a26a1e522490a3c355854bcc79d09e5fc1b727995403cfea3ae34e5"
+    },
+    {
+      "bytes": 2924,
+      "path": "ecosystem/evidence/wave01/ecosystem-unit.log",
+      "section": "ecosystem_docs",
+      "sha256": "c5631445d41080b86300cbd4126a8a59fb9f4bbc724138395eac5611c7a00a76"
+    },
+    {
+      "bytes": 9657,
+      "path": "ecosystem/evidence/wave01/geometry.log",
+      "section": "ecosystem_docs",
+      "sha256": "06ba50b09c17b889429e20db3bce69824bcd5d8e5bdbee3fbadbaf727496534e"
+    },
+    {
+      "bytes": 837,
+      "path": "ecosystem/evidence/wave01/integration.log",
+      "section": "ecosystem_docs",
+      "sha256": "d11926f8a14c9968561a40544b65ab61c2a02604b920dea641f9511917864c56"
+    },
+    {
+      "bytes": 5100,
+      "path": "ecosystem/evidence/wave01/pillars.log",
+      "section": "ecosystem_docs",
+      "sha256": "6b39ef9c127a3e55050b1ca62b4bcb62c0c4c74255afa48d9932e9e691417f3d"
+    },
+    {
+      "bytes": 1669,
+      "path": "ecosystem/evidence/wave01/protocol-compatibility.json",
+      "section": "ecosystem_docs",
+      "sha256": "a3f596f82ad92d6de0ead38aa46588494a329c1a88747ef45a0adf95daf5f781"
+    },
+    {
+      "bytes": 1669,
+      "path": "ecosystem/evidence/wave01/protocol.log",
+      "section": "ecosystem_docs",
+      "sha256": "a3f596f82ad92d6de0ead38aa46588494a329c1a88747ef45a0adf95daf5f781"
+    },
+    {
+      "bytes": 1549,
+      "path": "ecosystem/evidence/wave01/reference-mesh.json",
+      "section": "ecosystem_docs",
+      "sha256": "ea076a9aec0ce2f6a6f446b0921fe84ede4e72db6768d617b011379093f6b9e5"
+    },
+    {
+      "bytes": 327,
+      "path": "ecosystem/evidence/wave01/sync-repeat.log",
+      "section": "ecosystem_docs",
+      "sha256": "ffdaabe6b728fe8051d872fa725657b0750605fb05f0f82b8e1d4bb1905d6d86"
+    },
+    {
+      "bytes": 77,
+      "path": "ecosystem/evidence/wave01/vectors.log",
+      "section": "ecosystem_docs",
+      "sha256": "c3bf85f747cd307abf835213994bb9d736b1a1f6f653e6c1c218bddf4410f248"
+    },
+    {
+      "bytes": 1581,
+      "path": "ecosystem/experiments/alexnet_get/README.md",
+      "section": "historical",
+      "sha256": "cc062618d131508a46db9077e6acd55b3420ffc865c70321d62cfd46fc023e7d"
+    },
+    {
+      "bytes": 3266,
+      "path": "ecosystem/experiments/alexnet_get/configs/experiments.v1.json",
+      "section": "historical",
+      "sha256": "8599b8f1ab82ed3ce590a19d46b708636514b11e79e60a00cd530d2f8ac550d8"
+    },
+    {
+      "bytes": 4668,
+      "path": "ecosystem/experiments/alexnet_get/contracts/flow.v1.json",
+      "section": "historical",
+      "sha256": "b66a2c7c462ebfa2b4d3c163569e1298bb1532b6f60a78acbbb8b886c2c3c5db"
+    },
+    {
+      "bytes": 6991,
+      "path": "ecosystem/experiments/alexnet_get/contracts/scaffold.v1.json",
+      "section": "historical",
+      "sha256": "9f5d86a292b7f6b16a73fc64945eaa5188eafd295de7bbf100b2cdaa7e3a40f3"
+    },
+    {
+      "bytes": 4061,
+      "path": "ecosystem/experiments/alexnet_get/contracts/source_inventory.v1.json",
+      "section": "historical",
+      "sha256": "7e5a43ff2b8f5bdb9335a4e20e71efebe9625010b7d8aab061120dfea617cac2"
+    },
+    {
+      "bytes": 29242,
+      "path": "ecosystem/experiments/alexnet_get/docs/IMPLEMENTATION_FRAMEWORK.md",
+      "section": "historical",
+      "sha256": "5c20cb8ec8e52c7d654bc84eb0b1b8dcf7a82a58412bb3c06028e18c4cb03ee8"
+    },
+    {
+      "bytes": 3563,
+      "path": "ecosystem/experiments/alexnet_get/docs/SOURCES_AND_DECISIONS.md",
+      "section": "historical",
+      "sha256": "64b46f653cb65ce6c9e6435d4937ff6db9ffe7162692ad06993cabeaf40e4975"
+    },
+    {
+      "bytes": 1562,
+      "path": "ecosystem/experiments/alexnet_get/docs/VALIDATION.md",
+      "section": "historical",
+      "sha256": "fea22d069b2f541a2fc169c89e1387ef5cce25417181a164b52a39e7984b655e"
+    },
+    {
+      "bytes": 4060,
+      "path": "ecosystem/experiments/alexnet_get/tools/plan.py",
+      "section": "historical",
+      "sha256": "0bcc7ba02ab5f115ad11edf9a08010a3344a69cee27e6600c115d6819a23fd46",
+      "top_level_symbols": [
+        "read",
+        "validate",
+        "main"
+      ]
+    },
+    {
+      "bytes": 77,
+      "path": "ecosystem/experiments/alexneth_geot/.gitignore",
+      "section": "vision",
+      "sha256": "03965d1ff586642d809a67f89db9a1b881503e326ae3092bca5e4e0083fcfe5f"
+    },
+    {
+      "bytes": 364,
+      "path": "ecosystem/experiments/alexneth_geot/Makefile",
+      "section": "vision",
+      "sha256": "26e47c4f4c61c96401a538dc17c14da0374d7a3f70a2d4ebd299c4c490a8d39d"
+    },
+    {
+      "bytes": 3814,
+      "path": "ecosystem/experiments/alexneth_geot/README.md",
+      "section": "vision",
+      "sha256": "ab538ed395fb2b6d723eed08ab1469523bc5a96adf29009ad0e72385df9eda79"
+    },
+    {
+      "bytes": 2054,
+      "path": "ecosystem/experiments/alexneth_geot/docs/INTEROPERABILITY.md",
+      "section": "vision",
+      "sha256": "b8904d0551bc485249cddbff31d36556b51094443937b198723d3d0e8e4e1650"
+    },
+    {
+      "bytes": 4925,
+      "path": "ecosystem/experiments/alexneth_geot/docs/RESTRUCTURE.md",
+      "section": "vision",
+      "sha256": "a216df159d2cf6190a67143d7fc8c2b9a2190985a208f152da71f4c74fbf1550"
+    },
+    {
+      "bytes": 948,
+      "path": "ecosystem/experiments/alexneth_geot/docs/architecture.mmd",
+      "section": "vision",
+      "sha256": "293faa095f2d75339a0334810ff33e09cc8e3b578e7bc27a002c60dde1b6a397"
+    },
+    {
+      "bytes": 2978,
+      "path": "ecosystem/experiments/alexneth_geot/docs/source-inventory.json",
+      "section": "vision",
+      "sha256": "945b036c27b7185eafbb11af050735a1427eb3592c73aaad6562dc91b46a07a7"
+    },
+    {
+      "bytes": 837,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/ecosystem-integration.log",
+      "section": "vision",
+      "sha256": "c40803aeb8aad1650c1b5d6ee6706ea924c333a844083f65504f296a1d61df85"
+    },
+    {
+      "bytes": 2924,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/ecosystem-offline.log",
+      "section": "vision",
+      "sha256": "019abeb0aa2e09f58a38d64540b98c30ddf8fcb6f0bb5fa42ac8f71f464a23be"
+    },
+    {
+      "bytes": 564,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/environment.json",
+      "section": "vision",
+      "sha256": "d0d9a76e42d31a8be462f07a83408bde2b30544685798bd51985ce03c0bd6bc3"
+    },
+    {
+      "bytes": 1789,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/geot-tests.log",
+      "section": "vision",
+      "sha256": "aadd1f3f9d2201afabecf963eacaa3a34f74b5d3ca01e94871231fd25db1fa5b"
+    },
+    {
+      "bytes": 1729,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/interop.json",
+      "section": "vision",
+      "sha256": "4be0b7e7a00014add51d012a6f48064311f1df6d25b0b8ef3d7e04ec866700f6"
+    },
+    {
+      "bytes": 1669,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/protocol-gate.log",
+      "section": "vision",
+      "sha256": "a3f596f82ad92d6de0ead38aa46588494a329c1a88747ef45a0adf95daf5f781"
+    },
+    {
+      "bytes": 1669,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/protocol.json",
+      "section": "vision",
+      "sha256": "a3f596f82ad92d6de0ead38aa46588494a329c1a88747ef45a0adf95daf5f781"
+    },
+    {
+      "bytes": 40,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/release-lock.log",
+      "section": "vision",
+      "sha256": "fbb152ab4a1559222d23ee62f9b44d746daef02aedb38a89509a980a7ee65228"
+    },
+    {
+      "bytes": 590,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/research-primitives.log",
+      "section": "vision",
+      "sha256": "4d0b72395eb2c9513a4963ce5a47e7fdad9827a82b6fd1fe28e36338b98a44d5"
+    },
+    {
+      "bytes": 9376,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/root-baseline.log",
+      "section": "vision",
+      "sha256": "3107bf11af47ebb4400900539f338b2f5870c0cc80f08fe93538b131011930ac"
+    },
+    {
+      "bytes": 4556,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/validation.json",
+      "section": "vision",
+      "sha256": "b0f674abe3965ae5e0f331527d36347aefad1c71d259e32ce1f95bb03d754df7"
+    },
+    {
+      "bytes": 1729,
+      "path": "ecosystem/experiments/alexneth_geot/evidence/vision-interop.log",
+      "section": "vision",
+      "sha256": "4be0b7e7a00014add51d012a6f48064311f1df6d25b0b8ef3d7e04ec866700f6"
+    },
+    {
+      "bytes": 358,
+      "path": "ecosystem/experiments/alexneth_geot/pyproject.toml",
+      "section": "vision",
+      "sha256": "afc7f69a16cfdd56e5eff5a562eab34faf15b0e35c79b7314f4c4ed671e6c123"
+    },
+    {
+      "bytes": 356,
+      "path": "ecosystem/experiments/alexneth_geot/requirements-cpu-py312.txt",
+      "section": "vision",
+      "sha256": "c01987d040bf4a0c326904771a40680cde020faf21df284b89040b52f916f990"
+    },
+    {
+      "bytes": 22814,
+      "path": "ecosystem/experiments/alexneth_geot/research/ALEXNETH_GEOT_ARCHITECTURE_RFC.md",
+      "section": "vision",
+      "sha256": "1c29c84d401690335654f35b112f08458f9200d245bc34384357750e57416d65"
+    },
+    {
+      "bytes": 5155,
+      "path": "ecosystem/experiments/alexneth_geot/research/reference/geot_primitives.py",
+      "section": "vision",
+      "sha256": "a8cee6ef6eee6fed26aefc79d064dbb311ba50fdd7b79459c4c835c14ed3acd0",
+      "top_level_symbols": [
+        "fold_axis",
+        "unfold_axis",
+        "fold_three",
+        "unfold_three",
+        "hamilton",
+        "ordered_block_product",
+        "quaternion_conjugate",
+        "golden_clifford_torus",
+        "lorentz_lift_from_spinor",
+        "hyperbolic_quadrance",
+        "sparsemax",
+        "triangle_tqf",
+        "rational_lorentz"
+      ]
+    },
+    {
+      "bytes": 2365,
+      "path": "ecosystem/experiments/alexneth_geot/research/tests/test_geot_primitives.py",
+      "section": "vision",
+      "sha256": "5d1be6d8610a14d6cf95636e02e2f2e737c3c18740d3c37859ea9fa9c3177287",
+      "top_level_symbols": [
+        "Tests"
+      ]
+    },
+    {
+      "bytes": 110,
+      "path": "ecosystem/experiments/alexneth_geot/src/alexneth_geot/__init__.py",
+      "section": "vision",
+      "sha256": "0617b7e5b4560ff402f64ca47aa14d583ac446163f4176928174b19a9068c235",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 6465,
+      "path": "ecosystem/experiments/alexneth_geot/src/alexneth_geot/model.py",
+      "section": "vision",
+      "sha256": "099763725b550787e55815a619225d4ca3df587f4fde11fdaa9129848c613ef9",
+      "top_level_symbols": [
+        "semantic_exp0",
+        "MultiScaleStem",
+        "FoldedTriQuad",
+        "neighbors64",
+        "LocalRouter",
+        "AlexNetHGEOT"
+      ]
+    },
+    {
+      "bytes": 3141,
+      "path": "ecosystem/experiments/alexneth_geot/src/alexneth_geot/observations.py",
+      "section": "vision",
+      "sha256": "73009dcd3f1b469e421678705a60be83c735ee04ecc907787cf9953a0ad86471",
+      "top_level_symbols": [
+        "descriptor",
+        "validate"
+      ]
+    },
+    {
+      "bytes": 1871,
+      "path": "ecosystem/experiments/alexneth_geot/src/alexneth_geot/oracle.py",
+      "section": "vision",
+      "sha256": "3183f3eb431d47c35d5ebe01b176af3c8615caa9a47b2e81f0038f133f2084ca",
+      "top_level_symbols": [
+        "checked",
+        "lorentz",
+        "hyperbolic_quadrance",
+        "sparsemax"
+      ]
+    },
+    {
+      "bytes": 5773,
+      "path": "ecosystem/experiments/alexneth_geot/src/alexneth_geot/primitives.py",
+      "section": "vision",
+      "sha256": "51c5b72853b1fec33f4c58a092289abb3f43488915adef35d5dcfb1d6e6c2fea",
+      "top_level_symbols": [
+        "fold_axis",
+        "unfold_axis",
+        "fold_three",
+        "unfold_three",
+        "hamilton",
+        "ordered_block_product",
+        "quaternion_conjugate",
+        "golden_clifford_torus",
+        "lorentz_lift_from_spinor",
+        "hyperbolic_quadrance",
+        "sparsemax",
+        "triangle_tqf",
+        "rational_lorentz"
+      ]
+    },
+    {
+      "bytes": 7683,
+      "path": "ecosystem/experiments/alexneth_geot/tests/test_geot.py",
+      "section": "vision",
+      "sha256": "ac03e546b5326344d9ad94760b13b72c6d0745234728d1d8e2c29f2a96cfee96",
+      "top_level_symbols": [
+        "Geometry",
+        "NeuralReference"
+      ]
+    },
+    {
+      "bytes": 865,
+      "path": "ecosystem/experiments/alexneth_geot/tests/test_interop.py",
+      "section": "vision",
+      "sha256": "7099f5edc12d943a23a638b6be7eea8bb55713b77fbc89965d6f60a3afe8f4cf",
+      "top_level_symbols": [
+        "EnvironmentInteroperability"
+      ]
+    },
+    {
+      "bytes": 6893,
+      "path": "ecosystem/experiments/alexneth_geot/tools/interop.py",
+      "section": "vision",
+      "sha256": "37e815f5463dcb407bc7fda46c4cdea44e661c854923e81fcd6d984f0a45b1bf",
+      "top_level_symbols": [
+        "run",
+        "main"
+      ]
+    },
+    {
+      "bytes": 3499,
+      "path": "ecosystem/experiments/alexneth_geot/tools/verify.py",
+      "section": "vision",
+      "sha256": "6ad3cd0bdee13daa78a78e38ea3021d703d384304b275ba7db289eb6bf3b68fc",
+      "top_level_symbols": [
+        "main"
+      ]
+    },
+    {
+      "bytes": 2011,
+      "path": "ecosystem/integration_tests/test_live_checkouts.py",
+      "section": "integration",
+      "sha256": "1ff4d2cb6e3d88c11120dd04eeacfedb79c2b39866a1fa074e22b83d87b771d3",
+      "top_level_symbols": [
+        "LiveCheckouts"
+      ]
+    },
+    {
+      "bytes": 0,
+      "path": "ecosystem/locks/.gitkeep",
+      "section": "integration",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "bytes": 1364,
+      "path": "ecosystem/locks/commits.lock.json",
+      "section": "integration",
+      "sha256": "0ce95bda22e713f66acfde0157e3b2fe40e280c9085742b847cbc82474e5fdaa"
+    },
+    {
+      "bytes": 4366,
+      "path": "ecosystem/manifest/repositories.v1.json",
+      "section": "integration",
+      "sha256": "99a576c1955027b0f710589186d3b469e7884be1a8d4c0d039271296ff66518a"
+    },
+    {
+      "bytes": 6718,
+      "path": "ecosystem/simulator/reference_mesh.py",
+      "section": "integration",
+      "sha256": "a21535850a9c6fd0b50d0d0a03befaa4e59800a546a9a08cdb876890027aac63",
+      "top_level_symbols": [
+        "run_mesh",
+        "main"
+      ]
+    },
+    {
+      "bytes": 2263,
+      "path": "ecosystem/tests/test_architecture.py",
+      "section": "integration",
+      "sha256": "8040f356f0cf2f05e618d9d997cfa04fdc199dcd0d55282d54058b6535749a8d",
+      "top_level_symbols": [
+        "TestManifest"
+      ]
+    },
+    {
+      "bytes": 2740,
+      "path": "ecosystem/tests/test_protocol_profiles.py",
+      "section": "integration",
+      "sha256": "ee8fa18d78760545f74fbc676d09b837e4a3ccc192599907c25c974de682d673",
+      "top_level_symbols": [
+        "ProtocolProfiles"
+      ]
+    },
+    {
+      "bytes": 7330,
+      "path": "ecosystem/tests/test_workspace_manager.py",
+      "section": "integration",
+      "sha256": "1c13a3ae9645693d7903443071a451770f9851733943acb0b298f5b2b5df6826",
+      "top_level_symbols": [
+        "command",
+        "WorkspaceManager"
+      ]
+    },
+    {
+      "bytes": 10031,
+      "path": "ecosystem/tools/glab.py",
+      "section": "integration",
+      "sha256": "5b229265a6d7483975e233e29cb917ffced2358bb47c0750e753ef261aa20ce5",
+      "top_level_symbols": [
+        "manifest",
+        "git",
+        "targets",
+        "folder",
+        "inventory",
+        "inspect",
+        "manifest_digest",
+        "read_lock",
+        "report",
+        "doctor",
+        "sync",
+        "collect_lock",
+        "lock",
+        "check_lock",
+        "main"
+      ]
+    },
+    {
+      "bytes": 9795,
+      "path": "ecosystem/tools/protocol_compatibility.py",
+      "section": "integration",
+      "sha256": "e82a97246785528ccdf258f31e7509c7658334b718fc6ee30c9377e9fdc4187f",
+      "top_level_symbols": [
+        "contracts",
+        "receive",
+        "Halves",
+        "Fields",
+        "CCodec",
+        "run_gate",
+        "main"
+      ]
+    },
+    {
+      "bytes": 3324,
+      "path": "ecosystem/tools/run_acceptance.py",
+      "section": "integration",
+      "sha256": "5d3f0ab96bd7b63bb8fd17943242d02908a5af67e9a6e0ae65ba42b334a818ea",
+      "top_level_symbols": [
+        "main"
+      ]
+    },
+    {
+      "bytes": 1358,
+      "path": "ecosystem/tools/upstreams.py",
+      "section": "integration",
+      "sha256": "9ddc44060796b9e525c92506c27ec0defa79b2f5074cd7e380b379eba7652803",
+      "top_level_symbols": [
+        "load"
+      ]
+    },
+    {
+      "bytes": 14,
+      "path": "ecosystem/workspaces/.gitignore",
+      "section": "integration",
+      "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+    },
+    {
+      "bytes": 120367,
+      "path": "interactive/geometric_engine_8_step_walkthrough.html",
+      "section": "walkthrough",
+      "sha256": "b34a65da2536b2d0f36574a95a23208a6bcd78fdb1b74e38311b116c9c100318"
+    },
+    {
+      "bytes": 363,
+      "path": "pyproject.toml",
+      "section": "foundation",
+      "sha256": "eab650c96f4624f1042a7e89d630f17d239e28a8c73cdbd48a161bc2a5c13c0c"
+    },
+    {
+      "bytes": 2799,
+      "path": "spec_sync/einstein_tile_64bit_rfc.md",
+      "section": "spec",
+      "sha256": "62b16eb69b9d3108ca02041bd96dc63ff467eebcf5c92b58dc9fddad9815839e"
+    },
+    {
+      "bytes": 5759,
+      "path": "spec_sync/generate_golden_vectors.py",
+      "section": "spec",
+      "sha256": "bad7f55bcd22798c5e0fe35866017dd5d3a2d567ae9f8b03a219bec332f47c6c",
+      "top_level_symbols": [
+        "envelope",
+        "build_vectors",
+        "main"
+      ]
+    },
+    {
+      "bytes": 12224,
+      "path": "spec_sync/golden_vectors/v1_64stream_balancer_threading.json",
+      "section": "spec",
+      "sha256": "e41b55b403a2b4258559d74dd180bbfb5f562a2b9ae3f31b2ba541d3eeb27816"
+    },
+    {
+      "bytes": 4966,
+      "path": "spec_sync/golden_vectors/v1_garner_crt_881_883_887.json",
+      "section": "spec",
+      "sha256": "f8070169c8f4b9a276587179722fe2333ed2c7e3d839f22372b08be56efff403"
+    },
+    {
+      "bytes": 47244,
+      "path": "spec_sync/golden_vectors/v1_hurwitz_and_s5_tree.json",
+      "section": "spec",
+      "sha256": "67843bd3fcba2ab4aa7f0efe651a6bd097df4ca57fd69ec1e67bdf26ecbce3d2"
+    },
+    {
+      "bytes": 90555,
+      "path": "spec_sync/golden_vectors/v1_quaternion_blockchain_merkle.json",
+      "section": "spec",
+      "sha256": "011014dfb898b33cdcb280d2be0731e24196009a17abedba5493e8ba7e5c40c1"
+    },
+    {
+      "bytes": 6869,
+      "path": "spec_sync/golden_vectors/v1_tiles_forms_0_15.json",
+      "section": "spec",
+      "sha256": "17dd34eee7d38278138240bd2803c46baf653f8618b356d517718d1b2f303458"
+    },
+    {
+      "bytes": 255,
+      "path": "src/geometric_labs/__init__.py",
+      "section": "math",
+      "sha256": "cc86fe166eae21eb07cc4a2304ce2985e335c6bdd30c49f2c52b02a7fa27287d",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 39,
+      "path": "src/geometric_labs/blockchain/__init__.py",
+      "section": "math",
+      "sha256": "56ce75e09c3d558c794511c4060d09a26f1a6dfc10a4acc18e1544f9563da8e9",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 1862,
+      "path": "src/geometric_labs/blockchain/holonomy_prefix_scan.py",
+      "section": "math",
+      "sha256": "e5423a352a63064e7e24d3e16b3cf5c62db4ee0545c363efed62b08c0d272ecf",
+      "top_level_symbols": [
+        "prefix_scan",
+        "product",
+        "middle_gear_partition",
+        "holonomy"
+      ]
+    },
+    {
+      "bytes": 698,
+      "path": "src/geometric_labs/blockchain/qcc_delta_chain.py",
+      "section": "math",
+      "sha256": "217c1b4b6265aba2a9c10dd5b98d74c82d3a0cfeed4c7cb58011571c1583eb40",
+      "top_level_symbols": [
+        "encode_chain",
+        "decode_chain"
+      ]
+    },
+    {
+      "bytes": 1093,
+      "path": "src/geometric_labs/blockchain/toroidal_state_matrix.py",
+      "section": "math",
+      "sha256": "e782174c103a1f526fbfe5a319502b7fa63e7b5c4f64df1fde7871c79644e999",
+      "top_level_symbols": [
+        "fibonacci",
+        "lucas",
+        "checkpoint",
+        "two_sided_update"
+      ]
+    },
+    {
+      "bytes": 40,
+      "path": "src/geometric_labs/calibration/__init__.py",
+      "section": "math",
+      "sha256": "461a97b4129aee56ddf3c2518a9bb1120e655ccc3cd859da26a4b724461837ea",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 2622,
+      "path": "src/geometric_labs/calibration/acoustic_cubit.py",
+      "section": "math",
+      "sha256": "0f91e0acd29656e631fccf4e9c3f9bff54cf3429a4b40d788dce49584746176d",
+      "top_level_symbols": [
+        "cramer_sound_speed",
+        "local_cubit",
+        "gum_uncertainty",
+        "room_mode"
+      ]
+    },
+    {
+      "bytes": 616,
+      "path": "src/geometric_labs/calibration/chronometry_window.py",
+      "section": "math",
+      "sha256": "ea54762293cd9d458a2ab322d40d85212f1f27addc5726c3ca127303defb039c",
+      "top_level_symbols": [
+        "joint_closure"
+      ]
+    },
+    {
+      "bytes": 6366,
+      "path": "src/geometric_labs/calibration/horn_frame_solver.py",
+      "section": "math",
+      "sha256": "459796074d702c492e6f4d5b74226117a3ae25fa0b4848f7d4993d0e605863c7",
+      "top_level_symbols": [
+        "symmetric_eigen",
+        "phi_m_coherence",
+        "quadrance_signature",
+        "match_signatures",
+        "horn_rotation",
+        "snap_hurwitz",
+        "rotate_anchor",
+        "octahedral_rotations",
+        "apply_rotation",
+        "snap_octahedral",
+        "align_octahedral"
+      ]
+    },
+    {
+      "bytes": 42,
+      "path": "src/geometric_labs/certification/__init__.py",
+      "section": "math",
+      "sha256": "37aa94a1cc14b7262208ec3b0cfca9006be1fab1d67d2a6ee730edf82f0a220f",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 2123,
+      "path": "src/geometric_labs/certification/merkle_12layer.py",
+      "section": "math",
+      "sha256": "abeb382bf1a6a62249a0fe1a4d2c2fe0de6e0edda0c103668182bc99c34faf19",
+      "top_level_symbols": [
+        "compute_merkle_12_root",
+        "crc32_forgery",
+        "forge_crc32_suffix"
+      ]
+    },
+    {
+      "bytes": 1764,
+      "path": "src/geometric_labs/certification/prime_anchor_cert.py",
+      "section": "math",
+      "sha256": "285183834bab181744cb9149c5325a4d8aa302be2ddd74e0fd41b506b2cc3064",
+      "top_level_symbols": [
+        "is_prime_64",
+        "build_prime_bitmap",
+        "bitmap_is_prime",
+        "hurwitz_box_primes"
+      ]
+    },
+    {
+      "bytes": 522,
+      "path": "src/geometric_labs/certification/wheel_30_oracle.py",
+      "section": "math",
+      "sha256": "fef870f381dec0e3f67a1ca0618f8737d2d0731b6f5487b2a86bffbffa13e4ff",
+      "top_level_symbols": [
+        "wheel_candidate",
+        "verify_bias"
+      ]
+    },
+    {
+      "bytes": 1420,
+      "path": "src/geometric_labs/garner_crt.py",
+      "section": "math",
+      "sha256": "8c84da7174afccc98df4a3d9020825aba9897809116675d0683fc32c1eb87a7a",
+      "top_level_symbols": [
+        "closed_form_inverses",
+        "encode",
+        "decode"
+      ]
+    },
+    {
+      "bytes": 2261,
+      "path": "src/geometric_labs/hurwitz.py",
+      "section": "math",
+      "sha256": "521ed308bc7c54bff803325e8477797a2489e2cd60cf06f7112d355069f520db",
+      "top_level_symbols": [
+        "validate",
+        "h_conj",
+        "h_norm",
+        "h_mul",
+        "h_inv_unit",
+        "generate_24_hurwitz_units",
+        "canonical_associate",
+        "gram_tqf",
+        "projective_spinor_cycle"
+      ]
+    },
+    {
+      "bytes": 2476,
+      "path": "src/geometric_labs/s5_hyperbolic_tree.py",
+      "section": "math",
+      "sha256": "83a8806ce28ce0c1587dcaa2f1df6a4dfe729c0af8a46dc8c833bd70a9f4cf6f",
+      "top_level_symbols": [
+        "step_s5_shift_add",
+        "recover_s5_word",
+        "abelian_shadow"
+      ]
+    },
+    {
+      "bytes": 38,
+      "path": "src/geometric_labs/threading/__init__.py",
+      "section": "math",
+      "sha256": "9efc18c68164e9b5c0c6a879b14831f0b44c02b77ec148b5fad1c354ef26a1be",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 2090,
+      "path": "src/geometric_labs/threading/balancer_64stream.py",
+      "section": "math",
+      "sha256": "2639aa4cc5cde6e2a974343f955733830cc4d91b7016546779bb136424003a02",
+      "top_level_symbols": [
+        "stream_id",
+        "build_balancer",
+        "projection_streams",
+        "verify_balancer"
+      ]
+    },
+    {
+      "bytes": 2149,
+      "path": "src/geometric_labs/threading/cubocta_12engine_ring.py",
+      "section": "math",
+      "sha256": "365d09b19104e6285f5b39f78570db02a93b7accfbb1468305a2235ce18386ed",
+      "top_level_symbols": [
+        "close_group",
+        "recover_single",
+        "global_fourth",
+        "cascade_recover",
+        "offload_recall",
+        "tier_word"
+      ]
+    },
+    {
+      "bytes": 997,
+      "path": "src/geometric_labs/threading/supercycle_24step.py",
+      "section": "math",
+      "sha256": "6f66629c2f730e1ad4e1327536ab2b8ad9fbb7ddddab1125dbb76a865f18d9a7",
+      "top_level_symbols": [
+        "schedule",
+        "split_phases",
+        "join_phases",
+        "rotate_plane"
+      ]
+    },
+    {
+      "bytes": 1868,
+      "path": "src/geometric_labs/threading/torus_soliton_mux.py",
+      "section": "math",
+      "sha256": "e4d286a525283dc5cdb65c41811734624e0320a88e727feaf08a6667d9d59f20",
+      "top_level_symbols": [
+        "mat2_mul",
+        "covering_determinants",
+        "allocate_rectangles",
+        "rectangles_disjoint",
+        "color_conflicts"
+      ]
+    },
+    {
+      "bytes": 1260,
+      "path": "src/geometric_labs/threading/tqf_stream_pruner.py",
+      "section": "math",
+      "sha256": "f0e02107ea135b0f3a43f40f488641796d135ec70fa357d2918f5cdafb608140",
+      "top_level_symbols": [
+        "prune",
+        "interpolate"
+      ]
+    },
+    {
+      "bytes": 3233,
+      "path": "src/geometric_labs/tile_codec.py",
+      "section": "math",
+      "sha256": "86a99b3228697e0c5b5df4410b0cffc4d72878136487370fd0553c26fde2f225",
+      "top_level_symbols": [
+        "encode_tile",
+        "decode_tile",
+        "match_south_halo",
+        "encode_form1",
+        "decode_form1",
+        "encode_form2",
+        "decode_form2",
+        "encode_form3",
+        "decode_form3"
+      ]
+    },
+    {
+      "bytes": 40,
+      "path": "verification/01_accessibility/__init__.py",
+      "section": "verification",
+      "sha256": "1ebf7cd0455752f4658d5b00ed7b4996aa3dc7fca75825ccdc977123897ba963",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 1703,
+      "path": "verification/01_accessibility/test_float64_vs_gram_tqf.py",
+      "section": "verification",
+      "sha256": "b768d36ed5de901813d5a36a20554a0c00c0921bcd77e2cca25cd00ddb0f606b",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 1452,
+      "path": "verification/01_accessibility/test_multiplier_free_s5.py",
+      "section": "verification",
+      "sha256": "9460afcba33d35f6ef8af86b8fa97695ca11ab98d29c76ea6c55e591d613b881",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 741,
+      "path": "verification/01_accessibility/test_projective_spinor_cycle.py",
+      "section": "verification",
+      "sha256": "6de451f29ed29a2e822bbf908534952593336f550d7ce53bc1f2a753de6b7bcc",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 40,
+      "path": "verification/02_calibration/__init__.py",
+      "section": "verification",
+      "sha256": "1ebf7cd0455752f4658d5b00ed7b4996aa3dc7fca75825ccdc977123897ba963",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 1044,
+      "path": "verification/02_calibration/test_caesium_30pulse_closure.py",
+      "section": "verification",
+      "sha256": "647b4508e1f71d74b73c41cbefad9a3413858dc3bee69899875412779e34c08e",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 1176,
+      "path": "verification/02_calibration/test_cramer_cubit_gum.py",
+      "section": "verification",
+      "sha256": "61058521261645267c1c4a24c9bd8c30244392ffe9534e229e6c19fc7df9a039",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 2087,
+      "path": "verification/02_calibration/test_nonlocal_horn_alignment.py",
+      "section": "verification",
+      "sha256": "9829a19f29cf606e2a2d371638961968be5b48cc6d9f182c99ce9acdc2d866ec",
+      "top_level_symbols": [
+        "Verification",
+        "FullOctahedralAlignment"
+      ]
+    },
+    {
+      "bytes": 40,
+      "path": "verification/03_certification_validation/__init__.py",
+      "section": "verification",
+      "sha256": "1ebf7cd0455752f4658d5b00ed7b4996aa3dc7fca75825ccdc977123897ba963",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 1186,
+      "path": "verification/03_certification_validation/test_bitmap_2017b_and_mr12.py",
+      "section": "verification",
+      "sha256": "8bc45589a8d90bf903ef6d5b86a45d939b42a7660c5ca33594bc0798421d9fd0",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 981,
+      "path": "verification/03_certification_validation/test_dual_helix_circularity.py",
+      "section": "verification",
+      "sha256": "16b4ca3eda6b097478d1bb079b6e103da5f86b6cc0e44c7f3e36fbdd29b08e48",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 945,
+      "path": "verification/03_certification_validation/test_garner_crt_closed_form.py",
+      "section": "verification",
+      "sha256": "50f6f7981d581cb0d38276dfaaae8aa33f2d53dc48f0b165ffca06c9b5c0df6a",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 40,
+      "path": "verification/04_quaternion_blockchain/__init__.py",
+      "section": "verification",
+      "sha256": "1ebf7cd0455752f4658d5b00ed7b4996aa3dc7fca75825ccdc977123897ba963",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 1018,
+      "path": "verification/04_quaternion_blockchain/test_fibonacci_lucas_torus_qcc.py",
+      "section": "verification",
+      "sha256": "e245d782693cebce2894a644a309b772b32dfd73f7a9607db531332975d7f2bc",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 1523,
+      "path": "verification/04_quaternion_blockchain/test_holonomy_telescoping_scan.py",
+      "section": "verification",
+      "sha256": "b11af25b4971c395f424cc4d33107811c44b37ffd44b552c66834bb12ae55ac4",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 2870,
+      "path": "verification/04_quaternion_blockchain/test_south_halo_and_merkle12.py",
+      "section": "verification",
+      "sha256": "785dad0b32d17990417c874f2ae8194b5801c38c86bd574bd3fc8ee22d96f4b5",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 40,
+      "path": "verification/05_stream_threading/__init__.py",
+      "section": "verification",
+      "sha256": "1ebf7cd0455752f4658d5b00ed7b4996aa3dc7fca75825ccdc977123897ba963",
+      "top_level_symbols": []
+    },
+    {
+      "bytes": 1624,
+      "path": "verification/05_stream_threading/test_12engine_cubocta_erasure.py",
+      "section": "verification",
+      "sha256": "8c885323edce42be92773aa7b7a8806d752bcba6099cf0c3b1478ec761d663c6",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 1160,
+      "path": "verification/05_stream_threading/test_24step_third_phase_mux.py",
+      "section": "verification",
+      "sha256": "18d1b631928ddbd901093de40bfc034d86bf78c3faa9fdd65fe2d5cddb29da39",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 1228,
+      "path": "verification/05_stream_threading/test_64stream_four_structure.py",
+      "section": "verification",
+      "sha256": "c29d06459b40ff114d2ffbec07b431bcd90ad9ad6d354fa657c3bd198970ce52",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 1663,
+      "path": "verification/05_stream_threading/test_soliton_mux_and_pruning.py",
+      "section": "verification",
+      "sha256": "494c1abafd6ad85b68af08519f86b7f26ad7b8cb66c33b91493498149487e1c4",
+      "top_level_symbols": [
+        "Verification"
+      ]
+    },
+    {
+      "bytes": 32512,
+      "path": "verification/reference/original_master_suite.py",
+      "section": "verification",
+      "sha256": "be2c497e28fadbb1ea1282bc08c1d29355adba6763d9c0f981fd391121b3fb00",
+      "top_level_symbols": [
+        "h_conj",
+        "h_norm",
+        "h_mul",
+        "h_inv_unit",
+        "generate_24_hurwitz_units",
+        "verify_pillar_1_accessibility",
+        "cramer_sound_speed",
+        "verify_pillar_2_calibration",
+        "verify_pillar_3_certification",
+        "verify_pillar_4_quaternion_blockchain",
+        "verify_pillar_5_stream_threading",
+        "main"
+      ]
+    },
+    {
+      "bytes": 4844,
+      "path": "verification/test_golden_vectors.py",
+      "section": "verification",
+      "sha256": "f2a19833da58972f0a13421178b183155316a9762f982f07b470699195316c73",
+      "top_level_symbols": [
+        "load",
+        "multiply",
+        "GoldenConformance"
+      ]
+    },
+    {
+      "bytes": 32504,
+      "path": "verification/verify_geometric_labs_suite.py",
+      "section": "verification",
+      "sha256": "001634b47876327b8cc8772925f3d306a50103ba446c13fd178f610c6034b586",
+      "top_level_symbols": [
+        "h_conj",
+        "h_norm",
+        "h_mul",
+        "h_inv_unit",
+        "generate_24_hurwitz_units",
+        "verify_pillar_1_accessibility",
+        "cramer_sound_speed",
+        "verify_pillar_2_calibration",
+        "verify_pillar_3_certification",
+        "verify_pillar_4_quaternion_blockchain",
+        "verify_pillar_5_stream_threading",
+        "main"
+      ]
+    }
+  ],
+  "schema": "geometric-labs.file-inventory.v1"
+}
