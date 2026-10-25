@@ -1,0 +1,73 @@
+{
+  "accepted_visual_sidecars": 3,
+  "classes": 10,
+  "descriptor_bytes_per_agent": [
+    16384,
+    16384,
+    16384
+  ],
+  "device": "cpu",
+  "fixture_coordinates_are_predicted": false,
+  "fixture_triangle_tqf": 576,
+  "gaps": [
+    "remote profile/purpose validation for the visual sidecar needs an upstream API",
+    "CubiLoom persistence/replication absent",
+    "FractalOS tensor-job implementation absent",
+    "original AlexNet-H weights/baseline source absent",
+    "GPU/Loihi/QEMU untested"
+  ],
+  "independent_import_origins": {
+    "manifold_projection": "workspaces/Manifold-Projection/src/manifold_projection/__init__.py",
+    "polycentric": "workspaces/Polycentric-Orchestrator/src/polycentric/__init__.py",
+    "polyshard_agent": "workspaces/PolyShard-Agent/src/polyshard_agent/__init__.py",
+    "shdccp_core": "workspaces/SHD-CCP-core/src/shdccp_core/__init__.py"
+  },
+  "negative_http_fixtures": [
+    "replay",
+    "tampered_sidecar"
+  ],
+  "parameters": 2506558,
+  "private_rag_exported": false,
+  "production_ready": false,
+  "python": "3.12.14",
+  "remote_visual_schema_enforced": false,
+  "schema": "alexneth-geot.reference-interop-report.v1",
+  "status": "PASS_REFERENCE_INTEROP",
+  "tensor_byte_order": "little-endian-declared",
+  "tensor_shapes": {
+    "input": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "routing": [
+      1,
+      64,
+      7
+    ],
+    "semantic": [
+      1,
+      64
+    ],
+    "spinors": [
+      1,
+      64,
+      4
+    ],
+    "tokens": [
+      1,
+      64,
+      64
+    ]
+  },
+  "tile_byte_order": "big-endian",
+  "tile_form_id": 3,
+  "tile_hex": [
+    "000003103f4ccccd",
+    "000003103f4ccccd",
+    "000003103f4ccccd"
+  ],
+  "torch": "2.9.1+cpu",
+  "trained": false
+}

@@ -1,0 +1,64 @@
+{
+  "byte_order": "big-endian",
+  "c_api": "two-u32 on native host (not an actual 32-bit host run)",
+  "compiler": "cc (Debian 14.2.0-19) 14.2.0",
+  "fixture_sha256": {
+    "ecosystem/workspaces/SHD-CCP-core/spec/golden_vectors.json": "c720d8bb40e50202c03bc4f45917aa77a5b1b7756fb7b12fdccaf3c58212795c",
+    "ecosystem/workspaces/SHD-CCP-core/spec/shdccp_einstein_v1.json": "0a4e98ffceaa6692620ed2851b1e4c8fd265829d25ded72cab56f08804f4b367",
+    "spec_sync/golden_vectors/v1_tiles_forms_0_15.json": "17dd34eee7d38278138240bd2803c46baf653f8618b356d517718d1b2f303458"
+  },
+  "form_id_bits": [
+    40,
+    43
+  ],
+  "import_origins": {
+    "shdccp_core": "workspaces/SHD-CCP-core/src/shdccp_core/__init__.py"
+  },
+  "packet_cases": 183,
+  "schema": "biochain.protocol-compatibility-report.v1",
+  "semantic_compatible": false,
+  "semantic_gaps": [
+    {
+      "forms": [
+        0
+      ],
+      "issue": "local opaque vs upstream named lossy quaternion"
+    },
+    {
+      "forms": [
+        1
+      ],
+      "issue": "upstream raw codec does not certify parity/sign/reserved flags"
+    },
+    {
+      "forms": [
+        2
+      ],
+      "issue": "local 10/10/10 packing not standardized upstream"
+    },
+    {
+      "forms": [
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "issue": "named Codex forms have no complete upstream semantic codec"
+    }
+  ],
+  "semantic_profiles": [
+    "glab-local-v1",
+    "shdccp-proposed-v1"
+  ],
+  "status": "PASS",
+  "upstream_c_test": "SHDCCP canonical layout/CRC/XOR parity C tests PASS",
+  "wire_format_id": "einstein-tile/1"
+}

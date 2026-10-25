@@ -1,0 +1,199 @@
+{
+  "custom_viewer_compatibility": "unverified: original grammar unavailable",
+  "edges": [
+    {
+      "contract": "samples",
+      "source": "data",
+      "target": "preprocess"
+    },
+    {
+      "contract": "tensors",
+      "source": "preprocess",
+      "target": "encoder"
+    },
+    {
+      "contract": "features",
+      "source": "encoder",
+      "target": "euclidean"
+    },
+    {
+      "contract": "features",
+      "source": "encoder",
+      "target": "hyperbolic"
+    },
+    {
+      "contract": "optional features",
+      "source": "encoder",
+      "target": "quaternion"
+    },
+    {
+      "contract": "declared coordinate metadata",
+      "source": "encoder",
+      "target": "exact"
+    },
+    {
+      "contract": "control logits",
+      "source": "euclidean",
+      "target": "trainer"
+    },
+    {
+      "contract": "experimental logits",
+      "source": "hyperbolic",
+      "target": "trainer"
+    },
+    {
+      "contract": "optional ablation",
+      "source": "quaternion",
+      "target": "trainer"
+    },
+    {
+      "contract": "selected checkpoint",
+      "source": "trainer",
+      "target": "evaluate"
+    },
+    {
+      "contract": "integer check evidence",
+      "source": "exact",
+      "target": "evaluate"
+    },
+    {
+      "contract": "metrics and provenance",
+      "source": "evaluate",
+      "target": "review"
+    },
+    {
+      "contract": "reviewed model artifact; no automatic deployment",
+      "source": "review",
+      "target": "inference"
+    },
+    {
+      "contract": "authorized event references; capability required",
+      "source": "inference",
+      "target": "storage"
+    },
+    {
+      "contract": "authorized observations",
+      "source": "inference",
+      "target": "scene"
+    },
+    {
+      "contract": "read-only snapshot",
+      "source": "scene",
+      "target": "viewer"
+    },
+    {
+      "contract": "execution capability",
+      "source": "compute",
+      "target": "encoder"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "data",
+      "label": "Licensed data",
+      "ontology_path": "data.input",
+      "owner": "Geometric-Labs",
+      "stage": "P0"
+    },
+    {
+      "id": "preprocess",
+      "label": "Deterministic preprocessing",
+      "ontology_path": "vision.preprocess",
+      "owner": "Geometric-Labs",
+      "stage": "P0"
+    },
+    {
+      "id": "encoder",
+      "label": "AlexNet trunk",
+      "ontology_path": "vision.encoder",
+      "owner": "Geometric-Labs",
+      "stage": "P1"
+    },
+    {
+      "id": "euclidean",
+      "label": "Matched prototype control",
+      "ontology_path": "vision.head.euclidean",
+      "owner": "Geometric-Labs",
+      "stage": "P1"
+    },
+    {
+      "id": "hyperbolic",
+      "label": "Poincare exp0 and head",
+      "ontology_path": "vision.head.poincare",
+      "owner": "Geometric-Labs",
+      "stage": "P2"
+    },
+    {
+      "id": "quaternion",
+      "label": "Optional quaternion block",
+      "ontology_path": "vision.block.quaternion",
+      "owner": "Geometric-Labs",
+      "stage": "P3"
+    },
+    {
+      "id": "exact",
+      "label": "Exact geometric sidecar",
+      "ontology_path": "geometry.exact.sidecar",
+      "owner": "SHD-CCP-core",
+      "stage": "P3"
+    },
+    {
+      "id": "trainer",
+      "label": "Optimization/checkpoints",
+      "ontology_path": "experiment.train",
+      "owner": "Geometric-Labs",
+      "stage": "P1"
+    },
+    {
+      "id": "evaluate",
+      "label": "Held-out evidence",
+      "ontology_path": "experiment.evaluate",
+      "owner": "Geometric-Labs",
+      "stage": "P1"
+    },
+    {
+      "id": "review",
+      "label": "Human review",
+      "ontology_path": "governance.review",
+      "owner": "Kernel-Registry",
+      "stage": "P5"
+    },
+    {
+      "id": "inference",
+      "label": "Local inference/export filter",
+      "ontology_path": "agent.inference",
+      "owner": "PolyShard-Agent",
+      "stage": "P5"
+    },
+    {
+      "id": "storage",
+      "label": "Optional durable event fabric",
+      "ontology_path": "fabric.events",
+      "owner": "CubiLoom",
+      "stage": "P5"
+    },
+    {
+      "id": "scene",
+      "label": "Multi-perspective derived view",
+      "ontology_path": "control.scene",
+      "owner": "Polycentric-Orchestrator",
+      "stage": "P5"
+    },
+    {
+      "id": "viewer",
+      "label": "Read-only visualization",
+      "ontology_path": "projection.viewer",
+      "owner": "Manifold-Projection",
+      "stage": "P5"
+    },
+    {
+      "id": "compute",
+      "label": "Hosted capability dispatch",
+      "ontology_path": "runtime.compute",
+      "owner": "FractalOS-runtime",
+      "stage": "P6"
+    }
+  ],
+  "schema": "get-alexnet.flow-plan.v1",
+  "status": "proposed"
+}

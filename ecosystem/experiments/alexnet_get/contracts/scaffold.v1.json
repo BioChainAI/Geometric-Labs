@@ -1,0 +1,192 @@
+{
+  "areas": [
+    {
+      "acceptance": [
+        "reject source leakage and changed labels",
+        "record dataset license and allowed purposes"
+      ],
+      "id": "data",
+      "implementation_status": "not-implemented",
+      "inputs": "licensed local samples, dataset and split manifest",
+      "outputs": "deterministic batches, source refs, preprocessing digest",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "data/manifest.py",
+        "data/splits.py",
+        "data/transforms.py",
+        "data/loaders.py"
+      ],
+      "stage": "P0"
+    },
+    {
+      "acceptance": [
+        "E0 shape/parameter agreement with pinned torchvision",
+        "matched E1/H1 parameter and training budget",
+        "Q1 Hamilton and equivariance tests"
+      ],
+      "id": "models",
+      "implementation_status": "not-implemented",
+      "inputs": "NCHW tensors and versioned model config",
+      "outputs": "logits and typed embeddings",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "models/alexnet_reference.py",
+        "models/euclidean_head.py",
+        "models/hyperbolic_head.py",
+        "models/quaternion_block.py"
+      ],
+      "stage": "P1"
+    },
+    {
+      "acceptance": [
+        "float64/float32 oracle and gradient agreement",
+        "no float-to-exact conversion without error policy",
+        "zero/invalid-curvature/boundary failure cases"
+      ],
+      "id": "geometry",
+      "implementation_status": "not-implemented",
+      "inputs": "typed tangent vectors or separately declared integer coordinates",
+      "outputs": "hyperbolic values OR exact checks with explicit precision metadata",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "geometry/poincare.py",
+        "geometry/quantization.py",
+        "geometry/exact_bridge.py",
+        "geometry/orientation_actions.py"
+      ],
+      "stage": "P2"
+    },
+    {
+      "acceptance": [
+        "noncommutative ordering and open-boundary fixture",
+        "coarse-only records cannot claim exact replay"
+      ],
+      "id": "temporal",
+      "implementation_status": "not-implemented",
+      "inputs": "frame-stamped states, fine deltas and residual refs",
+      "outputs": "aggregate holonomy, retained history or labeled approximate lift",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "temporal/state_sequence.py",
+        "temporal/ordered_fold.py",
+        "temporal/residual_store.py",
+        "temporal/interpolation.py"
+      ],
+      "stage": "P4"
+    },
+    {
+      "acceptance": [
+        "forward/backward and tiny-batch overfit",
+        "same-platform save/resume equivalence",
+        "nonfinite gradients stop rather than disappear"
+      ],
+      "id": "training",
+      "implementation_status": "not-implemented",
+      "inputs": "data/model configs, paired seeds and compute budget",
+      "outputs": "checkpoints, RNG state, losses and provenance",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "training/trainer.py",
+        "training/losses.py",
+        "training/optimizers.py",
+        "training/checkpoint.py",
+        "training/reproducibility.py"
+      ],
+      "stage": "P1"
+    },
+    {
+      "acceptance": [
+        "no test-set tuning",
+        "matched comparator and all-seed reporting",
+        "full compression accounting including residuals and sidecars"
+      ],
+      "id": "evaluation",
+      "implementation_status": "not-implemented",
+      "inputs": "held-out predictions, taxonomy if declared, device counters",
+      "outputs": "metrics, seed intervals, latency/memory/byte reports",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "evaluation/classification.py",
+        "evaluation/retrieval.py",
+        "evaluation/hierarchy.py",
+        "evaluation/robustness.py",
+        "evaluation/resources.py",
+        "evaluation/compression.py"
+      ],
+      "stage": "P1"
+    },
+    {
+      "acceptance": [
+        "shape/dtype/layout/byte-size consistency",
+        "tamper or untrusted checkpoint rejected"
+      ],
+      "id": "artifacts",
+      "implementation_status": "not-implemented",
+      "inputs": "tensor bytes, approved metadata and source digests",
+      "outputs": "validated content-addressed local artifacts",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "artifacts/tensor_store.py",
+        "artifacts/run_manifest.py",
+        "artifacts/reports.py"
+      ],
+      "stage": "P0"
+    },
+    {
+      "acceptance": [
+        "reject unknown profiles and denied export",
+        "preserve frame/clock/error/source refs",
+        "missing upstream capability reported blocked"
+      ],
+      "id": "adapters",
+      "implementation_status": "not-implemented",
+      "inputs": "authorized typed observations and tensor references",
+      "outputs": "purpose-filtered events, optional storage receipts and display snapshots",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "adapters/polyshard.py",
+        "adapters/orchestrator.py",
+        "adapters/cubiloom.py",
+        "adapters/projection.py",
+        "adapters/fractalos.py"
+      ],
+      "stage": "P5"
+    },
+    {
+      "acceptance": [
+        "capability and memory-lifetime contract",
+        "no fake GPU/Loihi/QEMU pass",
+        "explicit CPU fallback only when permitted"
+      ],
+      "id": "runtime",
+      "implementation_status": "not-implemented",
+      "inputs": "typed tensor job, checkpoint digest and required precision",
+      "outputs": "status, backend provenance, result and measured error",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "runtime/capabilities.py",
+        "runtime/cpu.py",
+        "runtime/pytorch_device.py"
+      ],
+      "stage": "P6"
+    },
+    {
+      "acceptance": [
+        "invalid config fails before data/compute side effects",
+        "dry-run/planning output not labeled training"
+      ],
+      "id": "cli",
+      "implementation_status": "not-implemented",
+      "inputs": "validated config and explicit subcommand",
+      "outputs": "train/evaluate/benchmark/export reports after implementation",
+      "owner": "Geometric-Labs experimental package; stable adapters use owning upstream APIs",
+      "proposed_files": [
+        "cli.py"
+      ],
+      "stage": "P0"
+    }
+  ],
+  "implementation_root": "src/get_alexnet",
+  "schema": "get-alexnet.scaffold-plan.v1",
+  "status": "proposed"
+}

@@ -1,0 +1,28 @@
+make: Entering directory '/workspace/Geometric-Labs/ecosystem'
+python3 -m unittest discover -s tests -p 'test_*.py' -v
+make: Leaving directory '/workspace/Geometric-Labs/ecosystem'
+test_demo_requires_four_repo_contracts (test_architecture.TestManifest.test_demo_requires_four_repo_contracts) ... ok
+test_dependency_graph_acyclic (test_architecture.TestManifest.test_dependency_graph_acyclic) ... ok
+test_exact_seven_core_repos (test_architecture.TestManifest.test_exact_seven_core_repos) ... ok
+test_legacy_is_not_required (test_architecture.TestManifest.test_legacy_is_not_required) ... ok
+test_real_github_org_and_paths (test_architecture.TestManifest.test_real_github_org_and_paths) ... ok
+test_source_of_truth_contains_unique_ownership (test_architecture.TestManifest.test_source_of_truth_contains_unique_ownership) ... ok
+test_all_original_tracked_bytes_unchanged (test_protocol_profiles.ProtocolProfiles.test_all_original_tracked_bytes_unchanged) ... ok
+test_no_cross_profile_semantic_substitution (test_protocol_profiles.ProtocolProfiles.test_no_cross_profile_semantic_substitution) ... ok
+test_reserved_form1_and_form2_fail_closed (test_protocol_profiles.ProtocolProfiles.test_reserved_form1_and_form2_fail_closed) ... ok
+test_supported_forms_and_explicit_opaque (test_protocol_profiles.ProtocolProfiles.test_supported_forms_and_explicit_opaque) ... ok
+test_wrong_wire_version_endian_and_legacy_not_reinterpreted (test_protocol_profiles.ProtocolProfiles.test_wrong_wire_version_endian_and_legacy_not_reinterpreted) ... ok
+test_dirty_checkout_blocks_all_operations_and_is_preserved (test_workspace_manager.WorkspaceManager.test_dirty_checkout_blocks_all_operations_and_is_preserved) ... ok
+test_lock_and_sync_repeat_without_mutating_existing_refs (test_workspace_manager.WorkspaceManager.test_lock_and_sync_repeat_without_mutating_existing_refs) ... ok
+test_lock_tampered_urls_schema_and_membership (test_workspace_manager.WorkspaceManager.test_lock_tampered_urls_schema_and_membership) ... ok
+test_missing_clone_restored_to_pin_not_new_tip (test_workspace_manager.WorkspaceManager.test_missing_clone_restored_to_pin_not_new_tip) ... ok
+test_missing_lock_and_unsafe_manifest_fail_closed (test_workspace_manager.WorkspaceManager.test_missing_lock_and_unsafe_manifest_fail_closed) ... ok
+test_new_commit_requires_explicit_lock_refresh (test_workspace_manager.WorkspaceManager.test_new_commit_requires_explicit_lock_refresh) ... ok
+test_symlink_workspace_refused (test_workspace_manager.WorkspaceManager.test_symlink_workspace_refused) ... ok
+test_unknown_checkout_blocks_before_cloning (test_workspace_manager.WorkspaceManager.test_unknown_checkout_blocks_before_cloning) ... ok
+test_wrong_origin_and_parent_checkout_refused (test_workspace_manager.WorkspaceManager.test_wrong_origin_and_parent_checkout_refused) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 2.310s
+
+OK

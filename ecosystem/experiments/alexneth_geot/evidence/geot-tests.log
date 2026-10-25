@@ -1,0 +1,21 @@
+test_exact_rational_simplex (test_geot.Geometry.test_exact_rational_simplex) ... ok
+test_fold_invalid (test_geot.Geometry.test_fold_invalid) ... ok
+test_fold_supported_types_noncontiguous_and_gradients (test_geot.Geometry.test_fold_supported_types_noncontiguous_and_gradients) ... ok
+test_lorentz_float_matches_oracle (test_geot.Geometry.test_lorentz_float_matches_oracle) ... ok
+test_oracle_rejects_floats_and_overflow (test_geot.Geometry.test_oracle_rejects_floats_and_overflow) ... ok
+test_sparsemax_stability_gradcheck_and_invalid (test_geot.Geometry.test_sparsemax_stability_gradcheck_and_invalid) ... ok
+test_three_distinct_quadrances (test_geot.Geometry.test_three_distinct_quadrances) ... ok
+test_checkpoint_roundtrip (test_geot.NeuralReference.test_checkpoint_roundtrip) ... ok
+test_collapse_monitor (test_geot.NeuralReference.test_collapse_monitor) ... ok
+test_forward_backward_optimizer_and_equivalent_control (test_geot.NeuralReference.test_forward_backward_optimizer_and_equivalent_control) ... ok
+test_local_periodic_graph (test_geot.NeuralReference.test_local_periodic_graph) ... ok
+test_quad_gradients_and_invalid_model_input (test_geot.NeuralReference.test_quad_gradients_and_invalid_model_input) ... ok
+test_semantic_zero_gradient_and_interior (test_geot.NeuralReference.test_semantic_zero_gradient_and_interior) ... ok
+test_sidecar_integrity_profiles_and_privacy (test_geot.NeuralReference.test_sidecar_integrity_profiles_and_privacy) ... ok
+test_tensor_contracts (test_geot.NeuralReference.test_tensor_contracts) ... ok
+test_image_to_independent_agents_and_orchestrator (test_interop.EnvironmentInteroperability.test_image_to_independent_agents_and_orchestrator) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 1.768s
+
+OK
