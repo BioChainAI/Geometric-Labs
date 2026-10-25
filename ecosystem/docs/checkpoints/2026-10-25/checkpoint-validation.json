@@ -1,0 +1,15 @@
+{
+  "all_original_tracked_bytes_unchanged": true,
+  "base_commit": "5740846e07f313aed4bee9038ceb740436b50899",
+  "edges": 19,
+  "fresh_unique_unittest_methods": 140,
+  "map_inventory_links": "PASS",
+  "packet_cases": 183,
+  "real_browser_visual_test": "NOT RUN",
+  "remote_github_ci_status": "NOT QUERIED",
+  "schema": "geometric-labs.checkpoint-validation.v1",
+  "sections": 13,
+  "tracked_paths_covered": 229,
+  "viewer_interaction_smoke": "PASS (Node VM with minimal DOM test double: section, search, all-files, keyboard)",
+  "viewer_javascript_syntax": "PASS (node --check)"
+}

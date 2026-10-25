@@ -1,0 +1,55 @@
+make: Entering directory '/workspace/Geometric-Labs/Cryptographic_Research'
+python3 tools/registry.py check
+OK: 1 research item(s), 0 error(s)
+python3 -m unittest discover -s tests -v
+test_repository_registry_is_valid (test_registry.TestLiveTree.test_repository_registry_is_valid) ... ok
+test_changelog_must_cover_version (test_registry.TestRules.test_changelog_must_cover_version) ... ok
+test_copy_is_valid (test_registry.TestRules.test_copy_is_valid) ... ok
+test_research_log_required (test_registry.TestRules.test_research_log_required) ... ok
+test_scaffold_produces_a_valid_item (test_registry.TestRules.test_scaffold_produces_a_valid_item) ... ok
+test_status_must_fit_stage (test_registry.TestRules.test_status_must_fit_stage) ... ok
+test_unregistered_folder (test_registry.TestRules.test_unregistered_folder) ... ok
+test_upstream_must_be_pinned (test_registry.TestRules.test_upstream_must_be_pinned) ... ok
+test_version_drift_between_registry_and_manifest (test_registry.TestRules.test_version_drift_between_registry_and_manifest) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.037s
+
+OK
+== experimental/CR-0001_lamport-otp/
+test_invert_rejects_non_walks (test_hurwitz_walk.TestPreimageAttack.test_invert_rejects_non_walks) ... ok
+test_random_walks_invert_uniquely (test_hurwitz_walk.TestPreimageAttack.test_random_walks_invert_uniquely) ... ok
+test_walk_anchor_leaks_the_next_password (test_hurwitz_walk.TestPreimageAttack.test_walk_anchor_leaks_the_next_password) ... ok
+test_backtracking_path_rejected (test_hurwitz_walk.TestWalk.test_backtracking_path_rejected) ... ok
+test_generators (test_hurwitz_walk.TestWalk.test_generators) ... ok
+test_path_encoding_is_a_bijection (test_hurwitz_walk.TestWalk.test_path_encoding_is_a_bijection) ... ok
+test_product_norm (test_hurwitz_walk.TestWalk.test_product_norm) ... ok
+test_challenge_outside_chain (test_lamport.TestAuthentication.test_challenge_outside_chain) ... ok
+test_forgery_rejected_without_consuming (test_lamport.TestAuthentication.test_forgery_rejected_without_consuming) ... ok
+test_full_chain_then_exhaustion (test_lamport.TestAuthentication.test_full_chain_then_exhaustion) ... ok
+test_lost_message_does_not_desynchronize (test_lamport.TestAuthentication.test_lost_message_does_not_desynchronize) ... ok
+test_out_of_order_rejected (test_lamport.TestAuthentication.test_out_of_order_rejected) ... ok
+test_replay_rejected (test_lamport.TestAuthentication.test_replay_rejected) ... ok
+test_links_and_anchor (test_lamport.TestChain.test_links_and_anchor) ... ok
+test_pluggable_hash (test_lamport.TestChain.test_pluggable_hash) ... ok
+test_rejects_bad_parameters (test_lamport.TestChain.test_rejects_bad_parameters) ... ok
+test_readme_session (test_lamport.TestUpstreamEquivalence.test_readme_session) ... ok
+test_decode_rejects_defects (test_tile_frame.TestFrameCodec.test_decode_rejects_defects) ... ok
+test_encode_rejects (test_tile_frame.TestFrameCodec.test_encode_rejects) ... ok
+test_layout (test_tile_frame.TestFrameCodec.test_layout) ... ok
+test_round_trip (test_tile_frame.TestFrameCodec.test_round_trip) ... ok
+test_full_session_over_frames (test_tile_frame.TestFrameVerifier.test_full_session_over_frames) ... ok
+test_index_is_a_prefilter_not_a_bypass (test_tile_frame.TestFrameVerifier.test_index_is_a_prefilter_not_a_bypass) ... ok
+test_profile_requires_32_byte_seed (test_tile_frame.TestFrameVerifier.test_profile_requires_32_byte_seed) ... ok
+test_replay_and_tamper (test_tile_frame.TestFrameVerifier.test_replay_and_tamper) ... ok
+test_wrong_route_rejected (test_tile_frame.TestFrameVerifier.test_wrong_route_rejected) ... ok
+test_frames_replay_a_full_session (test_vectors.TestGoldenVectors.test_frames_replay_a_full_session) ... ok
+test_no_drift (test_vectors.TestGoldenVectors.test_no_drift) ... ok
+test_walk_negative_control_inverts (test_vectors.TestGoldenVectors.test_walk_negative_control_inverts) ... ok
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.612s
+
+OK
+Checked cr0001_v0.json.
+make: Leaving directory '/workspace/Geometric-Labs/Cryptographic_Research'

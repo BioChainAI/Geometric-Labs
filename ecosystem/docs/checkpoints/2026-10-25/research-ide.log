@@ -1,0 +1,29 @@
+make: Entering directory '/workspace/Geometric-Labs/Research_IDE'
+python3 tools/library.py check
+OK: 0 paper(s), 0 error(s)
+make test
+make[1]: Entering directory '/workspace/Geometric-Labs/Research_IDE'
+python3 -m unittest discover -s tests -v
+test_bad_folder_name_rejected (test_library.TestLibrary.test_bad_folder_name_rejected) ... ok
+test_ide_lock_mismatch_rejected (test_library.TestLibrary.test_ide_lock_mismatch_rejected) ... ok
+test_ingest_keeps_changed_file_without_replace (test_library.TestLibrary.test_ingest_keeps_changed_file_without_replace) ... ok
+test_ingest_sorts_every_ide_export (test_library.TestLibrary.test_ingest_sorts_every_ide_export) ... ok
+test_ingest_to_overrides_folder (test_library.TestLibrary.test_ingest_to_overrides_folder) ... ok
+test_lake_verified_needs_record (test_library.TestLibrary.test_lake_verified_needs_record) ... ok
+test_notes_sorted_by_name (test_library.TestLibrary.test_notes_sorted_by_name) ... ok
+test_refile_inside_paper_moves_record (test_library.TestLibrary.test_refile_inside_paper_moves_record) ... ok
+test_scaffold_is_valid_and_indexed (test_library.TestLibrary.test_scaffold_is_valid_and_indexed) ... ok
+test_sorry_blocks_sorry_free (test_library.TestLibrary.test_sorry_blocks_sorry_free) ... ok
+test_sorry_in_comments_is_ignored (test_library.TestLibrary.test_sorry_in_comments_is_ignored) ... ok
+test_stage_needs_evidence (test_library.TestLibrary.test_stage_needs_evidence) ... ok
+test_stale_catalog_rejected (test_library.TestLibrary.test_stale_catalog_rejected) ... ok
+test_tampered_artifact_rejected_then_track_update (test_library.TestLibrary.test_tampered_artifact_rejected_then_track_update) ... ok
+test_untracked_file_rejected_then_tracked (test_library.TestLibrary.test_untracked_file_rejected_then_tracked) ... ok
+test_repository_library_is_valid (test_library.TestLiveTree.test_repository_library_is_valid) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.089s
+
+OK
+make[1]: Leaving directory '/workspace/Geometric-Labs/Research_IDE'
+make: Leaving directory '/workspace/Geometric-Labs/Research_IDE'

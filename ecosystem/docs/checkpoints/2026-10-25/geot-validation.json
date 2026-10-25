@@ -1,0 +1,153 @@
+{
+  "base_commit": "5740846e07f313aed4bee9038ceb740436b50899",
+  "branch": "codex/repository-checkpoint",
+  "checks": [
+    {
+      "command": [
+        "make",
+        "verify-all"
+      ],
+      "command_returncode": 0,
+      "count_mismatch": false,
+      "log": "root-baseline.log",
+      "name": "root-baseline",
+      "returncode": 0,
+      "test_counts": [
+        40
+      ]
+    },
+    {
+      "command": [
+        "make",
+        "-C",
+        "ecosystem",
+        "test"
+      ],
+      "command_returncode": 0,
+      "count_mismatch": false,
+      "log": "ecosystem-offline.log",
+      "name": "ecosystem-offline",
+      "returncode": 0,
+      "test_counts": [
+        20
+      ]
+    },
+    {
+      "command": [
+        "make",
+        "-C",
+        "ecosystem",
+        "integration"
+      ],
+      "command_returncode": 0,
+      "count_mismatch": false,
+      "log": "ecosystem-integration.log",
+      "name": "ecosystem-integration",
+      "returncode": 0,
+      "test_counts": [
+        4
+      ]
+    },
+    {
+      "command": [
+        "/workspace/.venvs/alexneth-geot/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/workspace/Geometric-Labs/ecosystem/experiments/alexneth_geot/research/tests",
+        "-v"
+      ],
+      "command_returncode": 0,
+      "count_mismatch": false,
+      "log": "research-primitives.log",
+      "name": "research-primitives",
+      "returncode": 0,
+      "test_counts": [
+        6
+      ]
+    },
+    {
+      "command": [
+        "/workspace/.venvs/alexneth-geot/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/workspace/Geometric-Labs/ecosystem/experiments/alexneth_geot/tests",
+        "-v"
+      ],
+      "command_returncode": 0,
+      "count_mismatch": false,
+      "log": "geot-tests.log",
+      "name": "geot-tests",
+      "returncode": 0,
+      "test_counts": [
+        16
+      ]
+    },
+    {
+      "command": [
+        "/workspace/.venvs/alexneth-geot/bin/python",
+        "ecosystem/tools/protocol_compatibility.py",
+        "--output",
+        "/tmp/checkpoint-geot/protocol.json"
+      ],
+      "command_returncode": 0,
+      "count_mismatch": false,
+      "log": "protocol-gate.log",
+      "name": "protocol-gate",
+      "returncode": 0,
+      "test_counts": []
+    },
+    {
+      "command": [
+        "/workspace/.venvs/alexneth-geot/bin/python",
+        "/workspace/Geometric-Labs/ecosystem/experiments/alexneth_geot/tools/interop.py",
+        "--output",
+        "/tmp/checkpoint-geot/interop.json"
+      ],
+      "command_returncode": 0,
+      "count_mismatch": false,
+      "log": "vision-interop.log",
+      "name": "vision-interop",
+      "returncode": 0,
+      "test_counts": []
+    },
+    {
+      "command": [
+        "/workspace/.venvs/alexneth-geot/bin/python",
+        "ecosystem/tools/glab.py",
+        "check-lock"
+      ],
+      "command_returncode": 0,
+      "count_mismatch": false,
+      "log": "release-lock.log",
+      "name": "release-lock",
+      "returncode": 0,
+      "test_counts": []
+    }
+  ],
+  "dependency_snapshot_sha256": "c01987d040bf4a0c326904771a40680cde020faf21df284b89040b52f916f990",
+  "limits": [
+    "untrained synthetic CPU reference only",
+    "original claimed v0.1 baseline unavailable",
+    "GPU/Loihi/QEMU not executed",
+    "remote visual-sidecar semantic validation not implemented",
+    "no CubiLoom storage or FractalOS tensor backend"
+  ],
+  "schema": "alexneth-geot.validation.v1",
+  "source_sha256": {
+    "src/alexneth_geot/__init__.py": "0617b7e5b4560ff402f64ca47aa14d583ac446163f4176928174b19a9068c235",
+    "src/alexneth_geot/model.py": "099763725b550787e55815a619225d4ca3df587f4fde11fdaa9129848c613ef9",
+    "src/alexneth_geot/observations.py": "73009dcd3f1b469e421678705a60be83c735ee04ecc907787cf9953a0ad86471",
+    "src/alexneth_geot/oracle.py": "3183f3eb431d47c35d5ebe01b176af3c8615caa9a47b2e81f0038f133f2084ca",
+    "src/alexneth_geot/primitives.py": "51c5b72853b1fec33f4c58a092289abb3f43488915adef35d5dcfb1d6e6c2fea",
+    "tests/test_geot.py": "ac03e546b5326344d9ad94760b13b72c6d0745234728d1d8e2c29f2a96cfee96",
+    "tests/test_interop.py": "7099f5edc12d943a23a638b6be7eea8bb55713b77fbc89965d6f60a3afe8f4cf",
+    "tools/interop.py": "37e815f5463dcb407bc7fda46c4cdea44e661c854923e81fcd6d984f0a45b1bf",
+    "tools/verify.py": "6ad3cd0bdee13daa78a78e38ea3021d703d384304b275ba7db289eb6bf3b68fc"
+  },
+  "status": "PASS",
+  "unique_unittest_methods": 86
+}

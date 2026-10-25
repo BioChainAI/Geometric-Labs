@@ -1,0 +1,282 @@
+{
+  "relationships": [
+    {
+      "kind": "control",
+      "label": "governs development / package entry",
+      "source": "foundation",
+      "target": "math"
+    },
+    {
+      "kind": "control",
+      "label": "governs development / command entry",
+      "source": "foundation",
+      "target": "integration"
+    },
+    {
+      "kind": "reference",
+      "label": "documented motivation; manual review, not code generation",
+      "source": "papers",
+      "target": "math"
+    },
+    {
+      "kind": "planned",
+      "label": "proposed manual promotion of verified artifacts",
+      "source": "research_ide",
+      "target": "papers"
+    },
+    {
+      "kind": "code",
+      "label": "imported primitives under test",
+      "source": "math",
+      "target": "verification"
+    },
+    {
+      "kind": "code",
+      "label": "frozen expected outputs",
+      "source": "spec",
+      "target": "verification"
+    },
+    {
+      "kind": "code",
+      "label": "Hurwitz/CRT/tile imports",
+      "source": "math",
+      "target": "crypto"
+    },
+    {
+      "kind": "code",
+      "label": "explicit local frame profile",
+      "source": "spec",
+      "target": "crypto"
+    },
+    {
+      "kind": "code",
+      "label": "baseline invoked by geometry/acceptance",
+      "source": "verification",
+      "target": "integration"
+    },
+    {
+      "kind": "code",
+      "label": "cross-profile byte checks",
+      "source": "spec",
+      "target": "integration"
+    },
+    {
+      "kind": "reference",
+      "label": "superseded design lineage",
+      "source": "historical",
+      "target": "vision"
+    },
+    {
+      "kind": "code",
+      "label": "independent agents/control/codec APIs in interop",
+      "source": "integration",
+      "target": "vision"
+    },
+    {
+      "kind": "code",
+      "label": "experimental descriptor references in loopback harness",
+      "source": "vision",
+      "target": "integration"
+    },
+    {
+      "kind": "reference",
+      "label": "teaching illustration; no proof implication",
+      "source": "walkthrough",
+      "target": "papers"
+    },
+    {
+      "kind": "reference",
+      "label": "ownership plans and recorded evidence",
+      "source": "ecosystem_docs",
+      "target": "integration"
+    },
+    {
+      "kind": "code",
+      "label": "root verification job",
+      "source": "ci",
+      "target": "verification"
+    },
+    {
+      "kind": "code",
+      "label": "pinned integration job",
+      "source": "ci",
+      "target": "integration"
+    },
+    {
+      "kind": "code",
+      "label": "crypto registry/tests/vectors job",
+      "source": "ci",
+      "target": "crypto"
+    },
+    {
+      "kind": "code",
+      "label": "catalog/library check job",
+      "source": "ci",
+      "target": "research_ide"
+    }
+  ],
+  "schema": "geometric-labs.site-sections.v1",
+  "sections": [
+    {
+      "entry": "README.md",
+      "id": "foundation",
+      "limits": "Root make verify-all is not a whole-repository test runner.",
+      "matches": [
+        "README.md",
+        "AGENTS.md",
+        "LICENSE",
+        "Makefile",
+        "pyproject.toml",
+        ".gitignore"
+      ],
+      "role": "Read the scope, development rules and command entrypoints; package metadata builds only the exact-math src package.",
+      "status": "implemented",
+      "title": "Project entry and operating rules"
+    },
+    {
+      "entry": "docs/specification_status.md",
+      "id": "papers",
+      "limits": "No canonical PDFs are currently tracked in docs/papers/. Uploaded chat files are not repository paper entries.",
+      "matches": [
+        "docs/"
+      ],
+      "role": "Explains mathematical architecture, corrections and pending source-paper intake.",
+      "status": "reference",
+      "title": "Canonical documentation and paper intake"
+    },
+    {
+      "entry": "Research_IDE/README.md",
+      "id": "research_ide",
+      "limits": "CATALOG has 0 papers. Browser saves are manual exports; IDE proof labels do not execute Lean. CLI checks were run; browser UI/CDNs were not exercised.",
+      "matches": [
+        "Research_IDE/"
+      ],
+      "role": "Transform/export research artifacts, file them by paper ID, and validate manifests/catalog consistency.",
+      "status": "implemented",
+      "title": "Research IDE and paper library"
+    },
+    {
+      "entry": "src/geometric_labs/__init__.py",
+      "id": "math",
+      "limits": "Calibration uses floats; not every named theorem is a formal proof and not every tile form has semantics.",
+      "matches": [
+        "src/"
+      ],
+      "role": "Reusable mathematical primitives, with integer geometry separated from numerical physical calibration.",
+      "status": "implemented",
+      "title": "Exact geometry library"
+    },
+    {
+      "entry": "spec_sync/einstein_tile_64bit_rfc.md",
+      "id": "spec",
+      "limits": "Local profile is not a complete universal Codex specification; opaque forms stay opaque.",
+      "matches": [
+        "spec_sync/"
+      ],
+      "role": "Freeze local byte/math examples and detect drift without rewriting expected outputs.",
+      "status": "implemented",
+      "title": "Local wire profile and golden vectors"
+    },
+    {
+      "entry": "verification/verify_geometric_labs_suite.py",
+      "id": "verification",
+      "limits": "40 unittest methods. Archived original runner is intentionally preserved with known defects and excluded from passing targets.",
+      "matches": [
+        "verification/"
+      ],
+      "role": "Exercise exact operations, calibration, certification, holonomy, threading and frozen fixtures.",
+      "status": "implemented",
+      "title": "Five-pillar reference verification"
+    },
+    {
+      "entry": "Cryptographic_Research/README.md",
+      "id": "crypto",
+      "limits": "Only CR-0001 exists. Its quaternion-walk one-way-function candidate fails by inversion; production authentication is not provided.",
+      "matches": [
+        "Cryptographic_Research/"
+      ],
+      "role": "Study classical security separately from geometric representation and tile transport.",
+      "status": "experimental",
+      "title": "Cryptographic research line"
+    },
+    {
+      "entry": "ecosystem/README.md",
+      "id": "integration",
+      "limits": "Nested clones are ignored runtime inputs, not vendored source; current replay/authentication is development-only.",
+      "matches": [
+        "ecosystem/"
+      ],
+      "role": "Restore reviewed independent checkouts, gate protocol compatibility and exercise loopback federation.",
+      "status": "implemented",
+      "title": "Seven-repository integration control"
+    },
+    {
+      "entry": "ecosystem/experiments/alexneth_geot/README.md",
+      "id": "vision",
+      "limits": "2,506,558 default parameters; untrained. Remote visual-schema enforcement, CubiLoom and tensor HAL remain incomplete.",
+      "matches": [
+        "ecosystem/experiments/alexneth_geot/"
+      ],
+      "role": "Multiscale image features \u2192 fold3 \u2192 64-cell Euclidean/Lorentz routing \u2192 class and semantic outputs \u2192 typed sidecar.",
+      "status": "experimental",
+      "title": "AlexNet-H/GEOT RFC 0.2 CPU reference"
+    },
+    {
+      "entry": "ecosystem/experiments/alexnet_get/README.md",
+      "id": "historical",
+      "limits": "Planning validation is not training or implemented model functionality.",
+      "matches": [
+        "ecosystem/experiments/alexnet_get/"
+      ],
+      "role": "Preserve the earlier design and its assumptions; directs new work to alexneth_geot.",
+      "status": "reference",
+      "title": "Earlier AlexNet planning scaffold"
+    },
+    {
+      "entry": "ecosystem/docs/REPOSITORY_CHECKPOINT.md",
+      "id": "ecosystem_docs",
+      "limits": "Historical reports describe their own revisions; they are not live health dashboards. PNG diagrams are references, not executable integrations.",
+      "matches": [
+        "ecosystem/docs/",
+        "ecosystem/evidence/"
+      ],
+      "role": "Record design intent, ownership, implementation milestones and command evidence.",
+      "status": "reference",
+      "title": "Ecosystem architecture and evidence"
+    },
+    {
+      "entry": "interactive/geometric_engine_8_step_walkthrough.html",
+      "id": "walkthrough",
+      "limits": "Pedagogical simulation with external browser assets; not the vision model, Research IDE or proof engine.",
+      "matches": [
+        "interactive/"
+      ],
+      "role": "Teach the geometric-engine cycle and visual relationships through a standalone browser artifact.",
+      "status": "reference",
+      "title": "Interactive geometric walkthrough"
+    },
+    {
+      "entry": ".github/workflows/static.yml",
+      "id": "ci",
+      "limits": "No dedicated Torch/AlexNet CI lane currently runs the additional 22 model/research tests. Workflow definitions inspected; GitHub run outcomes not queried.",
+      "matches": [
+        ".github/"
+      ],
+      "role": "Run independent math, ecosystem, library and crypto checks on configured Python versions.",
+      "status": "implemented",
+      "title": "Automated verification workflows"
+    },
+    {
+      "entry": "site/README.md",
+      "id": "pages",
+      "limits": "A static build records repository state; it does not continuously run scientific or hardware checks.",
+      "matches": [
+        "site/",
+        "tools/pages/"
+      ],
+      "role": "Publish this project map from versioned metadata and a fresh Git scan.",
+      "status": "implemented",
+      "title": "Landing page and project scanner"
+    }
+  ]
+}
