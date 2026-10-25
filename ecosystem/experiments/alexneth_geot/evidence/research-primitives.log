@@ -1,0 +1,11 @@
+test_fold_inverse (test_geot_primitives.Tests.test_fold_inverse) ... ok
+test_golden_torus_not_group (test_geot_primitives.Tests.test_golden_torus_not_group) ... ok
+test_lorentz_and_rational (test_geot_primitives.Tests.test_lorentz_and_rational) ... ok
+test_ordered_noncommutative (test_geot_primitives.Tests.test_ordered_noncommutative) ... ok
+test_sparsemax (test_geot_primitives.Tests.test_sparsemax) ... ok
+test_triangle_tqf_name (test_geot_primitives.Tests.test_triangle_tqf_name) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.008s
+
+OK

@@ -1,0 +1,13 @@
+make: Entering directory '/workspace/Geometric-Labs/ecosystem'
+python3 -m unittest discover -s integration_tests -p 'test_*.py' -v
+LOCK OK (7 clean independent checkouts)
+make: Leaving directory '/workspace/Geometric-Labs/ecosystem'
+test_c_python_structural_conformance (test_live_checkouts.LiveCheckouts.test_c_python_structural_conformance) ... ok
+test_clean_release_lock (test_live_checkouts.LiveCheckouts.test_clean_release_lock) ... ok
+test_loopback_three_agents_and_negative_admission (test_live_checkouts.LiveCheckouts.test_loopback_three_agents_and_negative_admission) ... ok
+test_registry_does_not_self_certify_or_overwrite_header (test_live_checkouts.LiveCheckouts.test_registry_does_not_self_certify_or_overwrite_header) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.911s
+
+OK

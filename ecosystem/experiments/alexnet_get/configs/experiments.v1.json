@@ -1,0 +1,130 @@
+{
+  "comparison": {
+    "equal_data_and_budget": true,
+    "paired_variants": [
+      "E1",
+      "H1"
+    ],
+    "results": null,
+    "test_split_for_selection": false
+  },
+  "embedding_dimension": 128,
+  "input": {
+    "dataset": "operator-provided; no automatic download",
+    "layout": "NCHW",
+    "shape": [
+      "N",
+      3,
+      224,
+      224
+    ],
+    "split_policy": "source-disjoint train/validation/test"
+  },
+  "numerics": {
+    "amp": false,
+    "curvature_bounds": [
+      0.001,
+      10.0
+    ],
+    "curvature_fixed": 1.0,
+    "oracle_dtype": "float64",
+    "train_dtype": "float32"
+  },
+  "schema": "get-alexnet.experiment-plan.v1",
+  "seeds": [
+    17,
+    41,
+    83
+  ],
+  "status": "proposed-not-trained",
+  "variants": [
+    {
+      "compare_to": null,
+      "description": "torchvision-style AlexNet, 224px, full FC classifier",
+      "family": "reference",
+      "hyperbolic": false,
+      "id": "E0",
+      "quantized_export": false,
+      "quaternion": false,
+      "status": "proposed",
+      "temporal": false
+    },
+    {
+      "compare_to": "E0",
+      "description": "global-average pooled trunk, d-dimensional Euclidean prototype-distance head",
+      "family": "control",
+      "hyperbolic": false,
+      "id": "E1",
+      "quantized_export": false,
+      "quaternion": false,
+      "status": "proposed",
+      "temporal": false
+    },
+    {
+      "compare_to": "E1",
+      "description": "same projection/prototypes as E1, exp0 and fixed-curvature hyperbolic distance",
+      "family": "hyperbolic",
+      "hyperbolic": true,
+      "id": "H1",
+      "quantized_export": false,
+      "quaternion": false,
+      "status": "proposed",
+      "temporal": false
+    },
+    {
+      "compare_to": "H1",
+      "description": "H1 with separately bounded trainable curvature",
+      "family": "hyperbolic",
+      "hyperbolic": true,
+      "id": "H2",
+      "quantized_export": false,
+      "quaternion": false,
+      "status": "proposed",
+      "temporal": false
+    },
+    {
+      "compare_to": "E1",
+      "description": "one declared quaternion latent block, matched real-valued block control",
+      "family": "quaternion",
+      "hyperbolic": false,
+      "id": "Q1",
+      "quantized_export": false,
+      "quaternion": true,
+      "status": "proposed",
+      "temporal": false
+    },
+    {
+      "compare_to": "Q1",
+      "description": "combine only independently validated Q1 and H1 changes",
+      "family": "combined",
+      "hyperbolic": true,
+      "id": "QH1",
+      "quantized_export": false,
+      "quaternion": true,
+      "status": "proposed",
+      "temporal": false
+    },
+    {
+      "compare_to": "H1",
+      "description": "conditional video extension after encoder selection; preserve fine history",
+      "family": "temporal",
+      "hyperbolic": true,
+      "id": "T1",
+      "quantized_export": false,
+      "quaternion": false,
+      "status": "proposed",
+      "temporal": true
+    },
+    {
+      "compare_to": "E1",
+      "description": "transport/quantization lane, independent of predictive-model geometry",
+      "family": "transport",
+      "hyperbolic": false,
+      "id": "X1",
+      "quantized_export": true,
+      "quaternion": false,
+      "status": "proposed",
+      "temporal": false
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "architecture_claims": "proposal, not an experimental result",
+  "earlier_bundle_files": [
+    {
+      "filename": "BioChainAI_Polycentric_System_ARCHITECTURE.md",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "24276d73add0db39ecf4415a09e2517ec253fa31c74113a7b215701d5b2fb692"
+    },
+    {
+      "filename": "BioChainAI_Polycentric_System_README.md",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "10820ccee19a02bdadf5311f2d9b23277fb543272d6b62e40618c3f81514ef72"
+    },
+    {
+      "filename": "FRACTAL_PROCESSOR_SHDCCP_IMPLEMENTATION_PLAN.md",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "61979a35a7dad3d5243d7e3191d04054eb170e805dd27c9ef023aa8dfc1ea34d"
+    },
+    {
+      "filename": "FractalOS_SHDCCP_Integrated_Implementation_Framework.md",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "094d32454de61d62b256e67c925152ae80a79545c9306aef4947695aa6e5d815"
+    },
+    {
+      "filename": "Geometric_Labs_Development_Environments.md",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "e2ffa4ca44f79cfac2c7d57298a6a9059954cacacb1c2c77db76853aaad8ba04"
+    },
+    {
+      "filename": "Geometric_Labs_Eight_Repository_Architecture.md",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "649f9c87a278e023a44be05a6927e19504b7805b6a7662136bf92a2230080ca3"
+    },
+    {
+      "filename": "Memory in the Twelve-Engine Hierarchy.pdf",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "4cbe8b207c9e1d2b600c1933c3568482782ed320a0d5c3de9b3e31759dff929b"
+    },
+    {
+      "filename": "The Geometric Engine of Time A Proposal for a Standardization of the Cubit.pdf",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "ec6bfcd53d6035143e324c46ab6797579667efd7b51a9ee2f87049480b6a891b"
+    },
+    {
+      "filename": "The_Geometric_Engine_of_Time_Fifteen_Lemmas.pdf",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "db85049366e1d5220e532bc0516544448fc19185361e42134d0385b405ba7005"
+    },
+    {
+      "filename": "The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Companion.pdf",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "b271c6eff84a169e6b9177ad3e56f3f9f58dcdc3bfe9cba362ad4181a02e2558"
+    },
+    {
+      "filename": "The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Release.pdf",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2"
+    },
+    {
+      "filename": "The_Torsional_Markov_Memory_Offload_Pump.pdf",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990"
+    },
+    {
+      "filename": "shd_ccp_kernel_certification_ontology_architecture.md",
+      "review_scope": "selected searchable passages and architecture constraints; no independent proof verification",
+      "sha256": "674c584c8c7a2cb18ef5512dcc86f1f91e912c20befaa0cc2be4cf910571393c"
+    }
+  ],
+  "linked_conversation": {
+    "available": "bounded preview only",
+    "full_text_and_13_attachments_reviewed": false,
+    "id": "6ad47e0d-bbf0-83ea-a7ae-681d35706282"
+  },
+  "schema": "get-alexnet.source-inventory.v1"
+}

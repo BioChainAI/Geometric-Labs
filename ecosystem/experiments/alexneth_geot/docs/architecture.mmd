@@ -1,0 +1,20 @@
+flowchart TD
+  I[Local synthetic image or authorized input] --> S[Five-conv multiscale stem]
+  S --> A[Projected 16x16 feature maps]
+  A --> F[Reversible H-W-H fold3]
+  F --> Q[Declared learned folded quadratic mixer]
+  Q --> V[Learned 64-cell latent cube]
+  V --> B[Bounded spinor state]
+  B --> C{Matched routing experiment}
+  C --> E[Euclidean chordal costs]
+  C --> L[Lorentz H3 quadrance]
+  E --> R[Local sparsemax and residual mixing]
+  L --> R
+  R --> H[Class logits and separate 64D semantic embedding]
+  H --> P[Explicit local purpose and consent checks]
+  P --> D[Local tensor blob and typed sidecar reference]
+  D --> T[Existing Form3 scalar Tile plus signed dev envelope]
+  T --> U[Independent PolyShard and Polycentric loopback APIs]
+  U --> M[CPU projection of supplied synthetic fixture points]
+  U -. blocked upstream capability .-> K[Future CubiLoom persistence]
+  S -. no tensor backend yet .-> O[Future FractalOS hosted job ABI]

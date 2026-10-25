@@ -1,0 +1,14 @@
+{
+  "cuda_available": false,
+  "dependency_snapshot_sha256": "c01987d040bf4a0c326904771a40680cde020faf21df284b89040b52f916f990",
+  "editable_package_origin": "/workspace/Geometric-Labs/ecosystem/experiments/alexneth_geot/src/alexneth_geot/__init__.py",
+  "model_device_tested": "cpu",
+  "numpy": "2.3.5",
+  "numpy_tensor_roundtrip": "PASS",
+  "package_version": "0.2.0",
+  "pip_check": "No broken requirements found.",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "schema": "alexneth-geot.environment.v1",
+  "torch": "2.9.1+cpu"
+}

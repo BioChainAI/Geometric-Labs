@@ -1,0 +1,78 @@
+{
+  "files": [
+    {
+      "bytes": 22814,
+      "filename": "ALEXNETH_GEOT_ARCHITECTURE_RFC.md",
+      "sha256": "1c29c84d401690335654f35b112f08458f9200d245bc34384357750e57416d65"
+    },
+    {
+      "bytes": 14058,
+      "filename": "BioChainAI_AlexNetH_GEOT_Redesign_Research_Package.zip",
+      "sha256": "3764935765a724edf2cd28f4333cc3100b88d899c1d52c69f19e24d44e1e5cce"
+    },
+    {
+      "bytes": 20415,
+      "filename": "Pasted text.txt",
+      "sha256": "7284d72d5bb263dfac3864559604019d5b2df9dd07ff95fc3f75e638b29d23b8"
+    },
+    {
+      "bytes": 292427,
+      "extracted_text_characters": 19,
+      "filename": "The_Geometric_Engine_of_Unified Report of hierarchical chronometry.pdf",
+      "sha256": "1bec26d8b7321c99202bdd3491295ae0ce2a5de8635fde71275e75bc87e9c1c7"
+    },
+    {
+      "bytes": 306619,
+      "extracted_text_characters": 73804,
+      "filename": "The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Companion.pdf",
+      "sha256": "b271c6eff84a169e6b9177ad3e56f3f9f58dcdc3bfe9cba362ad4181a02e2558"
+    },
+    {
+      "bytes": 747401,
+      "extracted_text_characters": 133868,
+      "filename": "The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Release.pdf",
+      "sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2"
+    },
+    {
+      "bytes": 231058,
+      "extracted_text_characters": 17395,
+      "filename": "Memory in the Twelve-Engine Hierarchy.pdf",
+      "sha256": "4cbe8b207c9e1d2b600c1933c3568482782ed320a0d5c3de9b3e31759dff929b"
+    },
+    {
+      "bytes": 821679,
+      "extracted_text_characters": 2,
+      "filename": "shd-ccp sumption cycle.pdf",
+      "sha256": "7e7db5fcbf8bd765a9811133744b2e93cc6dde03d69a5f17bfb2b0a66f626a87"
+    },
+    {
+      "bytes": 118285,
+      "extracted_text_characters": 26000,
+      "filename": "The_Torsional_Markov_Memory_Offload_Pump.pdf",
+      "sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990"
+    },
+    {
+      "bytes": 101993,
+      "extracted_text_characters": 23701,
+      "filename": "The_Geometric_Engine_of_Time_Mathematica.pdf",
+      "sha256": "b17a22359f5ac52ec1510f6c281376f2d2366a2b822d5afefae4006e04f29bdd"
+    },
+    {
+      "bytes": 767139,
+      "extracted_text_characters": 143733,
+      "filename": "The_Geometric_Engine_of_Time_Standardization_of_the_Cubit.pdf",
+      "sha256": "186f8c4a7194448927fc771f4a20fdad5e5aa32247c7feff0ac94202111056fe"
+    },
+    {
+      "bytes": 26906273,
+      "extracted_text_characters": 39,
+      "filename": "The_Geometric_Engine_of_Time_Fifteen_Lemmas.pdf",
+      "sha256": "db85049366e1d5220e532bc0516544448fc19185361e42134d0385b405ba7005"
+    }
+  ],
+  "independently_verified_all_13_papers": false,
+  "pdfs_supplied_this_turn": 9,
+  "review_scope": "RFC and prototype inspected; selected searchable passages; representative scanned-page inspection, not full independent proof review",
+  "rfc_reports_13_document_review": true,
+  "schema": "alexneth-geot.research-inventory.v1"
+}
