@@ -1,0 +1,19 @@
+Title:           The Geometric Engine of Time: The Fokker-Planck Prime Sieve in Quaternionic Lattices
+Creator:         Chromium
+Producer:        Skia/PDF m141
+CreationDate:    Fri Oct 16 21:50:36 2026 UTC
+ModDate:         Fri Oct 16 21:50:36 2026 UTC
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           38
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       747401 bytes
+Optimized:       no
+PDF version:     1.4

@@ -2,7 +2,7 @@ PYTHON ?= python3
 PORT ?= 8080
 LIB := $(PYTHON) tools/library.py
 
-.PHONY: serve check test index list new ingest track lock-ide
+.PHONY: serve check test index list new ingest track lock-ide archive-index archive-list
 
 # Serve the IDE at http://localhost:$(PORT)/ (localhost only).
 serve:
@@ -10,6 +10,7 @@ serve:
 
 check:
 	$(LIB) check
+	$(PYTHON) tools/archive.py check
 	$(MAKE) test
 
 test:
@@ -17,6 +18,14 @@ test:
 
 index:
 	$(LIB) index
+	$(PYTHON) tools/archive.py index
+
+archive-index:
+	$(LIB) index
+	$(PYTHON) tools/archive.py index
+
+archive-list:
+	$(PYTHON) tools/archive.py list
 
 list:
 	$(LIB) list

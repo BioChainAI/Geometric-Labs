@@ -2,6 +2,10 @@
 
 This folder holds the **Geometric Labs PDF-to-Markdown & LaTeX Research IDE** (`index.html`, SHD-CCP IDE v3.2) and the **paper library** where everything we produce with it is filed: transcriptions, audits, Lean 4 proofs, flowcharts, Cosmo-ID ledgers, workflows and post-processing data.
 
+The [eight-repository research archive](archive/README.md) now holds the first eleven
+preserved PDFs, with repository reading lists, revision families, source hashes and release
+status. Start with its [architecture map](archive/ARCHITECTURE_MAP.md) to find where a paper applies.
+
 The IDE is a single browser page. It keeps your work in memory only. Nothing survives a page reload unless you export it. The library is how those exports become a searchable, hash-checked database in git.
 
 **New here? Read [WALKTHROUGH.md](WALKTHROUGH.md).** It takes one paper from PDF to a verified, catalogued entry, step by step.

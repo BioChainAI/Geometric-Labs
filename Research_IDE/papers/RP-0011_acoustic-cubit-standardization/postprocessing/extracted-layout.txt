@@ -1,0 +1,2277 @@
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                 Geometric Engine of Time
+
+
+
+
+                  The Geometric Engine of Time:
+            A Proposal for a Standardization of the Cubit
+                                          BioChain AI — SHD-CCP Architecture Research
+                                          Consolidated Technical Report (Continued Series)
+
+
+       Abstract
+       This report formalizes the local acoustic cubit as a continued installment of the SHD-CCP research series
+       and an addition to The Geometric Engine of Time. Defined as one-sixteenth of an acoustic wavelength at a
+       fixed calibration frequency, C₀ = v/(16 f_cal), the cubit is realized at 20 °C with an expanded uncertainty of
+       0.22 mm (k = 2) from the Cramer (1993) real-air equation, and it grows by 0.98 mm per kelvin. Every
+       number and identity of the October 2026 technical report was recomputed in code: all seven of its
+       mathematical results hold once stated precisely, five after correction, while its pressure coefficient is at
+       least 55 times too large. The stellar, galactic and holonomy extensions lie at least five orders of magnitude
+       below the realization uncertainty and cannot be tested on Earth, and the 53.22 cm cosmological cubit
+       carries no evidential weight under a look-elsewhere test. Against climate data, calibration at the annual
+       mean temperature fits historical cubits no better than chance; a cold-season variant at two-thirds of a 432
+       Hz wavelength fits the Egyptian and Nippur cubits and is preregistered as hypothesis H1b. The Geometric
+       Engine of Time supplies the most accurate method at four points: exact caesium-cycle bookkeeping, the
+       Triple Quad Formula (TQF) identity in rational arithmetic, a 30-node wheel that tests 20 % fewer prime
+       candidates than the base-6 wheel, and a 0.5 s closure window that holds whole periods of the caesium
+       clock and of both series carriers. Three preregistered protocols state the measurements that would confirm
+       or refute each open claim.
+
+     Editorial Note. This document is formatted as a continuation of the Unified Dual-Helix Framework series and as an
+     addition to The Geometric Engine of Time (Hoard 2026a). It supersedes the October 2026 technical report Metrological
+     Foundations (Appendix A) and is written as a Stage 1 registered report: hypotheses, methods and decision rules are fixed
+     before any new data are collected. Its constructions operate at laboratory and historical scale and are explicitly
+     distinguished from the Engine's cosmological–temporal constructions and from the integer-factorization applications of the
+     core SHD-CCP manuscripts. All quantitative claims are annotated with status tags: [PROVEN], [HEURISTIC],
+     [CONJECTURAL], [OPEN], [SUPERSEDED], refined by four tags defined under Epistemic Conventions and Scope.
+
+
+ Contents
+ Epistemic Conventions and Scope                                                                                                  2
+ 1 Introduction                                                                                                                   3
+      1.1 Metrological Background                                                                                                 3
+      1.2 Historical Cubit Values                                                                                                 3
+      1.3 Research Questions                                                                                                      4
+      1.4 Hypotheses                                                                                                              4
+      1.5 Contributions                                                                                                           4
+      1.6 Relation to the Geometric Engine of Time                                                                                5
+ 2 Notation, Constants and Data Sources                                                                                           5
+      2.1 Symbols                                                                                                                 5
+      2.2 Physical and Astronomical Constants                                                                                     6
+      2.3 Data Sources                                                                                                            6
+      2.4 Software                                                                                                                6
+ 3 The Local Acoustic Cubit (Tier I)                                                                                              6
+      3.1 Speed of Sound in Air                                                                                                   6
+      3.2 Definition of the Local Cubit                                                                                           7
+      3.3 Voxel Partition and Phase                                                                                               7
+      3.4 Temperature-Invariant Room Modes                                                                                        7
+      3.5 Sensitivities and Uncertainty Budget                                                                                    8
+      3.6 Recomputed Calibration Values                                                                                           8
+ 4 Mathematical Foundations (Tier I)                                                                                              8
+
+
+                                                              —1—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                Geometric Engine of Time
+
+
+
+        4.1 Caesium Arithmetic and the Parity Closure                                                                                       9
+        4.2 The Quadrea Identity and the Weitzenböck Bound                                                                                  9
+        4.3 The Two-Source Interference Envelope                                                                                           10
+        4.4 Quaternion Delta Chains                                                                                                        10
+        4.5 The Three-State Cycle Current                                                                                                  11
+        4.6 The Base-6 Wheel, Mod 24 and the Bilinear Sieve                                                                                11
+        4.7 The Mock Theta Function f(q) and Its Completion                                                                                12
+ 5 Non-Local Extensions and Their Testability (Tier II)                                                                                    12
+        5.1 A Locally Realized Unit Needs No Gravitational Correction                                                                      12
+        5.2 The Stellar Factor                                                                                                             13
+        5.3 The Galactic Dual-Source Factor                                                                                                13
+        5.4 The Holonomy Factor                                                                                                            13
+        5.5 The Master Equation, Restated                                                                                                  13
+ 6 Cosmological and Numerical Correspondences (Tier III)                                                                                   14
+        6.1 The Geometric-Mean Length                                                                                                      14
+        6.2 Look-Elsewhere Test for the Factor 10,368                                                                                      15
+        6.3 Other Numerical Claims                                                                                                         15
+        6.4 Status of the Mock-Modular Analogy                                                                                             15
+ 7 Historical Correspondence: Preliminary Analysis                                                                                         15
+        7.1 Why Matching Rods to Temperatures Proves Nothing on Its Own                                                                    15
+        7.2 Method                                                                                                                         16
+        7.3 Results                                                                                                                        16
+        7.4 A Within-Climate Check on H1b                                                                                                  17
+        7.5 Interpretation                                                                                                                 17
+        7.6 Limitations                                                                                                                    17
+ 8 Preregistered Validation Protocols                                                                                                      17
+        8.1 Protocol A: Laboratory Realization and Tracking (H2)                                                                           17
+        8.2 Protocol B: Provenance-Dated Cubits and Climate (H1a, H1b, H0)                                                                 18
+        8.3 Protocol C: Archaeoacoustic Chambers (H3, Exploratory)                                                                         18
+ 9 Research Plan                                                                                                                           19
+        9.1 Work Packages                                                                                                                  19
+        9.2 Milestones and Decision Gates                                                                                                  20
+        9.3 Risks                                                                                                                          20
+        9.4 Open Science                                                                                                                   20
+        9.5 Ethics and Permits                                                                                                             20
+        9.6 Budget Categories                                                                                                              20
+ 10 Status of Claims                                                                                                                       20
+ 11 Conclusion                                                                                                                             21
+ A Errata and Audit of the Technical Report                                                                                                22
+ B Recomputed Calibration Tables                                                                                                           23
+ C Computational Verification                                                                                                              24
+ D Notation and Construction Catalogue                                                                                                     24
+ E Results Imported from the Geometric Engine of Time                                                                                      25
+ References                                                                                                                                26
+
+
+
+
+ Epistemic Conventions and Scope
+ Every claim carries one of nine tags. Five are the series tags of the Geometric Engine of Time; the report's
+ [DEFINITION] and [EMPIRICAL] are kept; and [ESTABLISHED] and [COMPUTED] are added so that cited physics
+ and evaluated formulas are not labelled as the authors' proofs.
+
+                                                  Table 1: Status tags used in this installment.
+
+  Tag                 Meaning                                                                                   Example in this proposal
+
+  [PROVEN]            A deductive result with a complete proof in this document. Series tag; exact arithmetic   A_R = 16A² (Theorem 4.2)
+                      on stated inputs is tagged [COMPUTED] here.
+
+  [DEFINITION]        A convention adopted by the proposal. It can be useful or not, but not true or false.     C₀ := v/(16 f_cal)
+
+
+
+
+                                                                       —2—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                            Geometric Engine of Time
+
+
+
+  Tag                Meaning                                                                                 Example in this proposal
+
+  [ESTABLISHED]      Standard physics or mathematics, cited and not re-proved here.                          Laplace sound speed; Zwegers'
+                                                                                                             completion of f(q)
+
+  [COMPUTED]         A number obtained by evaluating a stated formula. Reproducible from Appendix C.         1 − sech(u☉) = 2.60 × 10⁻¹⁰
+
+  [EMPIRICAL]        A comparison with measured data, with source and uncertainty.                           Royal cubit 52.375 ± 0.013 cm
+
+  [HEURISTIC]        A modelling choice motivated by analogy, not derived. Its parameters are free. Series   Stellar sech regulator
+                     tag.
+
+  [CONJECTURAL]      A claim that would need new evidence to be accepted. Series tag.                        Acoustic calibration of ancient
+                                                                                                             cubits
+
+  [OPEN]             A stated hypothesis awaiting its preregistered test. Series tag.                        H1b, tested by Protocol B
+
+  [SUPERSEDED]       A report claim replaced by a corrected statement in this document. Series tag.          Scalar mock-theta law; "1/10,000
+                                                                                                             mile"
+
+ Rule for mixed claims. A computed value of a heuristic formula is tagged [HEURISTIC / COMPUTED]: the arithmetic
+ is checked, but the physics is not thereby established. As in the Geometric Engine of Time, an exact result and its
+ physical reading are tagged separately. The report tagged several mixed results PROVEN; Appendix A lists them.
+
+ What this proposal does not claim.
+
+        It does not propose replacing the SI metre. C₀ is a derived, state-dependent engineering unit, traceable to the SI
+        through the second and the measured state of the air.
+        It does not claim that any ancient culture calibrated a cubit acoustically. It sets out how that claim would be tested
+        and which results would refute it.
+        It does not claim that the stellar, galactic, holonomy or mock-modular constructions describe physical effects. They
+        remain [HEURISTIC] or [CONJECTURAL], and Section 5 states whether each can be tested.
+        It does not treat the Engine's tori, helices and gears as physical objects. It uses the Engine's exact arithmetic and
+        identities, which hold whatever their physical reading; the Engine itself tags those readings [HEURISTIC].
+        It makes no health or biological claims about 40 Hz or 432 Hz sound.
+
+ Relation to the technical report. Section and proposition numbers in this proposal differ from the report's. Each
+ result cites the report's number in brackets, and Appendix A maps every correction to its original location.
+
+ Relation to the series. This installment imports results from The Geometric Engine of Time (Hoard 2026a) and cites
+ constructions of The Torsional Markov Memory-Offload Pump (Hoard 2026b) and The Hyperbolic Sparsemax Pump
+ (Hoard 2026c). Section 1.6 lists each import and says whether the series construction is the most accurate way to
+ calculate at that point; Appendix E verifies every imported result.
+
+ Notation. Inline mathematics is set in plain text (for example C₀ = λ/16); display equations are typeset.
+
+
+
+ 1 Introduction
+ The cubit is among the oldest attested standards of length, yet its value differed by about a quarter between cultures.
+ This proposal asks whether one acoustic rule can explain part of that spread, and builds a usable acoustic unit whatever
+ the answer.
+
+
+ 1.1 Metrological Background
+ Since 2019 the SI fixes the speed of light at 299,792,458 m/s and the caesium hyperfine frequency at 9,192,631,770 Hz.
+ The metre is therefore independent of the medium in which it is used.
+
+ An acoustic wavelength is not. In an ideal gas, λ = v/f with v proportional to √T, so a length tied to λ grows by about
+ 0.17 % per kelvin near 20 °C. For an acoustic array this is a feature: element spacings expressed in wavelengths keep
+ the array's phase geometry fixed when the air changes, while spacings in metres do not.
+
+ The technical report built on this idea as part of the SHD-CCP series, drawing its frequencies from The Geometric Engine
+ of Time (Hoard 2026a). It defined the cubit as λ/16 at 40 Hz, noted that this reproduces values in the historical range,
+ and added non-local factors intended to make the unit valid across astrophysical environments. This proposal keeps the
+ first idea, tests the second, and quantifies the third.
+
+
+ 1.2 Historical Cubit Values
+ Only values traceable to a measurement or a primary compilation are used in the analyses below.
+
+
+
+
+                                                                      —3—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                              Geometric Engine of Time
+
+
+                                                 Table 2: Sourced historical cubit values.
+
+  Unit                             Length                                Basis                                               Source
+
+  Egyptian royal cubit, Great      52.375 ± 0.013 cm (20.620 ± 0.005     weighted mean of eight determinations, Petrie       Petrie 1883, ch.
+  Pyramid                          in)                                   §136                                                20
+
+  Egyptian royal cubit, King's     52.405 ± 0.010 cm (20.632 ± 0.004     four wall lengths at the base, Petrie §52           Petrie 1883, ch.
+  Chamber                          in)                                                                                       7
+
+  Egyptian royal cubit, Old        52.10 to 52.60 cm (20.51 to 20.71     seven pyramids and temples, Petrie §137             Petrie 1883, ch.
+  Kingdom monuments                in)                                                                                       20
+
+  Egyptian cubit rods (14 rods)    52.35 to 52.92 cm                     Lepsius 1865                                        Cubit
+
+  Nippur cubit                     about 51.86 cm                        copper-alloy bar, about 2650 BCE; its use as a      Cubit; Eckhard
+                                                                         standard is disputed                                Unger
+
+  Late Assyrian standard, king's   about 51.5, 55.0 and 56.6 cm          Khorsabad sculpture (Guralnick 1996)                Cubit
+  and big cubits
+
+  Roman cubitus                    about 44.4 cm                         1.5 Roman feet (Vitruvius)                          Cubit
+
+  Greek pēchys                     about 46 cm                           standard forearm cubit                              Cubit
+
+  Rabbinic cubit                   48 to 57.6 cm; 54 cm for six          Naeh; Karelitz                                      Cubit
+                                   handbreadths of 9 cm
+
+  Megalithic yard (not a cubit)    about 82.9 cm (2.72 ft)               Thom 1962; statistical support for a uniform        Megalithic yard
+                                                                         unit is marginal
+
+ The report also cites a "Sacred/Long" cubit of 53.59 cm, a "Babylonian royal" cubit of 53.10 cm, a "Persian royal" cubit of
+ 54.00 cm, a "Talmudic great" cubit of 55.10 cm and an "Assyrian short" cubit of 51.1 cm. None was found in the sources
+ above, so they are excluded until primary sources are given.
+
+
+ 1.3 Research Questions
+   1. RQ1, realization. Can C₀ be realized reproducibly, and with what uncertainty?
+   2. RQ2, mathematics. Are the report's mathematical results correct as stated, and what are their complete proofs?
+   3. RQ3, non-local terms. Do the stellar, galactic and holonomy factors have measurable consequences on Earth or
+      elsewhere?
+   4. RQ4, history. Is there evidence that any historical cubit was set acoustically?
+   5. RQ5, coincidences. Do the report's numerical coincidences survive a look-elsewhere correction?
+
+
+ 1.4 Hypotheses
+      H2, engineering (confirmatory). A two-source array whose spacing tracks C₀(T) keeps its interference-null angle
+      fixed as temperature changes. An identical array with fixed spacing moves its null by the predicted −0.035° per
+      kelvin.
+      H1a, annual calibration (confirmatory). A cubit equals v(T)/d, with d one of 640, 648 or 768 and T the mean
+      annual temperature of its provenance, within 2 °C.
+      H1b, cold-season calibration (confirmatory, generated by the exploratory analysis in Section 7).
+      Egyptian royal cubits equal v(T)/648, the two-thirds fraction of a 432 Hz wavelength, with T the coldest-month
+      mean temperature of their provenance.
+      H0, null. Cubit lengths do not depend on the local speed of sound.
+      H3, design intent (exploratory). Chambers built in whole cubits place a low-order acoustic mode near a
+      preregistered target frequency more often than random rooms of the same size.
+
+
+ 1.5 Contributions
+   1. A corrected definition of the local cubit using the Cramer (1993) real-air equation, with a GUM-style uncertainty
+      budget (Section 3).
+   2. Complete proofs of all seven mathematical results, five of them corrected, and two strengthened results: an explicit
+      formula for the Markov cycle current and a temperature-invariance lemma for cubit-built rooms (Section 4).
+   3. A quantitative comparison of the non-local factors with general relativity (Section 5).
+   4. A look-elsewhere analysis of the cosmological and numerical correspondences (Section 6).
+   5. A preliminary test of the historical hypothesis against climate data (Section 7).
+   6. Three preregistered protocols with decision rules and power analysis, and an 18-month plan (Sections 8 and 9).
+   7. A script that reproduces every number in this proposal (Appendix C).
+
+
+
+                                                                  —4—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                       Geometric Engine of Time
+
+
+
+   8. A map of where the Geometric Engine of Time is the most accurate way to calculate (Section 1.6), three exact
+      results that follow from it (Sections 4.1, 4.2 and 4.6), and a check of every result imported from it (Appendix E).
+
+
+ 1.6 Relation to the Geometric Engine of Time
+ This installment uses the Geometric Engine of Time (Hoard 2026a) as a method wherever its exact constructions are the
+ most accurate way to calculate, and cites it as a source elsewhere. Four places qualify: caesium-cycle bookkeeping, the
+ quadrea identity, the prime wheel and the measurement window (Table 3). The Engine's geometric readings, with tori,
+ helices and gears as physical carriers, are not used; the Engine tags them [HEURISTIC], and so does this proposal.
+
+                       Table 3: Where the Geometric Engine of Time and its companion papers enter this proposal.
+
+  Section            Series result              Role here                         Most accurate method?
+
+  4.1 Caesium        Hoard 2026a, §1.3 and      Caesium periods per pulse         Yes. Integer arithmetic modulo 60 decides every closure exactly; the
+  arithmetic         Theorem 5.1                and per window                    shortest closure is 2 pulses.
+
+  4.2 Quadrea        Hoard 2026a, Theorem       Area and collinearity from        Yes, for integer or rational anchors: exact, free of square roots, with
+  identity           4.1 (TQF)                  quadrances                        no tolerance. Not in floating point for thin triangles (Remark 4.3).
+
+  4.6 Wheel and      Hoard 2026a, §3.1 (C₃      Residue classes of prime          Better than the report's base-6 wheel: the 30 nodes form ℤ/30,
+  sieve              × C₂) and §5 (30 nodes)    candidates                        whose 8 unit classes test 20 % fewer candidates. A mod-210 wheel
+                                                                                  saves more.
+
+  8.1 Protocol A     Hoard 2026a, Theorem       Coherent averaging                Yes. 0.5 s is the shortest window holding whole periods of the
+                     5.1 (0.5 s closure)        window                            caesium clock and of both series carriers, 40 Hz and 432 Hz, so lock-
+                                                                                  in estimates carry no leakage bias.
+
+  3.2 Calibration    Hoard 2026a, §1.2 and      Origin of 40 Hz = (2/3) ×         Source only. Any SI-traceable 40 Hz source gives the same C₀.
+  frequency          §1.3                       60 Hz and of the 432 Hz
+                                                rules
+
+  4.3 Two-source     Hoard 2026a,               The half-cycle offset π in π      Source only. The envelope is ordinary phasor addition.
+  envelope           Proposition 3.1            + π/6
+
+  4.4 Quaternion     Hoard 2026b; Hoard         Gear chains; tier                 Exact routes exist: identity (1) for gear cycles, signed permutation
+  chains             2026a, §2.3                orientations                      matrices for tier orientations.
+
+  4.5 Cycle          Hoard 2026b                Three-gear Markov chain           Source only. The tree-theorem formula is the exact method.
+  current
+
+  4.7 Mock theta     Hoard 2026c                Proposed analogy                  Source only. Zwegers' theory is the method.
+  function
+
+  6.3 Great Year     Hoard 2026a, §1.3          432 = 25,920/60                   Source only. 25,920 is a convention; measured precession gives
+                                                                                  25,772 years.
+
+ The remaining sections use standard physics and statistics, which are the accurate methods there.
+
+
+
+ 2 Notation, Constants and Data Sources
+ All computations use the constants below; no value is tuned to produce a match. The report's symbol π for a stationary
+ distribution is replaced by μ to avoid a clash with the circle constant.
+
+
+ 2.1 Symbols
+                                                                    Table 4: Symbols.
+
+  Symbol                   Meaning                                                                                       Unit
+
+  t, T                     air temperature; T = t + 273.15                                                               °C, K
+
+  p                        static pressure                                                                               Pa
+
+  h                        relative humidity, as a fraction                                                              1
+
+  x_w, x_c                 mole fractions of water vapour and CO₂                                                        1
+
+  γ, M, R                  ratio of specific heats, molar mass, molar gas constant                                       1, kg/mol, J/(mol K)
+
+  v                        speed of sound (the report's v_local)                                                         m/s
+
+  f_cal, λ                 calibration frequency; acoustic wavelength λ = v/f_cal                                        Hz, m
+
+  C₀                       local acoustic cubit, λ/16                                                                    m
+
+  C₄₀, C₂/₃, C₉/₁₆         v/640, v/648, v/768 (Section 3.2)                                                             m
+
+  Q₁, Q₂, Q₃; S            quadrances (squared distances); S = Q₁ + Q₂ + Q₃                                              m²
+
+  A_R, χ                   quadrea S² − 2(Q₁² + Q₂² + Q₃²); coupling √A_R / S                                            m⁴, 1
+
+  r_s, R★, r★              Schwarzschild radius, stellar radius, orbital radius                                          m
+
+
+                                                                        —5—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                Geometric Engine of Time
+
+
+
+  Symbol                    Meaning                                                                                Unit
+
+  u★, Γ★                    stellar argument and factor sech u★                                                    1
+
+  K, μ, J                   transition matrix, stationary distribution, cycle current                              1
+
+  q, H                      unit quaternion; composite holonomy                                                    1
+
+
+
+ 2.2 Physical and Astronomical Constants
+                                                   Table 5: Physical and astronomical constants.
+
+  Quantity                                       Value                                          Source
+
+  Speed of light c                               299,792,458 m/s, exact                         SI (2019)
+
+  Caesium frequency ν_Cs                         9,192,631,770 Hz, exact                        SI (2019)
+
+  Planck constant h                              6.626 070 15 × 10⁻³⁴ J s, exact                SI (2019)
+
+  Molar gas constant R                           8.314 462 618 J/(mol K)                        CODATA 2018
+
+  Newtonian constant G                           6.674 30 × 10⁻¹¹ m³/(kg s²)                    CODATA 2018
+
+  Planck length ℓ_P                              1.616 255 × 10⁻³⁵ m                            CODATA 2018
+
+  Bohr radius a₀                                 5.291 772 109 × 10⁻¹¹ m                        CODATA 2018
+
+  Dry-air molar mass M, ratio γ                  0.028 964 7 kg/mol; 1.400                      as in the report
+
+  Nominal solar radius R☉                        6.957 × 10⁸ m                                  IAU 2015 Resolution B3
+
+  Nominal solar mass parameter (GM)☉             1.327 124 4 × 10²⁰ m³/s²                       IAU 2015 Resolution B3
+
+  Nominal Earth radius and (GM)⊕                 6.3781 × 10⁶ m; 3.986 004 × 10¹⁴ m³/s²         IAU 2015 Resolution B3
+
+  Astronomical unit                              149,597,870,700 m, exact                       IAU 2012 Resolution B2
+
+  Distance to the Galactic Centre R₀             8.178 ± 0.013 (stat) ± 0.022 (sys) kpc         GRAVITY Collaboration 2019
+
+  R₀, alternative                                8.275 ± 0.009 (stat) ± 0.033 (sys) kpc         GRAVITY Collaboration 2021, via MPE
+
+  Hubble constant H₀; Ω_Λ                        67.66 ± 0.42 km/(s Mpc); 0.6889 ± 0.0056       Planck 2018, Table 2
+
+  General precession in longitude                5028.796195″ per Julian century                Capitaine et al. (2003), via Axial precession
+
+
+ 2.3 Data Sources
+         Speed of sound in real air. Cramer (1993), coefficients and auxiliary formulas as implemented in pyfar. Fitted
+         range 0 to 30 °C, mole fraction of water vapour up to 0.06; stated uncertainty below 300 ppm.
+         Historical cubits. The sources listed in Table 2.
+         Climate normals. Cairo, daily mean 22.5 °C and January 14.4 °C, 1991 to 2020 (Cairo). Baghdad, Erbil, Rome,
+         Athens, Jerusalem and Edinburgh from published station normals compiled in List of cities by average temperature.
+         Holocene temperature context. Global mean surface temperature about 6500 years ago was 0.7 °C (5th to 95th
+         percentile 0.3 to 1.8 °C) warmer than the 19th century (Kaufman et al. 2020).
+         King's Chamber geometry. Petrie (1883), sections 51 to 55 (chapter 7).
+         Series results. The Geometric Engine of Time (Hoard 2026a), as posted on Academia.edu; every result used here
+         is re-derived in Appendix E.
+
+
+ 2.4 Software
+ Python 3 with numpy 2.5.3, scipy 1.18.1, sympy 1.14.0 and mpmath 1.3.0. The script in Appendix C runs in about 25
+ seconds and stops at the first failed identity.
+
+
+
+ 3 The Local Acoustic Cubit (Tier I)
+ Defined as one-sixteenth of the local acoustic wavelength at a fixed calibration frequency, C₀ can be realized at 20 °C
+ with an expanded uncertainty of 0.22 mm (k = 2). It grows by about 0.98 mm per kelvin.
+
+
+ 3.1 Speed of Sound in Air
+ Status: [ESTABLISHED]. Report Definition 2.1, with its pressure term corrected.
+
+ The ideal-gas (Laplace) speed of sound is:
+
+                                                                                 γRT
+                                                                   vid (T ) =
+                                                                      ​                 ​   ​
+
+
+
+
+                                                                                  M
+
+                                                                          —6—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                                Geometric Engine of Time
+
+
+
+ With γ = 1.400 and M = 0.028 964 7 kg/mol this gives 331.32 m/s at 0 °C and 343.23 m/s at 20 °C [COMPUTED]. The
+ report's tables instead scale 331.30 m/s by √(T/273.15), which differs by 0.006 %.
+
+ Real air departs from the ideal value through humidity, CO₂ and non-ideal behaviour. Cramer's (1993) equation covers
+ these effects for 0 to 30 °C with an uncertainty below 300 ppm. At 20 °C, 101.325 kPa and 420 ppm CO₂ it gives 343.36
+ m/s for dry air and 343.98 m/s at 50 % relative humidity [COMPUTED].
+
+ Pressure term, corrected. The report multiplies by 1 + β_P(p − p₀) with β_P ≈ 1.0 × 10⁻⁷ Pa⁻¹. Cramer's equation
+ gives (1/v)∂v/∂p = −6.8 × 10⁻¹⁰ Pa⁻¹ at 0 °C, +1.2 × 10⁻⁹ Pa⁻¹ at 20 °C and +1.8 × 10⁻⁹ Pa⁻¹ at 30 °C [COMPUTED].
+ The report's coefficient is at least 55 times too large anywhere in 0–30 °C: at 83 kPa it predicts a −0.18 % change in the
+ cubit, where real air gives −0.002 %.
+
+ The working definition of local sound speed is therefore:
+                                                  vlocal := vCr (t, p, xw , xc ),
+                                                           ​            ​           ​    ​          0 ≤ t ≤ 30 ∘ C
+ Outside 0 to 30 °C the ideal-gas formula with measured composition applies. It carries an extra model uncertainty that
+ work package 1 will determine by direct measurement.
+
+
+ 3.2 Definition of the Local Cubit
+          Definition (Local Acoustic Cubit). [DEFINITION] Report Definition 2.1; calibration frequencies from Hoard
+          (2026a), §1.2 and §1.3.
+                                                                                        λ    vlocal (t, p, xw , xc )
+                                                  C0 (fcal ; t, p, xw , xc ) :=            =
+                                                                                                                 ​   ​
+
+
+
+
+                                                                                        16           16 fcal
+                                                       ​       ​            ​   ​            ​                           ​
+
+
+
+
+                                                                                                             ​
+
+
+
+
+ The calibration frequency is realized from an SI-traceable reference, such as a GPS-disciplined oscillator. In the series it
+ comes from the 60-pulse-per-second register of the Geometric Engine of Time (Hoard 2026a, §1.2): 40 Hz is two-thirds
+ of that pulse rate, and the 432 of the 432 Hz rules is the Engine's macroscopic bound 25,920/60 (§1.3). These origins
+ name the frequencies but add no constraint, because any traceable 40 Hz source gives the same C₀. The register
+ matters instead for timing the measurement (Section 8.1).
+
+ The report uses four rules, named here as follows.
+
+                                                                   Table 6: The four acoustic rules.
+
+  Symbol              Rule                                                                       Length              Value at 20 °C, 50 % RH
+
+  C₄₀                 λ/16 at 40 Hz                                                              v/640               53.75 cm
+
+  C₂/₃                two-thirds of λ at 432 Hz                                                  v/648               53.08 cm
+
+  C₉/₁₆               nine-sixteenths of λ at 432 Hz                                             v/768               44.79 cm
+
+  λ₄₃₂                full wavelength at 432 Hz                                                  v/432               79.63 cm
+
+
+ C₄₀ and C₂/₃ differ by only 1.25 % (648/640), which equals about 7 K of air temperature. A cubit that fits one rule at
+ temperature T fits the other near T + 7 K, so historical data alone can hardly separate them.
+
+
+ 3.3 Voxel Partition and Phase
+          Proposition 3.1 (Voxel Partition and Phase). [PROVEN] Report Proposition 2.2.
+          Let a cube of edge L = 4C₀ be divided into 4 × 4 × 4 voxels of edge C₀. Then:
+
+            1. one voxel occupies 1/64 of the volume, and its face 1/16 of a cross-section;
+            2. a displacement of one cubit along a plane wave advances the phase by π/8;
+            3. the cube edge equals λ/4, the distance from a pressure node to the adjacent antinode of a standing wave.
+
+          Proof. (1) Volumes scale as the cube of the edge and areas as its square, so C₀³/(4C₀)³ = 1/64 and C₀²/(4C₀)² =
+          1/16. (2) With k = 2π/λ and Δx = λ/16, kΔx = π/8. (3) 4C₀ = λ/4; in Ψ(x) = 2A sin(kx) cos(ωt) the node at kx =
+          0 and the antinode at kx = π/2 are λ/4 apart. ■
+
+         Editorial Note. The value λ/16 is forced once two design choices are made: a 4 × 4 × 4 grid, and an edge equal to a
+         quarter wavelength. It is a [DEFINITION]: a design decision, not a property of nature.
+
+
+ 3.4 Temperature-Invariant Room Modes
+          Lemma 3.2 (Temperature-Invariant Room Modes). [PROVEN] New in this proposal.
+
+
+
+
+                                                                                    —7—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                                  Geometric Engine of Time
+
+
+
+      Let a rigid-walled rectangular enclosure have edges N_x C₀, N_y C₀ and N_z C₀, with C₀ realized in the air the
+      enclosure contains. Then its mode frequencies are:
+
+                                         v         l2          m2          n2                      l2   m2 n2
+                               flmn =                    2
+                                                           +         2
+                                                                       +           = 8fcal             + 2+ 2
+                                         2       (Nx C0 )    (Ny C0 )    (Nz C0 )2                   2
+                                   ​         ​               ​           ​             ​   ​   ​          ​              ​       ​   ​
+
+
+
+
+                                                     ​   ​       ​   ​         ​   ​
+                                                                                                   Nx ​
+                                                                                                        Ny Nz        ​       ​
+
+
+
+
+      They do not depend on temperature, pressure or composition.
+
+      Proof. Substitute C₀ = v/(16 f_cal); v cancels. ■
+
+ Consequences.
+
+      The 4-cubit cube at f_cal = 40 Hz has its lowest rigid-wall mode at 80 Hz, twice the carrier.
+      A built structure is fixed in metres, so the invariance holds only for structures whose dimensions track C₀(T), such as
+      an actuated array. This is the premise of Protocol A (Section 8).
+      A 20-cubit length built at the calibration temperature has axial modes at multiples of 16 Hz when f_cal = 40 Hz. The
+      40 Hz carrier is then 2.5 times the fundamental, not a mode, which corrects the report's Protocol I (Section 8).
+
+
+ 3.5 Sensitivities and Uncertainty Budget
+ Status: [COMPUTED]. New in this proposal.
+
+ The budget below follows the GUM (JCGM 100:2008) for C₄₀ at 20 °C, 50 % relative humidity and 101.325 kPa.
+
+                                                   Table 7: GUM uncertainty budget for C₄₀.
+
+  Input                                Standard uncertainty                                        Relative contribution to C₀
+
+  Air temperature                      0.05 K                                                      9.1 × 10⁻⁵
+
+  Relative humidity                    2%                                                          7.3 × 10⁻⁵
+
+  CO₂ mole fraction                    50 ppm                                                      1.3 × 10⁻⁵
+
+  Pressure                             50 Pa                                                       5.9 × 10⁻⁸
+
+  Cramer equation                      300 ppm bound, rectangular                                  1.73 × 10⁻⁴
+
+  Calibration frequency                1 × 10⁻⁹, relative                                          1.0 × 10⁻⁹
+
+  Combined, k = 1                                                                                  2.09 × 10⁻⁴
+
+ The result is C₄₀ = 53.748 cm with a standard uncertainty of 0.112 mm and an expanded uncertainty of 0.22 mm (k =
+ 2). The cubit grows 0.98 mm per kelvin, and raising humidity from 0 to 100 % adds 1.96 mm at 20 °C.
+
+ The equation of state, not the sensors, dominates the budget. Realizing C₀ to better than 0.1 mm therefore requires
+ measuring v directly, by time of flight or acoustic interferometry, instead of computing it from the state of the air. Work
+ package 1 does this.
+
+
+ 3.6 Recomputed Calibration Values
+ Status: [COMPUTED]. Report Charts 1 and 2.
+
+ The report's tables are reproduced exactly by v = 331.30 √(T/273.15), except the 20 °C rows. Those use the engineering
+ value 343.00 m/s, which in the report's own model corresponds to 19.63 °C. A consistent 20 °C cubit is 53.63 cm for an
+ ideal gas, 53.65 cm for dry real air and 53.75 cm at 50 % relative humidity, not 53.59 cm. Appendix B gives the full
+ table.
+
+
+
+ 4 Mathematical Foundations (Tier I)
+ All seven of the report's mathematical results are true once stated precisely. Five needed corrected statements or
+ proofs, two are strengthened here, and every identity was also checked numerically (Appendix C). Proposition 4.1 and
+ Theorems 4.2 and 4.9 use the Geometric Engine of Time, whose exact constructions are the most accurate method
+ there (Section 1.6).
+
+                                        Table 8: Mathematical results, their sources and status.
+
+                             Report
+  Result in this proposal                           Series source                  Status                     Change
+                             reference
+
+  Proposition 3.1, voxel     Proposition 2.2        none                           [PROVEN]                   none
+  partition
+
+
+
+
+                                                                         —8—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                 Geometric Engine of Time
+
+
+
+                                 Report
+  Result in this proposal                          Series source                    Status          Change
+                                 reference
+
+  Proposition 4.1, caesium       Proposition 1.1   Hoard 2026a, §1.3 and            [PROVEN]        prime factorization completed; shortest and
+  arithmetic                                       Theorem 5.1                                      joint closures added
+
+  Theorem 4.2, quadrea and       Theorem 3.4       Hoard 2026a, Theorem             [PROVEN]        rational form added; floating-point claim
+  Weitzenböck bound                                4.1                                              corrected; triadic equality case added
+
+  Proposition 4.5, two-source    Proposition 3.3   Hoard 2026a,                     [PROVEN]        second solution 11π/6 added
+  envelope                                         Proposition 3.1 (offset π)
+
+  Proposition 4.6, quaternion    Proposition 5.1   Hoard 2026b                      [PROVEN]        boundary convention fixed; logarithm branch
+  delta chains                                                                                      corrected
+
+  Proposition 4.8, three-state   Lemma 5.2         Hoard 2026b                      [PROVEN]        sign criterion proved; entropy production
+  cycle current                                                                                     added
+
+  Theorem 4.9, wheel, mod 24     Theorem 5.3       Hoard 2026a, §3.1 and            [PROVEN]        item (1) reclassified as a definition; 30-node
+  and sieve                                        §5                                               wheel added
+
+  Section 4.7, mock theta        Section 4.1       Hoard 2026c                      [ESTABLISHED]   transformation law corrected
+  completion
+
+
+ 4.1 Caesium Arithmetic and the Parity Closure
+
+      Proposition 4.1 (Caesium Arithmetic). [PROVEN] Report Proposition 1.1; series source Hoard (2026a),
+      §1.3 and Theorem 5.1.
+      Let W_Σ = Σ (16 − 2n) over n = 0 to 4, so W_Σ = 60. Then ν_Cs/60 = 306,421,059/2, whose fractional part is
+      1/2. Thirty consecutive intervals of 1/60 s therefore contain exactly 4,596,315,885 caesium periods.
+
+      Proof. The prime factorization is ν_Cs = 2 × 3² × 5 × 7² × 47 × 44,351. Since 60 = 2² × 3 × 5:
+                                                   νCs   3 ⋅ 72 ⋅ 47 ⋅ 44 351   306 421 059
+                                                       =                      =
+                                                       ​
+
+
+
+
+                                                   60              2                 2
+                                                           ​                    ​               ​
+
+
+
+
+      The numerator is odd, so the fractional part is 1/2, and thirty intervals give 15 × 306,421,059 =
+      4,596,315,885. ■
+
+ Correction. The report writes the factorization as 2 × 3² × 5 × 7 × 14,591,479. The product is right, but 14,591,479 =
+ 7 × 47 × 44,351 is not prime. The report also defines one geometric cycle as 1 s with f_geo = 60 Hz; the intended
+ reading, which Hoard (2026a, §1.2) states as f_geo = W_Σ/Δt_geo, is 60 pulses per 1 s cycle.
+
+ Remark (Shortest and Joint Closures). [PROVEN] The proposition is equivalent to ν_Cs ≡ 30 (mod 60), so k pulses
+ hold a whole number of caesium periods exactly when k is even. The shortest closure is 2 pulses: 1/30 s, or 306,421,059
+ periods. The 30-node traversal of Hoard (2026a, Theorem 5.1) closes because its six channels contain the C₂ parity of
+ Proposition 3.1 there; 15 nodes, C₃ across the five tiers, would hold 2,298,157,942.5 periods. Adding a carrier, the
+ shortest window that also holds whole carrier periods is 6 pulses (0.1 s) at 40 Hz or 1 kHz and 10 pulses (1/6 s) at 432
+ Hz. For 40 Hz and 432 Hz together it is 30 pulses, exactly the Engine's 0.5 s traversal (Appendix C, section R). None of
+ this constrains a physical length.
+      Editorial Note. For timing bookkeeping the Engine's register is the most accurate method available: integer arithmetic
+      modulo 60 decides every closure exactly, with no rounding. Its geometric reading, the 30-node traversal as a temporal
+      engine, stays [HEURISTIC], as in Hoard (2026a, Remark 5.2).
+
+
+ 4.2 The Quadrea Identity and the Weitzenböck Bound
+      Theorem 4.2 (Quadrea Identity and Weitzenböck Bound). [PROVEN] Report Theorem 3.4; part (1) is
+      the TQF Area-Stability Identity of Hoard (2026a), Theorem 4.1.
+      For three points with quadrances Q₁, Q₂, Q₃ > 0, let S = Q₁ + Q₂ + Q₃ and A_R = S² − 2(Q₁² + Q₂² + Q₃²). Then:
+
+         1. A_R = 16A² = 4Q₁Q₂ − (Q₁ + Q₂ − Q₃)², where A is the triangle's area, so A_R > 0 exactly when the points
+            are not collinear;
+         2. for non-collinear points, 0 < χ = √A_R / S ≤ 1/√3, with equality exactly when Q₁ = Q₂ = Q₃;
+         3. equivalently, without square roots, 0 < χ² = A_R/S² ≤ 1/3.
+
+      Proof. (1) With side lengths a, b, c, so that a² = Q₁ and so on, Heron's formula gives 16A² = (a + b + c)(−a + b
+      + c)(a − b + c)(a + b − c) = 2(a²b² + b²c² + c²a²) − (a⁴ + b⁴ + c⁴). In quadrances this is S² − 2ΣQᵢ², and
+      expanding 4Q₁Q₂ − (Q₁ + Q₂ − Q₃)² gives the same polynomial. (2) The identity 3ΣQᵢ² − S² = (Q₁ − Q₂)² + (Q₂
+      − Q₃)² + (Q₃ − Q₁)² ≥ 0 gives ΣQᵢ² ≥ S²/3, hence A_R ≤ S²/3, with equality exactly when the three differences
+      vanish. This is Weitzenböck's inequality a² + b² + c² ≥ 4√3 A in quadrance form. (3) Square (2). ■
+
+
+                                                                      —9—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                  Geometric Engine of Time
+
+
+
+ Remark 4.3 (Numerical Conditioning). [COMPUTED] The report presents the quadrance form as free of floating-
+ point drift. For the observer–Sun–Galactic Centre triangle the opposite holds. With R₀ = 8.178 kpc and a 60° angle at the
+ Sun, A_R/S² ≈ 2.6 × 10⁻¹⁹, below the 2.2 × 10⁻¹⁶ resolution of IEEE double precision. Evaluated in double precision, A_R
+ comes out as 3.37 × 10⁶⁶ instead of the exact 4.28 × 10⁶³. Reliable values need exact integer or rational arithmetic, or
+ 16A² = 4|u × v|² computed from two difference vectors u and v.
+
+ Remark 4.4 (Magnitude). [COMPUTED] For that triangle χ = (AU/R₀) sin θ, where θ is the angle at the Sun between
+ the directions to Earth and to the Galactic Centre. Hence χ ≤ 5.9 × 10⁻¹⁰, and χ = 5.13 × 10⁻¹⁰ at θ = 60°.
+      Editorial Note. For anchors with integer or rational coordinates, evaluating A_R by the TQF identity of Hoard (2026a,
+      Theorem 4.1) in exact arithmetic is the most accurate method: it is exact, needs no square roots, and decides
+      collinearity without a tolerance. The Engine's triadic anchors, at phases 0°, 120° and 240° on a circle of radius R, give
+      Q₁ = Q₂ = Q₃ = 3R², A_R = 27R⁴ and χ² = 1/3 exactly, the equality case of part (2). The gear's stability check therefore
+      reduces to the exact test 3(Q₁² + Q₂² + Q₃²) = S². Its use as a predictor of signal quality stays [HEURISTIC], as Hoard
+      (2026a) states.
+
+
+ 4.3 The Two-Source Interference Envelope
+      Proposition 4.5 (Two-Source Interference Envelope). [PROVEN] Report Proposition 3.3; the half-cycle
+      offset π is the inverse-braid parity of Hoard (2026a), Proposition 3.1.
+      Two unit-amplitude sources at distances r₁ and r₂ from the observer emit the same frequency, the second with
+      an extra phase π + π/6. Write x = k(r₁ − r₂) and neglect the difference in 1/r spreading. The field is then a
+      carrier with envelope |Π| = 2|sin((x − π/6)/2)|, and:
+
+           |Π| = 0 exactly when x ≡ π/6 (mod 2π);
+           |Π| = 1 exactly when x ≡ π/2 or x ≡ 11π/6 (mod 2π);
+           |Π| reaches its maximum 2 exactly when x ≡ 7π/6 (mod 2π).
+
+      Proof. The field is Re[e^(−iΩt) (e^(ikr₁) + e^(i(kr₂ + π + π/6)))]. Its envelope is |1 + e^(iφ)| with φ = π + π/6 −
+      x, and |1 + e^(iφ)| = 2|cos(φ/2)| = 2|sin((x − π/6)/2)|. The envelope equals 1 when sin((x − π/6)/2) = ±1/2,
+      that is (x − π/6)/2 ≡ ±π/6 (mod π), giving x ≡ π/2 or x ≡ −π/6 ≡ 11π/6 (mod 2π). The zero and the maximum
+      follow from sin = 0 and |sin| = 1. ■
+
+ Correction. The report gives only x ≡ π/2 for unit amplitude; 11π/6 is the second solution. The equal-amplitude
+ assumption holds in the far field or for equidistant sources and should be stated.
+
+ Application. For a source pair of spacing d seen in the far field at angle θ from its axis, x = kd cos θ. With the report's
+ spacing d = C₀ = λ/16, kd = π/8 < π/6, so no direction has a null. The pattern's minimum lies on the axis at 0.131 of the
+ pair's peak amplitude, a front-to-back ratio of 16.6 dB. Protocol A (Section 8) therefore uses d = λ/4, which puts a null at
+ cos θ = 1/3, or θ = 70.5°.
+
+
+ 4.4 Quaternion Delta Chains
+      Proposition 4.6 (Quaternion Delta Chains). [PROVEN] Report Proposition 5.1; the gear chains are those
+      of Hoard (2026b).
+      Let S³ be the unit quaternions. Take outer-gear states q₀, …, q₇₁₉ with the cyclic convention q₋₁ := q₇₁₉, which
+      the report leaves undefined for the first block, and increments Δq_k = q_k q_(k−1)⁻¹.
+
+        1. Block telescoping. For m = 0, …, 71, the product Δq_(10m+9) Δq_(10m+8) ⋯ Δq_(10m) equals
+           q_(10m+9) q_(10m−1)⁻¹. Consequently the product of all 720 increments, Δq₇₁₉ ⋯ Δq₀, equals 1 for every
+           sequence of states.
+        2. Partition. The level sets A_l = {m : ⌊10m/72⌋ = l} have sizes |A_l| = ⌈7.2(l + 1)⌉ − ⌈7.2l⌉, which is 8 for l
+           = 0 and l = 5 and 7 otherwise, summing to 72.
+        3. Fractional lift. Every q in S³ except −1 can be written uniquely as q = cos φ + û sin φ with φ in [0, π)
+           and û a unit pure quaternion (û arbitrary when φ = 0). With log q = φû, the lift q^(1/N) = exp(φû/N)
+           satisfies (q^(1/N))^N = q.
+
+      Proof. (1) Each inner pair q_j⁻¹ q_j collapses by associativity, leaving the outer factors. Applied to the whole
+      cycle this gives q₇₁₉ q₋₁⁻¹ = 1. (2) The integer m lies in A_l exactly when 7.2l ≤ m < 7.2(l + 1), and an integer
+      satisfies m < y exactly when m ≤ ⌈y⌉ − 1. The resulting intervals [0, 7], [8, 14], [15, 21], [22, 28], [29, 35],
+      [36, 43], [44, 50], [51, 57], [58, 64] and [65, 71] are disjoint and cover 0 to 71. (3) Multiples of one pure
+      quaternion û commute, so exp(φû/N)^N = exp(φû) = q. ■
+
+
+
+                                                              — 10 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                    Geometric Engine of Time
+
+
+
+ Correction to (3). The report parametrizes q by a rotation angle θ in (−π, π) with q = cos(θ/2) + û sin(θ/2). That covers
+ only the hemisphere Re q > 0, and it is not unique, because (θ, û) and (−θ, −û) give the same q. For example, q = −1/2
+ + (√3/2)i has rotation angle 4π/3. SLERP implementations usually replace q by −q when Re q < 0, which represents the
+ same rotation; either convention works if it is stated.
+
+ Remark 4.7 (Holonomy). [COMPUTED] Two consequences matter for the report's Master Equation and its Step 5.
+
+      Any product of unit quaternions has norm 1, so the factor ‖H‖⁻¹ in the Master Equation is identically 1.
+      When increments are differences of stored states on a cycle, the full-cycle holonomy is 1 by (1). The middle-gear
+      product is also 1 in ascending order, but not in descending order (|H − 1| = 1.97 in the test). A non-trivial holonomy
+      needs increments generated independently of the states, for example by integrating an angular velocity, a stated
+      product order, and a measure such as the rotation angle 2 arccos|Re H|.
+      Editorial Note. Rotations drawn from the cube group compose exactly. The tier orientations Rot_x(π/2) and Rot_y(π/2)
+      of Hoard (2026a, §2.3) generate its 24 rotations, all signed permutation matrices, and adjacent tiers differ by a 120°
+      rotation about a body diagonal (Appendix E); for such rotations integer arithmetic is the most accurate method. The
+      gear increments of Hoard (2026b) are not of this kind. For them identity (1) gives the cycle product exactly, where a
+      floating-point product of 720 quaternions reproduces it only to rounding error.
+
+
+ 4.5 The Three-State Cycle Current
+      Proposition 4.8 (Three-State Cycle Current). [PROVEN] Report Lemma 5.2, strengthened; the three-gear
+      chain is that of Hoard (2026b).
+      Let X_t be an irreducible Markov chain on the states a = 12, b = 10 and c = 8, with row-stochastic matrix K
+      and stationary distribution μ (μK = μ). Let J_ij = μ_i K_ij − μ_j K_ji. Then:
+
+        1. J_ab = J_bc = J_ca, written J;
+        2. J = (Π₊ − Π₋)/Z, with Π₊ = K_ab K_bc K_ca, Π₋ = K_ac K_cb K_ba and Z > 0 as below;
+        3. the sign of J is the sign of Π₊ − Π₋, so J = 0 exactly when Π₊ = Π₋ (Kolmogorov's criterion);
+        4. the entropy production per step, σ = J ln(Π₊/Π₋), is non-negative and vanishes exactly when J = 0.
+      Z = Ta + Tb + Tc ,
+             ​    ​        Ta = Kba Kca + Kbc Kca + Kcb Kba ,
+                             ​      ​   ​     ​         ​   ​   Tb = Kab Kcb + Kac Kcb + Kca Kab ,
+                                                                  ​      ​   ​     ​    ​    ​   ​   Tc = Kac Kbc + Kab Kbc + Kba Kac
+                                                                                                       ​     ​   ​     ​   ​     ​      ​
+
+
+
+
+      Proof. (1) Stationarity at a gives μ_a(K_ab + K_ac) = μ_b K_ba + μ_c K_ca, which is J_ab = J_ca; the same at b
+      gives J_bc = J_ab. The diagonal entries cancel. (2) By the Markov chain tree theorem, μ_i = T_i/Z, where T_i
+      sums the weights of the spanning trees directed into state i. Then μ_a K_ab − μ_b K_ba = (T_a K_ab − T_b
+      K_ba)/Z, and four of the six products cancel in pairs, leaving K_ab K_bc K_ca − K_ac K_cb K_ba. (3) Z > 0 for an
+      irreducible chain. (4) J and ln(Π₊/Π₋) have the same sign by (3). ■
+
+ Correction. The report attributes the strict sign condition to Kolmogorov's criterion, which only gives J = 0 exactly when
+ Π₊ = Π₋. The strict inequality needs step (2), as in Hill (1977) and Schnakenberg (1976). The result was confirmed on
+ 20,000 random chains.
+
+
+ 4.6 The Base-6 Wheel, Mod 24 and the Bilinear Sieve
+      Theorem 4.9 (Base-6 Wheel, Mod 24 and Bilinear Sieve). [PROVEN] Report Theorem 5.3; by the
+      Chinese remainder theorem the six residue classes mod 6 correspond to the six C₃ × C₂ channels of Hoard
+      (2026a), §3.1.
+        1. Every prime p > 3 satisfies p ≡ ±1 (mod 6).
+        2. Every integer n coprime to 6 satisfies n² ≡ 1 (mod 24).
+        3. For k ≥ 1 and s in {+1, −1}, the number n = 6k + s is composite exactly when k = 6ab + s₂a + s₁b for
+           some integers a, b ≥ 1 and signs s₁, s₂ with s₁s₂ = s. The report's form 6ab + s₁a + s₂b is the same set
+           after relabelling.
+
+      Proof. (1) Residues 0, 2 and 4 (mod 6) are even, and residues 0 and 3 are multiples of 3, so a prime above 3
+      has residue 1 or 5 ≡ −1. (2) Since n is odd, n − 1 and n + 1 are consecutive even numbers and one is divisible
+      by 4, so 8 divides (n − 1)(n + 1). One of n − 1, n, n + 1 is divisible by 3 and it is not n, so 3 divides n² − 1.
+      Hence 24 divides n² − 1. (3) If k has the stated form, then n = (6a + s₁)(6b + s₂) with both factors at least 5,
+      so n is composite. Conversely, if n = uv with u, v > 1, every divisor of n is coprime to 6, so u = 6a + s₁ and v =
+      6b + s₂ with a, b ≥ 1. Expanding gives uv = 6(6ab + s₂a + s₁b) + s₁s₂, so s = s₁s₂ and k has the stated form.
+      ■
+
+
+
+
+                                                                — 11 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                                                                        Geometric Engine of Time
+
+
+
+ Reclassification. Item (1) of the report's theorem, the "1.5-cube linear offset" with 1 + 1.5 × 4 = 7, is not a
+ mathematical statement. It becomes a [DEFINITION]: the residue classes 5 and 1 (mod 6) are labelled "Step 5" and
+ "Step 7".
+
+ Remark. Part (3) is a base-6 analogue of the sieve of Sundaram. It restates trial division over the classes 6k ± 1 and
+ gives no faster primality test. It was checked up to 10⁷: 664,579 primes, no mismatches.
+
+ Remark (The 30-Node Wheel). [PROVEN] Read the five tiers of Hoard (2026a) as C₅. The 30-node space C₃ × C₂ ×
+ C₅ is then cyclic of order 30 by the Chinese remainder theorem, and primes above 5 lie in its φ(30) = 8 unit classes: 1, 7,
+ 11, 13, 17, 19, 23 and 29 (mod 30). In the Engine's labels these are the nodes with odd parity, triadic phase ±120° and
+ tiers T₁ to T₄; that labelling is a [DEFINITION]. A wheel on these classes tests 8/30 of the integers against 1/3 for the
+ base-6 wheel, 20 % fewer candidates: 2,666,666 against 3,333,333 up to 10⁷ (Appendix C, section R). A mod-210 wheel,
+ at 48/210, saves more, so the node space improves on the report's sieve without being optimal.
+
+
+ 4.7 The Mock Theta Function f(q) and Its Completion
+ Status: [ESTABLISHED] mathematics; [CONJECTURAL] analogy. Report Section 4.1, whose scalar transformation
+ law is [SUPERSEDED]; the analogy is with Hoard (2026c).
+
+ Ramanujan's third-order mock theta function is:
+                                              2
+                                         qn
+                 f (q) = ∑                                    = 1 + q − 2q 2 + 3q 3 − 3q 4 + 3q 5 − 5q 6 + 7q 7 − 6q 8 + ⋯
+                            (1 + q) (1 + q 2 )2 ⋯ (1 + q n )2
+                                   2
+                             ​                                          ​
+
+
+
+
+                        n≥0
+
+ The coefficients were computed to q⁴⁰ (Appendix C). Zwegers' theorem (2001, Theorem 3.6), as restated by Ortiz, Raum
+ and Richter, concerns the vectors:
+                                                                                                                                       3                  1 2
+                                            q −1/24 f (q)                                           − ∑n (n + 16 ) q 2 (n+ 6 )
+                                                                                                            ​         ​
+                                                                                                                                           ​               ​
+
+
+
+
+                                 F+ =
+                                                                                                                        3       1 2
+                                          ​2q 1/3 ω(q 1/2 )     ​           ​   ,            G=    ∑n (−1)n (n + 13 ) q 2 (n+ 3 )
+                                                                                                   ​
+                                                                                                       ​                   ​
+                                                                                                                                                ​                  ​
+
+
+                                                                                                                                                                       ​   ​
+
+
+
+
+                                          2q 1/3 ω(−q 1/2 )                                                          3      1  2
+                                                                                                    − ∑n (n + 13 ) q 2 (n+ 3 )
+                                                                                                            ​         ​
+                                                                                                                                           ​               ​
+
+
+
+
+ Here ω is the companion third-order mock theta function. Adding to F⁺ a fixed multiple of the non-holomorphic Eichler
+ integral of G gives a vector-valued harmonic Maass form of weight 1/2 for the representation:
+                                                                                                                 −1
+                                                        0       1                0                              ζ24       0                    0
+                                      ρ(S) = ζ8−1   ​   1
+                                                        ​   ​   0   ​            0   ​   ​   ,    ρ(T ) =       ​0        0        ​           ζ3   ​ ​        ​
+
+
+
+
+                                                        0       0               −1                               0        ζ3   ​               0
+ Correction. The report states a scalar law, f̂(−1/τ) = √(−iτ) f̂(τ). That is false and is [SUPERSEDED] by Zwegers'
+ theorem above. The inversion τ → −1/τ exchanges the f-component with an ω-component, and the factor q^(−1/24) is
+ required. The report's shadow, Σ(n + 1/6) e^(3πi(n + 1/6)²τ), is correct up to sign and normalization; its 1/6 comes from
+ the character modulo 12 of the theta series, not from any π/6 phase gate.
+      Editorial Note. Mapping the holomorphic part to the "Hyperbolic Sparsemax Pump" (Hoard 2026c) and the shadow to
+      "8 offload bits" yields no derived consequence. It stays [CONJECTURAL] until it predicts a checkable property of the
+      pump; otherwise it should be removed.
+
+
+
+ 5 Non-Local Extensions and Their Testability (Tier II)
+ On Earth the stellar and galactic factors change C₀ by at most 2.6 × 10⁻¹⁰ and 1.2 × 10⁻⁹ |α_⋈|, and the holonomy
+ factor is identically 1. For |α_⋈| ≤ 1 that is at least five orders of magnitude below the 2.1 × 10⁻⁴ realization
+ uncertainty, so no terrestrial measurement can test them.
+
+
+ 5.1 A Locally Realized Unit Needs No Gravitational Correction
+ Status: [ESTABLISHED]. Replaces report Remark 3.2.
+
+ The Einstein equivalence principle includes local position invariance: in a small freely falling laboratory, non-
+ gravitational physics is the same everywhere (Will 2014). C₀ is realized with a local clock and local air, so its local value
+ carries no gravitational factor.
+
+ Gravity enters only when units realized at different potentials are compared, through the ratio of their redshift factors.
+ To first order the relevant potentials are 9.87 × 10⁻⁹ for the Sun at 1 AU, 2.12 × 10⁻⁶ at the solar surface and 6.95 ×
+ 10⁻¹⁰ at Earth's surface (GM/(c²r), [COMPUTED]).
+
+ This answers the question in the report's Remark 3.2. Terrestrial experiments need no astrophysical correction because
+ of local position invariance, not because a regulator happens to be dormant.
+
+
+
+                                                                                    — 12 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                         Geometric Engine of Time
+
+
+
+ 5.2 The Stellar Factor
+ Status: [HEURISTIC / COMPUTED]. Report Section 3.1 and Proposition 3.1.
+
+ The report defines:
+                                                          rs    r⋆
+                                                   u⋆ =      ln    + ηplasma ,               Γ⋆ = sech u⋆
+                                                            ​           ​
+
+
+
+
+                                                    ​               ​           ​        ​                  ​
+
+
+
+
+                                                          R⋆ R⋆ ​           ​
+
+
+
+
+                                          Table 9: The stellar factor, as reported and recomputed.
+
+  Quantity                             Report                                                                   Recomputed
+
+  Solar Schwarzschild radius r_s       2,953.25 m                                                               2,953.25 m
+
+  r_s/R☉                               4.2449 × 10⁻⁶                                                            4.2450 × 10⁻⁶
+
+  u☉                                   2.281 × 10⁻⁵ in the statement, 2.2798 × 10⁻⁵ in the proof                2.2799 × 10⁻⁵
+
+  1 − Γ☉                               2.601 × 10⁻¹⁰                                                            2.599 × 10⁻¹⁰
+
+  Shift of a 53.59 cm cubit            −0.139 nm, "less than two Bohr radii"                                    −0.139 nm, 2.63 Bohr radii
+
+  C_rel/C₀ on Earth                    equal to 1 to "ten significant figures"                                  0.999 999 999 74, nine figures
+
+  Neutron star, r_s/R = 0.4, r = 10R   Γ = 0.687                                                                Γ = 0.687; general relativity gives 0.980
+
+ The arithmetic is otherwise sound, but the construction has five problems.
+
+   1. It is not derived from general relativity. The logarithm of the tortoise coordinate sets the excess travel path of
+      a radial signal near a mass: r_s ln(r/R) = 15.9 km from the Sun's surface to Earth, or 1.07 × 10⁻⁷ of the path.
+       Dividing by R★ instead of by the path length is a free choice that inflates the argument by a factor of 214.
+   2. It has the wrong order. The hyperbolic secant makes the correction quadratic in r_s/R ★ , whereas the leading
+      relativistic effects are linear. On Earth the sech term is 2.6 × 10⁻¹⁰ while the solar potential is 9.9 × 10⁻⁹.
+   3. It has the wrong strong-field behaviour. At r = 10R around a neutron star with r_s/R = 0.4, it gives 0.687; the
+      relativistic redshift factor √(1 − r_s/r) is 0.980.
+   4. Its plasma term is unconstrained. The report sets η_plasma = α_pl P_mag/P_gas and then neglects it. The solar-
+      wind plasma beta at 1 AU is of order unity, so η is of order α_pl. Keeping 1 − Γ below 10⁻⁹ requires |α_pl| < 4.5 ×
+       10⁻⁵, a value nothing in the report fixes.
+   5. One named ingredient is absent. The abstract cites Brans–Dicke scalar-tensor coupling, which enters no
+      equation.
+
+ Recommendation. Replace Γ★ by the ratio of relativistic redshift factors between realization site and comparison site,
+ used only when units realized at different gravitational potentials must be compared. Otherwise remove it from the
+ definition.
+
+
+ 5.3 The Galactic Dual-Source Factor
+ Status: [HEURISTIC]. Report Section 3.2.
+
+ The report models the Galactic Centre as a coherent pair of sources with a fixed phase offset of π + π/6. Sagittarius A* is
+ a single black hole of about four million solar masses (MPE). The report names no physical pair with that phase relation
+ and gives no values for k_gal, Ω_gal or α_⋈.
+
+       Magnitude. |Π| ≤ 2 and χ ≤ 5.9 × 10⁻¹⁰ (Remark 4.4), so the term is at most 1.2 × 10⁻⁹ |α_⋈|.
+       Sign. The Master Equation uses Π itself, which changes sign at the frequency Ω_gal, whereas Proposition 4.5
+       bounds only the envelope |Π|. A length unit that oscillates in time needs an averaging rule, and none is given.
+       Testability. Without a measurable k_gal and α_⋈ the term cannot be falsified.
+
+ Recommendation. Remove the factor from the definition, or specify a physical source, a coupling constant and a
+ measurable consequence.
+
+
+ 5.4 The Holonomy Factor
+ Status: [COMPUTED]. Report Section 4.3; the gears are those of Hoard (2026b).
+
+ Any product of unit quaternions has norm 1 (Remark 4.7), so ‖H‖⁻¹ is identically 1. If a holonomy correction is intended,
+ ε_hol must be defined as a function of the rotation angle of H, with a physical reason why a rotation should change a
+ length.
+
+
+ 5.5 The Master Equation, Restated
+ Status: [DEFINITION + HEURISTIC]. Report Master Equation.
+
+
+                                                                                    — 13 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                              Geometric Engine of Time
+
+
+
+ With every parameter made explicit, the report's Master Equation reads:
+                                                           Crel = C0 ⋅ sech(u⋆ ) ⋅ (1 + α⋈ Π⋈ χ) ⋅ (1 − ϵhol )
+                                                              ​     ​             ​            ​       ​               ​
+
+
+
+
+ On Earth this gives:
+                                        Crel
+                                             − 1 ≤ 2.6 × 10−10 + 1.2 × 10−9 ∣α⋈ ∣ + ∣ϵhol ∣ + higher-order terms
+                                              ​
+
+
+
+
+                                    ​
+
+
+
+
+                                        C0
+                                                  ​    ​                                           ​       ​
+
+
+
+
+                                          ​
+
+
+
+
+         Humidity, 0 to 100 % RH                                                                                                            3.7×10⁻³
+
+
+                  Temperature, 1 K                                                                                                        1.8×10⁻³
+
+
+                    Pressure, 1 kPa                                                                               1.2×10⁻⁶
+
+
+     Solar potential at 1 AU (GR)                                                       9.9×10⁻⁹
+
+
+            Galactic factor, |α| = 1                                           1.2×10⁻⁹
+
+
+   Earth's surface potential (GR)                                         6.9×10⁻¹⁰
+
+                                                                                                                                          State of the air
+                 Stellar sech factor                               2.6×10⁻¹⁰
+                                                                                                                                          General relativity
+                                                                                       realization uncertainty 2.09×10⁻⁴ (k = 1)          Non-local factor
+
+
+                                         10−11                          10−9              10−7            10−5              10−3                     10−1
+                                                                                  Relative change in C₀ on Earth (log scale)
+
+
+   Figure 1: Every non-local term is at least 10⁵ times below the realization uncertainty. Computed in Appendix C, sections E to G ·
+                                   relative effects on C₀ at 20 °C, galactic bound for R₀ = 8.178 kpc.
+
+ In temperature terms, the largest non-local term equals a change of less than 10⁻⁶ K, while the air itself moves C₀ by 1.8
+ × 10⁻³ per kelvin.
+
+ For metrology, C₀ is therefore the whole definition, and cross-site comparisons use relativistic redshift factors. The non-
+ local factors may still be studied as mathematical models, but they are not part of a usable unit.
+
+
+
+ 6 Cosmological and Numerical Correspondences (Tier III)
+ The 53.22 cm "cosmological cubit" rests on an unexplained choice of horizon and on a multiplier drawn from a family
+ that would land an arbitrary anchor length in the cubit range 92 % of the time. It therefore carries no evidential weight,
+ and the other numerical correspondences fail or are coincidences of digits.
+
+
+ 6.1 The Geometric-Mean Length
+ Status: [COMPUTED]. Report Proposition 4.1.
+
+ The report forms ℓ _eq = √( ℓ _P L) from the Planck length and a cosmological horizon L, then multiplies by 10,368 =
+ 144²/2. With Planck 2018 parameters, Λ = 3H₀²Ω_Λ/c² = 1.1056 × 10⁻⁵² m⁻². The result depends on which horizon is
+ used:
+
+                                                  Table 10: The geometric-mean length for four horizon choices.
+
+  Horizon                                                                 L (m)                                ℓ_eq (µm)     ℓ_eq × 10,368 (cm)
+
+  Hubble radius, c/H₀                                                     1.3672 × 10²⁶                        47.01         48.74
+
+  Cosmic event horizon today                                              1.5686 × 10²⁶                        50.35         52.20
+
+  Value used in the report                                                1.630 × 10²⁶                         51.33         53.22
+
+  Asymptotic de Sitter radius, √(3/Λ)                                     1.6473 × 10²⁶                        51.60         53.50
+
+ The report's 1.630 × 10²⁶ m, described as "including matter density", matches none of the standard horizons. The
+ cosmic event horizon today is 1.57 × 10²⁶ m, or 16.6 billion light years.
+
+ The length ℓ_eq has a real physical relative. The dark-energy length (ħc/ρ_Λc²)^(1/4) = (8π/3)^(1/4) ℓ_eq = 87.8 µm, for
+ an energy density of 3.32 keV/cm³. Torsion-balance tests of Newton's inverse-square law now reach separations of 52
+
+
+
+
+                                                                                      — 14 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                     Geometric Engine of Time
+
+
+
+ µm without deviation (Lee et al. 2020). That is the context in which lengths of this size matter; it says nothing about
+ cubits.
+
+
+ 6.2 Look-Elsewhere Test for the Factor 10,368
+ Status: [COMPUTED]. New in this proposal.
+
+ Method. Treat the anchor length ℓ as log-uniform between 10⁻⁵ and 10⁻⁴ m. For a family of candidate multipliers N
+ between 10³ and 10⁵, compute the fraction of anchors for which some N puts ℓN inside a target window.
+
+      Families. All 228 integers of the form 2^i 3^j 5^k in range ("5-smooth"). The 89 integers in range of the form x,
+      xy or xy/z built from the report's own constants: 2, 3, 4, 5, 6, 8, 10, 12, 16, 24, 30, 60, 64, 72, 144, 360, 432, 720
+      and 25,920 ("architecture products").
+      Targets. T1, the whole report-model range of C₄₀ for 0 to 37 °C (51.77 to 55.16 cm). T2, ±0.1 % around 53.17 cm.
+      T3, ±0.1 % around any of the seven values in the report's Chart 1.
+
+                 Table 11: Probability that a multiplier family places an arbitrary anchor length in each target window.
+
+  Multiplier family                  T1, whole range         T2, 53.17 cm ± 0.1 %            T3, any Chart 1 value ± 0.1 %
+
+  5-smooth integers (228)            1.00                    0.11                            0.57
+
+  Architecture products (89)         0.92                    0.04                            0.24
+
+ Interpretation. The 0.1 % agreement with 53.17 cm was picked after the fact from seven tabulated values, so T3 is
+ the relevant target. The chance probability is 0.24 to 0.57 before the choice of horizon is counted, and higher after it.
+ For the report's anchor, 10,368 is the only architecture product inside T1. The 5-smooth numbers 10,125 and 10,240
+ also land there, at 51.97 and 52.56 cm.
+
+
+ 6.3 Other Numerical Claims
+ Status: [COMPUTED]. Report Section 6 and Charts 1 and 2.
+
+      "1/10,000 of an Imperial mile (52.80 cm)". False: 1/10,000 of a statute mile is 16.09 cm. 52.80 cm is a mile
+      divided by 3,048, a coincidence of the digits 5280 (feet per mile) with 0.528 m.
+      "Platonic Great Year" of 25,920 years. The measured general precession of 5028.796195″ per century gives
+      25,772 years (Axial precession). 25,920 is 0.58 % longer; it is a traditional round number, so 432 = 25,920/60, the
+      macroscopic bound of Hoard (2026a, §1.3), is exact arithmetic on a convention. The report cites it as "Proposition
+      1.3" of that paper, which has no such proposition (Appendix A, item 31).
+      432 Hz. It has no standing in acoustics standards, where concert pitch A₄ is 440 Hz (ISO 16:1975).
+      Megalithic yard as a 432 Hz wavelength. That needs 46.0 °C dry air, against an Edinburgh annual mean of 9.3
+      °C. Statistical support for Thom's uniform yard is itself marginal (Megalithic yard).
+      4.96 cm micro-cubit and the 960 MHz antenna aperture. λ/2π at 960 MHz is 4.970 cm. The acoustic length
+      matches only near 20 °C, since it changes by 0.17 % per kelvin; no shared physics links the two.
+
+
+ 6.4 Status of the Mock-Modular Analogy
+ Status: [CONJECTURAL]. Report Section 4.1; the analogy is with Hoard (2026c).
+
+ The mathematics is treated in Section 4.7. As a physical or architectural claim it remains an analogy without a derived
+ consequence.
+
+
+
+ 7 Historical Correspondence: Preliminary Analysis
+ With annual-mean temperatures, only 1 of 8 independent sourced cubits lies within 2 °C of the temperature its best-
+ fitting acoustic rule requires, which is what chance predicts. A cold-season variant fits the Egyptian and Nippur cubits; it
+ was found after looking at the data, so it is preregistered here as H1b rather than claimed.
+
+
+ 7.1 Why Matching Rods to Temperatures Proves Nothing on Its Own
+ The speed of sound rises continuously with temperature, so each rule maps 0 to 37 °C onto a continuous band about 6.5
+ % wide. The rules C₄₀, C₂/₃ and C₉/₁₆ together cover 43.2 to 46.0 cm and 51.1 to 55.2 cm. By the intermediate value
+ theorem every cubit in those bands "matches" some temperature. A match is informative only when the temperature is
+ fixed independently, before the comparison.
+
+
+
+
+                                                                — 15 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                            Geometric Engine of Time
+
+
+
+ 7.2 Method
+ Status: [EMPIRICAL / COMPUTED]. New in this proposal.
+
+   1. For each sourced cubit L and rule divisor d (640, 648 or 768), the required temperature T* solves v_id(T*) = dL for
+      dry air.
+   2. T* is compared with two climate anchors at the provenance: the annual mean and the coldest-month (January)
+      mean, from modern station normals (Section 2.3).
+   3. A cubit counts as a hit when the rule closest to the anchor gives |T* − T_anchor| ≤ 2 °C. The tolerance reflects
+      Holocene variability: global mean temperature 6500 years ago was only 0.7 °C (0.3 to 1.8 °C) above the 19th
+      century (Kaufman et al. 2020).
+   4. The chance expectation is the probability that a length drawn uniformly from 44 to 57 cm scores a hit under the
+      same rules and anchors. Tail probabilities use the Poisson-binomial distribution over the eight independent cubits;
+      the King's Chamber value duplicates the Great Pyramid cubit and is shown but not counted.
+   5. Humidity is ignored in the baseline. At 50 % relative humidity, required temperatures fall by about 0.65 °C (13.25
+      °C dry versus 12.60 °C humid for the Great Pyramid cubit under C₂/₃), which changes no conclusion.
+
+
+ 7.3 Results
+                                  Table 12: Temperatures each acoustic rule requires for the sourced cubits.
+
+                                           Length         Climate         Annual / January mean       T* for C₄₀ / C₂/₃ / C₉/₁₆   Closest
+  Cubit
+                                           (cm)           proxy           (°C)                        (°C)                        rule
+
+  Egyptian royal, Great Pyramid            52.375         Cairo           22.5 / 14.4                 6.4 / 13.5 / 129.5          C₂/₃
+
+  Egyptian royal, King's Chamber           52.405         Cairo           22.5 / 14.4                 6.8 / 13.8 / 129.9          C₂/₃
+  (duplicate)
+
+  Nippur                                   51.86          Baghdad         22.8 / 9.7                  1.0 / 7.9 / 121.6           C₂/₃
+
+  Late Assyrian standard                   51.5           Erbil           19.5 / 6.2                  −2.8 / 4.0 / 116.1          C₂/₃
+
+  Late Assyrian king's                     55.0           Erbil           19.5 / 6.2                  35.2 / 42.9 / 170.8         C₄₀
+
+  Late Assyrian big                        56.6           Erbil           19.5 / 6.2                  53.4 / 61.6 / 197.0         C₄₀
+
+  Roman cubitus                            44.4           Rome            15.2 / 7.5                  −72.2 / −67.2 / 16.2        C₉/₁₆
+
+  Greek pēchys                             46.2           Athens          19.2 / 10.2                 −55.6 / −50.1 / 40.1        C₉/₁₆
+
+  Rabbinic, six handbreadths               54.0           Jerusalem       18.3 / 9.8                  24.1 / 31.5 / 154.8         C₄₀
+
+
+
+                                                           ±2 °C
+
+     Egypt, Great Pyramid
+
+   Egypt, King's Chamber
+
+                         Nippur
+
+           Assyrian standard
+
+             Assyrian king's
+
+                 Assyrian big
+
+             Roman cubitus
+
+               Greek pēchys
+
+                      Rabbinic
+
+                                            −10             0           10           20           30              40                        50
+                                                    Required minus actual temperature, closest acoustic rule (°C)
+                                                                    Annual mean         Coldest month (January)
+
+
+
+   Figure 2: Cold-season temperatures fit Egypt and Nippur; annual ones fit only Rome. Computed in Appendix C, section N · cubit
+                                  lengths from Section 1.2, climate normals from Section 2.3, dry ideal gas.
+
+      Annual-mean anchor (H1a). One hit in eight: the Roman cubitus under C₉/₁₆, 1.0 °C above Rome's mean. Chance
+      predicts 0.64 hits, and P(at least 1) = 0.48.
+
+
+
+
+                                                                      — 16 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)             Geometric Engine of Time
+
+
+
+      Annual or coldest-month anchor. Three hits in eight: the Egyptian royal cubit (−0.9 °C), Nippur (−1.8 °C) and
+      Rome (+1.0 °C); the Late Assyrian standard cubit misses at −2.2 °C. Chance predicts 1.05 hits, and P(at least 3) =
+      0.076 before the choice of rules and anchors is counted.
+      No single rule fits. The Egyptian and Mesopotamian hits use C₂/₃ and the Roman hit uses C₉/₁₆. Under C₂/₃ the
+      Roman cubit would need −67 °C.
+      Large misses remain. The Assyrian king's and big cubits, the Greek pēchys and the rabbinic cubit miss by 6 to 34
+      °C under every rule and anchor.
+      The megalithic yard needs 46.0 °C dry air as a full 432 Hz wavelength.
+
+
+ 7.4 A Within-Climate Check on H1b
+ Petrie's seven Old Kingdom determinations around the Memphis necropolis share one climate. They range from 52.10 to
+ 52.60 cm with a standard deviation of 1.78 mm (Petrie 1883, §137). Under H1b that scatter equals 2.0 K of calibration
+ temperature, so it must come from year-to-year weather or workmanship. It also sets the residual scatter that Protocol B
+ must assume.
+
+
+ 7.5 Interpretation
+ H1a, calibration at the annual mean temperature, is not supported: its hit rate equals chance. The cold-season variant
+ fits a coherent group, the Bronze Age Egyptian and Mesopotamian short royal cubits, with one rule and one anchor. It
+ was identified only after the analyst chose among three rules and two anchors, so its p-value of 0.076 overstates the
+ evidence. It becomes hypothesis H1b, to be tested on data not used here (Protocol B).
+
+ H1b is [OPEN] and makes a sharp prediction. Within the Egyptian royal-cubit family, cubit length should rise with the
+ coldest-month mean temperature of the provenance by 0.91 mm per kelvin. A slope indistinguishable from zero refutes
+ it.
+
+
+ 7.6 Limitations
+      Modern climate normals stand in for Bronze Age climate, and Cairo's urban heat island adds some warming.
+      Site proxies are approximate: Baghdad for Nippur and Erbil for Khorsabad.
+      Several cubit values come from secondary compilations, and the Nippur bar's status as a standard is disputed.
+      Values the report cites without a source are excluded (Section 1.2).
+
+
+
+ 8 Preregistered Validation Protocols
+ Three protocols test, in order, the engineering claim (H2), the historical claims (H1a and H1b against H0) and the
+ archaeoacoustic design claim (H3). Each fixes its primary outcome, decision rule and sample size before data collection.
+
+                                           Table 13: Protocols, hypotheses and status.
+
+  Protocol                                             Hypotheses           Replaces the report's         Status
+
+  A, laboratory realization and tracking               H2                   Protocol III                  confirmatory
+
+  B, provenance-dated cubits and climate               H1a, H1b, H0         Protocol II                   confirmatory
+
+  C, archaeoacoustic chambers                          H3                   Protocol I                    exploratory
+
+
+
+ 8.1 Protocol A: Laboratory Realization and Tracking (H2)
+ Why the report's Protocol III must change.
+
+      Its testbed, 3.68 × 3.05 × 2.13 m (23.95 m³), has its lowest rigid-wall mode at 46.7 Hz. At 40 Hz, where λ = 8.60 m,
+      the room sits below its first mode and behaves as a pressure chamber, not a free field. Its Schroeder frequency is
+      224 to 289 Hz for reverberation times of 0.3 to 0.5 s.
+      With the report's spacing d = λ/16 the source pair has no null at all (Section 4.3).
+      Its outcome, "maximum phase stability" of the quadrea A_R, is not defined.
+
+ Design.
+
+      Stage A1, confirmatory, runs in an anechoic chamber at f_cal = 1 kHz. The tracking property does not depend on
+      frequency, and 1 kHz lies well above typical anechoic cut-off frequencies.
+      Two sources are driven with relative phase π + π/6 at spacing d = λ/4 = 4C₀. A microphone arc at a radius of at
+      least 10λ (3.4 m at 1 kHz) samples the pattern in 0.1° steps around the predicted null at 70.5°.
+
+
+                                                            — 17 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)              Geometric Engine of Time
+
+
+
+      Arm (i) keeps the spacing fixed at 4C₀(20 °C). Arm (ii) tracks 4C₀(T) with a linear actuator driven by a direct time-of-
+      flight measurement of v.
+      The chamber air is stepped from 15 to 25 °C in 1 K steps, with five replicate sweeps per step and arm. Temperature,
+      humidity, CO₂ and pressure are logged throughout.
+      Microphone amplitudes are estimated by lock-in detection over coherent windows of 0.5 s, the 30-pulse closure
+      window of Hoard (2026a, Theorem 5.1). Each window holds whole numbers of carrier periods (500 at 1 kHz, 20 at
+      40 Hz), register pulses (30) and caesium periods (4,596,315,885), so the estimates carry no spectral-leakage bias;
+      no shorter window does this for both series carriers, 40 Hz and 432 Hz (Section 4.1).
+
+ Prediction. With fixed spacing the null satisfies cos θ_null = λ/(12d), so it moves by −0.035° per kelvin, or −0.35°
+ across the 10 K range. With tracked spacing it stays at 70.53°.
+
+ Primary outcome. The slope of the fitted null angle against measured temperature, for each arm. With a per-sweep
+ null-angle uncertainty of 0.01°, the 55 sweeps per arm give a slope standard error of about 0.0004° per kelvin.
+
+ Decision rule. H2 is supported if both conditions hold. The tracked-arm slope lies within ±0.005° per kelvin of zero, by
+ two one-sided tests at α = 0.05 each. The fixed-arm slope lies within ±20 % of −0.035° per kelvin. Otherwise the
+ implementation has failed, and its cause is found before any 40 Hz work begins.
+
+ Stage A2, exploratory. In the testbed at 40 Hz, transfer functions from both sources to the eight-microphone array are
+ recorded at each temperature and compared with a modal model of the room. No confirmatory claim is made.
+
+ Scope. Protocol A validates the sensors, the control loop and the realization of C₀. Its prediction follows directly from
+ linear acoustics, so success says nothing about history or cosmology.
+
+
+ 8.2 Protocol B: Provenance-Dated Cubits and Climate (H1a, H1b, H0)
+ Data.
+
+      Physical lengths of graduated cubit rods and of well-dated architectural cubit determinations, each with provenance
+      and date. Sources are museum collections of Egyptian rods, including those Lepsius compared, and published
+      surveys of the kind in Petrie §137.
+      Lengths are measured end to end at 20 °C with a calibrated coordinate-measuring machine or vernier, corrected for
+      thermal expansion and documented damage. Two measurers work independently and blind to each provenance's
+      climate.
+      Climate covariates are the annual and coldest-month mean temperatures of each provenance and period: modern
+      normals adjusted with regional Holocene reconstructions from the Temperature 12k database (Kaufman et al.
+      2020).
+      The values used in Section 7 form a holdout and are excluded from the confirmatory test.
+      Exclusions are fixed now: rods without provenance; broken rods whose length cannot be reconstructed; and model
+      or votive rods more than 3 % from their family's median.
+
+ Primary analysis, H1b. Within the Egyptian royal-cubit family, an errors-in-variables (Deming) regression of measured
+ length on the predicted length v(T_cold)/648. The error ratio comes from the measurement and climate uncertainties.
+
+      H1b predicts a slope of 1, which is 0.91 mm per kelvin of coldest-month temperature.
+      H0 predicts a slope of 0.
+      H1b is supported if the 99 % confidence interval for the slope excludes 0 and includes 1. It is refuted if the interval
+      excludes 1 and lies below 0.5. Any other outcome is reported as inconclusive.
+
+ Secondary analyses. H1a with annual means and all three rules, Holm-corrected for multiplicity. Cross-cultural
+ comparisons are exploratory.
+
+ Sample size. The residual scatter within one climate is 1.8 mm (Section 7.4). Detecting the H1b slope at α = 0.01 with
+ 80 % power then needs about 52, 18 or 11 independent provenance groups, if the coldest-month temperatures across
+ sites have a standard deviation of 1, 2 or 3 K. If fewer than 18 groups are available by month 12, Protocol B reports an
+ exploratory estimate only.
+
+
+ 8.3 Protocol C: Archaeoacoustic Chambers (H3, Exploratory)
+ Why the report's Protocol I must change.
+
+      Under the 40 Hz rule, a 20-cubit length has axial modes at multiples of 16 Hz (Lemma 3.2). 40 Hz is 2.5 times the
+      fundamental, not a mode, so "integer mode-locking at 40 Hz" is not what the hypothesis predicts.
+
+
+
+
+                                                           — 18 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                  Geometric Engine of Time
+
+
+
+      The report's criterion, a mode within ±1 Hz of a multiple of 40 or 60 Hz or of 432/n, covers 37 % of the band from
+      16 to 130 Hz. At 20 °C the King's Chamber has 105 modes in that band; 26 meet the criterion, against 39 expected
+      by chance. The criterion cannot discriminate.
+      The chamber's temperature at construction is unknown, and today's temperature does not fix it.
+
+ For reference, the lowest rigid-wall modes of the King's Chamber at 20 °C and 50 % relative humidity, using Petrie's
+ dimensions of 10.471 × 5.236 × 5.845 m, are 16.43 Hz (1,0,0), 29.43 Hz (0,0,1), 32.85 Hz (0,1,0 and 2,0,0), 33.70 Hz
+ (1,0,1) and 36.73 Hz (1,1,0).
+
+ Design.
+
+      Hypothesis H3. Chambers built in whole cubits place a low-order mode within ±δ of a preregistered target
+      frequency f* at their measured equilibrium temperature more often than random rooms of the same volume class.
+      Measurements. Impulse responses from swept-sine excitation, equilibrium air temperature and humidity, and as-
+      built dimensions. δ equals the 95 % uncertainty of the measured mode frequencies.
+      Null model. Mode statistics of rooms with random dimensions drawn from the same distribution of volumes and
+      proportions, with expected mode counts from Weyl's formula. Wright (2007) used the same formula to show that
+      resonances between 95 and 120 Hz in Neolithic chambers are expected from their size alone.
+      Decision rule. One-sided p < 0.01 for each preregistered f*, Bonferroni-corrected across targets.
+      Status. Exploratory unless at least 20 chambers are measured.
+
+
+
+ 9 Research Plan
+ The work runs for 18 months in six work packages. Laboratory work and data assembly proceed in parallel, and no
+ confirmatory data are collected before the Stage 1 protocol is accepted at month 2.
+
+
+                                                                         M2 Unit realized                       M4 Stage 2 submitted
+                                          G1 Stage 1 accepted                                  M3 Data freeze
+
+
+        WP0 Preregistration
+
+   WP1 Acoustic realization
+
+             WP2 Protocol A
+
+       WP3 Protocol B data
+
+               WP4 Analysis
+
+             WP5 Synthesis
+
+                              0         2           4           6        8        10         12         14             16          18
+                                                                             Month
+
+   Figure 3: No confirmatory data are collected before Stage 1 acceptance at month 2. Research plan · six work packages and four
+                                                        gates over 18 months.
+
+ WP1 and WP3 start before the gate because they only build instruments and assemble data; every analysis that decides
+ a hypothesis waits for G1.
+
+
+ 9.1 Work Packages
+   1. WP0, preregistration (months 0 to 2). Submit Sections 7 and 8 as a Stage 1 protocol; deposit the verification
+      code with a DOI.
+   2. WP1, acoustic realization (months 1 to 8). Measure v directly by time of flight against a GPS-disciplined clock,
+      compare it with the Cramer equation, validate the uncertainty budget, and extend it beyond 0 to 30 °C.
+   3. WP2, Protocol A (months 3 to 12). Stage A1 in an anechoic chamber, then the exploratory Stage A2 in the
+      testbed.
+   4. WP3, Protocol B data (months 2 to 12). Measure rods, document provenance and date, assemble climate
+      covariates, and keep the measurers blind to climate.
+   5. WP4, analysis (months 12 to 15). Run the confirmatory Protocol B analyses and the exploratory Protocol C
+      measurements.
+
+
+                                                                — 19 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                  Geometric Engine of Time
+
+
+
+   6. WP5, synthesis (months 15 to 18). Write the Stage 2 report and a standalone note on the Tier I mathematics;
+      release data and code.
+
+
+ 9.2 Milestones and Decision Gates
+                                                     Table 14: Milestones and decision gates.
+
+  Month        Milestone                       Criterion
+
+  2            G1, Stage 1 accepted            No confirmatory data before this gate
+
+  8            M2, unit realized               C₀ realized with U ≤ 0.25 mm (k = 2) by direct measurement
+
+  12           M3, data freeze                 At least 18 provenance groups for Protocol B, or switch to an exploratory estimate
+
+  18           M4, Stage 2 submitted           Data and code public
+
+
+
+ 9.3 Risks
+                                                           Table 15: Risks and mitigations.
+
+  Risk                                Likelihood   Impact                     Mitigation
+
+  Fewer than 18 provenance            High         Protocol B                 Add architectural determinations; otherwise report an exploratory
+  groups                                           underpowered               estimate, as preregistered
+
+  Paleoclimate uncertainty of         Medium       Slope diluted towards      Errors-in-variables model; sensitivity analysis over plausible climates
+  about 2 °C                                       zero
+
+  No anechoic facility usable at      High         Stage A2 stays             Confirmatory Stage A1 runs at 1 kHz
+  40 Hz                                            exploratory
+
+  Limited access to chambers          Medium       Protocol C delayed         Use published impulse responses; Protocol C is exploratory anyway
+
+  Analyst flexibility                 Medium       False positives            Preregistration, blinded measurers, public code
+
+  Real-air equation outside 0 to      Low          Larger uncertainty         Direct measurement of v in WP1
+  30 °C                                            when hot
+
+
+
+ 9.4 Open Science
+       Sections 7 and 8 are preregistered before any confirmatory data are collected, following the registered-report route.
+       The verification script (Appendix C) and all analysis code are public with a DOI.
+       Data are released under CC BY 4.0, except where heritage permits restrict publication of artefact measurements.
+
+
+ 9.5 Ethics and Permits
+       The work involves no human participants and no animals.
+       Artefacts are measured only with institutional permission and by methods the holding museum approves.
+       Staff exposure to low-frequency sound during 40 Hz work stays within occupational limits.
+
+
+ 9.6 Budget Categories
+ Amounts are to be completed by the applicant.
+
+       Personnel: an acoustician, an archaeometrist and a statistician, part time.
+       Equipment: measurement microphones, a linear actuator stage, reference thermometry and hygrometry, and a
+       GPS-disciplined frequency reference.
+       Facility time in an anechoic chamber.
+       Travel to collections for rod measurement.
+       Open-access publication fees.
+
+
+
+ 10 Status of Claims
+ Table 16 records the status of every principal claim in the series-standard vocabulary. Of the report's 20 principal claims,
+ eight survive as definitions or proven results, five of them only after correction. Two rest on established results that the
+ report misstated, four are computed values with heuristic or no physical meaning, and one is false. Of the remaining
+ five, three stay heuristic or conjectural, the mode-locking test is redesigned as Protocol C, and the historical match is
+ not supported as stated (H1a) and gives way to one preregistered hypothesis (H1b). The five rows marked "not in
+ report" are new results of this proposal; three of them follow from the Geometric Engine of Time.
+
+
+
+                                                                        — 20 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                 Geometric Engine of Time
+
+
+                                                    Table 16: Consolidated status of claims.
+
+                                                                                                                                 Testable on
+  Claim                          Report's tag       Status                                 Basis / Note
+                                                                                                                                 Earth?
+
+  Local acoustic cubit C₀ =      DEFINITION         [DEFINITION]                           convention; realizable with U =       yes, Protocol A
+  v/(16 f_cal)                                                                             0.22 mm                               and WP1
+
+  Sound speed with pressure      PROVEN             [ESTABLISHED], corrected               Cramer (1993); coefficient at least   yes
+  coefficient 1.0 × 10⁻⁷ Pa⁻¹                                                              55 times too large
+
+  Voxel partition and quarter-   PROVEN             [PROVEN]                               Proposition 3.1                       not needed
+  wave edge
+
+  Temperature-invariant          not in report      [PROVEN]                               Lemma 3.2                             yes, Protocol A
+  modes of cubit-scaled
+  rooms
+
+  432/40 = 10.8 and              PROVEN             [COMPUTED]                             exact arithmetic on conventions;      not needed
+  25,920/60 = 432                                                                          432 is the macroscopic bound of
+                                                                                           Hoard (2026a, §1.3)
+
+  Caesium half-integer           PROVEN             [PROVEN], proof corrected              Proposition 4.1; Hoard (2026a,        not needed
+  residual                                                                                 Theorem 5.1)
+
+  Shortest and joint closure     not in report      [PROVEN]                               Section 4.1; 0.5 s holds whole 40     used in Protocol
+  windows                                                                                  Hz and 432 Hz periods                 A
+
+  Quadrea identity and χ ≤ 1/    PROVEN             [PROVEN]; floating-point claim         Theorem 4.2; Hoard (2026a,            not needed
+  √3                                                corrected                              Theorem 4.1)
+
+  Triadic anchors attain χ =     not in report      [PROVEN]                               Section 4.2                           not needed
+  1/√3
+
+  Two-source interference        PROVEN             [PROVEN], second solution added        Proposition 4.5                       yes, Protocol A
+  envelope
+
+  Quaternion telescoping,        PROVEN             [PROVEN], branch corrected             Proposition 4.6; Hoard (2026b)        not needed
+  partition and lift
+
+  Three-state Markov cycle       PROVEN             [PROVEN], strengthened                 Proposition 4.8; Hoard (2026b)        not needed
+  current
+
+  Base-6 wheel, mod 24 and       PROVEN             [PROVEN]; item (1) a [DEFINITION]      Theorem 4.9                           not needed
+  bilinear sieve
+
+  30-node wheel with 20 %        not in report      [PROVEN]                               Section 4.6; Hoard (2026a, §3.1       not needed
+  fewer candidates                                                                         and §5)
+
+  Mock theta completion          CONJECTURAL        [ESTABLISHED] mathematics; scalar      Zwegers (2001); Hoard (2026c)         no
+                                                    law [SUPERSEDED]; analogy
+                                                    [CONJECTURAL]
+
+  Solar perturbation 1 − sech    PROVEN             [HEURISTIC / COMPUTED]                 arithmetic sound; form disagrees      no, far below
+  u☉ = 2.6 × 10⁻¹⁰                                                                         with general relativity               uncertainty
+
+  Galactic dual-source factor    HEURISTIC          [HEURISTIC], unfalsifiable as stated   no physical source; free              no
+                                                                                           parameters
+
+  Holonomy factor ‖H‖⁻¹          PROVEN             [COMPUTED]: identically 1              Remark 4.7                            not applicable
+
+  Match of acoustic rules to     EMPIRICAL          [EMPIRICAL]; guaranteed by             Section 7                             yes, Protocol B
+  historical cubits                                 continuity; H1a not supported
+
+  Cold-season C₂/₃ rule for      not in report      [OPEN], preregistered                  Section 7                             yes, Protocol B
+  Egyptian cubits (H1b)
+
+  Geometric mean ℓ_eq ≈          PROVEN             [COMPUTED]; 47.0 to 51.6 µm            Section 6.1                           not applicable
+  51.33 µm                       ARITHMETIC         depending on horizon
+
+  ℓ_eq × 10,368 ≈ 53.22 cm       CONJECTURAL        [CONJECTURAL], no evidential           look-elsewhere probability 0.24 to    no
+                                                    weight                                 1.00
+
+  "1/10,000 Imperial mile =      EMPIRICAL          [SUPERSEDED]: false                    the true value is 16.09 cm            not applicable
+  52.80 cm"
+
+  Lorentz lift of the Centroid   CONJECTURAL        [CONJECTURAL]                          interpretation, no derived            no
+  Monoid as generator of the                                                               consequence
+  integers
+
+  Mode-locking in ancient        falsifiable test   criterion non-discriminating;          Section 8.3                           exploratory,
+  chambers                                          redesigned as [OPEN] Protocol C                                              Protocol C
+
+
+
+
+ 11 Conclusion
+ The acoustic cubit is a sound engineering unit, and its mathematics is correct once repaired. Its non-local extensions
+ cannot be tested on Earth, and its historical claim is now one sharp hypothesis with a stated test. As in the Geometric
+
+
+                                                                     — 21 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                Geometric Engine of Time
+
+
+
+ Engine of Time, the guarantees are asymmetric: what is proven stands, and what is heuristic is labelled as such.
+
+ What stands. C₀ = v/(16 f_cal) can be realized to 0.22 mm (k = 2), and it keeps an array's phase geometry fixed as the
+ air changes; Lemma 3.2 and Protocol A make that precise. All seven mathematical results hold with complete proofs,
+ five of them after correction. The Geometric Engine of Time is the most accurate method at four points: caesium-cycle
+ bookkeeping, the quadrea in exact arithmetic, the 30-node wheel and the 0.5 s coherent window.
+
+ What does not stand as physics. The stellar factor does not have the form general relativity gives, the galactic
+ factor has no physical source, and the holonomy factor is identically 1. Even taken at face value, all three lie at least five
+ orders of magnitude below the realization uncertainty. The 53.22 cm cosmological cubit is a look-elsewhere artefact,
+ and the "1/10,000 mile" correspondence is an arithmetic error.
+
+ What remains open. Whether any culture set its cubit acoustically is unresolved. Calibration at the annual mean
+ temperature fits no better than chance. Calibration at the coldest-month temperature with two-thirds of a 432 Hz
+ wavelength fits the Egyptian and Nippur cubits, and Protocol B will test it on fresh data: a slope of 0.91 mm per kelvin
+ confirms it, and a slope of zero refutes it.
+
+
+
+ A Errata and Audit of the Technical Report
+ The audit found 36 items, listed in the report's order. Only item 21 overturns a mathematical statement; the others
+ correct proofs, numbers, tags, or physical and historical claims.
+
+                                                Table A1: Errata and audit of the technical report.
+
+       Location in
+  #                      The report states                                 Finding                                     Resolution here
+       the report
+
+  1    Abstract          Brans–Dicke coupling is part of the stellar       It enters no equation                       Remove or specify (5.2)
+                         carrier
+
+  2    Proposition 1.1   "Prime factorization" 2 × 3² × 5 × 7 ×            14,591,479 = 7 × 47 × 44,351                2 × 3² × 5 × 7² × 47 ×
+                         14,591,479                                                                                    44,351 (4.1)
+
+  3    Proposition 1.1   One cycle Δt_geo = 1 s with f_geo = 60 Hz         A 1 s cycle has frequency 1 Hz              60 pulses per 1 s cycle (4.1)
+
+  4    Definition 2.1    Linear pressure term with β_P ≈ 1.0 × 10⁻⁷        Real air gives |β_P| ≤ 1.8 × 10⁻⁹ Pa⁻¹      Cramer (1993) equation
+                         Pa⁻¹                                              at 0 to 30 °C; humidity and CO₂ matter      (3.1)
+                                                                           more
+
+  5    Table 3           Laplace and virial sound speed tagged             Standard physics with a wrong               [ESTABLISHED], corrected
+                         PROVEN                                            coefficient                                 (10)
+
+  6    Table 3           432/40 = 10.8 and 25,920/60 = 432 tagged          Exact arithmetic on conventions             [COMPUTED] (10)
+                         PROVEN
+
+  7    Charts 1 and 2,   v = 343.00 m/s at 20.00 °C                        The report's model gives 343.21 m/s;        C₄₀(20 °C) = 53.63, 53.65 or
+       20 °C rows                                                          343.00 m/s corresponds to 19.63 °C          53.75 cm (3.6, Appendix B)
+
+  8    Chart 1           "1/10,000 Imperial mile (52.80 cm)"               1/10,000 of a mile is 16.09 cm              Removed (6.3)
+
+  9    Chart 1           Royal cubit placed at a "subterranean/vault       No basis given; Cairo's annual mean is      Tested against climate (7)
+                         mean" of 6.74 °C                                  22.5 °C
+
+  10   Charts 1 and 2    Sacred/Long 53.59, Babylonian royal 53.10,        Not found in the sources checked; the       Excluded until sourced (1.2)
+                         Persian royal 54.00, Talmudic great 55.10 and     Late Assyrian standard cubit is about
+                         Assyrian short 51.1 cm                            51.5 cm
+
+  11   Chart 2           Megalithic yard of 82.97 cm "comparable" at       Thom's value is 82.9 cm and needs           Rejected (6.3)
+                         warm, humid conditions                            46.0 °C dry air
+
+  12   Proposition 3.1   u☉ = 2.281 × 10⁻⁵ in the statement, 2.2798 ×      Inconsistent                                2.2799 × 10⁻⁵ (5.2)
+                         10⁻⁵ in the proof
+
+  13   Proposition 3.1   ΔC is "less than two Bohr radii"                  0.139 nm is 2.63 Bohr radii                 Corrected (5.2)
+
+  14   Proposition 3.1   C_rel equals C₀ to "ten significant figures"      0.999 999 999 74 agrees to nine             Corrected (5.2)
+
+  15   Proposition 3.1   Tagged PROVEN                                     Arithmetic sound, but the model is not      [HEURISTIC / COMPUTED]
+                                                                           derived from general relativity and has     (5.2)
+                                                                           the wrong order
+
+  16   Proposition 3.1   η_plasma set to zero                              Solar-wind plasma beta is of order          Flagged (5.2)
+                                                                           unity, so η is of order the free constant
+                                                                           α_pl
+
+  17   Remark 3.2        The sech regulator explains why terrestrial       Local position invariance explains it       Replaced (5.1)
+                         experiments need no correction
+
+  18   Proposition 3.3   |Π| = 1 at kΔr ≡ π/2                              Also at 11π/6                               Added (4.3)
+
+  19   Section 3.2       A dual source at the Galactic Centre              Sagittarius A* is a single black hole; no   [HEURISTIC], remove or
+                                                                           parameters are given                        specify (5.3)
+
+
+                                                                        — 22 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                        Geometric Engine of Time
+
+
+
+       Location in
+  #                         The report states                                     Finding                                      Resolution here
+       the report
+
+  20   Section 3.3          Quadrance triangulation avoids floating-point         A_R/S² ≈ 2.6 × 10⁻¹⁹ for the                 Exact arithmetic or a cross
+                            drift                                                 astrophysical triangle; double precision     product (Remark 4.3)
+                                                                                  fails
+
+  21   Section 4.1          f̂(−1/τ) = √(−iτ) f̂(τ)                               False: the law is vector-valued and          Zwegers' theorem stated
+                                                                                  needs q^(−1/24)                              (4.7)
+
+  22   Section 4.2          L_Λ ≈ 1.63 × 10²⁶ m "including matter                 Matches no standard horizon; the             Horizon table (6.1)
+                            density"                                              event horizon is 1.57 × 10²⁶ m
+
+  23   Proposition 4.1      53.22 cm agrees with the ISA cubit to 0.1 %           Arithmetic correct; results range from       No evidential weight (6.2)
+                                                                                  48.7 to 53.5 cm with the horizon;
+                                                                                  chance probability 0.24 to 1.00
+
+  24   Section 4.3          ‖H‖_Markov = 1 when "holonomically locked"            ‖H‖ = 1 for every product of unit            Factor removed (4.4, 5.4)
+                                                                                  quaternions
+
+  25   Section 4.3          Π_⋈ enters the Master Equation with its sign          It oscillates in time and no averaging       Flagged (5.3)
+                                                                                  rule is given
+
+  26   Proposition 5.1      ΔQ₀ uses q₋₁                                          Undefined                                    Cyclic convention q₋₁ := q₇₁₉
+       (1)                                                                                                                     (4.4)
+
+  27   Proposition 5.1      Unique polar form with θ in (−π, π)                   Covers only Re q > 0 and is not unique       Half-angle in [0, π) (4.4)
+       (3)
+
+  28   Lemma 5.2            Sign of J follows from Kolmogorov's criterion         The criterion gives only J = 0 iff Π₊ =      Tree-theorem formula (4.5)
+                                                                                  Π₋
+
+  29   Theorem 5.3 (1)      "1.5-cube offset" with 1 + 1.5 × 4 = 7                Not a mathematical statement                 [DEFINITION] of labels
+                                                                                                                               (4.6)
+
+  30   Section 6            Platonic Great Year of 25,920 years                   Measured precession gives 25,772             Corrected (6.3)
+                                                                                  years
+
+  31   Section 6, the       "Proposition 1.3 of The Geometric Engine of           That paper has no Proposition 1.3; the       Cited as Hoard (2026a, §1.3)
+       432 Hz standard      Time"                                                 bound 25,920/60 = 432 is in its §1.3         (3.2, 6.3)
+
+  32   Protocol I           Integer mode-locking at 40 Hz                         40 Hz is not an axial mode under the         Protocol C (8.3)
+                                                                                  40 Hz rule; the criterion covers 37 % of
+                                                                                  the band
+
+  33   Protocol III         Phase stability of the testbed at 40 Hz               The room is below its first mode at          Protocol A (8.1)
+                                                                                  46.7 Hz; d = λ/16 gives no null; the
+                                                                                  outcome is undefined
+
+  34   Section 8, Step      Lie-group renormalization tagged PROVEN               No convergence proof; telescoped             Remark 4.7
+       5                                                                          cyclic chains already give H = 1
+
+  35   Section 8, Step      Oscillator locked to the 30-node parity closure       Any SI-traceable 40 Hz source gives          Simplified (3.2)
+       1                                                                          the same C₀
+
+  36   References           "Reid, 1997" cited in Protocol I                      Missing from the reference list              Supply or remove
+
+
+
+
+ B Recomputed Calibration Tables
+ At 20 °C the consistent 40 Hz cubit is 53.63 cm for an ideal gas and 53.65 to 53.75 cm in real air, depending on
+ humidity. Real-air columns use the Cramer (1993) equation at 101.325 kPa and 420 ppm CO₂; the 37 °C row
+ extrapolates beyond its 0 to 30 °C fit.
+
+                                             Table B1: Speed of sound and cubit lengths from 0 to 37 °C.
+
+                      v ideal       v dry air         v 50 % RH       C₄₀ ideal      C₄₀ dry      C₄₀ 50 % RH       C₂/₃ dry       C₉/₁₆ dry      λ₄₃₂ dry
+  t (°C)
+                      (m/s)         (m/s)             (m/s)           (cm)           (cm)         (cm)              (cm)           (cm)           (cm)
+
+  0                   331.32        331.45            331.60          51.77          51.79        51.81             51.15          43.16          76.72
+
+  5                   334.34        334.47            334.69          52.24          52.26        52.30             51.62          43.55          77.42
+
+  10                  337.33        337.46            337.78          52.71          52.73        52.78             52.08          43.94          78.12
+
+  15                  340.30        340.42            340.87          53.17          53.19        53.26             52.53          44.33          78.80
+
+  20                  343.23        343.36            343.98          53.63          53.65        53.75             52.99          44.71          79.48
+
+  25                  346.15        346.27            347.12          54.09          54.10        54.24             53.44          45.09          80.15
+
+  30                  349.04        349.15            350.31          54.54          54.55        54.74             53.88          45.46          80.82
+
+  37,                 353.05        353.13            354.87          55.16          55.18        55.45             54.50          45.98          81.74
+  extrapolated
+
+
+
+
+                                                                          — 23 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                       Geometric Engine of Time
+
+
+
+ Derived lengths scale from these values: the 4 × 4 × 4 cube edge is 4C₄₀, the report's π/6 boundary is λ₄₀/12 = (4/3)C₄₀,
+ and its cymatic panel is C₄₀/16. Every value in the report's Charts 1 and 2 is reproduced by v = 331.30 √(T/273.15),
+ except the 20 °C rows (Appendix A, item 7).
+
+
+
+ C Computational Verification
+ One script, verify_cubit_proposal.py, reproduces every number in this proposal, asserts every identity and re-derives
+ every result imported from the Geometric Engine of Time; it runs in about 25 seconds and passes all checks. It
+ accompanies this proposal and will be deposited with a DOI in WP0.
+
+ Running it. python3 verify_cubit_proposal.py runs every check; --quick limits the prime checks to 10⁶. It needs
+ numpy, scipy, sympy and mpmath, prints a report section by section, and writes the key values to results.json.
+
+                                                    Table C1: Sections of the verification script.
+
+  Section    What it checks                                       Outcome
+
+  A          Constants and their sources                          Values as in Section 2.2
+
+  B          Caesium factorization and the 60-pulse residual      Prime factorization corrected; 4,596,315,885 cycles confirmed
+
+  C          Ideal-gas, report-model and Cramer sound             Report tables use 331.30 √(T/273.15); |β_P| ≤ 1.8 × 10⁻⁹ Pa⁻¹
+             speeds; pressure coefficient
+
+  D          Every printed value in the report's Charts 1 and     Reproduced, except the 20 °C rows
+             2
+
+  E          GUM uncertainty budget                               2.09 × 10⁻⁴ relative; U = 0.22 mm (k = 2)
+
+  F          Stellar factor against general relativity            u☉ = 2.2799 × 10⁻⁵; shift of 2.63 Bohr radii
+
+  G          Quadrea identities, symbolically and on 200,000      Identities exact; double precision fails for the astrophysical triangle
+             random triangles; the astrophysical triangle in
+             exact integers
+
+  H          Interference envelope on 400,001 points              Second solution 11π/6 confirmed
+
+  I          Quaternion telescoping on 72 blocks, partition       All pass, including Re q < 0
+             sizes, 20,000 fractional lifts
+
+  J          20,000 random three-state chains                     Equal currents, tree-theorem formula, entropy production ≥ 0
+
+  K          Primes up to 10⁷                                     664,579 primes; wheel, mod 24 and sieve with 0 mismatches
+
+  L          Mock theta f(q) to q⁴⁰                               1, 1, −2, 3, −3, 3, −5, 7, −6, …
+
+  M          Horizon choices and look-elsewhere coverage          Section 6 tables
+
+  N          Historical cubits against climate                    1 of 8 and 3 of 8 hits; tail probabilities 0.48 and 0.076
+
+  O          Room modes of the King's Chamber and the             105 modes from 16 to 130 Hz; testbed's first mode 46.7 Hz
+             testbed
+
+  P          Power analyses for Protocol B                        Sample sizes in Section 8.2
+
+  Q          Mile, precession period, antenna aperture, ratio     Section 6.3
+             identities
+
+  R          Results imported from the Geometric Engine of        All confirmed; shortest closure 2 pulses; joint 40 Hz and 432 Hz closure 30
+             Time                                                 pulses; tier clearances 10, 16, 22 and 28; cube-group orientations; 30-node
+                                                                  wheel ratio 0.8; triadic χ² = 1/3 (Appendix E)
+
+ Conventions. Random draws use a fixed seed (20261011), so every run gives identical output. Exact checks use
+ Python integers, fractions and sympy, and floating-point checks state their tolerances in the code.
+
+
+
+ D Notation and Construction Catalogue
+ For completeness, every series symbol and construction this installment uses is listed below as the report or the
+ Geometric Engine of Time defines it. Hoard (2026b, c) are cited for their constructions only and are not reviewed here;
+ the results imported from Hoard (2026a) are verified in Appendix E.
+
+                                                  Table D1: Notation and construction catalogue.
+
+  Symbol / Object                           Meaning
+
+  SHD-CCP                                   The authors' computational architecture, within which the report's constructions are defined
+
+  W_n = 16 − 2n                             Winding count of tier n, n = 0 to 4 (Hoard 2026a, §1.1)
+
+  W_Σ = 60                                  Total winding invariant, the sum of W_n over the five tiers (Hoard 2026a, Proposition 1.1)
+
+  τQ                                        Topological Quantum Pulse: one unit per full helical wrap (Hoard 2026a, §1.2)
+
+
+                                                                       — 24 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                    Geometric Engine of Time
+
+
+
+  Symbol / Object                            Meaning
+
+  Δt_geo = 1 s; f_geo = 60 Hz                Definitional anchoring of one geometric cycle to the SI second, and the resulting pulse rate of 60 pulses
+                                             per 1 s cycle (Hoard 2026a, §1.2)
+
+  T₀ … T₄                                    The five toroid tiers, T₀ innermost
+
+  R_n = 5n² + 15n + 15; r_n = 2n + 4         Major radii 15, 35, 65, 105 and 155; minor radii 4, 6, 8, 10 and 12 (Hoard 2026a, §2.1 and §2.2)
+
+  Rot(T_n)                                   Rot_x(π/2) for even n and Rot_y(π/2) for odd n (Hoard 2026a, §2.3)
+
+  C₃ × C₂                                    Product symmetry of the six channels: three triadic phases 0°, 120° and −120° times two braid
+                                             directions (Hoard 2026a, §3.1)
+
+  Parity map                                 +1 ↦ 0 and −1 ↦ 0.5, written π in Hoard (2026a, Proposition 3.1)
+
+  30 structural nodes                        Six channels across five tiers; one traversal is 30 pulses, or 0.5 s (Hoard 2026a, §5)
+
+  N_pulse = 153,210,529.5; {N_pulse}         Caesium periods per pulse, ν_Cs/60, and its fractional part
+  = 0.5
+
+  N_total = 4,596,315,885                    Caesium periods in one 30-node traversal, ν_Cs × 0.5 s
+
+  T_macro = 432                              Great Year of 25,920 pulses divided by 60 (Hoard 2026a, §1.3)
+
+  Klein-wave merge boundary                  λ/12 = (4/3)C₄₀, the distance over which the phase advances by π/6
+
+  Voxel telemetry cube, alignment mat        The 4 × 4 × 4 grid of cubit voxels, with edge λ/4
+
+  Cymatic panel                              C₄₀/16 = λ/256
+
+  Quadrance, quadrea                         A squared distance; S² − 2ΣQᵢ², equal to sixteen times the squared area
+
+  Triple Quad Formula (TQF)                  Wildberger's collinearity condition, quadrea = 0; Hoard (2026a, Theorem 4.1) uses the name for the
+                                             area-stability identity A_R = 16A²
+
+  χ_TQF                                      √A_R/S, the report's triangulation coupling ratio
+
+  Torsional Markov memory-offload            Three cyclic quaternion chains: a 12-point gear of 720 frames, a 10-point gear of 72 frames and an 8-
+  pump                                       point gear of 10 frames (Hoard 2026b)
+
+  Cycle current J                            Net probability flow around the 12 → 10 → 8 → 12 cycle
+
+  Holonomy H                                 Product of the gears' net rotations
+
+  Hyperbolic Sparsemax Pump                  A companion executable kernel (Hoard 2026c), referenced but not reviewed
+
+  Centroid Monoid, Lorentz lift              The report's seven-step narrative for the classes 6k ± 1; conjectural
+
+  Step 5, Step 7                             Labels for the residue classes 5 and 1 (mod 6)
+
+  Dual-parity astrometric timing dipole,     The two-source model with relative phase π + π/6
+  π/6 gate
+
+  ECM999 telemetry cube                      Eight measurement microphones at the corners of the voxel cube
+
+  Gann Square of Nine, Master Square         Grid layouts on the 4-cubit mat, with 19 × 19 and 12 × 12 tiles
+  of 144
+
+  Great Year                                 25,920 years in the report; the measured precession period is 25,772 years
+
+
+
+
+ E Results Imported from the Geometric Engine of Time
+ Every result this installment takes from Hoard (2026a) was re-derived in section R of the verification script. All hold as
+ stated. Three passages need corrected wording, and five results can be sharpened.
+
+                                          Table E1: Results of Hoard (2026a) checked for this installment.
+
+                                                                                                                                                Used
+  GET result            Statement                 Check            Note
+                                                                                                                                                in
+
+  Proposition 1.1,      W_Σ = Σ(16 − 2n) =        confirmed        A count fixed by the chosen winding law                                      4.1
+  winding               60
+  invariant
+
+  §1.2, register        Δt_geo = 1 s, so f_geo    confirmed        f_geo is a pulse rate; the cycle frequency is 1 Hz. The Engine tags the      3.2,
+                        = W_Σ/Δt_geo = 60 Hz                       anchoring [HEURISTIC]                                                        4.1
+
+  §1.3,                 25,920/60 = 432           confirmed        25,920 is a convention; measured precession gives 25,772 years. Tagged       3.2,
+  macroscopic                                                      [COMPUTED] here                                                              6.3
+  bound
+
+  §1.3,                 ν_Cs/60 =                 confirmed        Equivalent to ν_Cs ≡ 30 (mod 60)                                             4.1
+  microscopic           153,210,529.5
+  bound
+
+  Proposition 2.1,      R_n = 5n² + 15n + 15      confirmed;       The proof calls the first differences 20, 30, 40 and 50 "second              not
+  major radii                                     wording          differences"; the second differences are 10                                  used
+
+
+
+
+                                                                          — 25 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                               Geometric Engine of Time
+
+
+
+                                                                                                                                          Used
+  GET result          Statement                Check        Note
+                                                                                                                                          in
+
+  Proposition 2.2,    r_n = 2n + 4             confirmed    none                                                                          not
+  minor radii                                                                                                                             used
+
+  §2.3, alternating   Rot_x(π/2) for even      sharpened    Clearances R_(n+1) − R_n − r_n − r_(n+1) of 10, 16, 22 and 28 keep            4.4
+  embedding           tiers, Rot_y(π/2) for                 concentric tiers apart in any orientation, so the embedding is not needed
+                      odd                                   for separation. Adjacent tiers differ by a 120° rotation about a body
+                                                            diagonal; all orientations lie in the 24-element rotation group of the cube
+
+  Proposition 3.1,    π(+1) = 0, π(−1) = 0.5   sharpened;   An injective homomorphism C₂ → ℚ/ℤ, with φ_p = π((−1)^p). The symbol          4.1,
+  parity map                                   wording      π also denotes the circle constant in §2.3                                    4.3
+
+  Proposition 3.2,    ω₀/ω₄ = 16/8 = 2         confirmed    "Acceleration" names a step increase of ω between tiers, not a change in      not
+  angular velocity                                          time                                                                          used
+
+  Theorem 4.1,        A_R = 16A²               confirmed;   Exact only in exact arithmetic (Remark 4.3); triadic anchors attain χ = 1/    4.2
+  TQF identity                                 sharpened    √3
+
+  Theorem 5.1,        30 pulses = 0.5 s hold   sharpened    Every even pulse count closes, the shortest being 2; 0.5 s is the shortest    4.1,
+  parity closure      4,596,315,885                         joint closure with the 40 Hz and 432 Hz carriers                              8.1
+                      caesium periods
+
+  §5, 30 structural   six channels × five      sharpened    C₃ × C₂ × C₅ ≅ ℤ/30, with 8 prime-admissible nodes                            4.6
+  nodes               tiers
+
+  Abstract            "the quadratic major     wording      W_n is the linear winding law; the quadratic law is R_n                       none
+                      radius law W_n = 16 −
+                      2n"
+
+      Editorial Note. None of these checks touches the Engine's geometric readings, which Hoard (2026a) itself tags
+      [HEURISTIC]: the anchoring Δt_geo = 1 s, the alternating embedding, the dual helix as a parity carrier, the TQF gears
+      as stability monitors and the 30-node traversal as a temporal engine.
+
+
+
+ References
+ Links are given for every source opened while preparing this proposal; the remaining entries are standard works and the
+ report's own citations.
+
+   1. BioChain AI — SHD-CCP Architecture Research (2026). A Proposal for a Standardization of the Cubit: Relativistic
+      Acoustic-Scalar Metrology, Non-Local Astrophysical Triangulation, and Torsional Twistor Emergence. Consolidated
+      Technical Report Series (Metrological Foundations, Revised & Expanded Edition), October 2026. The technical report
+      this proposal supersedes.
+   2. BIPM (2019). The International System of Units (SI), 9th edition. Bureau International des Poids et Mesures.
+   3. Capitaine, N., Wallace, P. T. & Chapront, J. (2003). Expressions for IAU 2000 precession quantities. Astronomy &
+      Astrophysics 412, 567–586. Rate as quoted in Axial precession.
+   4. Chambers, C. D. (2013). Registered Reports: a new publishing initiative at Cortex. Cortex 49, 609–610.
+   5. Cramer, O. (1993). The variation of the specific heat ratio and the speed of sound in air with temperature, pressure,
+      humidity, and CO₂ concentration. Journal of the Acoustical                           Society     of   America      93(5),    2510–2516.
+      doi:10.1121/1.405827. Coefficients as implemented in pyfar.
+   6. GRAVITY Collaboration (2019). A geometric distance measurement to the Galactic Center black hole with 0.3 %
+      uncertainty. Astronomy & Astrophysics 625, L10. arXiv:1904.05721.
+   7. GRAVITY Collaboration (2021). Distance to the Galactic Centre of 8,275 pc, as summarized by the Max Planck
+      Institute for Extraterrestrial Physics.
+   8. Guralnick, E. (1996). Sargonid sculpture and the Late Assyrian cubit. Iraq 58, 89–103.
+   9. Hairer, E., Lubich, C. & Wanner, G. (2006). Geometric Numerical Integration, 2nd edition. Springer.
+  10. Heggie, D. C. (1981). Megalithic Science: Ancient Mathematics and Astronomy in Northwest Europe. Thames &
+      Hudson.
+  11. Hill, T. L. (1977). Free Energy Transduction in Biology. Academic Press.
+  12. Hoard, G. (2026a). The Geometric Engine of Time: Mathematical Architecture of the 6-Channel, 5-Tier Toroidal
+      Orbital Calculator. BioChain AI — SHD-CCP Architecture Research, Consolidated Technical Report (Continued Series).
+      Posted on Academia.edu.
+  13. Hoard, G. (2026b). The Torsional Markov Memory-Offload Pump: A Three-Scale Quaternionic Delta-Chain with
+      Inverse Compensation and Non-Equilibrium Circulation. Owl Academy / BioChain AI Technical Report.
+  14. Hoard, G. (2026c). The Hyperbolic Sparsemax Pump: A Rational, Parity-Safe Executable Kernel for the SHD-CCP
+      Lattice. BioChain AI / Owl Academy Companion Paper.
+
+
+
+                                                                   — 26 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                Geometric Engine of Time
+
+
+
+  15. ISO 16:1975. Acoustics — Standard tuning frequency (Standard musical pitch). International Organization for
+      Standardization.
+  16. Jahn, R. G., Devereux, P. & Ibison, M. (1996). Acoustical resonances of assorted ancient structures. Journal of the
+      Acoustical Society of America 99(2), 649–658.
+  17. JCGM 100:2008. Evaluation of measurement data: Guide to the expression of uncertainty in measurement (GUM).
+  18. Kaufman, D. et al. (2020). Holocene global mean surface temperature, a multi-method reconstruction approach.
+      Scientific Data 7, 201. Abstract.
+  19. Klein, H. A. (1974). The Science of Measurement: A Historical Survey. Dover.
+  20. Kolmogorov, A. (1936). Zur Theorie der Markoffschen Ketten. Mathematische Annalen 112, 155–160.
+  21. Kuttruff, H. (2016). Room Acoustics, 6th edition. CRC Press.
+  22. Lee, J. G., Adelberger, E. G., Cook, T. S., Fleischer, S. M. & Heckel, B. R. (2020). New test of the gravitational 1/r² law
+      at separations down to 52 µm. Physical Review Letters 124, 101101. arXiv:2002.11761.
+  23. Lepsius, K. R. (1865). Die altägyptische Elle und ihre Eintheilung. Dümmler, Berlin.
+  24. Levin, D. A., Peres, Y. & Wilmer, E. L. (2017). Markov Chains and Mixing Times, 2nd edition. American Mathematical
+      Society.
+  25. Nosek, B. A., Ebersole, C. R., DeHaven, A. C. & Mellor, D. T. (2018). The preregistration revolution. Proceedings of
+      the National Academy of Sciences 115, 2600–2606.
+  26. Ortiz, M., Raum, M. & Richter, O. K. (2026). Recursions for mock theta functions. arXiv:2606.18110.
+  27. Petrie, W. M. F. (1877). Inductive Metrology. Hargrove Saunders, London.
+  28. Petrie, W. M. F. (1883). The Pyramids and Temples of Gizeh. Field & Tuer, London. Chapter 7 and chapter 20.
+  29. Planck Collaboration (2020). Planck 2018 results VI: cosmological parameters. Astronomy & Astrophysics 641, A6.
+      Table 2.
+  30. Powell, M. A. (1987–1990). Masse und Gewichte. Reallexikon der Assyriologie 7, 457 ff.
+  31. Prša, A. et al. (2016). Nominal values for selected solar and planetary quantities: IAU 2015 Resolution B3.
+      Astronomical Journal 152, 41. arXiv:1510.07674.
+  32. Ramanujan, S. (1920). Letter to G. H. Hardy, 12 January 1920. In Collected Papers of Srinivasa Ramanujan,
+      Cambridge University Press.
+  33. Regge, T. & Wheeler, J. A. (1957). Stability of a Schwarzschild singularity. Physical Review 108, 1063–1069.
+  34. Schnakenberg, J. (1976). Network theory of microscopic and macroscopic behavior of master equation systems.
+      Reviews of Modern Physics 48, 571–585.
+  35. Shoemake, K. (1985). Animating rotation with quaternion curves. ACM SIGGRAPH Computer Graphics 19(3), 245–
+      254.
+  36. Thom, A. (1962). The megalithic unit of length. Journal of the Royal Statistical Society, Series A 125, 243–251.
+      Summary of critiques in Megalithic yard.
+  37. Tiesinga, E. et al. (2021). CODATA recommended values of the fundamental physical constants: 2018. Reviews of
+      Modern Physics 93, 025010.
+  38. Unger, E. (1916). Zwei babylonische Antiken aus Nippur. Context in Eckhard Unger and Cubit.
+  39. Weitzenböck, R. (1919). Über eine Ungleichung in der Dreiecksgeometrie. Mathematische Zeitschrift 5, 137–146.
+  40. Wildberger, N. J. (2005). Divine Proportions: Rational Trigonometry to Universal Geometry. Wild Egg Books.
+  41. Will, C. M. (2014). The confrontation between general relativity and experiment. Living Reviews in Relativity 17, 4.
+  42. Wright, M. C. M. (2007). Lay-language paper, 153rd Meeting of the Acoustical Society of America, Salt Lake City.
+      ASA press room.
+  43. Zwegers, S. P. (2001). Mock θ-functions and real analytic modular forms. In q-Series with Applications to
+      Combinatorics, Number Theory, and Physics, Contemporary Mathematics 291, American Mathematical Society,
+      269–277.
+  44. Zwegers, S. P. (2002). Mock Theta Functions. PhD thesis, Universiteit Utrecht. arXiv:0807.4834.
+
+ Climate normals. Cairo (Cairo International Airport, 1991 to 2020) and List of cities by average temperature for
+ Baghdad, Erbil, Rome, Athens, Jerusalem and Edinburgh, each with its station source.
+
+ Submission details. Corresponding author: [name, affiliation, ORCID and email to be completed before submission].
+ Keywords: Geometric Engine of Time; SHD-CCP; acoustic metrology; speed of sound in air; ancient metrology; cubit;
+ rational trigonometry; Weitzenböck inequality; non-equilibrium Markov chains; mock theta functions; local position
+ invariance; look-elsewhere effect; registered report.
+
+
+
+
+                                                            — 27 —
+

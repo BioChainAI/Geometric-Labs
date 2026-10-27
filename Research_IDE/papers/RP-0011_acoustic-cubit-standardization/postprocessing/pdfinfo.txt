@@ -1,0 +1,19 @@
+Title:           The Geometric Engine of Time: A Proposal for a Standardization of the Cubit
+Creator:         Chromium
+Producer:        Skia/PDF m141
+CreationDate:    Tue Oct 13 02:01:22 2026 UTC
+ModDate:         Tue Oct 13 02:01:22 2026 UTC
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           27
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       767139 bytes
+Optimized:       no
+PDF version:     1.4

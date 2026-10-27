@@ -1,0 +1,111 @@
+{
+ "schema_version": 1,
+ "id": "RP-0007",
+ "slug": "twelve-engine-memory",
+ "title": "Memory in the Twelve-Engine Hierarchy",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "Memory in the Twelve-Engine Hierarchy",
+  "url": "",
+  "license": "unspecified in intake; release clearance pending",
+  "pages": 8
+ },
+ "tags": [
+  "erasure-recovery",
+  "memory",
+  "phase-routing"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-26",
+ "updated": "2026-10-26",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "45bd98cd58af555b5a64eeaeee6e86a65821c2efb8d29230739d78d2bf24ada5",
+   "bytes": 17725,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "5bd3e7913da2389ecc8fa06985ab6efbe2ae5f3e17f30290d21da2f367eb0cf4",
+   "bytes": 474,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/pdfinfo.txt",
+   "kind": "other",
+   "sha256": "5e37dbad35589341f403001aaa33c1e27d14cafd022c9d6f28dcf43e5757321c",
+   "bytes": 517,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "source/Memory in the Twelve-Engine Hierarchy.pdf",
+   "kind": "source-pdf",
+   "sha256": "4cbe8b207c9e1d2b600c1933c3568482782ed320a0d5c3de9b3e31759dff929b",
+   "bytes": 231058,
+   "added": "2026-10-26"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0007",
+  "revision_label": null,
+  "document_date": "2026-10-16",
+  "received_date": "2026-10-26",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/Memory in the Twelve-Engine Hierarchy.pdf",
+  "source_sha256": "4cbe8b207c9e1d2b600c1933c3568482782ed320a0d5c3de9b3e31759dff929b",
+  "topics": [
+   "memory",
+   "erasure-recovery",
+   "phase-routing"
+  ],
+  "relevance": [
+   {
+    "repository": "CubiLoom",
+    "role": "primary",
+    "reason": "M1 and M2 motivate erasure/replay storage, with 25% parity overhead and explicit failure boundaries."
+   },
+   {
+    "repository": "PolyShard-Agent",
+    "role": "supporting",
+    "reason": "Retain private local histories; exporting parity alone cannot reconstruct all individual events."
+   },
+   {
+    "repository": "Polycentric-Orchestrator",
+    "role": "supporting",
+    "reason": "Coordinate missing-engine recovery without inventing independent history from one parity product."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "supporting",
+    "reason": "M3 phase/stream scheduling requires explicit time-slot semantics and measured capacity."
+   },
+   {
+    "repository": "Geometric-Labs",
+    "role": "supporting",
+    "reason": "Exact parity/inverse tests and counterexample to M2 fixed-coordinate-width inference."
+   }
+  ],
+  "relations": [
+   {
+    "kind": "related-to",
+    "target": "RP-0006",
+    "evidence": "M1–M3 use the implied-fourth, tier and holonomy construction; no inference of common revision numbering."
+   }
+  ],
+  "prior_upload": {
+   "status": "exact-bytes-seen-previously",
+   "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
+  },
+  "release_record": null
+ }
+}

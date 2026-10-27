@@ -1,0 +1,113 @@
+{
+ "schema_version": 1,
+ "id": "RP-0008",
+ "slug": "fokker-planck-prime-sieve",
+ "title": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve in Quaternionic Lattices",
+ "tier": "core",
+ "authors": [],
+ "source": {
+  "citation": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve in Quaternionic Lattices",
+  "url": "",
+  "license": "unspecified in intake; release clearance pending",
+  "pages": 38
+ },
+ "tags": [
+  "certification",
+  "exact-arithmetic",
+  "frame-alignment",
+  "prime-sieve"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-26",
+ "updated": "2026-10-26",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "210d230a269908762e6a45973532ab94ffd2916eab9d15617bda3b8bea2051d0",
+   "bytes": 136155,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "c54c8a83c5bb51fcefb42aaf78f101010b149f5b67e86ee0c88ac3f2955d0260",
+   "bytes": 476,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/pdfinfo.txt",
+   "kind": "other",
+   "sha256": "fcdc4a3a0827dd5957915362be09293c27cfd40cfad673390a74e76439303c4b",
+   "bytes": 563,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "source/The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Release.pdf",
+   "kind": "source-pdf",
+   "sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
+   "bytes": 747401,
+   "added": "2026-10-26"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0008",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-26",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Release.pdf",
+  "source_sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
+  "topics": [
+   "prime-sieve",
+   "certification",
+   "exact-arithmetic",
+   "frame-alignment"
+  ],
+  "relevance": [
+   {
+    "repository": "Geometric-Labs",
+    "role": "primary",
+    "reason": "Exact prime certification, frame alignment and arithmetic verification; review corrections against current source/tests."
+   },
+   {
+    "repository": "SHD-CCP-core",
+    "role": "supporting",
+    "reason": "Hurwitz anchors and Tile representation must respect the canonical profile."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "supporting",
+    "reason": "Separate proposer heuristics from certified prime/norm and calibration evidence."
+   },
+   {
+    "repository": "Manifold-Projection",
+    "role": "supporting",
+    "reason": "Invariant and Horn-frame alignment proposals inform explicit coordinate transforms."
+   },
+   {
+    "repository": "PolyShard-Agent",
+    "role": "context",
+    "reason": "Future locally calibrated observations; mathematical alignment does not create consent or authentication."
+   }
+  ],
+  "relations": [
+   {
+    "kind": "corrects",
+    "target": "RP-0002",
+    "evidence": "PDF p. 1 states the golden Clifford torus contains no lattice point and the sieve does not compute primes; targets the corresponding earlier toroidal-prime claims, not the entire paper."
+   }
+  ],
+  "prior_upload": {
+   "status": "exact-bytes-seen-previously",
+   "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
+  },
+  "release_record": null
+ }
+}

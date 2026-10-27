@@ -136,22 +136,22 @@
     {
       "entry": "docs/specification_status.md",
       "id": "papers",
-      "limits": "No canonical PDFs are currently tracked in docs/papers/. Uploaded chat files are not repository paper entries.",
+      "limits": "Paper relevance and author claim tags are distinct from proof, implementation and official release status.",
       "matches": [
         "docs/"
       ],
-      "role": "Explains mathematical architecture, corrections and pending source-paper intake.",
+      "role": "Explains mathematical architecture, corrections and the central Research IDE paper archive.",
       "status": "reference",
       "title": "Canonical documentation and paper intake"
     },
     {
-      "entry": "Research_IDE/README.md",
+      "entry": "Research_IDE/archive/README.md",
       "id": "research_ide",
-      "limits": "CATALOG has 0 papers. Browser saves are manual exports; IDE proof labels do not execute Lean. CLI checks were run; browser UI/CDNs were not exercised.",
+      "limits": "Preserved research PDFs have source hashes and repository relevance. Official releases require reviewed evidence; IDE labels do not execute Lean.",
       "matches": [
         "Research_IDE/"
       ],
-      "role": "Transform/export research artifacts, file them by paper ID, and validate manifests/catalog consistency.",
+      "role": "Archive paper revisions, map relevance across eight repositories, and validate manifests and generated reading lists.",
       "status": "implemented",
       "title": "Research IDE and paper library"
     },
@@ -217,7 +217,7 @@
       "matches": [
         "ecosystem/experiments/alexneth_geot/"
       ],
-      "role": "Multiscale image features \u2192 fold3 \u2192 64-cell Euclidean/Lorentz routing \u2192 class and semantic outputs \u2192 typed sidecar.",
+      "role": "Multiscale image features → fold3 → 64-cell Euclidean/Lorentz routing → class and semantic outputs → typed sidecar.",
       "status": "experimental",
       "title": "AlexNet-H/GEOT RFC 0.2 CPU reference"
     },

@@ -1,0 +1,100 @@
+{
+ "schema_version": 1,
+ "id": "RP-0004",
+ "slug": "torsional-markov-mathematical-model",
+ "title": "Mathematical Model for the Torsional Markov Memory-Offload Pump",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "Mathematical Model for the Torsional Markov Memory-Offload Pump",
+  "url": "",
+  "license": "unspecified in intake; release clearance pending",
+  "pages": 7
+ },
+ "tags": [
+  "delta-encoding",
+  "markov-pump",
+  "memory"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-26",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "7425fc72a9ad3c248c8134d113c337c34336d3827f363fa6132e7dcb102f2f0d",
+   "bytes": 19492,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "c8f81a9358d025584a51a6a081afec35997a233ac0287dad3a6d6a5e9f22dc6a",
+   "bytes": 592,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/pdfinfo.txt",
+   "kind": "other",
+   "sha256": "69dabf5b81e83e91a10d90a2036ca8f4c67661e566f65b04033cddcb38c4fe6f",
+   "bytes": 489,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/Mathematical_Model_for_the_Torsional_Mar.pdf",
+   "kind": "source-pdf",
+   "sha256": "aa071a57783b662299bc62c052610190f6bdece24c61aa391a77fb69f6165855",
+   "bytes": 69250,
+   "added": "2026-10-26"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0004",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-26",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/Mathematical_Model_for_the_Torsional_Mar.pdf",
+  "source_sha256": "aa071a57783b662299bc62c052610190f6bdece24c61aa391a77fb69f6165855",
+  "topics": [
+   "memory",
+   "delta-encoding",
+   "markov-pump"
+  ],
+  "relevance": [
+   {
+    "repository": "CubiLoom",
+    "role": "primary",
+    "reason": "PDF §§3–5 and 9–13 motivate history/block offload; persistence and exact replay are still engineering work."
+   },
+   {
+    "repository": "Geometric-Labs",
+    "role": "supporting",
+    "reason": "Independent noncommutative ordering, partition and reconstruction tests."
+   },
+   {
+    "repository": "Polycentric-Orchestrator",
+    "role": "supporting",
+    "reason": "PDF §§6–8 motivate a coordination policy, not an implemented scheduler."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "context",
+    "reason": "Possible future buffer/scheduling workload after a CPU reference exists."
+   }
+  ],
+  "relations": [],
+  "prior_upload": {
+   "status": "no-exact-match-in-available-earlier-uploads",
+   "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
+  },
+  "release_record": null
+ }
+}

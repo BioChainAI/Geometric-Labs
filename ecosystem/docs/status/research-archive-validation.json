@@ -1,0 +1,125 @@
+{
+  "schema": "geometric-labs.research-archive-validation.v1",
+  "date": "2026-10-26",
+  "base_commit": "0040e9e8c3635ade7a59afa3f65ee551bc7b81ce",
+  "branch": "codex/research-archive",
+  "documents": [
+    {
+      "id": "RP-0001",
+      "work_id": "WORK-0001",
+      "path": "Research_IDE/papers/RP-0001_four-dimensional-coordinate-geometry/source/Introduction_to_4D_Coordinate_Geometry_f.pdf",
+      "sha256": "0ac941df0ba95de85ba14cf570b2c87a45f1e940a1ceb25022f0bfc05f86f9df",
+      "bytes": 113213,
+      "prior_upload_status": "no-exact-match-in-available-earlier-uploads"
+    },
+    {
+      "id": "RP-0002",
+      "work_id": "WORK-0002",
+      "path": "Research_IDE/papers/RP-0002_quaternionic-delta-golden-toroids/source/Quaternionic_Delta_Encoding_on_Golden_St.pdf",
+      "sha256": "2a2e46aba7261106c1b30d881d0630acbbe8a9ab74c4c7ecf2d92ace4f843ff2",
+      "bytes": 139520,
+      "prior_upload_status": "no-exact-match-in-available-earlier-uploads"
+    },
+    {
+      "id": "RP-0003",
+      "work_id": "WORK-0003",
+      "path": "Research_IDE/papers/RP-0003_triple-quad-folded-packet/source/Extending_the_Framework_Triple_Quad_Func.pdf",
+      "sha256": "7de18a89ea549331da9e9a6b5f7b01f54817654ce9226ff9688a3cafc2401a23",
+      "bytes": 756736,
+      "prior_upload_status": "no-exact-match-in-available-earlier-uploads"
+    },
+    {
+      "id": "RP-0004",
+      "work_id": "WORK-0004",
+      "path": "Research_IDE/papers/RP-0004_torsional-markov-mathematical-model/source/Mathematical_Model_for_the_Torsional_Mar.pdf",
+      "sha256": "aa071a57783b662299bc62c052610190f6bdece24c61aa391a77fb69f6165855",
+      "bytes": 69250,
+      "prior_upload_status": "no-exact-match-in-available-earlier-uploads"
+    },
+    {
+      "id": "RP-0005",
+      "work_id": "WORK-0005",
+      "path": "Research_IDE/papers/RP-0005_hyperbolic-sparsemax-pump/source/The_Hyperbolic_Sparsemax_Pump_A_Rational.pdf",
+      "sha256": "f3b0f01f9846edbc7906596f3b37e9cca80eca07bddf5305ee13257a7dd4f31d",
+      "bytes": 137169,
+      "prior_upload_status": "no-exact-match-in-available-earlier-uploads"
+    },
+    {
+      "id": "RP-0006",
+      "work_id": "WORK-0006",
+      "path": "Research_IDE/papers/RP-0006_fifteen-lemmas-monograph/source/The_Geometric_Engine_of_Time_The_Fifteen_Lemmas.pdf",
+      "sha256": "c48fc37963ac817bfd7c6dae80f08570545a424b37eaf0c32123fdd66935f74d",
+      "bytes": 715783,
+      "prior_upload_status": "no-exact-match-in-available-earlier-uploads"
+    },
+    {
+      "id": "RP-0007",
+      "work_id": "WORK-0007",
+      "path": "Research_IDE/papers/RP-0007_twelve-engine-memory/source/Memory in the Twelve-Engine Hierarchy.pdf",
+      "sha256": "4cbe8b207c9e1d2b600c1933c3568482782ed320a0d5c3de9b3e31759dff929b",
+      "bytes": 231058,
+      "prior_upload_status": "exact-bytes-seen-previously"
+    },
+    {
+      "id": "RP-0008",
+      "work_id": "WORK-0008",
+      "path": "Research_IDE/papers/RP-0008_fokker-planck-prime-sieve/source/The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Release.pdf",
+      "sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
+      "bytes": 747401,
+      "prior_upload_status": "exact-bytes-seen-previously"
+    },
+    {
+      "id": "RP-0009",
+      "work_id": "WORK-0004",
+      "path": "Research_IDE/papers/RP-0009_torsional-memory-offload-pump/source/The_Torsional_Markov_Memory_Offload_Pump.pdf",
+      "sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990",
+      "bytes": 118285,
+      "prior_upload_status": "exact-bytes-seen-previously"
+    },
+    {
+      "id": "RP-0010",
+      "work_id": "WORK-0009",
+      "path": "Research_IDE/papers/RP-0010_six-channel-five-tier-architecture/source/The_Geometric_Engine_of_Time_Mathematica.pdf",
+      "sha256": "b17a22359f5ac52ec1510f6c281376f2d2366a2b822d5afefae4006e04f29bdd",
+      "bytes": 101993,
+      "prior_upload_status": "exact-bytes-seen-previously"
+    },
+    {
+      "id": "RP-0011",
+      "work_id": "WORK-0010",
+      "path": "Research_IDE/papers/RP-0011_acoustic-cubit-standardization/source/The_Geometric_Engine_of_Time_Standardization_of_the_Cubit.pdf",
+      "sha256": "186f8c4a7194448927fc771f4a20fdad5e5aa32247c7feff0ac94202111056fe",
+      "bytes": 767139,
+      "prior_upload_status": "exact-bytes-seen-previously"
+    }
+  ],
+  "document_count": 11,
+  "work_count": 10,
+  "source_bytes": 3897547,
+  "earlier_upload_exact_matches": 5,
+  "tests": {
+    "core_baseline_methods": 40,
+    "core_vector_files": 5,
+    "research_library_and_archive_methods": 27,
+    "pages_methods": 12
+  },
+  "review_scope": "Architectural relevance triage and selected visual formula inspection; not complete proof audit.",
+  "release_status": "all research-draft; no official releases or approvals asserted",
+  "logs": {
+    "root-baseline": {
+      "sha256": "a930d18dda710f3c86a92a89ad4b0c9f54ba2297f7c145c43ea23be9767fa361",
+      "local_log": "/tmp/geometric-archive-baseline.log"
+    },
+    "library-and-archive": {
+      "sha256": "77584ea37cf384e84e5ce03015937c116534bfdb651539f5001fd6cf16c1595b",
+      "local_log": "/tmp/geometric-archive-final-check.log"
+    },
+    "pages": {
+      "sha256": "2017faf0b68510953dc512a91fe6a2c9ee5a85f0ac6a816eb06c33dcd45b099f",
+      "local_log": "/tmp/geometric-archive-pages-check.log"
+    }
+  },
+  "committed": false,
+  "pushed": false,
+  "other_repositories_modified": false
+}
