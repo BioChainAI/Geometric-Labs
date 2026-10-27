@@ -35,6 +35,12 @@ No refresh command is part of CI or ordinary sync.
 
 ## Contracts and evidence
 
+The original Wave 00 byte snapshot stays frozen. Its preservation gate checks
+all recorded reference files except two evolving navigation pages: root
+`README.md` and `docs/papers/README.md`. Scientific source, specifications,
+vectors, tests, the original workflow and Makefile remain protected. Changes
+to those files still fail; archive links do not require rewriting old hashes.
+
 * Manifest v1: exact URLs, roles, dependency DAG and optional legacy BioChain-AI.
 * Lock v1: exact seven SHAs, URLs and canonical-manifest SHA-256.
 * Profile gate v1: `einstein-tile/1`, `glab-local-v1` (explicit alias for existing

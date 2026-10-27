@@ -1,5 +1,8 @@
 # Geometric-Labs
 
+[Open the Geometric Labs website](https://biochainai.github.io/Geometric-Labs/)
+· [Research IDE](https://biochainai.github.io/Geometric-Labs/research-ide/index.html)
+
 An exact-arithmetic Python reference engine and reproducible verification lab
 for Hurwitz geometry, quaternion state chains, and 64-stream routing models.
 The core and verification code require **Python 3.10+ and no third-party runtime

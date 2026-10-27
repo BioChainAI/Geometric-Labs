@@ -65,6 +65,13 @@ with tempfile.TemporaryDirectory(prefix='pages-preview-') as directory:
             assert context.request.get(base+'checkpoint/index.html').status==200
             assert context.request.get(base+'UPDATE_PROCEDURE.md').status==200
             results.append('project subpath: local CSS/JS/data, checkpoint, IDE and update guide resolve')
+            alias=context.new_page()
+            alias.route('**/*',lambda route:route.continue_() if route.request.url.startswith(base) else route.abort())
+            assert context.request.get(base+'Research_IDE/index.html').status==200
+            alias.goto(base+'Research_IDE/index.html',wait_until='domcontentloaded')
+            alias.wait_for_url(base+'research-ide/index.html')
+            alias.close()
+            results.append('Research_IDE/index.html: reported case-sensitive URL redirects to the canonical Research IDE')
             payload=json.loads((artifact/'data/status.json').read_text())
             payload['recent_commits'][0]['subject']='<img src=x onerror="window.injected=true">'
             test=context.new_page()

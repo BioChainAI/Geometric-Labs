@@ -93,6 +93,25 @@ class PageBuild(unittest.TestCase):
                 (output/'index.html').write_text(original+'<a href="'+link+'">bad</a>')
                 with self.assertRaises(ValueError): build.validate_artifact(output)
 
+    def test_repository_case_research_ide_url_redirects_inside_project(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output=Path(directory)/'site';build.build(output)
+            alias=output/'Research_IDE/index.html'
+            parser=build.Links();parser.feed(alias.read_text())
+            self.assertEqual(parser.refresh,['../research-ide/index.html'])
+            self.assertIn('../research-ide/index.html',parser.links)
+            self.assertEqual((alias.parent/parser.refresh[0]).resolve(),(output/'research-ide/index.html').resolve())
+            alias.unlink()
+            with self.assertRaises(ValueError): build.validate_artifact(output)
+
+    def test_research_ide_alias_wrong_or_escaping_redirect_fails(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output=Path(directory)/'site';build.build(output)
+            alias=output/'Research_IDE/index.html';original=alias.read_text()
+            for target in ('missing.html','../../outside.html','https://example.com/'):
+                alias.write_text(original.replace('0; url=../research-ide/index.html','0; url='+target))
+                with self.assertRaises(ValueError): build.validate_artifact(output)
+
     def test_production_mode_refuses_dirty_preview(self):
         with tempfile.TemporaryDirectory() as directory:
             data=build.scan(ROOT);data['preview_with_uncommitted_changes']=True
