@@ -2,9 +2,14 @@
 
 This folder holds the **Geometric Labs PDF-to-Markdown & LaTeX Research IDE** (`index.html`, SHD-CCP IDE v3.2) and the **paper library** where everything we produce with it is filed: transcriptions, audits, Lean 4 proofs, flowcharts, Cosmo-ID ledgers, workflows and post-processing data.
 
-The [eight-repository research archive](archive/README.md) now holds the first eleven
-preserved PDFs, with repository reading lists, revision families, source hashes and release
-status. Start with its [architecture map](archive/ARCHITECTURE_MAP.md) to find where a paper applies.
+The [official publication catalog](official/CATALOG.md) contains the fifteen papers
+designated by the repository owner on 2026-10-27. The Research IDE opens that collection
+by default. Archived papers can be imported manually into the Research Desk; manual
+imports never become official publications automatically.
+
+The [eight-repository research archive](archive/README.md) retains original and superseded
+PDFs, repository relevance, labels and source hashes. New official references inherit
+applicable mappings with provenance. See [official collection maintenance](official/README.md).
 
 The IDE is a single browser page. It keeps your work in memory only. Nothing survives a page reload unless you export it. The library is how those exports become a searchable, hash-checked database in git.
 
@@ -14,7 +19,9 @@ The IDE is a single browser page. It keeps your work in memory only. Nothing sur
 
 ```text
 Research_IDE/
-├── index.html                  the IDE (unchanged from upload; hash pinned in ide.lock.json)
+├── index.html                  IDE v3.3; official collection and manual Research Desk
+├── official-corpus.js          catalog validation, metadata and source hash checks
+├── official/                  generated official catalog and collection procedure
 ├── ide.lock.json               IDE version, SHA-256 and CDN dependencies
 ├── WALKTHROUGH.md              step-by-step guide: PDF → library entry
 ├── README.md                   this file
@@ -95,6 +102,6 @@ CI runs `make -C Research_IDE check` on Python 3.10–3.12 ([workflow](../.githu
 
 ## Relationship to the rest of the repository
 
-* `docs/papers/core/` and `docs/papers/series/` hold the **canonical** paper set that `src/geometric_labs/` and `verification/` cite. A transcription that reaches `verified` here can be promoted there by copying its Markdown (see [WALKTHROUGH.md, Step 14](WALKTHROUGH.md#step-14-promote-and-commit)).
+* The central library holds preserved source PDFs; `official/CATALOG.json` selects the owner-designated current publications. The old `docs/papers/` intake links here. Official collection membership does not rewrite existing code/specifications or grant a proof status.
 * The IDE's `canonical_registry.json` and audit rules are reference data inside the page. They are not the repository's executable conformance suite. Run `make verify-all` at the repository root for that.
 * Epistemic tags (`[PROVEN]`, `[COMPUTED]`, `[CORRESPONDENCE]`, …) follow the same meaning as in `Cryptographic_Research/` and the master guide §3.4.

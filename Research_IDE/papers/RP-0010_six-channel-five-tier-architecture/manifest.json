@@ -7,7 +7,7 @@
  "authors": [],
  "source": {
   "citation": "The Geometric Engine of Time: Mathematical Architecture of the 6-Channel, 5-Tier Toroidal Orbital Calculator",
-  "url": "",
+  "url": "https://www.academia.edu/171106117/The_Geometric_Engine_of_Time_Mathematical_Architecture_of_the_6_Channel_5_Tier_Toroidal_Orbital_Calculator",
   "license": "unspecified in intake; release clearance pending",
   "pages": 8
  },
@@ -51,6 +51,13 @@
    "sha256": "b17a22359f5ac52ec1510f6c281376f2d2366a2b822d5afefae4006e04f29bdd",
    "bytes": 101993,
    "added": "2026-10-26"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "4f7061065765562d945574a1c1f3f45db3400ba5fe3a1f764b4751e435c9ade9",
+   "bytes": 969,
+   "added": "2026-10-27"
   }
  ],
  "archive": {
@@ -59,14 +66,14 @@
   "revision_label": null,
   "document_date": null,
   "received_date": "2026-10-26",
-  "release_status": "research-draft",
+  "release_status": "official-release",
   "disposition": "retained-reference",
   "review_level": "relevance-triaged",
   "source_artifact": "source/The_Geometric_Engine_of_Time_Mathematica.pdf",
   "source_sha256": "b17a22359f5ac52ec1510f6c281376f2d2366a2b822d5afefae4006e04f29bdd",
   "topics": [
-   "geometry",
    "clock-model",
+   "geometry",
    "projection",
    "tier-laws"
   ],
@@ -97,6 +104,20 @@
    "status": "exact-bytes-seen-previously",
    "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
   },
-  "release_record": null
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "171106117",
+   "publication_url": "https://www.academia.edu/171106117/The_Geometric_Engine_of_Time_Mathematical_Architecture_of_the_6_Channel_5_Tier_Toroidal_Orbital_Calculator",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "b17a22359f5ac52ec1510f6c281376f2d2366a2b822d5afefae4006e04f29bdd",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
  }
 }

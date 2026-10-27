@@ -1,0 +1,918 @@
+{
+  "schema": "geometric-labs.official-corpus.v1",
+  "designation_basis": "Owner-designated official publications; proof status is separate.",
+  "documents": [
+    {
+      "id": "RP-0012",
+      "title": "Geometric Compression and Branching Dynamics in Discrete 3D Lattices: The Triple Quad 4x4x4 System",
+      "work_id": "WORK-0011",
+      "release_status": "official-release",
+      "publication_id": "164664471",
+      "publication_url": "https://www.academia.edu/164664471/Geometric_Compression_and_Branching_Dynamics_in_Discrete_3D_Lattices_The_Triple_Quad_4x4x4_System",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0012_geometric-compression-branching/source/Geometric_Compression_and_Branching_Dyna.pdf",
+      "source_sha256": "6ac642bd22accecea938037fb137ecf9fde30ec1a7a83b1e83c017e498d6335a",
+      "bytes": 92917,
+      "pages": 9,
+      "tags": [
+        "branching",
+        "compression",
+        "exact-arithmetic",
+        "geometry"
+      ],
+      "topics": [
+        "branching",
+        "compression",
+        "exact-arithmetic",
+        "geometry"
+      ],
+      "relevance": [
+        {
+          "repository": "Geometric-Labs",
+          "role": "primary",
+          "reason": "PDF §§2–4: exact quadrance/collinearity and branching reference tests."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "supporting",
+          "reason": "Proposed lattice and packet vocabulary requires canonical profile review."
+        },
+        {
+          "repository": "Manifold-Projection",
+          "role": "supporting",
+          "reason": "4×4×4 lattice and branching visualization."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "context",
+          "reason": "Separate verified predicates from geometric proposer and performance claims."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    },
+    {
+      "id": "RP-0013",
+      "title": "Topological Symmetry Folding and Hyperbolic Projection in the SHD-CCP Framework: A 720:1 Quaternionic Cyclic System",
+      "work_id": "WORK-0012",
+      "release_status": "official-release",
+      "publication_id": "165167160",
+      "publication_url": "https://www.academia.edu/165167160/Topological_Symmetry_Folding_and_Hyperbolic_Projection_in_the_SHD_CCP_Framework_A_720_1_Quaternionic_Cyclic_System",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0013_topological-symmetry-folding/source/Topological_Symmetry_Folding_and_Hyperbo.pdf",
+      "source_sha256": "27f83691dbe6b6cada1c3d2c5fafb6c9fa9afc717acd8fc8faeb411006b95103",
+      "bytes": 164131,
+      "pages": 7,
+      "tags": [
+        "delta-encoding",
+        "geometry",
+        "projection",
+        "symmetry-folding"
+      ],
+      "topics": [
+        "delta-encoding",
+        "geometry",
+        "projection",
+        "symmetry-folding"
+      ],
+      "relevance": [
+        {
+          "repository": "Manifold-Projection",
+          "role": "primary",
+          "reason": "PDF §§2–5: quaternion/trefoil/hyperbolic view proposals."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "supporting",
+          "reason": "Delta ordering and cyclic profile proposals need explicit domains and fixtures."
+        },
+        {
+          "repository": "CubiLoom",
+          "role": "context",
+          "reason": "Symmetry-reduced history requires retained distinctions for lossless reconstruction."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "supporting",
+          "reason": "Hardware folding/lookup claims require an executable backend and benchmarks."
+        },
+        {
+          "repository": "Geometric-Labs",
+          "role": "supporting",
+          "reason": "Counterexamples for arbitrary-delta 720-step closure and numeric-domain tests."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    },
+    {
+      "id": "RP-0002",
+      "title": "Quaternionic Delta Encoding on Golden Strassen-Clifford Toroids: Wave Collision and Sub-Cubic Matrix Optimization in the SHD-CCP 64-bit Protocol",
+      "work_id": "WORK-0002",
+      "release_status": "official-release",
+      "publication_id": "165176526",
+      "publication_url": "https://www.academia.edu/165176526/Quaternionic_Delta_Encoding_on_Golden_Strassen_Clifford_Toroids_Wave_Collision_and_Sub_Cubic_Matrix_Optimization_in_the_SHD_CCP_64_bit_Protocol_BioChain_AI_SHD_CCP_Architecture_Research",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0002_quaternionic-delta-golden-toroids/source/Quaternionic_Delta_Encoding_on_Golden_St.pdf",
+      "source_sha256": "2a2e46aba7261106c1b30d881d0630acbbe8a9ab74c4c7ecf2d92ace4f843ff2",
+      "bytes": 139520,
+      "pages": 6,
+      "tags": [
+        "delta-encoding",
+        "golden-torus",
+        "hardware",
+        "prime-sieve",
+        "projection"
+      ],
+      "topics": [
+        "delta-encoding",
+        "golden-torus",
+        "hardware",
+        "prime-sieve",
+        "projection"
+      ],
+      "relevance": [
+        {
+          "repository": "SHD-CCP-core",
+          "role": "primary",
+          "reason": "PDF §3 motivates delta representation; any normative byte or phase meaning requires a separate profile RFC."
+        },
+        {
+          "repository": "Manifold-Projection",
+          "role": "supporting",
+          "reason": "PDF §2 supports experimental toroidal views; distinguish S³ from its torus subset."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "supporting",
+          "reason": "PDF §5 motivates a candidate MAC DAG; requires measured CPU/hardware implementation."
+        },
+        {
+          "repository": "CubiLoom",
+          "role": "context",
+          "reason": "Delta-history motivation; the document is not an event-storage specification."
+        },
+        {
+          "repository": "Geometric-Labs",
+          "role": "supporting",
+          "reason": "Counterexamples and arithmetic tests should precede promotion of geometry, prime or speed claims."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added."
+    },
+    {
+      "id": "RP-0014",
+      "title": "From Linear Ledgers to Toroidal Matrices: Applying Topological Data Compression to Bitcoin State Transitions",
+      "work_id": "WORK-0013",
+      "release_status": "official-release",
+      "publication_id": "165259984",
+      "publication_url": "https://www.academia.edu/165259984/From_Linear_Ledgers_to_Toroidal_Matrices_Applying_Topological_Data_Compression_to_Bitcoin_State_Transitions_SHD_CCP_Architecture_Research",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0014_linear-ledgers-toroidal-matrices/source/From_Linear_Ledgers_to_Toroidal_Matrices.pdf",
+      "source_sha256": "9e7b2e3fbcd64df109b1996a3d40f252ca09fe12d8ab3531689711935eebba15",
+      "bytes": 62879,
+      "pages": 4,
+      "tags": [
+        "compression",
+        "delta-encoding",
+        "ledger",
+        "memory"
+      ],
+      "topics": [
+        "compression",
+        "delta-encoding",
+        "ledger",
+        "memory"
+      ],
+      "relevance": [
+        {
+          "repository": "CubiLoom",
+          "role": "primary",
+          "reason": "PDF §§3–6: ordered event history, matrix representation and retention experiments."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "supporting",
+          "reason": "PDF Table 1 has a distinct 64-bit packet proposal; do not reinterpret canonical Tile bytes."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "supporting",
+          "reason": "Record loss/security boundaries and tested compression evidence."
+        },
+        {
+          "repository": "Manifold-Projection",
+          "role": "context",
+          "reason": "Toroidal history views do not replace signed transaction semantics."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "context",
+          "reason": "Tensor/quantization proposals need separate numeric and throughput tests."
+        },
+        {
+          "repository": "Geometric-Labs",
+          "role": "supporting",
+          "reason": "Exact chains and replay/reconstruction tests; cryptographic integrity stays separate."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    },
+    {
+      "id": "RP-0004",
+      "title": "Mathematical Model for the Torsional Markov Memory-Offload Pump",
+      "work_id": "WORK-0004",
+      "release_status": "official-release",
+      "publication_id": "168903035",
+      "publication_url": "https://www.academia.edu/168903035/Mathematical_Model_for_the_Torsional_Markov_Memory_Offload_Pump_Theoretical_Physics_and_Topological_Computation_Board",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0004_torsional-markov-mathematical-model/source/Mathematical_Model_for_the_Torsional_Mar.pdf",
+      "source_sha256": "aa071a57783b662299bc62c052610190f6bdece24c61aa391a77fb69f6165855",
+      "bytes": 69250,
+      "pages": 7,
+      "tags": [
+        "delta-encoding",
+        "markov-pump",
+        "memory"
+      ],
+      "topics": [
+        "delta-encoding",
+        "markov-pump",
+        "memory"
+      ],
+      "relevance": [
+        {
+          "repository": "CubiLoom",
+          "role": "primary",
+          "reason": "PDF §§3–5 and 9–13 motivate history/block offload; persistence and exact replay are still engineering work."
+        },
+        {
+          "repository": "Geometric-Labs",
+          "role": "supporting",
+          "reason": "Independent noncommutative ordering, partition and reconstruction tests."
+        },
+        {
+          "repository": "Polycentric-Orchestrator",
+          "role": "supporting",
+          "reason": "PDF §§6–8 motivate a coordination policy, not an implemented scheduler."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "context",
+          "reason": "Possible future buffer/scheduling workload after a CPU reference exists."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added."
+    },
+    {
+      "id": "RP-0015",
+      "title": "Formal Proof: The Torsional Trefoil Markov Pump Theorem (TTMPT)",
+      "work_id": "WORK-0014",
+      "release_status": "official-release",
+      "publication_id": "168904328",
+      "publication_url": "https://www.academia.edu/168904328/Formal_Proof_The_Torsional_Trefoil_Markov_Pump_Theorem_TTMPT_Owl_Academy",
+      "document_date": "2026-06-19",
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0015_torsional-trefoil-markov-theorem/source/Formal_Proof_The_Torsional_Trefoil_Marko.pdf",
+      "source_sha256": "53e29adea431cef1e5272838426841c89431407e620e619c24d2b4368ab95725",
+      "bytes": 64936,
+      "pages": 5,
+      "tags": [
+        "analytic-model",
+        "markov-pump",
+        "routing"
+      ],
+      "topics": [
+        "analytic-model",
+        "markov-pump",
+        "routing"
+      ],
+      "relevance": [
+        {
+          "repository": "Geometric-Labs",
+          "role": "primary",
+          "reason": "PDF Theorem 1 and proof: check stated probability/current assumptions independently."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "supporting",
+          "reason": "Analytic companion vocabulary; exponential valve is distinct from rational sparsemax execution."
+        },
+        {
+          "repository": "Polycentric-Orchestrator",
+          "role": "context",
+          "reason": "Possible future coordination model; no current scheduling policy is established."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "supporting",
+          "reason": "Preserve theorem hypotheses and source/proof-review status separately."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    },
+    {
+      "id": "RP-0005",
+      "title": "The Hyperbolic Sparsemax Pump: A Rational, Parity-Safe Executable Kernel for the SHD–CCP Lattice",
+      "work_id": "WORK-0005",
+      "release_status": "official-release",
+      "publication_id": "169059586",
+      "publication_url": "https://www.academia.edu/169059586/The_Hyperbolic_Sparsemax_Pump_A_Rational_Parity_Safe_Executable_Kernel_for_the_SHD_CCP_Lattice_Owl_Academy",
+      "document_date": "2026-06-21",
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0005_hyperbolic-sparsemax-pump/source/The_Hyperbolic_Sparsemax_Pump_A_Rational.pdf",
+      "source_sha256": "f3b0f01f9846edbc7906596f3b37e9cca80eca07bddf5305ee13257a7dd4f31d",
+      "bytes": 137169,
+      "pages": 10,
+      "tags": [
+        "alexneth-geot",
+        "exact-rational",
+        "markov-pump",
+        "routing",
+        "sparsemax"
+      ],
+      "topics": [
+        "alexneth-geot",
+        "exact-rational",
+        "markov-pump",
+        "routing",
+        "sparsemax"
+      ],
+      "relevance": [
+        {
+          "repository": "SHD-CCP-core",
+          "role": "primary",
+          "reason": "PDF §§2–10: candidate exact-rational routing operator; canonical promotion requires a reviewed profile and bounded representation."
+        },
+        {
+          "repository": "Geometric-Labs",
+          "role": "supporting",
+          "reason": "Closest mathematical source for the Fraction oracle and float AlexNet-H/GEOT router; full pump remains separate work."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "supporting",
+          "reason": "Exact fraction width/overflow and execution ABI must be specified before device parity claims."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "supporting",
+          "reason": "Store operator assumptions, numeric domain and evidence separately from author theorem tags."
+        },
+        {
+          "repository": "PolyShard-Agent",
+          "role": "context",
+          "reason": "Possible trained local feature-routing use; no production inference acceptance follows from paper triage."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added."
+    },
+    {
+      "id": "RP-0009",
+      "title": "The Torsional Markov Memory-Offload Pump: A Three-Scale Quaternionic Delta-Chain with Inverse Compensation and Non-Equilibrium Circulation",
+      "work_id": "WORK-0004",
+      "release_status": "official-release",
+      "publication_id": "169060820",
+      "publication_url": "https://www.academia.edu/169060820/The_Torsional_Markov_Memory_Offload_Pump_A_Three_Scale_Quaternionic_Delta_Chain_with_Inverse_Compensation_and_Non_Equilibrium_Circulation_Owl_Academy",
+      "document_date": "2026-06-21",
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0009_torsional-memory-offload-pump/source/The_Torsional_Markov_Memory_Offload_Pump.pdf",
+      "source_sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990",
+      "bytes": 118285,
+      "pages": 9,
+      "tags": [
+        "delta-encoding",
+        "markov-pump",
+        "memory",
+        "sparsemax"
+      ],
+      "topics": [
+        "delta-encoding",
+        "markov-pump",
+        "memory",
+        "sparsemax"
+      ],
+      "relevance": [
+        {
+          "repository": "CubiLoom",
+          "role": "primary",
+          "reason": "PDF §§3–5 and 15 motivate ordered block history and retained residuals; storage/replay remains to be built."
+        },
+        {
+          "repository": "Geometric-Labs",
+          "role": "supporting",
+          "reason": "Test noncommutative telescoping, partitions, branch cases and memory-loss limits."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "supporting",
+          "reason": "PDF §14 requires a declared rational/transcendental execution boundary."
+        },
+        {
+          "repository": "Polycentric-Orchestrator",
+          "role": "supporting",
+          "reason": "PDF §7 current model may inform a future scheduling policy after K and π are specified."
+        },
+        {
+          "repository": "PolyShard-Agent",
+          "role": "context",
+          "reason": "Potential local history compression; do not export private fine history by implication."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added."
+    },
+    {
+      "id": "RP-0016",
+      "title": "A Unified Dual-Helix Framework for Geometrically-Guided Pollard’s Rho",
+      "work_id": "WORK-0015",
+      "release_status": "official-release",
+      "publication_id": "169490450",
+      "publication_url": "https://www.academia.edu/169490450/A_Unified_Dual_Helix_Framework_for_Geometrically_Guided_Pollards_Rho",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0016_unified-dual-helix-pollard-rho/source/A_Unified_Dual_Helix_Framework_for_Geome.pdf",
+      "source_sha256": "676170e4905bb34af14ef8830f7d54f59eb65fa342e8045ec452b2778a5b1765",
+      "bytes": 210140,
+      "pages": 13,
+      "tags": [
+        "certification",
+        "cryptographic-research",
+        "heuristic-search",
+        "prime-sieve"
+      ],
+      "topics": [
+        "certification",
+        "cryptographic-research",
+        "heuristic-search",
+        "prime-sieve"
+      ],
+      "relevance": [
+        {
+          "repository": "Geometric-Labs",
+          "role": "primary",
+          "reason": "PDF §§2–8: exact GCD certification, checkpoint reconstruction and controlled search experiments."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "supporting",
+          "reason": "Separate unconditional factor correctness from unproven oracle-bias acceleration."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "supporting",
+          "reason": "Feature/packet representations remain reviewed profiles, not a cryptographic shortcut."
+        },
+        {
+          "repository": "CubiLoom",
+          "role": "context",
+          "reason": "Checkpoint history is a candidate retention workload."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "context",
+          "reason": "Net speedup requires oracle/reconstruction/GCD cost measurements."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    },
+    {
+      "id": "RP-0010",
+      "title": "The Geometric Engine of Time: Mathematical Architecture of the 6-Channel, 5-Tier Toroidal Orbital Calculator",
+      "work_id": "WORK-0009",
+      "release_status": "official-release",
+      "publication_id": "171106117",
+      "publication_url": "https://www.academia.edu/171106117/The_Geometric_Engine_of_Time_Mathematical_Architecture_of_the_6_Channel_5_Tier_Toroidal_Orbital_Calculator",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0010_six-channel-five-tier-architecture/source/The_Geometric_Engine_of_Time_Mathematica.pdf",
+      "source_sha256": "b17a22359f5ac52ec1510f6c281376f2d2366a2b822d5afefae4006e04f29bdd",
+      "bytes": 101993,
+      "pages": 8,
+      "tags": [
+        "clock-model",
+        "geometry",
+        "projection",
+        "tier-laws"
+      ],
+      "topics": [
+        "clock-model",
+        "geometry",
+        "projection",
+        "tier-laws"
+      ],
+      "relevance": [
+        {
+          "repository": "Manifold-Projection",
+          "role": "primary",
+          "reason": "PDF §§2–4 supplies a diagram/view model for tiers, channels and anchors."
+        },
+        {
+          "repository": "Geometric-Labs",
+          "role": "supporting",
+          "reason": "Check winding sums, tier formulas, TQF identity and pulse arithmetic independently."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "context",
+          "reason": "Pulse model is motivation; device scheduling requires an actual clock and timing contract."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "context",
+          "reason": "Semantic labels inform a proposal; no wire-layout update follows automatically."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added."
+    },
+    {
+      "id": "RP-0017",
+      "title": "Monoid Collapse and Mass-Node Traversal in Relational Space: A Hybrid Coarse-Grained Search Framework",
+      "work_id": "WORK-0016",
+      "release_status": "official-release",
+      "publication_id": "171475615",
+      "publication_url": "https://www.academia.edu/171475615/Monoid_Collapse_and_Mass_Node_Traversal_in_Relational_Space_A_Hybrid_Coarse_Grained_Search_Framework",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0017_monoid-collapse-mass-node/source/Monoid_Collapse_and_Mass_Node_Traversal.pdf",
+      "source_sha256": "d9599345b6c2dd41d11070d5e3c43c38799fde72e7fdbfe04c2beff0b5a0caf0",
+      "bytes": 98126,
+      "pages": 8,
+      "tags": [
+        "coarse-graining",
+        "graph-search",
+        "monoids",
+        "projection"
+      ],
+      "topics": [
+        "coarse-graining",
+        "graph-search",
+        "monoids",
+        "projection"
+      ],
+      "relevance": [
+        {
+          "repository": "Manifold-Projection",
+          "role": "primary",
+          "reason": "PDF §§3–6: coarse geometric state and sparse weighted-graph views."
+        },
+        {
+          "repository": "Polycentric-Orchestrator",
+          "role": "supporting",
+          "reason": "Candidate sparse relational search with explicit nonnegative edge costs."
+        },
+        {
+          "repository": "Geometric-Labs",
+          "role": "supporting",
+          "reason": "Test homomorphism assumptions, information loss and sparse-graph cost comparisons."
+        },
+        {
+          "repository": "CubiLoom",
+          "role": "context",
+          "reason": "Possible graph/event representation; persistent semantics remain separate."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "context",
+          "reason": "Record sparsity and state-aggregation preconditions for any approved operator."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    },
+    {
+      "id": "RP-0018",
+      "title": "The Geometric Engine of Time: A Proposal for a Standardization of the Cubit",
+      "work_id": "WORK-0010",
+      "release_status": "official-release",
+      "publication_id": "178882482",
+      "publication_url": "https://www.academia.edu/178882482/The_Geometric_Engine_of_Time_A_Proposal_for_a_Standardization_of_the_Cubit",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0018_official-acoustic-cubit/source/The_Geometric_Engine_of_Time_A_Proposal.pdf",
+      "source_sha256": "66e482ae727baa54f3af8113da418193b584fa80ce48e6f1b23d56a9b5dfa3ec",
+      "bytes": 547509,
+      "pages": 27,
+      "tags": [
+        "calibration",
+        "clock-model",
+        "metrology",
+        "uncertainty"
+      ],
+      "topics": [
+        "calibration",
+        "clock-model",
+        "metrology",
+        "uncertainty"
+      ],
+      "relevance": [
+        {
+          "repository": "Geometric-Labs",
+          "role": "primary",
+          "reason": "PDF §§3–4 motivates Cramer, GUM, exact caesium bookkeeping and TQF checks; Appendix A records corrections."
+        },
+        {
+          "repository": "Manifold-Projection",
+          "role": "supporting",
+          "reason": "Calibration uncertainty must survive frame transforms and views."
+        },
+        {
+          "repository": "PolyShard-Agent",
+          "role": "supporting",
+          "reason": "Own local instrument/environment readings and explicit calibration IDs."
+        },
+        {
+          "repository": "Polycentric-Orchestrator",
+          "role": "supporting",
+          "reason": "Reject stale/incompatible calibration and preserve frame/clock uncertainty."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "context",
+          "reason": "Future calibration procedure/evidence approval is distinct from a mathematical proof."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "context",
+          "reason": "Sensors and clocks need hardware-specific realization before timing/measurement claims."
+        }
+      ],
+      "replaces_references": [
+        "RP-0011"
+      ],
+      "inherited_from": [
+        "RP-0011"
+      ],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    },
+    {
+      "id": "RP-0008",
+      "title": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve in Quaternionic Lattices",
+      "work_id": "WORK-0008",
+      "release_status": "official-release",
+      "publication_id": "179087267",
+      "publication_url": "https://www.academia.edu/179087267/The_Geometric_Engine_of_Time_The_Fokker_Planck_Prime_Sieve_in_Quaternionic_Lattices",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0008_fokker-planck-prime-sieve/source/The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Release.pdf",
+      "source_sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
+      "bytes": 747401,
+      "pages": 38,
+      "tags": [
+        "certification",
+        "exact-arithmetic",
+        "frame-alignment",
+        "prime-sieve"
+      ],
+      "topics": [
+        "certification",
+        "exact-arithmetic",
+        "frame-alignment",
+        "prime-sieve"
+      ],
+      "relevance": [
+        {
+          "repository": "Geometric-Labs",
+          "role": "primary",
+          "reason": "Exact prime certification, frame alignment and arithmetic verification; review corrections against current source/tests."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "supporting",
+          "reason": "Hurwitz anchors and Tile representation must respect the canonical profile."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "supporting",
+          "reason": "Separate proposer heuristics from certified prime/norm and calibration evidence."
+        },
+        {
+          "repository": "Manifold-Projection",
+          "role": "supporting",
+          "reason": "Invariant and Horn-frame alignment proposals inform explicit coordinate transforms."
+        },
+        {
+          "repository": "PolyShard-Agent",
+          "role": "context",
+          "reason": "Future locally calibrated observations; mathematical alignment does not create consent or authentication."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "The user designated the main sieve Academia publication. Its title-matched 38-page PDF is preserved from the earlier archive intake. The current short-named Fokker upload is the separate companion; remote Academia PDF bytes were not verified."
+    },
+    {
+      "id": "RP-0019",
+      "title": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve — Companion: Status of Claims, Audit and Open Problems",
+      "work_id": "WORK-0017",
+      "release_status": "official-release",
+      "publication_id": "179087320",
+      "publication_url": "https://www.academia.edu/179087320/The_Geometric_Engine_of_Time_The_Fokker_Planck_Prime_Sieve_Companion_Status_of_Claims_Audit_and_Open_Problems",
+      "document_date": null,
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0019_fokker-planck-companion/source/The_Geometric_Engine_of_Time_The_Fokker.pdf",
+      "source_sha256": "114153b10b4489371a9d0108f5ed278ad4e1f6785c5cc37388688a513e09ba3e",
+      "bytes": 250535,
+      "pages": 20,
+      "tags": [
+        "audit",
+        "certification",
+        "claim-status",
+        "exact-arithmetic",
+        "frame-alignment",
+        "open-problems",
+        "prime-sieve"
+      ],
+      "topics": [
+        "audit",
+        "certification",
+        "claim-status",
+        "exact-arithmetic",
+        "frame-alignment",
+        "open-problems",
+        "prime-sieve"
+      ],
+      "relevance": [
+        {
+          "repository": "Geometric-Labs",
+          "role": "primary",
+          "reason": "Exact prime certification, frame alignment and arithmetic verification; review corrections against current source/tests."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "supporting",
+          "reason": "Hurwitz anchors and Tile representation must respect the canonical profile."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "supporting",
+          "reason": "Separate proposer heuristics from certified prime/norm and calibration evidence."
+        },
+        {
+          "repository": "Manifold-Projection",
+          "role": "supporting",
+          "reason": "Invariant and Horn-frame alignment proposals inform explicit coordinate transforms."
+        },
+        {
+          "repository": "PolyShard-Agent",
+          "role": "context",
+          "reason": "Future locally calibrated observations; mathematical alignment does not create consent or authentication."
+        }
+      ],
+      "replaces_references": [],
+      "inherited_from": [
+        "RP-0008"
+      ],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    },
+    {
+      "id": "RP-0020",
+      "title": "The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine",
+      "work_id": "WORK-0006",
+      "release_status": "official-release",
+      "publication_id": "179239437",
+      "publication_url": "https://www.academia.edu/179239437/The_Geometric_Engine_of_Time_The_Fifteen_Lemmas_of_the_Geometric_Engine",
+      "document_date": "2026-10-16",
+      "designation_date": "2026-10-27",
+      "version": null,
+      "pdf_path": "papers/RP-0020_official-fifteen-lemmas/source/The_Geometric_Engine_of_Time_The_Fifteen.pdf",
+      "source_sha256": "df9e4096a67ca198db4673b594e7b7d00eca5fac5a2a2d4451e77c051ba42968",
+      "bytes": 727629,
+      "pages": 36,
+      "tags": [
+        "certification",
+        "exact-arithmetic",
+        "foundations",
+        "memory",
+        "protocol"
+      ],
+      "topics": [
+        "certification",
+        "exact-arithmetic",
+        "foundations",
+        "memory",
+        "protocol"
+      ],
+      "relevance": [
+        {
+          "repository": "Geometric-Labs",
+          "role": "primary",
+          "reason": "Cross-cutting reference for exact arithmetic and integration verification; preserve claim scope and per-lemma evidence."
+        },
+        {
+          "repository": "SHD-CCP-core",
+          "role": "supporting",
+          "reason": "PDF §6 proposes Tile and form semantics; compare through explicit profiles before adoption."
+        },
+        {
+          "repository": "Kernel-Registry",
+          "role": "supporting",
+          "reason": "PDF claim tags and Appendix A motivate claim/evidence registration, not automatic certification."
+        },
+        {
+          "repository": "CubiLoom",
+          "role": "supporting",
+          "reason": "PDF §7.4 and Lemma 15 motivate parity/history retention and integrity."
+        },
+        {
+          "repository": "Manifold-Projection",
+          "role": "supporting",
+          "reason": "PDF §§7.1–7.5: views, interleave and geometric handshake proposals."
+        },
+        {
+          "repository": "PolyShard-Agent",
+          "role": "context",
+          "reason": "PDF §§7.2–7.3: local frame/clock observations need explicit envelopes."
+        },
+        {
+          "repository": "Polycentric-Orchestrator",
+          "role": "context",
+          "reason": "PDF §7 system composition is a coordination proposal, not current scene materialization."
+        },
+        {
+          "repository": "FractalOS-runtime",
+          "role": "context",
+          "reason": "PDF §7.7 names 64 streams; runtime mapping and performance remain independent engineering."
+        }
+      ],
+      "replaces_references": [
+        "RP-0006"
+      ],
+      "inherited_from": [
+        "RP-0006"
+      ],
+      "review_level": "relevance-triaged",
+      "lean_status": "none",
+      "source_note": "User-supplied PDF matched to the user-supplied Academia publication title."
+    }
+  ],
+  "replacements": {
+    "RP-0006": "RP-0020",
+    "RP-0011": "RP-0018"
+  }
+}

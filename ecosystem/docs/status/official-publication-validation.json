@@ -1,0 +1,177 @@
+{
+  "schema": "geometric-labs.official-publication-validation.v1",
+  "date": "2026-10-27",
+  "base_commit": "9ae52515af9813537b0f7cf5b8ddb3dd6ee9d04a",
+  "official_publications": 15,
+  "preserved_documents": 20,
+  "new_pdf_sources": 9,
+  "duplicate_current_uploads": 1,
+  "prior_pdf_bytes_unchanged": true,
+  "sources": [
+    {
+      "id": "RP-0012",
+      "publication_id": "164664471",
+      "source_sha256": "6ac642bd22accecea938037fb137ecf9fde30ec1a7a83b1e83c017e498d6335a",
+      "pdf_path": "papers/RP-0012_geometric-compression-branching/source/Geometric_Compression_and_Branching_Dyna.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0013",
+      "publication_id": "165167160",
+      "source_sha256": "27f83691dbe6b6cada1c3d2c5fafb6c9fa9afc717acd8fc8faeb411006b95103",
+      "pdf_path": "papers/RP-0013_topological-symmetry-folding/source/Topological_Symmetry_Folding_and_Hyperbo.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0002",
+      "publication_id": "165176526",
+      "source_sha256": "2a2e46aba7261106c1b30d881d0630acbbe8a9ab74c4c7ecf2d92ace4f843ff2",
+      "pdf_path": "papers/RP-0002_quaternionic-delta-golden-toroids/source/Quaternionic_Delta_Encoding_on_Golden_St.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0014",
+      "publication_id": "165259984",
+      "source_sha256": "9e7b2e3fbcd64df109b1996a3d40f252ca09fe12d8ab3531689711935eebba15",
+      "pdf_path": "papers/RP-0014_linear-ledgers-toroidal-matrices/source/From_Linear_Ledgers_to_Toroidal_Matrices.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0004",
+      "publication_id": "168903035",
+      "source_sha256": "aa071a57783b662299bc62c052610190f6bdece24c61aa391a77fb69f6165855",
+      "pdf_path": "papers/RP-0004_torsional-markov-mathematical-model/source/Mathematical_Model_for_the_Torsional_Mar.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0015",
+      "publication_id": "168904328",
+      "source_sha256": "53e29adea431cef1e5272838426841c89431407e620e619c24d2b4368ab95725",
+      "pdf_path": "papers/RP-0015_torsional-trefoil-markov-theorem/source/Formal_Proof_The_Torsional_Trefoil_Marko.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0005",
+      "publication_id": "169059586",
+      "source_sha256": "f3b0f01f9846edbc7906596f3b37e9cca80eca07bddf5305ee13257a7dd4f31d",
+      "pdf_path": "papers/RP-0005_hyperbolic-sparsemax-pump/source/The_Hyperbolic_Sparsemax_Pump_A_Rational.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0009",
+      "publication_id": "169060820",
+      "source_sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990",
+      "pdf_path": "papers/RP-0009_torsional-memory-offload-pump/source/The_Torsional_Markov_Memory_Offload_Pump.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0016",
+      "publication_id": "169490450",
+      "source_sha256": "676170e4905bb34af14ef8830f7d54f59eb65fa342e8045ec452b2778a5b1765",
+      "pdf_path": "papers/RP-0016_unified-dual-helix-pollard-rho/source/A_Unified_Dual_Helix_Framework_for_Geome.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0010",
+      "publication_id": "171106117",
+      "source_sha256": "b17a22359f5ac52ec1510f6c281376f2d2366a2b822d5afefae4006e04f29bdd",
+      "pdf_path": "papers/RP-0010_six-channel-five-tier-architecture/source/The_Geometric_Engine_of_Time_Mathematica.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0017",
+      "publication_id": "171475615",
+      "source_sha256": "d9599345b6c2dd41d11070d5e3c43c38799fde72e7fdbfe04c2beff0b5a0caf0",
+      "pdf_path": "papers/RP-0017_monoid-collapse-mass-node/source/Monoid_Collapse_and_Mass_Node_Traversal.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0018",
+      "publication_id": "178882482",
+      "source_sha256": "66e482ae727baa54f3af8113da418193b584fa80ce48e6f1b23d56a9b5dfa3ec",
+      "pdf_path": "papers/RP-0018_official-acoustic-cubit/source/The_Geometric_Engine_of_Time_A_Proposal.pdf",
+      "inherited_from": [
+        "RP-0011"
+      ],
+      "replaces_references": [
+        "RP-0011"
+      ]
+    },
+    {
+      "id": "RP-0008",
+      "publication_id": "179087267",
+      "source_sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
+      "pdf_path": "papers/RP-0008_fokker-planck-prime-sieve/source/The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Release.pdf",
+      "inherited_from": [],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0019",
+      "publication_id": "179087320",
+      "source_sha256": "114153b10b4489371a9d0108f5ed278ad4e1f6785c5cc37388688a513e09ba3e",
+      "pdf_path": "papers/RP-0019_fokker-planck-companion/source/The_Geometric_Engine_of_Time_The_Fokker.pdf",
+      "inherited_from": [
+        "RP-0008"
+      ],
+      "replaces_references": []
+    },
+    {
+      "id": "RP-0020",
+      "publication_id": "179239437",
+      "source_sha256": "df9e4096a67ca198db4673b594e7b7d00eca5fac5a2a2d4451e77c051ba42968",
+      "pdf_path": "papers/RP-0020_official-fifteen-lemmas/source/The_Geometric_Engine_of_Time_The_Fifteen.pdf",
+      "inherited_from": [
+        "RP-0006"
+      ],
+      "replaces_references": [
+        "RP-0006"
+      ]
+    }
+  ],
+  "acceptance": [
+    {
+      "python": "3.10.22",
+      "status": "PASS",
+      "report_sha256": "04d05ddae92d276a9fcc1228ffa85dec33699b0bd09390ddeacf50d1adae65d4"
+    },
+    {
+      "python": "3.12.14",
+      "status": "PASS",
+      "report_sha256": "1c52a3ced20258d5266d95f72bfb0b2f0bc4903851a9106fce7ceeceb9336548"
+    }
+  ],
+  "test_counts": {
+    "library_archive_official": 34,
+    "pages": 15,
+    "javascript": 4
+  },
+  "browser": {
+    "status": "PASS",
+    "checks": [
+      "Default collection contains exactly the designated official publications, with no archive/sample entries.",
+      "Manual archived Markdown import stays in the Research Desk and does not change the official collection.",
+      "Original official PDF loads through real PDF.js 3.11.174, passes SHA-256 and renders pages in the inspector.",
+      "Manual PDF import never becomes an official publication.",
+      "Tampered PDF bytes fail before parsing and cannot appear as a checked official source.",
+      "Catalog failure is explicit; retry restores only official entries without falling back to samples."
+    ],
+    "scope": "Functional IDE workflow; local pinned PDF.js dependencies, other CDNs blocked. Styling/3D/AI calls not tested."
+  },
+  "verification_limits": [
+    "Owner designation does not establish independent proof or implementation acceptance.",
+    "Remote Academia PDF bytes not independently verified; main sieve source comes from earlier preserved intake.",
+    "No AI calls, full paper-proof audit, physical measurement or trained-model verification in this wave.",
+    "Pages preview uses uncommitted metadata until this review branch is committed and deployed."
+  ]
+}

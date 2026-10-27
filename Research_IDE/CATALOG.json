@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "next_id": "RP-0012",
+ "next_id": "RP-0021",
  "papers": [
   {
    "id": "RP-0001",
@@ -39,7 +39,8 @@
    "updated": "2026-10-27",
    "artifacts": {
     "postprocessing": 3,
-    "source": 1
+    "source": 1,
+    "workflows": 1
    }
   },
   {
@@ -78,7 +79,8 @@
    "updated": "2026-10-27",
    "artifacts": {
     "postprocessing": 3,
-    "source": 1
+    "source": 1,
+    "workflows": 1
    }
   },
   {
@@ -99,7 +101,8 @@
    "updated": "2026-10-27",
    "artifacts": {
     "postprocessing": 3,
-    "source": 1
+    "source": 1,
+    "workflows": 1
    }
   },
   {
@@ -117,7 +120,7 @@
     "protocol"
    ],
    "cosmo_id": "",
-   "updated": "2026-10-26",
+   "updated": "2026-10-27",
    "artifacts": {
     "postprocessing": 3,
     "source": 1
@@ -156,10 +159,11 @@
     "prime-sieve"
    ],
    "cosmo_id": "",
-   "updated": "2026-10-26",
+   "updated": "2026-10-27",
    "artifacts": {
     "postprocessing": 3,
-    "source": 1
+    "source": 1,
+    "workflows": 1
    }
   },
   {
@@ -179,7 +183,8 @@
    "updated": "2026-10-27",
    "artifacts": {
     "postprocessing": 3,
-    "source": 1
+    "source": 1,
+    "workflows": 1
    }
   },
   {
@@ -199,7 +204,8 @@
    "updated": "2026-10-27",
    "artifacts": {
     "postprocessing": 3,
-    "source": 1
+    "source": 1,
+    "workflows": 1
    }
   },
   {
@@ -216,10 +222,202 @@
     "uncertainty"
    ],
    "cosmo_id": "",
-   "updated": "2026-10-26",
+   "updated": "2026-10-27",
    "artifacts": {
     "postprocessing": 3,
     "source": 1
+   }
+  },
+  {
+   "id": "RP-0012",
+   "title": "Geometric Compression and Branching Dynamics in Discrete 3D Lattices: The Triple Quad 4x4x4 System",
+   "path": "papers/RP-0012_geometric-compression-branching",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "branching",
+    "compression",
+    "exact-arithmetic",
+    "geometry"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
+   }
+  },
+  {
+   "id": "RP-0013",
+   "title": "Topological Symmetry Folding and Hyperbolic Projection in the SHD-CCP Framework: A 720:1 Quaternionic Cyclic System",
+   "path": "papers/RP-0013_topological-symmetry-folding",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "delta-encoding",
+    "geometry",
+    "projection",
+    "symmetry-folding"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
+   }
+  },
+  {
+   "id": "RP-0014",
+   "title": "From Linear Ledgers to Toroidal Matrices: Applying Topological Data Compression to Bitcoin State Transitions",
+   "path": "papers/RP-0014_linear-ledgers-toroidal-matrices",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "compression",
+    "delta-encoding",
+    "ledger",
+    "memory"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
+   }
+  },
+  {
+   "id": "RP-0015",
+   "title": "Formal Proof: The Torsional Trefoil Markov Pump Theorem (TTMPT)",
+   "path": "papers/RP-0015_torsional-trefoil-markov-theorem",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "analytic-model",
+    "markov-pump",
+    "routing"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
+   }
+  },
+  {
+   "id": "RP-0016",
+   "title": "A Unified Dual-Helix Framework for Geometrically-Guided Pollard’s Rho",
+   "path": "papers/RP-0016_unified-dual-helix-pollard-rho",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "certification",
+    "cryptographic-research",
+    "heuristic-search",
+    "prime-sieve"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
+   }
+  },
+  {
+   "id": "RP-0017",
+   "title": "Monoid Collapse and Mass-Node Traversal in Relational Space: A Hybrid Coarse-Grained Search Framework",
+   "path": "papers/RP-0017_monoid-collapse-mass-node",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "coarse-graining",
+    "graph-search",
+    "monoids",
+    "projection"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
+   }
+  },
+  {
+   "id": "RP-0018",
+   "title": "The Geometric Engine of Time: A Proposal for a Standardization of the Cubit",
+   "path": "papers/RP-0018_official-acoustic-cubit",
+   "tier": "core",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "calibration",
+    "clock-model",
+    "metrology",
+    "uncertainty"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
+   }
+  },
+  {
+   "id": "RP-0019",
+   "title": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve — Companion: Status of Claims, Audit and Open Problems",
+   "path": "papers/RP-0019_fokker-planck-companion",
+   "tier": "core",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "audit",
+    "certification",
+    "claim-status",
+    "exact-arithmetic",
+    "frame-alignment",
+    "open-problems",
+    "prime-sieve"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
+   }
+  },
+  {
+   "id": "RP-0020",
+   "title": "The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine",
+   "path": "papers/RP-0020_official-fifteen-lemmas",
+   "tier": "core",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "certification",
+    "exact-arithmetic",
+    "foundations",
+    "memory",
+    "protocol"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 2,
+    "source": 1,
+    "workflows": 1
    }
   }
  ]

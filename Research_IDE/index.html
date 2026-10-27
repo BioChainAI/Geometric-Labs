@@ -192,18 +192,18 @@
         </button>
       </div>
 
-      <!-- Corpus Tabs: BioChain AI (SHD-CCP Corpus) & Renamable Custom Tab (Default Open) -->
+      <!-- Official publications by default; manual imports stay in the Research Desk. -->
       <div class="p-2 bg-slate-950/60 border-b border-ide-border space-y-1.5">
         <div class="grid grid-cols-2 gap-1 bg-slate-900 p-1 rounded-lg border border-slate-800">
           <button
             id="corpusTabBtn_biochain"
             onclick="switchCorpusTab('biochain')"
             class="px-2 py-1.5 rounded-md text-[11px] font-mono font-medium flex items-center justify-center gap-1.5 transition text-slate-400 hover:text-slate-200"
-            title="Pre-loaded SHD-CCP Geometric Engine & QRE Constitution Corpus"
+            title="Owner-designated official Geometric Labs publications"
           >
             <i data-lucide="dna" class="w-3 h-3 text-emerald-400 shrink-0"></i>
-            <span class="truncate">BioChain AI</span>
-            <span id="badgeCount_biochain" class="text-[9px] bg-slate-800 px-1 rounded">6</span>
+            <span class="truncate">Official releases</span>
+            <span id="badgeCount_biochain" class="text-[9px] bg-slate-800 px-1 rounded">0</span>
           </button>
 
           <div id="corpusTabBtn_custom" onclick="switchCorpusTab('custom')" class="cursor-pointer px-2 py-1.5 rounded-md text-[11px] font-mono font-medium flex items-center justify-between gap-1 transition bg-sky-500/20 text-sky-300 border border-sky-500/30" title="Click to view custom workspace • Click pencil icon to rename tab">
@@ -238,6 +238,22 @@
         <div class="relative">
           <i data-lucide="search" class="w-3.5 h-3.5 text-slate-500 absolute left-2.5 top-2"></i>
           <input id="corpusSearchInput" oninput="renderFileTree()" type="text" placeholder="Grep papers, Cosmo-ID, lemmas..." class="w-full bg-slate-900 border border-slate-800 focus:border-sky-500 rounded-md pl-8 pr-2 py-1 text-xs font-mono text-slate-200 placeholder-slate-500 focus:outline-none" />
+        </div>
+      </div>
+
+      <div class="p-2 border-b border-ide-border text-[11px] space-y-2">
+        <p id="officialCollectionStatus" role="status" aria-live="polite">Loading official releases…</p>
+        <button id="officialRetryButton" onclick="loadOfficialCorpus()" hidden class="text-sky-300 underline">Retry official catalog</button>
+        <p>Archived papers can be imported manually into the Research Desk.</p>
+        <div id="officialPaperTools" hidden class="space-y-2">
+          <p>Official publication status is separate from mathematical verification.</p>
+          <p id="officialPaperLabels"></p>
+          <div class="flex flex-wrap gap-2">
+            <a id="officialPublicationLink" target="_blank" rel="noopener noreferrer" class="text-sky-300 underline">Academia</a>
+            <a id="officialPdfLink" target="_blank" rel="noopener noreferrer" class="text-sky-300 underline">Source PDF</a>
+            <button id="officialOpenPdf" onclick="loadOfficialPdf(activePaperId)" class="bg-sky-500 text-slate-950 px-2 py-1 rounded">Open PDF in IDE</button>
+          </div>
+          <p id="officialPdfStatus" role="status" aria-live="polite"></p>
         </div>
       </div>
 
@@ -278,7 +294,7 @@
         <div class="h-10 bg-ide-panel border-b border-ide-border px-3 flex items-center justify-between shrink-0">
           <div class="flex items-center gap-2 min-w-0">
             <i data-lucide="file-text" class="w-4 h-4 text-sky-400 shrink-0"></i>
-            <span id="pdfDocTitle" class="text-xs font-medium text-slate-200 truncate">No PDF Loaded (Sample Specimen Active)</span>
+            <span id="pdfDocTitle" class="text-xs font-medium text-slate-200 truncate">Select an official paper to inspect its source PDF</span>
           </div>
           <div class="flex items-center gap-1 shrink-0">
             <button onclick="setPdfViewMode('canvas')" id="pdfModeBtn_canvas" class="text-[11px] font-mono px-2 py-0.5 rounded bg-sky-500/20 text-sky-300 border border-sky-500/30">Visual</button>
@@ -815,7 +831,9 @@
   <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
   <!-- APPLICATION SCRIPT -->
+  <script src="official-corpus.js"></script>
   <script>
+    if (!window.lucide) window.lucide = { createIcons() {} };
     (function configurePdfJsWorker() {
       if (!window.pdfjsLib) return;
       const cdnWorkerUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
@@ -907,357 +925,9 @@
       };
     }
 
-    const BIOCHAIN_AI_CORPUS = [
-      {
-        id: 'core_01',
-        workspaceTab: 'biochain',
-        tier: 'Tier 1: Core Constitution (docs/papers/core/)',
-        folder: 'docs/papers/core',
-        filename: '01_fifteen_lemmas_of_the_geometric_engine.md',
-        pdfSimulatedSizeMB: 38.4,
-        title: 'The Fifteen Lemmas of the Geometric Engine',
-        rawPdfSpecimenPages: [
-          [
-            'THE FIFTEEN LEMMAS OF THE GEOMETRIC ENGINE',
-            '§6.1 Canonical 64-Bit Einstein Tile Specification & Hurwitz Lattice Arithmetic',
-            'Let q = (w, x, y, z) in H be a Hurwitz quaternion represented in doubled integer coordinates D = 2q = (dw, dx, dy, dz) in Z^4 where all four components share identical parity: dw === dx === dy === dz (mod 2).',
-            'Hurwitz multiplication in doubled coordinates is exact integer arithmetic:',
-            '(2p * 2q) // 2 = 2(pq), and the quaternion norm (quadrance) is N(q) = (dw^2 + dx^2 + dy^2 + dz^2) / 4.',
-            'Origin-Centered Cube Hierarchy:',
-            'Core Cube 1: K = [-1, 1]^3 (edge 2 C_0)',
-            'Voxel Cube 2: V = [-2, 2]^3 (edge 4 C_0)',
-            'Fibonacci Binomial Cube 3: W = [-4, 4]^3 (edge 8 C_0)'
-          ].join('\n'),
-          [
-            '§7.4 Lemma 12 (Right-Acting Chronological Holonomy & 3-Gear Telescoping)',
-            'For the outer 720-step gear Q^(12) = Delta_q_719 * ... * Delta_q_0, the middle gear inverse increments delta_m = (Delta_Q_m^(12->10))^(-1) multiply in right-acting chronological order:',
-            'Q^(10) = delta_0 * delta_1 * ... * delta_71',
-            'such that Q^(10) * Q^(12) = +1 and the total 3-gear holonomy satisfies:',
-            'H = Q^(8) * Q^(10) * Q^(12) = q_0 * q_719^(-1)',
-            'under the open boundary convention q_{-1} := q_0.',
-            '§7.6 The 64-Stream Four-Structure Balancer System (I, A, A_bar, E):',
-            'For each stream slot j in {0, ..., 63}, slot-wise closure requires A_j * I_j * A_j^(-1) * E_j = 1 with equilibrium trace Re(E_j) = Re(I_j).'
-          ].join('\n')
-        ],
-        content: [
-          '# The Fifteen Lemmas of the Geometric Engine',
-          '',
-          '> **Canonical Specification Status:** Tier-1 Constitution Paper (`docs/papers/core/01_fifteen_lemmas_of_the_geometric_engine.md`)  ',
-          '> **Governs Modules:** `src/geometric_labs/hurwitz.py`, `src/geometric_labs/tile_codec.py`, `src/geometric_labs/threading/balancer_64stream.py`',
-          '',
-          '---',
-          '',
-          '## §1. Origin-Centered Three-Cube Hierarchy & Doubled Hurwitz Coordinates',
-          '',
-          'To eliminate floating-point drift across all quaternionic lattice and blockchain operations, every Hurwitz quaternion $q = (w, x, y, z) \\in \\mathcal{H}$ is represented in **doubled integer coordinates**:',
-          '',
-          '$$',
-          'D = 2q = (d_w, d_x, d_y, d_z) \\in \\mathbb{Z}^4, \\quad d_w \\equiv d_x \\equiv d_y \\equiv d_z \\pmod{2}',
-          '$$',
-          '',
-          'where all four components are even for Lipschitz integers and all odd for half-integer Hurwitz units. Multiplication and quadrance (norm) evaluate strictly in $\\mathbb{Z}$:',
-          '',
-          '$$',
-          '2(pq) = \\frac{(2p)(2q)}{2}, \\qquad N(q) = \\frac{d_w^2 + d_x^2 + d_y^2 + d_z^2}{4} \\in \\mathbb{Z}_{\\ge 0}',
-          '$$',
-          '',
-          '### Lemma 1 (Origin-Centered Nested Cube Hierarchy)',
-          'All spatial and spinor domains are strictly origin-centered around $(0,0,0)$ in units of the Cramer acoustic cubit $\\mathcal{C}_0$:',
-          '',
-          '$$',
-          '\\mathcal{K} = [-1, 1]^3 \\subset \\mathcal{V} = [-2, 2]^3 \\subset \\mathcal{W} = [-4, 4]^3',
-          '$$',
-          '',
-          '---',
-          '',
-          '## §6.1 Canonical 64-Bit Einstein Tile Bit-Layout',
-          '',
-          'Each 64-bit Einstein Tile word $T \\in \\mathbb{Z}/2^{64}\\mathbb{Z}$ partitions into a 32-bit deterministic routing header and a 32-bit payload:',
-          '',
-          '$$',
-          'T_{\\text{64}} = \\underbrace{[k_{63:61} \\mid u_{60:58} \\mid S_{57:56} \\mid G_{55:48} \\mid M_{47:44} \\mid F_{43:40} \\mid J_{39:36} \\mid R_{35:32}]}_{\\text{32-Bit Header}} \\parallel \\underbrace{P_{31:0}}_{\\text{32-Bit Payload}}',
-          '$$',
-          '',
-          '---',
-          '',
-          '## §7.4 Lemma 12 (Right-Acting Chronological Holonomy)',
-          '',
-          'For the 720-step outer gear $Q^{(12)} = \\Delta q_{719} \\cdots \\Delta q_0$, the middle-gear inverse increments $\\delta_m = \\left(\\Delta Q_m^{(12 \\to 10)}\\right)^{-1}$ multiply in **right-acting chronological order**:',
-          '',
-          '$$',
-          'Q^{(10)} = \\delta_0 \\delta_1 \\cdots \\delta_{71} \\implies Q^{(10)} Q^{(12)} = +1',
-          '$$',
-          '',
-          'yielding total 3-gear telescoping holonomy under the open boundary convention $q_{-1} := q_0$:',
-          '',
-          '$$',
-          '\\mathcal{H}_{\\text{total}} = Q^{(8)} Q^{(10)} Q^{(12)} = q_0 q_{719}^{-1}',
-          '$$',
-          '',
-          '---',
-          '',
-          '## §7.6 Lemma 14 (64-Stream Four-Structure Balancer System)',
-          '',
-          'Across all $j \\in \\{0, \\dots, 63\\}$ concurrent streams, the four quaternionic structures $(I_j, A_j, \\bar{A}_j, E_j)$ satisfy slot-wise identity closure and equilibrium trace invariance:',
-          '',
-          '$$',
-          'A_j I_j A_j^{-1} E_j = 1, \\qquad \\operatorname{Re}(E_j) = \\operatorname{Re}(I_j)',
-          '$$'
-        ].join('\n')
-      },
-      {
-        id: 'core_02',
-        workspaceTab: 'biochain',
-        tier: 'Tier 1: Core Constitution (docs/papers/core/)',
-        folder: 'docs/papers/core',
-        filename: '02_fokker_planck_prime_sieve_release.md',
-        pdfSimulatedSizeMB: 31.8,
-        title: 'Fokker-Planck Prime Sieve in Quaternionic Lattices — Release',
-        rawPdfSpecimenPages: [
-          [
-            'FOKKER-PLANCK PRIME SIEVE IN QUATERNIONIC LATTICES (RELEASE)',
-            '§3. Dual-Helix Certification & The 3.75x (Z/30Z)^x Wheel Sieve',
-            'The unit group (Z/30Z)^x consists of 8 coprime residue classes {1, 7, 11, 13, 17, 19, 23, 29}, achieving an exact 30/8 = 3.75x compression factor.',
-            'By the Legendre symbol (u / 5), the 8 units split into two chiral helices:',
-            'B_+ = {1, 11, 19, 29} with u === +/- 1 (mod 5)',
-            'B_- = {7, 13, 17, 23} with u === +/- 2 (mod 5)',
-            '§5. Fibonacci/Lucas Clifford Torus Checkpoints:',
-            'Define q_m = (F_m, F_{m+1}, F_{m-1}, F_m). Its norm evaluates strictly to the Lucas number L_{2m}: N(q_m) = F_m^2 + F_{m+1}^2 + F_{m-1}^2 + F_m^2 = 3 L_{2m} (in doubled scaling).'
-          ].join('\n')
-        ],
-        content: [
-          '# Fokker-Planck Prime Sieve in Quaternionic Lattices — Release',
-          '',
-          '> **Canonical Specification Status:** Tier-1 Constitution Paper (`docs/papers/core/02_fokker_planck_prime_sieve_release.md`)  ',
-          '> **Governs Modules:** `src/geometric_labs/certification/wheel_30_oracle.py`, `src/geometric_labs/s5_hyperbolic_tree.py`, `src/geometric_labs/blockchain/toroidal_state_matrix.py`',
-          '',
-          '---',
-          '',
-          '## §3. Dual-Helix Certification & The $3.75\\times$ $(\\mathbb{Z}/30\\mathbb{Z})^\\times$ Wheel',
-          '',
-          'The multiplicative unit group $(\\mathbb{Z}/30\\mathbb{Z})^\\times$ has Euler totient $\\varphi(30) = 8$ coprime residue classes, yielding an exact sieve density gain of:',
-          '',
-          '$$',
-          '\\eta_{\\text{wheel}} = \\frac{30}{\\varphi(30)} = \\frac{30}{8} = 3.75\\times',
-          '$$',
-          '',
-          'Partitioning $(\\mathbb{Z}/30\\mathbb{Z})^\\times$ via the quadratic Legendre symbol $\\left(\\frac{u}{5}\\right)$ produces the **Dual-Helix Chiral Split**:',
-          '',
-          '$$',
-          '\\mathcal{B}_+ = \\{1, 11, 19, 29\\} \\quad \\left(\\frac{u}{5}\\right) = +1, \\qquad \\mathcal{B}_- = \\{7, 13, 17, 23\\} \\quad \\left(\\frac{u}{5}\\right) = -1',
-          '$$',
-          '',
-          '---',
-          '',
-          '## §5. Fibonacci/Lucas Clifford Torus Checkpoints',
-          '',
-          'Along the discrete Clifford torus $\\mathbb{T}^2 \\subset S^3$, the two-sided torus-preserving state checkpoint at index $m$ is defined by:',
-          '',
-          '$$',
-          'q_m = (F_m, F_{m+1}, F_{m-1}, F_m)',
-          '$$',
-          '',
-          'with closed-form Lucas quadrance identity:',
-          '',
-          '$$',
-          'N(q_m) = F_m^2 + F_{m+1}^2 + F_{m-1}^2 + F_m^2 = 3 L_{2m}',
-          '$$',
-          '',
-          '---',
-          '',
-          '## §7. Multiplier-Free $S_5$ Hyperbolic Cayley Tree',
-          '',
-          'The 6 Lipschitz generators of norm $5$ form the symmetric generating set:',
-          '',
-          '$$',
-          'S_5 = \\{1 \\pm 2i,\\; 1 \\pm 2j,\\; 1 \\pm 2k\\}',
-          '$$',
-          '',
-          'Every child step $q \\mapsto q \\cdot g$ with $g \\in S_5$ executes strictly via binary left-shifts (`<< 1`) and integer additions/subtractions with zero hardware multiplications.'
-        ].join('\n')
-      },
-      {
-        id: 'core_03',
-        workspaceTab: 'biochain',
-        tier: 'Tier 1: Core Constitution (docs/papers/core/)',
-        folder: 'docs/papers/core',
-        filename: '03_memory_in_the_twelve_engine_hierarchy.md',
-        pdfSimulatedSizeMB: 27.2,
-        title: 'Memory in the Twelve-Engine Hierarchy',
-        rawPdfSpecimenPages: [
-          [
-            'MEMORY IN THE TWELVE-ENGINE HIERARCHY',
-            'Proposition M1 (Implied Fourth Parity & 13th Engine F_*):',
-            'In the cuboctahedral 12-engine shell partitioned into Groups A, B, C, any single-engine erasure is recovered in O(1) via cyclic parity closure.',
-            'Proposition M2 (Exact Inverse Tier Offload 31/3 <-> 3/31):',
-            'Using the order-6 Hurwitz tier spinor h = (1 - i + j + k)/2, the 4-step conjugation cycle W = U_3 U_2 U_1 U_0 = I achieves exact reciprocal scaling (31/3)*(3/31) = 1 with zero bit growth.',
-            'Proposition M3 (3rd 120-Degree Phase & 24-Step Super-Cycle):',
-            's = a + b + c (invariant parity axis) and z = a + omega*b + omega^2*c (rotating Eisenstein plane) over lcm(8, 3) = 24 steps.'
-          ].join('\n')
-        ],
-        content: [
-          '# Memory in the Twelve-Engine Hierarchy',
-          '',
-          '> **Canonical Specification Status:** Tier-1 Constitution Paper (`docs/papers/core/03_memory_in_the_twelve_engine_hierarchy.md`)  ',
-          '> **Governs Modules:** `src/geometric_labs/threading/cubocta_12engine_ring.py`, `src/geometric_labs/threading/supercycle_24step.py`',
-          '',
-          '---',
-          '',
-          '## Proposition M1: Cuboctahedral 12-Engine Shell & 13th Engine $F_*$',
-          '',
-          'Let the 12 cuboctahedral vertex engines partition into three orthogonal quartet rings $(\\mathcal{G}_A, \\mathcal{G}_B, \\mathcal{G}_C)$ coupled to the central 13th singularity engine $F_*$:',
-          '',
-          '$$',
-          'F_* = \\bigoplus_{k=0}^{11} E_k, \\qquad \\sum_{e \\in \\mathcal{G}_\\alpha} q_e \\equiv 0 \\pmod{2^w}',
-          '$$',
-          '',
-          '---',
-          '',
-          '## Proposition M2: Exact Inverse Tier Offload ($31/3 \\leftrightarrow 3/31$)',
-          '',
-          'Let $h = \\frac{1 - i + j + k}{2} \\in \\mathcal{H}_{\\text{unit}}$ be the canonical order-$6$ Hurwitz spinor ($h^6 = +1$). Across the 4-tier offload cycle:',
-          '',
-          '$$',
-          'W = U_3 U_2 U_1 U_0 = \\bar{h} \\cdot h \\cdot \\bar{h} \\cdot h = 1, \\qquad \\left(\\frac{31}{3}\\right)\\left(\\frac{3}{31}\\right) = 1',
-          '$$',
-          '',
-          '---',
-          '',
-          '## Proposition M3: Eisenstein $120^\\circ$ Phase Split & $\\operatorname{lcm}(8,3)=24$ Super-Cycle',
-          '',
-          'For three-phase integer channels $(a, b, c) \\in \\mathbb{Z}^3$ with cube root of unity $\\omega = e^{2\\pi i / 3}$:',
-          '',
-          '$$',
-          's = a + b + c, \\qquad z = a + \\omega b + \\omega^2 c, \\qquad N_{\\text{Eisenstein}}(z) = a^2 + b^2 + c^2 - ab - bc - ca',
-          '$$'
-        ].join('\n')
-      },
-      {
-        id: 'series_04',
-        workspaceTab: 'biochain',
-        tier: 'Tier 2: Domain, Metrology & Blockchain (docs/papers/series/)',
-        folder: 'docs/papers/series',
-        filename: '04_standardization_of_the_cubit.md',
-        pdfSimulatedSizeMB: 29.5,
-        title: 'Standardization of the Acoustic Cubit & 30-Pulse Caesium Closure',
-        rawPdfSpecimenPages: [
-          [
-            'STANDARDIZATION OF THE CUBIT (METROLOGY & CHRONOMETRY)',
-            'Cramer (1993) Real-Air Speed of Sound c(T, p, x_w, x_c) and Acoustic Cubit C_0.',
-            'Caesium-133 hyperfine transition frequency nu_Cs = 9,192,631,770 Hz.',
-            'Joint carrier closure across {nu_Cs, 40 Hz, 432 Hz} occurs at exactly 30 pulses = 0.5 seconds.'
-          ].join('\n')
-        ],
-        content: [
-          '# Standardization of the Cubit ($\\mathcal{C}_0$) & Caesium-133 Closure',
-          '',
-          '> **Canonical Specification Status:** Tier-2 Metrology Paper (`docs/papers/series/04_standardization_of_the_cubit.md`)  ',
-          '> **Governs Modules:** `src/geometric_labs/calibration/acoustic_cubit.py`, `src/geometric_labs/calibration/chronometry_window.py`',
-          '',
-          '---',
-          '',
-          '## §1. Cramer (1993) Acoustic Cubit & 6-Term GUM Uncertainty Budget',
-          '',
-          'The local acoustic cubit $\\mathcal{C}_0$ is tied to the Cramer (1993) real-air speed of sound $c(T, P, x_w, x_c)$ at the fundamental resonant frequency $f_0 = 432\\text{ Hz}$:',
-          '',
-          '$$',
-          '\\mathcal{C}_0 = \\frac{3}{4} \\frac{c(T, P, x_w, x_c)}{f_0}, \\qquad u_c^2(\\mathcal{C}_0) = \\sum_{i=1}^{6} \\left(\\frac{\\partial \\mathcal{C}_0}{\\partial x_i}\\right)^2 u^2(x_i)',
-          '$$',
-          '',
-          '---',
-          '',
-          '## §2. Caesium-133 Hyperfine Factorization & $0.5\\text{-Second}$ (30-Pulse) Closure',
-          '',
-          'Given the exact SI hyperfine transition frequency of $^{133}\\text{Cs}$:',
-          '',
-          '$$',
-          '\\nu_{\\text{Cs}} = 9{,}192{,}631{,}770\\text{ Hz} = 2 \\times 3^2 \\times 5 \\times 7 \\times 11 \\times 47 \\times 28{,}199',
-          '$$',
-          '',
-          'the joint phase closure across the carrier triad $\\{\\nu_{\\text{Cs}}, 40\\text{ Hz}, 432\\text{ Hz}\\}$ under the $W_\\Sigma = 60$ orbital window occurs at the half-second (30-pulse) epoch $\\Delta t = 0.5\\text{ s}$.'
-        ].join('\n')
-      },
-      {
-        id: 'series_06',
-        workspaceTab: 'biochain',
-        tier: 'Tier 2: Domain, Metrology & Blockchain (docs/papers/series/)',
-        folder: 'docs/papers/series',
-        filename: '06_linear_ledgers_to_toroidal_matrices.md',
-        pdfSimulatedSizeMB: 34.1,
-        title: 'From Linear Ledgers to Toroidal State Matrices (QCC & Garner CRT)',
-        rawPdfSpecimenPages: [
-          [
-            'FROM LINEAR LEDGERS TO TOROIDAL MATRICES',
-            'Quaternion Chain Compression (QCC) achieves O(sqrt(t log t)) state verification.',
-            'Garner CRT Prime Triplet (881, 883, 887) with M = 690,017,701 and closed-form modular inverses (c12 = 441, c23 = 665, c13 = 739).'
-          ].join('\n')
-        ],
-        content: [
-          '# From Linear Ledgers to Toroidal State Matrices',
-          '',
-          '> **Canonical Specification Status:** Tier-2 Blockchain Paper (`docs/papers/series/06_linear_ledgers_to_toroidal_matrices.md`)  ',
-          '> **Governs Modules:** `src/geometric_labs/garner_crt.py`, `src/geometric_labs/blockchain/qcc_delta_chain.py`',
-          '',
-          '---',
-          '',
-          '## §1. Closed-Form Garner CRT Prime Triplet $(881, 883, 887)$ (Lemma 9 Part 2)',
-          '',
-          'For the maximal 10-bit prime triplet $(p_1, p_2, p_3) = (p, p+2, p+6) = (881, 883, 887)$ with dynamic range $M = p_1 p_2 p_3 = 690{,}017{,}701$, the Garner mixed-radix modular inverses satisfy exact closed-form integer polynomials in $p$ ($p=881 \\equiv 1 \\pmod 4,\\; 881 \\equiv 5 \\pmod 6$):',
-          '',
-          '$$',
-          'c_{12} = p^{-1} \\bmod (p+2) = \\frac{p+1}{2} = 441, \\quad c_{23} = (p+2)^{-1} \\bmod (p+6) = \\frac{3p+17}{4} = 665, \\quad c_{13} = p^{-1} \\bmod (p+6) = \\frac{5p+29}{6} = 739',
-          '$$'
-        ].join('\n')
-      },
-      {
-        id: 'manifest_readme',
-        workspaceTab: 'biochain',
-        tier: 'Manifest & Index (docs/papers/)',
-        folder: 'docs/papers',
-        filename: 'README.md',
-        pdfSimulatedSizeMB: 0.1,
-        title: 'Geometric-Labs Canonical Research Papers Manifest',
-        rawPdfSpecimenPages: [
-          [
-            'GEOMETRIC-LABS CANONICAL PAPER MANIFEST (docs/papers/README.md)',
-            'Maps Tier-1 Core Constitution and Tier-2 Series Markdown papers to src/geometric_labs/ modules and verification/ test pillars.'
-          ].join('\n')
-        ],
-        content: [
-          '# `Geometric-Labs` Canonical Research Paper Manifest',
-          '',
-          'This directory contains the canonical **Markdown + Explicit LaTeX (`.md`)** research papers governing the `src/geometric_labs/` implementation and the 5-Pillar `verification/` suite.',
-          '',
-          '| Tier | Paper Filename | Primary Mathematical Primitives | Governed Modules |',
-          '| :--- | :--- | :--- | :--- |',
-          '| **Tier 1** | `core/01_fifteen_lemmas_of_the_geometric_engine.md` | Doubled Hurwitz $\\mathbb{Z}^4$, 64-bit Einstein Tile, Right-Acting Holonomy $Q^{(10)}Q^{(12)}=+1$ | `hurwitz.py`, `tile_codec.py`, `balancer_64stream.py` |',
-          '| **Tier 1** | `core/02_fokker_planck_prime_sieve_release.md` | $\\mathbb{Z}/30\\mathbb{Z}$ $3.75\\times$ Wheel, Clifford Torus $L_{2m}$, Multiplier-Free $S_5$ Tree | `wheel_30_oracle.py`, `s5_hyperbolic_tree.py` |',
-          '| **Tier 1** | `core/03_memory_in_the_twelve_engine_hierarchy.md` | 12-Engine Cuboctahedral Erasure, $F_*$, $31/3 \\leftrightarrow 3/31$ Tier Offload, 24-Step Cycle | `cubocta_12engine_ring.py`, `supercycle_24step.py` |',
-          '| **Tier 2** | `series/04_standardization_of_the_cubit.md` | Cramer (1993) Acoustic Cubit $\\mathcal{C}_0$, $^{133}\\text{Cs}$ 30-Pulse ($0.5\\text{ s}$) Closure | `acoustic_cubit.py`, `chronometry_window.py` |',
-          '| **Tier 2** | `series/06_linear_ledgers_to_toroidal_matrices.md` | $\\mathcal{O}(\\sqrt{t\\log t})$ Toroidal QCC, Garner CRT $(881, 883, 887)$ | `garner_crt.py`, `qcc_delta_chain.py` |'
-        ].join('\n')
-      }
-    ];
+    let papersState = [];
 
-    let papersState = BIOCHAIN_AI_CORPUS.map(doc => {
-      const cosmo = computeShdCcpCosmoId(doc.content, 0, 1);
-      return {
-        ...doc,
-        workspaceTab: 'biochain',
-        versions: [
-          {
-            id: 'v1_initial',
-            label: `v1.0 — Canonical Audited Baseline`,
-            timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
-            content: doc.content,
-            spinIdx: 1,
-            cosmo
-          }
-        ]
-      };
-    });
-
-    let activeCorpusTab = 'custom';
+    let activeCorpusTab = 'biochain';
     let customWorkspaceName = 'Research Desk';
     let activePaperId = null;
     let activeRightTab = 'preview';
@@ -1349,6 +1019,86 @@
         }
       ]
     };
+
+    let officialLoadInProgress = false;
+    async function loadOfficialCorpus() {
+      if (officialLoadInProgress) return;
+      officialLoadInProgress = true;
+      const status = document.getElementById('officialCollectionStatus');
+      const retry = document.getElementById('officialRetryButton');
+      status.textContent = 'Loading official releases…';
+      retry.hidden = true;
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch('official/CATALOG.json', { signal: controller.signal });
+        if (!response.ok) throw new Error('Catalog HTTP ' + response.status);
+        const docs = OfficialCorpus.validate(await response.json());
+        const existing = new Map(papersState.filter(p => p.officialRecord).map(p => [p.id, p]));
+        const official = docs.map(doc => {
+          if (existing.has(doc.id)) return existing.get(doc.id);
+          const content = OfficialCorpus.metadata(doc);
+          return { id: doc.id, officialRecord: doc, workspaceTab: 'biochain',
+            tier: 'Official publications', folder: 'official', filename: doc.id + '.md',
+            title: doc.title, content, pdfDoc: null, pdfFileName: null, lastViewedPage: 1,
+            pdfSimulatedSizeMB: doc.bytes / (1024 * 1024),
+            rawPdfSpecimenPages: buildSpecimenPagesFromMarkdown(content, doc.title),
+            versions: [{ id: 'official_source', label: 'Official source metadata — not proof approval',
+              timestamp: doc.designation_date, content, spinIdx: 0,
+              cosmo: computeShdCcpCosmoId(content, 0, 0) }] };
+        });
+        papersState = [...papersState.filter(p => p.workspaceTab === 'custom'), ...official];
+        status.textContent = docs.length + ' official releases · owner-designated collection';
+        if (activeCorpusTab === 'biochain') switchCorpusTab('biochain');
+        else renderFileTree();
+      } catch (error) {
+        status.textContent = 'Official catalog unavailable. Retry, or import a paper manually into the Research Desk. ' + error.message;
+        retry.hidden = false;
+      } finally {
+        clearTimeout(timeout);
+        officialLoadInProgress = false;
+      }
+    }
+
+    function updateOfficialPaperTools(paper) {
+      const tools = document.getElementById('officialPaperTools');
+      const doc = paper.officialRecord;
+      tools.hidden = !doc;
+      if (!doc) return;
+      document.getElementById('officialPublicationLink').href = doc.publication_url;
+      document.getElementById('officialPdfLink').href = doc.pdf_path;
+      document.getElementById('officialPaperLabels').textContent =
+        doc.relevance.map(r => r.repository).join(' · ') + ' | ' + doc.tags.join(', ');
+      document.getElementById('officialPdfStatus').textContent = paper.pdfDoc
+        ? 'Original PDF SHA-256 checked. Transcription edits remain local until exported.'
+        : 'Source metadata shown. Open the preserved PDF for page inspection.';
+      document.getElementById('officialOpenPdf').disabled = !!paper.officialLoading;
+    }
+
+    async function loadOfficialPdf(paperId) {
+      const paper = papersState.find(p => p.id === paperId && p.officialRecord);
+      if (!paper || paper.officialLoading) return;
+      if (paper.pdfDoc) { await selectPaper(paperId); return; }
+      paper.officialLoading = true;
+      updateOfficialPaperTools(paper);
+      const status = document.getElementById('officialPdfStatus');
+      status.textContent = 'Loading and checking the original PDF…';
+      try {
+        if (!window.pdfjsLib) throw new Error('PDF reader could not load. Use Source PDF or retry when PDF.js is available.');
+        const doc = paper.officialRecord;
+        const response = await fetch(doc.pdf_path);
+        const bytes = await OfficialCorpus.verifiedBytes(response, doc.source_sha256);
+        const file = new File([bytes], doc.pdf_path.split('/').pop(), { type: 'application/pdf' });
+        await loadUploadedPdfFile(file, paperId);
+        if (!paper.pdfDoc) throw new Error('PDF could not be parsed; Source PDF remains available.');
+        if (activePaperId === paperId) status.textContent = 'Original PDF SHA-256 checked. Transcription edits remain local until exported.';
+      } catch (error) {
+        if (activePaperId === paperId) status.textContent = error.message;
+      } finally {
+        paper.officialLoading = false;
+        document.getElementById('officialOpenPdf').disabled = false;
+      }
+    }
 
     function getPapersInActiveTab() {
       return papersState.filter(p => (p.workspaceTab || 'biochain') === activeCorpusTab);
@@ -1446,7 +1196,7 @@
               + Create Blank Paper
             </button>
             <button onclick="switchCorpusTab('biochain')" class="w-full py-1.5 bg-slate-900 hover:bg-slate-800 text-emerald-300 border border-slate-800 rounded-lg text-[11px] font-mono transition">
-              Open BioChain AI Corpus (${bioCount}) →
+              Open official releases (${bioCount}) →
             </button>
           </div>
         `;
@@ -1638,6 +1388,7 @@
         activePaperId = paperId;
       }
       const paper = getActivePaper();
+      updateOfficialPaperTools(paper);
 
       document.getElementById('breadcrumbFolder').textContent = paper.folder;
       document.getElementById('breadcrumbFile').textContent = paper.filename;
@@ -1675,6 +1426,7 @@
     }
 
     function createNewPaperFile() {
+      switchCorpusTab('custom');
       const tabPapers = getPapersInActiveTab();
       const idx = tabPapers.length + 1;
       const folderName = activeCorpusTab === 'biochain'
@@ -1859,6 +1611,7 @@
     }
 
     async function loadUploadedMarkdownFiles(event) {
+      switchCorpusTab('custom');
       const files = Array.from(event.target.files || []);
       if (files.length === 0) return;
 
@@ -2071,7 +1824,8 @@ STRICT RULES:
       }
     }
 
-    async function loadUploadedPdfFile(event) {
+    async function loadUploadedPdfFile(event, officialPaperId = null) {
+      if (!officialPaperId) switchCorpusTab('custom');
       const file = event?.target?.files ? event.target.files[0] : event;
       if (!file) return;
       uploadedPdfName = file.name;
@@ -2117,8 +1871,10 @@ STRICT RULES:
           ''
         ].join('\n');
 
-        const newPaperId = 'pdf_' + Date.now();
-        const newPaper = {
+        const officialPaper = officialPaperId ? papersState.find(p => p.id === officialPaperId && p.officialRecord) : null;
+        if (officialPaperId && !officialPaper) throw new Error('Official paper is not in the catalog');
+        const newPaperId = officialPaper ? officialPaper.id : 'pdf_' + Date.now();
+        let newPaper = {
           id: newPaperId,
           workspaceTab: activeCorpusTab,
           tier: activeCorpusTab === 'biochain'
@@ -2145,7 +1901,13 @@ STRICT RULES:
           ]
         };
 
-        papersState.push(newPaper);
+        if (officialPaper) {
+          Object.assign(officialPaper, { pdfDoc: pdfDocInstance, pdfFileName: file.name, lastViewedPage: 1 });
+          newPaper = officialPaper;
+          activeCorpusTab = 'biochain';
+        } else {
+          papersState.push(newPaper);
+        }
         if (event?.target) event.target.value = '';
 
         // Ensure Visual Canvas tab is active and render Page 1 immediately
@@ -5381,6 +5143,10 @@ ${node.leanCode}`;
     function initCosmoThreeViewer() {
       const container = document.getElementById('cosmoThreeContainer');
       if (!container || cosmoThreeRenderer) return;
+      if (!window.THREE) {
+        container.textContent = '3D view unavailable. Paper browsing remains available.';
+        return;
+      }
 
       const w = container.clientWidth || 180;
       const h = container.clientHeight || 130;
@@ -6405,7 +6171,8 @@ ${node.leanCode}`;
       const badgeEl = document.getElementById('aiConfigBadgeLabel');
       if (badgeEl) badgeEl.textContent = labelMap[runtimeAiProvider] || 'AI: Auto';
 
-      switchCorpusTab('custom');
+      switchCorpusTab('biochain');
+      loadOfficialCorpus();
 
       // Enable drag-and-drop for both .pdf and .md/.tex files anywhere on the IDE window
       window.addEventListener('dragover', (e) => {

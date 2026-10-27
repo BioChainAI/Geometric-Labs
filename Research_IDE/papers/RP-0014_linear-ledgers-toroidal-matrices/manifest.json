@@ -1,0 +1,125 @@
+{
+ "schema_version": 1,
+ "id": "RP-0014",
+ "slug": "linear-ledgers-toroidal-matrices",
+ "title": "From Linear Ledgers to Toroidal Matrices: Applying Topological Data Compression to Bitcoin State Transitions",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "From Linear Ledgers to Toroidal Matrices: Applying Topological Data Compression to Bitcoin State Transitions",
+  "url": "https://www.academia.edu/165259984/From_Linear_Ledgers_to_Toroidal_Matrices_Applying_Topological_Data_Compression_to_Bitcoin_State_Transitions_SHD_CCP_Architecture_Research",
+  "license": "unspecified; no additional reuse license inferred",
+  "pages": 4
+ },
+ "tags": [
+  "compression",
+  "delta-encoding",
+  "ledger",
+  "memory"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-27",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "43c98bcec9409f55938457449a2b501b2e1c17c31d7f42737c384eca647d7de9",
+   "bytes": 11450,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "cec8bd8c537e03e7604944ee039cb7be788e3d2be914a7871757e75c767d4176",
+   "bytes": 300,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/From_Linear_Ledgers_to_Toroidal_Matrices.pdf",
+   "kind": "source-pdf",
+   "sha256": "9e7b2e3fbcd64df109b1996a3d40f252ca09fe12d8ab3531689711935eebba15",
+   "bytes": 62879,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "e6809840b71f09338628b0727cf848a04240c818039898dd77bd219c160abe68",
+   "bytes": 988,
+   "added": "2026-10-27"
+  }
+ ],
+ "archive": {
+  "topics": [
+   "compression",
+   "delta-encoding",
+   "ledger",
+   "memory"
+  ],
+  "relevance": [
+   {
+    "repository": "CubiLoom",
+    "role": "primary",
+    "reason": "PDF §§3–6: ordered event history, matrix representation and retention experiments."
+   },
+   {
+    "repository": "SHD-CCP-core",
+    "role": "supporting",
+    "reason": "PDF Table 1 has a distinct 64-bit packet proposal; do not reinterpret canonical Tile bytes."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "supporting",
+    "reason": "Record loss/security boundaries and tested compression evidence."
+   },
+   {
+    "repository": "Manifold-Projection",
+    "role": "context",
+    "reason": "Toroidal history views do not replace signed transaction semantics."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "context",
+    "reason": "Tensor/quantization proposals need separate numeric and throughput tests."
+   },
+   {
+    "repository": "Geometric-Labs",
+    "role": "supporting",
+    "reason": "Exact chains and replay/reconstruction tests; cryptographic integrity stays separate."
+   }
+  ],
+  "schema_version": 1,
+  "work_id": "WORK-0013",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-27",
+  "release_status": "official-release",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/From_Linear_Ledgers_to_Toroidal_Matrices.pdf",
+  "source_sha256": "9e7b2e3fbcd64df109b1996a3d40f252ca09fe12d8ab3531689711935eebba15",
+  "relations": [],
+  "prior_upload": {
+   "status": "distinct supplied PDF; no exact stored source match"
+  },
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "165259984",
+   "publication_url": "https://www.academia.edu/165259984/From_Linear_Ledgers_to_Toroidal_Matrices_Applying_Topological_Data_Compression_to_Bitcoin_State_Transitions_SHD_CCP_Architecture_Research",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "9e7b2e3fbcd64df109b1996a3d40f252ca09fe12d8ab3531689711935eebba15",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "User-supplied PDF matched to the user-supplied Academia publication title.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
+ }
+}

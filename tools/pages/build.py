@@ -7,6 +7,7 @@ The publication tree never includes arbitrary repository files or dependency clo
 from __future__ import annotations
 
 import argparse
+import hashlib
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 import json
@@ -14,12 +15,22 @@ from pathlib import Path, PurePosixPath
 import re
 import shutil
 import subprocess
+import sys
 from urllib.parse import quote, urlsplit, unquote
 
 ROOT = Path(__file__).resolve().parents[2]
 REPO = 'https://github.com/BioChainAI/Geometric-Labs'
 STATUSES = {'implemented', 'experimental', 'reference', 'planned', 'blocked'}
 CHECKPOINT = 'ecosystem/docs/checkpoints/2026-10-25'
+
+
+def official_catalog(root=ROOT):
+    result = subprocess.run([sys.executable, str(root/'Research_IDE/tools/releases.py'),
+                             '--root', str(root/'Research_IDE'), 'check'],
+                            capture_output=True, text=True)
+    if result.returncode:
+        raise ValueError('invalid official collection: ' + result.stdout + result.stderr)
+    return json.loads((root/'Research_IDE/official/CATALOG.json').read_text())
 
 
 def git(*args, root=ROOT):
@@ -171,6 +182,21 @@ def validate_artifact(output):
                 raise ValueError('missing page anchor: ' + link)
     if not (output/'checkpoint/index.html').is_file() or not (output/'research-ide/index.html').is_file():
         raise ValueError('missing published workbench/checkpoint')
+    if not (output/'research-ide/official-corpus.js').is_file():
+        raise ValueError('missing official corpus loader')
+    corpus = json.loads((output/'research-ide/official/CATALOG.json').read_text())
+    if corpus.get('schema') != 'geometric-labs.official-corpus.v1':
+        raise ValueError('unknown official corpus schema')
+    for row in corpus['documents']:
+        pdf = (output/'research-ide'/safe_path(row['pdf_path'])).resolve()
+        if (row['release_status'] != 'official-release' or not pdf.is_relative_to(output/'research-ide/papers')
+                or not pdf.is_file() or hashlib.sha256(pdf.read_bytes()).hexdigest() != row['source_sha256']):
+            raise ValueError('invalid/missing official PDF: ' + row['id'])
+    expected_pdfs = {'research-ide/' + row['pdf_path'] for row in corpus['documents']}
+    actual_pdfs = {p.relative_to(output).as_posix() for p in output.rglob('*')
+                   if p.is_file() and p.suffix.lower() == '.pdf'}
+    if actual_pdfs != expected_pdfs:
+        raise ValueError('unapproved PDF in Pages artifact')
     if any((output/p).exists() for p in ('.git', 'ecosystem/workspaces', '.env', 'src', 'verification')):
         raise ValueError('unapproved repository content in site artifact')
     return status
@@ -182,6 +208,7 @@ def build(output, *, root=ROOT, require_clean=False):
     if output == root or output.is_relative_to(root) or root.is_relative_to(output):
         raise ValueError('output must be outside the repository')
     data = scan(root)
+    corpus = official_catalog(root)
     if require_clean and data['preview_with_uncommitted_changes']:
         raise ValueError('production build requires a clean checkout')
     # Avoid arbitrary directory deletion: repeat builds require our marker, and
@@ -209,6 +236,14 @@ def build(output, *, root=ROOT, require_clean=False):
         target=output/'checkpoint'/destination; target.parent.mkdir(exist_ok=True)
         shutil.copy2(cp/source,target)
     (output/'research-ide').mkdir(); shutil.copy2(root/'Research_IDE/index.html', output/'research-ide/index.html')
+    shutil.copy2(root/'Research_IDE/official-corpus.js', output/'research-ide/official-corpus.js')
+    (output/'research-ide/official').mkdir()
+    shutil.copy2(root/'Research_IDE/official/CATALOG.json', output/'research-ide/official/CATALOG.json')
+    for row in corpus['documents']:
+        source = root/'Research_IDE'/safe_path(row['pdf_path'])
+        target = output/'research-ide'/row['pdf_path']
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
     (output/'Research_IDE').mkdir()
     shutil.copy2(root/'site/research-ide-redirect.html', output/'Research_IDE/index.html')
     (output/'UPDATE_PROCEDURE.md').write_text((root/'site/README.md').read_text())

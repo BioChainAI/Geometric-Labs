@@ -1,0 +1,1270 @@
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+
+                  The Geometric Engine of Time:
+                 The Fokker-Planck Prime Sieve —
+                            Companion:
+                 Status of Claims, Audit and Open
+                             Problems
+                            BioChain AI — SHD-CCP Architecture Research
+                             Consolidated Technical Report (Continued Series)
+
+
+         Abstract
+         This companion holds everything about the Fokker-Planck prime sieve that is not
+         its statement and proof. The sieve itself, its proofs and the standard it supports
+         are in the release paper (Hoard 2026e). Here are the relation of that paper to its
+         three earlier versions and the sixteen questions those versions raised; the
+         consolidated status of 72 claims of the source note, of the nine companion papers
+         of the SHD-CCP programme and of the release itself; the audit of the source note;
+         and the corrections of the companion papers, with complete proofs where a
+         correction rests on a theorem. Of the companion papers' claims, the golden
+         solitons, the one-sided delta, the 720-step guarantee for arbitrary deltas, the three
+         earlier packet layouts and the South Halo as an integrity check do not survive. The
+         trefoil's D₃ symmetry, periodic closure in the binary polyhedral groups and the
+         coherence score survive in corrected form. The 720-step cycle is examined with
+         the telescoping identity of the cubit installment, which shows that the cyclic
+         holonomy is identically 1 and so cannot test closure. Ten open problems are stated
+         in the manner of a registered report: each with its status, the evidence so far, a
+         test and a decision rule ﬁxed before any new computation or measurement, and a
+         note on whether the release depends on it. It depends on none of them.
+
+      Editorial Note. This document is the companion to The Geometric Engine of Time: The
+      Fokker-Planck Prime Sieve in Quaternionic Lattices (Hoard 2026e) and is cited in the series as
+      Hoard (2026h). Section and result numbers without a qualiﬁer refer to Hoard (2026e); numbers
+      marked "here" refer to this companion. It follows the conventions of A Proposal for a
+      Standardization of the Cubit (Hoard 2026d), including its registered-report format for open
+      claims, and cites the companion papers of the SHD-CCP programme as BioChain AI (2026a–i).
+      All quantitative claims are annotated with status tags: [PROVEN], [HEURISTIC],
+      [CONJECTURAL], [OPEN], [SUPERSEDED], reﬁned by the ﬁve further tags of Hoard (2026e),
+      Table 1.
+
+
+
+
+                                                       —1—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+
+ Contents
+ Epistemic Conventions and Scope                                                                              2
+ 1 Relation to Earlier Versions                                                                               2
+       1.1 The Versions                                                                                        2
+       1.2 Questions of the Earlier Versions                                                                   2
+       1.3 Corrections Between Versions                                                                        2
+ 2 Status of Claims                                                                                           2
+ 3 Audit of the Source Note                                                                                   2
+ 4 Corrections of the Companion Papers                                                                        2
+       4.1 The Golden Cliﬀord Torus                                                                            2
+       4.2 Quaternion Matrices and Inverses                                                                    2
+       4.3 Trefoil Folding                                                                                     2
+       4.4 The 720-Step Cycle                                                                                  2
+       4.5 The Hyperbolic Projection                                                                           2
+       4.6 Packet Layouts                                                                                      2
+       4.7 Claims About the Protocol That Do Not Survive                                                       2
+       4.8 The Coherence Score                                                                                 2
+       4.9 Errata of the Companion Papers                                                                      2
+ 5 Open Problems                                                                                              2
+ 6 Veriﬁcation                                                                                                2
+ References                                                                                                   2
+
+
+
+
+ Epistemic Conventions and Scope
+ The companion uses the ten tags of Hoard (2026e), Table 1, and its rule for mixed claims: a
+ computed value of a heuristic formula is tagged [HEURISTIC / COMPUTED]. A claim of a
+ source keeps the tag that the source's own argument supports, which is not always the tag the
+ source gave itself.
+
+ What this companion contains. The history of the installment (Section 1), the status of
+ every claim (Section 2), the audit of the source note (Section 3), the corrections of the
+ companion papers (Section 4) and the open problems (Section 5). It proves results only where
+ a correction rests on them.
+
+ What it does not do. It does not restate the sieve; it cites Hoard (2026e) for every positive
+ result. It reviews the companion papers only where the sieve uses them, so a claim not listed
+ here is neither endorsed nor refuted.
+
+ Veriﬁcation. Every number here is reproduced by the script of Hoard (2026e), Appendix A;
+ Section 6 lists the sections that check this companion.
+
+
+
+ 1 Relation to Earlier Versions
+ The installment reached its release form in four versions. Table 1 lists what each did, Table 2
+ the questions the earlier versions left open and where the release settles them, and Section
+
+                                                       —2—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)          Geometric Engine of Time
+
+
+
+ 1.3 the corrections made between versions.
+
+
+ 1.1 The Versions
+                                        Table 1: Versions of the installment.
+
+   Version     What it did                                                                Sources added
+
+   First       Formalized the source note: the lattice master equation, the Gibbs         The source note; Hoard
+   edition     state, absorbing prime traps, the three-square obstruction, the no-        2026a
+               collinear-prime-triple theorem, the tier rotation as a Hurwitz unit, and
+               the audit of the source note
+
+   Second      Rebuilt the sieve around the companion papers: the Dual-Helix              Nine companion papers,
+   edition     reading, the golden torus and its Fibonacci approximants, the norm-5       BioChain AI 2026a–i; Hoard
+               hyperbolic tree, the 64-bit packet and the alignment standard              2026b, c, d; Butt et al. 2026
+
+   Revision    Imported the proofs of the Fifteen Lemmas, adopted the Einstein Tile       The Fifteen Lemmas
+               as the packet, and relabelled the companion papers
+
+   Release     Split the installment into the release paper (Hoard 2026e) and this        Further results of Hoard
+               companion, and strengthened four steps with the cubit installment          2026d
+
+ Results kept from the ﬁrst edition are, in release numbering, Deﬁnition 2.1, Propositions 2.2
+ and 2.3, Proposition 4.1, Theorem 4.2, Theorem 8.4 and Proposition 10.1, together with the
+ audit in Section 3 here. The release adds the entropy production and Kolmogorov reading of
+ Section 2.3, Proposition 3.3, the physical scale and precision horizon of Sections 8.1 and 8.2,
+ the medium-free invariants of Section 9.3, and the cube-group statement of Section 9.4.
+
+
+ 1.2 Questions of the Earlier Versions
+ Table 2: Questions raised by the earlier versions and the companion papers, and where they are settled.
+
+                                                                  Answer, in release
+   #    Question             Raised in     Settled by                                            Status
+                                                                  numbering
+
+   1    Does the lattice     Source        BioChain AI            Nothing needs computing:       [PROVEN]; the
+        geometry compute     note §5;      2026a; Hoard           the sieve proposes and         "computes" claim
+        the primes, or       ﬁrst          2026a; Fifteen         exact tests certify, with a    [SUPERSEDED]
+        must they be an      edition       Lemmas, Lemma          proven wheel bias of 3.75
+        input?                             14                     (Section 3)
+
+   2    Three dimensions     Source        BioChain AI            Four: S³ is parallelizable,    [PROVEN],
+        or four?             note §3;      2026c, 2026d,          the Hurwitz order holds        [ESTABLISHED]
+                             ﬁrst          2026h; Fifteen         every prime, and the
+                             edition       Lemmas, Lemma          golden-torus approximants
+                                           5                      give exactly primes that
+                                                                  3D misses (Sections 4, 5)
+
+   3    How is ﬂoating-      BioChain      Fifteen Lemmas,        Exact Hurwitz arithmetic       [PROVEN]
+        point drift          AI 2026d      Lemmas 12 and          has no drift; exact periodic
+        removed from long    §5            13                     schedules close within 12
+        runs?                                                     repetitions or never
+                                                                  (Section 6; Section 4.4
+                                                                  here)
+
+   4    Do golden solitons   BioChain      BioChain AI 2026c      No lattice point lies on the   [PROVEN]; inﬁnitude
+        sit at prime         AI 2026c                             golden torus; exact nodes      [OPEN], Problem 1
+        quadrances?          §4                                   lie on its Fibonacci           here
+                                                                  approximants, with prime
+                                                                  norms 3, 7, 47 and 2207
+                                                                  (Section 5)
+
+
+                                                         —3—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)         Geometric Engine of Time
+
+
+
+                                                                 Answer, in release
+   #    Question              Raised in     Settled by                                          Status
+                                                                 numbering
+
+   5    Can the hyperbolic    BioChain      BioChain AI          For the norm-5 generators      [PROVEN]
+        projection run on     AI 2026d      2026d; Lubotzky      every step is a
+        shifts?               §8, horizon   et al. 1988          permutation, a shift and
+                              2                                  an add (Section 7.2)
+
+   6    How is a              BioChain      BioChain AI          Words over 1 ± 2i, 1 ± 2j,     [ESTABLISHED],
+        hyperbolic            AI 2026d      2026d, 2026a;        1 ± 2k: free, uniquely         [COMPUTED]
+        procedural            §3            Fifteen Lemmas,      factorable, with
+        structure                           Lemmas 8 and 13      Ramanujan quotients
+        generated,                                               (Section 7)
+        addressed and
+        shared exactly?
+
+   7    Does a 64-bit word    First         Fifteen Lemmas,      Yes on the Form 1 core (36     [PROVEN]; horizons
+        suﬃce for the         edition       Lemma 5 and          bits) and on cubit-            [HEURISTIC /
+        TQF?                                §6.1; Hoard          anchored lattices (53 bits);   COMPUTED]
+                                            2026d, §3.5          wide integers only at the
+                                                                 Q ≈ 10¹² horizon (Section
+                                                                 8.2)
+
+   8    Which bit layout is   BioChain      Fifteen Lemmas,      The Einstein Tile (Section     [DEFINITION]
+        the packet?           AI 2026e,     §6.1                 8.1; Section 4.6 here)
+                              2026f,
+                              2026g
+
+   9    What does TQF         BioChain      BioChain AI          On a scan line, everything;    [PROVEN]
+        pruning remove?       AI 2026e,     2026e; Hoard         on (index, value) samples,
+                              Stage 3       2026a                exactly the zero-second-
+                                                                 diﬀerence nodes,
+                                                                 losslessly (Section 8.3)
+
+   10   How do agents         BioChain      BioChain AI          Invariants non-locally,        [PROVEN]
+        with no shared        AI 2026e,     2026h, 2026a;        Horn's quaternion locally,     mathematics;
+        frame align non-      Stage 1;      Fifteen Lemmas,      exact certiﬁcates under a      [HEURISTIC]
+        similar data?         2026h         Lemmas 5, 9 and      Merkle root (Section 9)        application, Problem 8
+                                            15; Hoard 2026d;                                    here
+                                            Butt et al. 2026
+
+   11   Is the coherence Φ    BioChain      BioChain AI          Frame-invariant but not        [PROVEN],
+        a sound integrity     AI 2026h      2026h, 2026a;        sign-invariant; Φ_M            [HEURISTIC]
+        score?                              Fifteen Lemmas,      corrects it; it measures
+                                            Theorem 7.5          agreement, not truth
+                                                                 (Sections 9.3, 9.6)
+
+   12   Does drift along      Source        Fifteen Lemmas,      No: it carries a current and   [PROVEN]
+        TQF lines sieve?      note §4       Lemma 7; Hoard       produces entropy while its
+                                            2026d, Proposition   stationary state stays
+                                            4.8                  uniform (Section 2.3)
+
+   13   Is the sieve          First         Fifteen Lemmas,      Exactly when the Hurwitz       [PROVEN]
+        deﬁned on the         edition       Lemma 14             partition function
+        inﬁnite Hurwitz                                          converges; for V = α ln n,
+        lattice?                                                 exactly when βα > 2
+                                                                 (Section 2.3)
+
+   14   Does a lattice line   First         None                 A case of Bunyakovsky's        [OPEN], Problem 2
+        meet inﬁnitely        edition                            conjecture                     here
+        many prime-norm
+        nodes?
+
+   15   Is the oracle bias    BioChain      None                 Not settled; the bias          [CONJECTURAL],
+        above 1 for           AI 2026a                           proven in Section 3 is for     Problem 3 here
+        factoring?            §5                                 the prime task only
+
+
+
+                                                         —4—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)        Geometric Engine of Time
+
+
+
+                                                                 Answer, in release
+   #    Question              Raised in     Settled by                                        Status
+                                                                 numbering
+
+   16   Do trefoil knot       BioChain      None                 No mechanism found; the      [OPEN], Problem 4
+        invariants predict    AI 2026d                           trefoil's D₃ symmetry is     here
+        prime quadrances?     §8, horizon                        proven (Section 4.3 here)
+                              1
+
+
+ 1.3 Corrections Between Versions
+        Prime coverage of the Form 1 core. A draft of the revision stated that the Form 1 core
+        reaches all 1,877 primes up to 16,129. The count had included primes with no encodable
+        core. The correct ﬁgure is 1,712 of 1,877; the other 165 need a coordinate outside the
+        byte range (Hoard 2026e, Section 8.2; Appendix A, section Y).
+        Citation labels. The second edition cited the companion papers with Hoard labels. From
+        the revision on they are cited as BioChain AI (2026a–i), as the Fifteen Lemmas cite them,
+        so that Hoard (2026e) can denote this installment.
+        Packet reading. The second edition read a 32-bit byte core of four signed bytes; the
+        revision replaced it by the Form 1 core of the Einstein Tile. Section R of the veriﬁcation
+        script keeps the earlier statistics for comparison.
+        Numbering. In the release, the second edition's Theorem 6.3 and Proposition 6.4 are
+        Theorem 6.1 and Proposition 6.2; its Proposition 6.1 and Theorem 6.2 are Proposition 4.1
+        and Theorem 4.2 here; its Sections 8.4 and 11 are Sections 4.7 and 2 here, and its
+        Appendix A is divided between Sections 3 and 4 here; and its Appendices B and C are
+        Appendices A and B of Hoard (2026e).
+
+
+
+ 2 Status of Claims
+ Table 3 records the status of every claim of the source note, of every companion-paper claim
+ the sieve uses, and of the results of the installment, in the series-standard vocabulary. The
+ Source column gives the version in which a result entered: "ed. 1" and "ed. 2" for the ﬁrst and
+ second editions, "FL" for results imported from the Fifteen Lemmas in the revision, and
+ "release" for results added in the release. Basis numbers refer to Hoard (2026e) unless marked
+ "here".
+
+                                      Table 3: Consolidated status of claims.
+
+   Claim                         Source            Status                                 Basis / Note
+
+   Lattice Fokker-Planck         Source note       [DEFINITION]                           As a master equation;
+   equation                      §1                                                       Deﬁnition 2.1
+
+   Prime potential with          Source note       [HEURISTIC]                            The primes enter through
+   minima only at prime Q        §1                                                       V; Section 2.1
+
+   Stationary state supported    Source note       [SUPERSEDED]                           False for positive diﬀusion
+   only on prime nodes           §§2, 5                                                   (Proposition 2.2); exact
+                                                                                          with traps (Proposition 2.3)
+
+   Prime basis expansion         Source note       [SUPERSEDED]                           Eigen-expansion of the
+                                 §2                                                       generator; Section 2.1
+
+   Selection rule: λ → 0 at      Source note       [PROVEN]                               As absorbing traps;
+   primes                        §2                                                       Proposition 2.3
+
+
+
+                                                         —5—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)        Geometric Engine of Time
+
+
+
+   Claim                         Source          Status                                   Basis / Note
+
+   Inert primes exist but are    Source note     [SUPERSEDED]                             None exist; Proposition 4.1
+   rare                          §3
+
+   Current ﬂows along TQF        Source note     [PROVEN] as a current;                   Uniform stationary state;
+   lines                         §4              [SUPERSEDED] as a sieve                  Proposition 2.6
+
+   Prime traps on TQF lines,     Source note     [SUPERSEDED]; norm reading               Theorem 8.4; the example
+   e.g. Q = 2, 3, 5              §4              [OPEN]                                   is a right triangle (Section
+                                                                                          3 here); Problem 2 here
+
+   The lattice geometry          Source note     [SUPERSEDED]                             Not needed under the
+   computes the primes           §5                                                       Dual-Helix principle;
+                                                                                          Section 3
+
+   Q ≥ 10¹² for 10⁻⁶ precision   Source note     [HEURISTIC / COMPUTED]                   δθ ≈ 1/√Q is the heuristic;
+                                 §6                                                       Section 8.2
+
+   A 64-bit lattice is vastly    Source note     [PROVEN] at packet scale and for         Proposition 8.2; Table 13
+   suﬃcient                      §6              cubit-anchored lattices;
+                                                 [SUPERSEDED] at the horizon
+
+   Golden metric with shear      BioChain AI     [SUPERSEDED]                             Not modular-invariant
+   cφ/N                          2026b §3                                                 (BioChain AI 2026a, §3.2)
+
+   Oracle bias β > 1             BioChain AI     [PROVEN] for primes;                     β = 3.75; Proposition 3.2;
+                                 2026b §4;       [CONJECTURAL] for factoring              Problem 3 here
+                                 2026a §5
+
+   Delta e^{iΔθ₁} e^{jΔθ₂} q     BioChain AI     [SUPERSEDED]                             Two-sided form,
+   stays on the torus            2026c §3                                                 Proposition 5.1; Section
+                                                                                          4.1 here
+
+   Ergodic covering from r₁/r₂   BioChain AI     [SUPERSEDED]                             Density depends on ω₁/ω₂
+   =φ                            2026c §2                                                 (FL Lemma 11); Section
+                                                                                          4.1 here
+
+   Golden solitons at prime      BioChain AI     [SUPERSEDED]                             No lattice point on the
+   quadrances                    2026c §4                                                 torus; Theorems 5.2 and
+                                                                                          5.3
+
+   Sixteen multiplications by    BioChain AI     [SUPERSEDED]                             Direct product; Proposition
+   a Strassen scheme             2026c §5                                                 7.3; Section 4.1 here
+
+   Quaternion matrices are       BioChain AI     [SUPERSEDED]                             L(q)ᵀL(q) = N(q)I (FL
+   skew-symmetric                2026d §2.2                                               Lemma 8); Section 4.2
+                                                                                          here
+
+   Inverse of every generated    BioChain AI     [PROVEN] over ℚ only                     Inverses of non-units leave
+   Hurwitz path                  2026d §2.1                                               the Hurwitz order; Section
+                                                                                          4.2 here
+
+   SL(2, ℂ) double-covers        BioChain AI     [ESTABLISHED]                            As the inclusion SU(2) ⊂
+   SO⁺(3, 1)                     2026d §3                                                 SL(2, ℂ) (FL Lemma 8);
+                                                                                          Section 4.5 here
+
+   D₃ symmetry of the trefoil;   BioChain AI     Symmetry [PROVEN]; one-sixth             Proposition 4.1 here (FL
+   one-third storage             2026d §4        tables [PROVEN]; data folding            Lemma 8)
+                                                 [SUPERSEDED]
+
+   Return to identity at step    BioChain AI     [PROVEN] for periodic schedules;         Theorem 4.2 here;
+   720                           2026d §5        [SUPERSEDED] for arbitrary deltas        Theorem 6.1; FL Lemma
+                                                                                          12
+
+   Sandwich packet layout        BioChain AI     [SUPERSEDED]                             By the Einstein Tile;
+   and the other two layouts     2026e, 2026f,                                            Deﬁnition 8.1; Section 4.6
+                                 2026g                                                    here
+
+
+
+
+                                                       —6—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)        Geometric Engine of Time
+
+
+
+   Claim                           Source           Status                                Basis / Note
+
+   Lossless TQF pruning            BioChain AI      [SUPERSEDED]; zero second             Proposition 8.3
+                                   2026e, Stage     diﬀerence [PROVEN]
+                                   3
+
+   24 streams collapse to 9        BioChain AI      [OPEN]                                No rule ﬁxes nine; "3 of 9"
+   solitons                        2026e, Stage                                           is FL Proposition 8.2″;
+                                   2                                                      Problem 5 here
+
+   Zeta energy ﬁlter               BioChain AI      [HEURISTIC]                           Well deﬁned once restated
+                                   2026f §2.1                                             with a modulus; Section
+                                                                                          4.7 here
+
+   S³ parallelizable; scalar key   BioChain AI      [ESTABLISHED]                         Section 4.1; Proposition
+                                   2026h                                                  7.7
+
+   Φ as a truth score              BioChain AI      [HEURISTIC]; invariance               Frame-invariant, not sign-
+                                   2026h            [PROVEN]                              invariant; Proposition 9.1;
+                                                                                          Section 4.8 here
+
+   Cubic reconstruction from       BioChain AI      [HEURISTIC]                           An inverse problem;
+   triple-quad measurements        2026i                                                  uniqueness not shown;
+                                                                                          Problem 7 here
+
+   South Halo as an integrity      BioChain AI      [SUPERSEDED]                          A cache ﬁlter (FL Lemma
+   check                           2026f §3.1                                             15); Section 4.7 here
+
+   Gibbs state positive on         ed. 1; FL        [PROVEN]                              Proposition 2.2; FL Lemma
+   every node                                                                             14
+
+   Prime traps give the            ed. 1; FL        [PROVEN]                              Proposition 2.3; FL Lemma
+   harmonic measure                                                                       14
+
+   Primes ≡ 7 mod 8 are            ed. 1            [ESTABLISHED]                         Theorem 4.2
+   never 3D quadrances
+
+   No collinear triple of prime    ed. 1; FL        [PROVEN]                              Theorem 8.4; FL Lemma 5
+   quadrances
+
+   The Engine's tier rotation is   ed. 1; FL        [PROVEN]                              Proposition 10.1; FL
+   a Hurwitz unit                                                                         Lemma 4
+
+   Killing concentrates but        ed. 2            [PROVEN]                              Proposition 2.4
+   never selects
+
+   The sieve on the inﬁnite        FL; sharpness    [PROVEN]                              Proposition 2.5
+   Hurwitz lattice                 ed. 2
+
+   Drift without a potential       FL               [PROVEN]                              Proposition 2.6
+   does not sieve
+
+   Drift without a potential       release; Hoard   [PROVEN]                              Proposition 2.6; Hoard
+   produces entropy at Σ(1 −       2026d                                                  2026d, Proposition 4.8
+   ρ_k)w_k ln(1/ρ_k)/W
+
+   A potential carries no          release; Hoard   [PROVEN]                              Remark (Kolmogorov's
+   stationary current; a           2026d                                                  Criterion), Section 2.3
+   potential-free drift selects
+   nothing
+
+   Certiﬁed traps are exact        ed. 2            [PROVEN]                              Proposition 3.1; FL Lemma
+                                                                                          14 Part 4
+
+   The wheel's bias is 3.75        ed. 2            [PROVEN]                              Proposition 3.2
+
+   ℤ/30 is the largest             release; Hoard   [PROVEN]                              Proposition 3.3; Hoard
+   primorial wheel ﬁtting a 3-     2026d                                                  2026d, Theorem 4.9
+   bit ﬁeld
+
+
+
+
+                                                         —7—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)        Geometric Engine of Time
+
+
+
+   Claim                          Source           Status                                 Basis / Note
+
+   Primes of the box [−2, 2]⁴     FL               [PROVEN]                               Section 4.1; FL Lemma 5
+   are 2, 3, 5, 7 and 13
+
+   Canonical associate for        ed. 2; FL        [PROVEN], [DEFINITION]                 Proposition 4.3
+   addresses; sign
+   normalization for rotations
+
+   Torus-preserving delta         ed. 2            [PROVEN]                               Proposition 5.1
+
+   No lattice point on the        ed. 2            [PROVEN]                               Theorem 5.2
+   golden torus
+
+   Fibonacci-torus points;        ed. 2            [PROVEN]                               Theorem 5.3
+   Lucas primes ≡ 7 mod 8
+
+   Two-gap golden circle at       FL               [ESTABLISHED]                          Section 5.3; FL Lemma 11
+   Fibonacci N
+
+   Exponents 12, 24, 60 close     ed. 2            [PROVEN]                               Theorem 4.2 here
+   periodic schedules
+
+   Exact deltas close within      FL; corollary    [PROVEN]                               Theorem 6.1; FL Lemma
+   12 repetitions or never        ed. 2                                                   13
+
+   Exact arithmetic has no        ed. 2; FL        [PROVEN]                               Proposition 6.2; FL Lemma
+   drift                                                                                  13
+
+   Norm-5 words are free with     ed. 2            [ESTABLISHED], [COMPUTED]              Theorem 7.2
+   unique addresses
+
+   Generation by shift and        ed. 2            [PROVEN]                               Proposition 7.3
+   add
+
+   Ramanujan meeting              ed. 2            [ESTABLISHED], [COMPUTED]              Theorem 7.4; Proposition
+   graphs mix in logarithmic                                                              7.5
+   time
+
+   The {4,3,5} honeycomb as       FL               [ESTABLISHED], [PROVEN]                Section 7.4; FL Lemma 8
+   a second hyperbolic cube                                                               and Theorem 7.4
+   structure
+
+   C₃ × C₂ is the abelian         ed. 2            [ESTABLISHED], [COMPUTED]              Proposition 7.6
+   shadow of PSL(2, ℤ); SL(2,
+   3) = 2T; SL(2, 5) = 2I
+
+   Scalar zero is the ideal       ed. 2; FL        [PROVEN]                               Propositions 7.7 and 7.8;
+   boundary; the ghost map is                                                             FL Lemma 8
+   a rational isometry
+
+   CRT addresses with closed-     FL               [PROVEN]                               Section 7.7; FL Lemma 9
+   form inverses
+
+   The Einstein Tile as the       FL               [DEFINITION]                           Section 8.1
+   packet
+
+   The cubit as the unit of the   release; Hoard   [DEFINITION]; voxel facts              Section 8.1; Hoard 2026d,
+   scale register                 2026d            [PROVEN]                               Proposition 3.1
+
+   Packet arithmetic is exact     ed. 2; FL        [PROVEN]                               Proposition 8.2; FL Lemma
+   in 64 bits                                                                             5
+
+   Precision horizon Q ≈ 2.3 ×    release; Hoard   [HEURISTIC / COMPUTED]                 Section 8.2; Hoard 2026d,
+   10⁷ for cubit-anchored         2026d                                                   §3.5
+   lattices
+
+   Double precision misjudges     release; Hoard   [COMPUTED]                             Section 8.2; Hoard 2026d,
+   collinearity at the source-    2026d                                                   Remark 4.3
+   note horizon
+
+
+
+                                                        —8—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)            Geometric Engine of Time
+
+
+
+   Claim                          Source             Status                                   Basis / Note
+
+   TQF pruning removes            ed. 2              [PROVEN]                                 Proposition 8.3
+   exactly the zero-second-
+   diﬀerence nodes
+
+   Joint 0.5 s window for         Hoard 2026d;       [PROVEN]                                 Section 9.2; Hoard 2026d,
+   caesium, 40 Hz and 432 Hz      FL                                                          §4.1; FL Proposition 11.4
+
+   Frame-free invariants;         ed. 2              [PROVEN]                                 Proposition 9.1
+   corrected coherence Φ_M
+
+   Cubit-scaled lengths give      release; Hoard     [PROVEN]                                 Section 9.3; Hoard 2026d,
+   medium-free invariants         2026d                                                       Lemma 3.2
+
+   The Engine's tier rotations    release; Hoard     [PROVEN]                                 Section 9.4; Hoard 2026d,
+   generate the certiﬁcation      2026d                                                       Appendix E
+   group O
+
+   Merkle roots certify; groups   FL                 [PROVEN]                                 Section 9.6; FL Lemmas 7
+   of four survive one loss                                                                   and 15
+
+   The Engine's 60 and 30 in      ed. 2              [CORRESPONDENCE]                         Remarks in Sections 6 and
+   the hyperbolic                                                                             10
+   constructions
+
+   The lattice standard as an     ed. 2              [HEURISTIC]                              Section 9; Problem 8 here
+   AI alignment and
+   governance layer
+
+
+
+
+ 3 Audit of the Source Note
+ The source note The Fokker-Planck Prime Sieve in Quaternionic Lattices is a three-page
+ manuscript. Table 4 lists every point at which Hoard (2026e) departs from it. Items 7, 11 and
+ 12 overturn a stated claim; the others correct a formulation, a number or a missing step.
+
+                                    Table 4: Errata and audit of the source note.
+
+        Location in                                                                              Resolution in Hoard
+   #                     The note states             Finding
+        the note                                                                                 2026e
+
+   1    Abstract, §1     A 4 × 4 × 4 lattice for a   A 3D grid cannot hold 4D states and         4D Hurwitz lattice
+                         four-component state q      misses primes ≡ 7 mod 8                     (4.1)
+
+   2    §1               Partial derivatives in q    Not deﬁned on nodes                         Master equation (2.1)
+                         on a discrete lattice
+
+   3    §1               D₁ = −∇V(Q) governed        V depends only on Q, so its gradient is     Stated (2.1)
+                         by TQF trajectories         radial
+
+   4    §2               ρ = Σ c_p(t) Φ_p            Time dependence counted twice               Constant coeﬃcients
+                         e^(−λ_p t)                                                              (2.1)
+
+   5    §2               A prime-indexed basis       Cannot represent a uniform start            Eigen-expansion of the
+                                                                                                 generator (2.1)
+
+   6    §2               Composite modes have        Not derived                                 Absorbing traps (2.2)
+                         high λ
+
+   7    §3               Inert primes exist but      No prime is inert in the Hurwitz order      Proposition 4.1
+                         are rare
+
+   8    §3               "The Prime Conﬂict in       The argument given is about four            Theorem 4.2
+                         3D"                         squares
+
+
+
+
+                                                          —9—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)            Geometric Engine of Time
+
+
+
+        Location in                                                                               Resolution in Hoard
+   #                    The note states              Finding
+        the note                                                                                  2026e
+
+   9    §3              Stability needs a            Automatic for prime norm                     Section 4.1
+                        primitive path vector
+
+   10   §4              Example Q = 2, 3, 5 on       A_R = 24: a right triangle, not collinear    Below
+                        a TQF line
+
+   11   §4              Prime traps where TQF        No collinear triple has three prime          Theorem 8.4
+                        lines meet prime nodes       quadrances
+
+   12   §5              Output supported only        False for any positive diﬀusion or killing   Propositions 2.2 to 2.4;
+                        on prime nodes                                                            certiﬁed traps (3.1)
+
+   13   §6              About 60 % of a 64-bit       40 bits are 62.5 %                           Conﬁrmed (8.2)
+                        word
+
+   14   §6              A 64-bit lattice is vastly   True at packet scale and for cubit-          Proposition 8.2; Table
+                        suﬃcient                     anchored lattices; the TQF needs 85          13
+                                                     bits at the horizon
+
+   15   §6              Text ends "well within       Conclusion of §6 missing                     Supply the sentence
+                        the 'sweet"
+
+ The example triple. The note's example Q = 2, 3, 5 gives A_R = (2 + 3 + 5)² − 2(4 + 9 + 25)
+ = 24 = 16A²: since 2 + 3 = 5 it is a right triangle, not a collinear one. The same confusion of
+ the right-angle condition Q₁ + Q₂ = Q₃ with collinearity recurs in the decoding framework
+ (Hoard 2026e, Proposition 8.3(3); Table 5 here, item 12). The Fifteen Lemmas realize the
+ triangle in [−2, 2]³ with A = (0, 0, 0), B = (1, 1, 1) and C = (1, 0, 2). If the Q_i instead denote
+ the norms of three nodes on one lattice line q(t) = q₀ + td, the norm along the line is the
+ quadratic N(q₀) + 2t⟨q₀, d⟩ + t²N(d), and whether it is prime inﬁnitely often is Problem 2 here.
+
+ The precision horizon. The note's resolution rule δθ ≈ 1/√Q is a heuristic, and its
+ consequences are computed: Q ≥ 10¹² for six decimal places, coordinates near 10⁶, and 40 of
+ 64 bits. The release adds a physical ceiling. For lattices anchored to the realized cubit the same
+ rule gives Q ≈ 2.3 × 10⁷, 44,000 times lower, because the cubit is realized only to a relative
+ standard uncertainty of 2.09 × 10⁻⁴ (Hoard 2026e, Section 8.2; Hoard 2026d, §3.5). Both
+ horizons are tagged [HEURISTIC / COMPUTED]; Problem 10 here tests the rule itself.
+
+
+
+ 4 Corrections of the Companion Papers
+ The sieve uses nine companion papers of the SHD-CCP programme. Where one of them states
+ a claim that the release replaces, this section gives the claim, the reason, and the
+ replacement; Table 5 collects the items. A correction that rests on a theorem is proved here or
+ in Hoard (2026e).
+
+ Status: [PROVEN], [COMPUTED] and [SUPERSEDED]. Sources: BioChain AI (2026c),
+ (2026d), (2026e), (2026f), (2026g) and (2026h); Fifteen Lemmas, Lemmas 8, 11, 12 and 15;
+ Hoard (2026d), Proposition 4.6 and Remark 4.7.
+
+
+ 4.1 The Golden Cliﬀord Torus
+ Correction (One-Sided Delta). BioChain AI (2026c), §3.1, applies q ↦ e^{iΔθ₁} e^{jΔθ₂} q.
+ That product is a rotation of S³, but it does not preserve the torus: in 1,000 random trials the
+
+
+
+                                                         — 10 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ result left the torus every time (Hoard 2026e, Appendix A, section L). The two-sided form
+ e^{iα} q e^{iβ} of Hoard (2026e), Proposition 5.1, is exact in all 1,000.
+
+ Correction (Ergodic Covering). BioChain AI (2026c), §2.2, derives a dense covering from the
+ radius ratio r₁/r₂ = φ. Whether a stream winds densely over the torus depends on the ratio of
+ its angular rates, not on the ratio of the radii: a stream θ₁ = ω₁t, θ₂ = ω₂t is dense exactly
+ when ω₁/ω₂ is irrational, and golden radii do not force it (Fifteen Lemmas, Lemma 11 Parts 2
+ and 5) [PROVEN]. Choosing ω₁/ω₂ = φ realizes the source's intent.
+
+ Correction (Golden Solitons). BioChain AI (2026c), §4.1, places "stable vertices" where
+ streams collide "strictly where the generalized quadrance equals a rational prime". No point of
+ ℚ⁴ other than 0 lies on a Cliﬀord torus with radius ratio φ (Hoard 2026e, Theorem 5.2), so these
+ cannot be lattice nodes on the torus [SUPERSEDED]. The exact nodes nearest the torus lie on
+ its Fibonacci approximants, with prime norms 3, 7, 47 and 2207 (Hoard 2026e, Theorem 5.3).
+
+ Correction (The Strassen Step). BioChain AI (2026c), §5, states that a structured
+ quaternion step needs "only 16 core multiplications" by a Strassen-like scheme. Sixteen real
+ multiplications is the cost of the direct Hamilton product; no Strassen reduction is derived
+ [SUPERSEDED]. Steps by the norm-5 generators need no multiplier at all (Hoard 2026e,
+ Proposition 7.3).
+
+
+ 4.2 Quaternion Matrices and Inverses
+ Correction (Quaternion Matrices). BioChain AI (2026d), §2.2, calls the 4 × 4 matrix of q =
+ w + xi + yj + zk a real skew-symmetric matrix. It is the matrix L(q) of left multiplication by q,
+ which satisﬁes L(q)ᵀL(q) = N(q)I and L(q) + L(q)ᵀ = 2wI: a scaled orthogonal matrix with det
+ L(q) = N(q)², skew-symmetric only when w = 0 (Fifteen Lemmas, Lemma 8, Step 2)
+ [SUPERSEDED].
+
+ Correction (Inverses). BioChain AI (2026d), §2.1, states that every generated Hurwitz path
+ has an inverse. The inverse q̄ /N(q) of a non-unit is not a Hurwitz integer, so the claim holds
+ over ℚ only. Exact inversion of a norm-5 word is instead the reversed word of conjugates,
+ divided by the scalar 5^L (Hoard 2026e, Deﬁnition 7.1).
+
+
+ 4.3 Trefoil Folding
+ The symmetry-folding paper routes three data streams along the trefoil x = sin t + 2 sin 2t, y =
+ cos t − 2 cos 2t, z = −sin 3t, and stores one third of it (BioChain AI 2026d, §4).
+
+       Proposition 4.1 (Trefoil Symmetry). [PROVEN] Fifteen Lemmas, Lemma 8 Step
+       6; conﬁrms BioChain AI (2026d), §4.2.
+       The curve is carried to itself by the rotation of 120° about the z-axis, with t ↦ t −
+       2π/3, and by the half-turn about the y-axis, with t ↦ −t. These generate the dihedral
+       group D₃ of order 6. With the C₃ axis along (1, 1, 1) and a half-turn axis along (1, −1,
+       0), its six elements are integer signed-permutation matrices in the cube group O.
+
+       Proof. Write w(t) = x(t) + iy(t) = ie^{−it} − 2ie^{2it}. Then w(t + 2π/3) =
+       e^{−2πi/3}w(t) and z(t + 2π/3) = z(t), a rotation by 120°; and (x, y, z)(−t) = (−x, y,
+       −z)(t), the half-turn about y. Conjugating by the orthonormal frame whose second
+       axis is (1, −1, 0)/√2 and third axis (1, 1, 1)/√3 turns the two generators into the
+
+
+                                                       — 11 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+       integer matrices with rows (0, 1, 0), (0, 0, 1), (1, 0, 0) and (0, −1, 0), (−1, 0, 0), (0, 0,
+       −1). ■
+
+ Hoard (2026e), Appendix A, section N, conﬁrms both identities to 4 × 10⁻¹⁵, and section X that
+ the two integer matrices generate six rotations.
+
+ Correction (What Folding Saves). With the full D₃, a fundamental arc is one sixth of the
+ curve, not one third: the arc t ∈ [0, π/3] and its six integer images rebuild the whole knot
+ (Fifteen Lemmas, Lemma 8 Step 6), so the curve tables shrink by ﬁve sixths. Data written
+ along the knot is a diﬀerent matter: folding it is lossless only if the data itself is D₃-symmetric,
+ because a map from six segments to one is injective only on symmetric inputs. The source's
+ 66.6 % memory saving holds for the tables, not for the data stream [PROVEN].
+
+
+ 4.4 The 720-Step Cycle
+ The source restricts evolution to a 720-step state machine and states that at step 720 "the
+ product of all quaternion deltas, trefoil symmetries, and hyperbolic projections mathematically
+ guarantees a return to the Identity Matrix" (BioChain AI 2026d, §5). The guarantee holds for a
+ deﬁnite class of schedules, and in exact arithmetic that class is small.
+
+       Theorem 4.2 (Finite Delta Groups Close). [PROVEN] Restricts and proves
+       BioChain AI (2026d), §5.
+       The binary tetrahedral, octahedral and icosahedral groups 2T, 2O and 2I have
+       exponents 12, 24 and 60, each dividing 720. Hence if a schedule repeats one ﬁxed
+       word w in the deltas of any of these groups, w⁷²⁰ = 1, and already w¹² = 1, w²⁴ = 1 or
+       w⁶⁰ = 1 respectively.
+
+       Proof. The element orders are 1, 2, 3, 4 and 6 in 2T; 1, 2, 3, 4, 6 and 8 in 2O; and 1,
+       2, 3, 4, 5, 6 and 10 in 2I (Hoard 2026e, Appendix A, section J). Their least common
+       multiples are 12, 24 and 60. The word w is a group element, so its power by the
+       exponent is 1. ■
+
+ By Hoard (2026e), Theorem 6.1, only the elements of 2T and those of orders 1, 2, 3, 4 and 6 in
+ 2O and 2I can be realized in exact rational arithmetic, so an exact periodic schedule that
+ returns at all returns within 12 repetitions.
+
+ Remark (Arbitrary Deltas Do Not Close). [COMPUTED] When the 720 deltas are drawn
+ independently from the 24 Hurwitz units, the product equals 1 in 92 of 2,000 runs (4.6 %),
+ close to the 1/24 expected of a uniformly random element. The source's guarantee for arbitrary
+ deltas is [SUPERSEDED].
+
+ Remark (The Cyclic Holonomy Is Vacuous). [PROVEN] The cubit installment proves the
+ identity behind the guarantee: with the cyclic convention q₋₁ := q₇₁₉ and increments Δq_k =
+ q_k q_(k−1)⁻¹, the product of all 720 increments equals 1 for every sequence of states, by
+ telescoping (Hoard 2026d, Proposition 4.6(1)). A closure test built from stored states therefore
+ cannot fail and tests nothing. The Fifteen Lemmas reach the same verdict from the holonomy
+ side: under no boundary convention does the 720-frame cycle force the state back to the
+ identity or remove drift, and only the vacuous cyclic convention makes the holonomy
+ identically 1 (Lemma 12). A genuine test needs increments generated independently of the
+ states, for example by integrating an angular velocity, a stated product order, and a measure
+
+
+                                                       — 12 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ such as the rotation angle 2 arccos|Re H| (Hoard 2026d, Remark 4.7); the open convention H =
+ q₀q₇₁₉⁻¹ is such a test. Drift itself is removed by exact arithmetic (Hoard 2026e, Proposition
+ 6.2), not by the cycle.
+
+
+ 4.5 The Hyperbolic Projection
+ The source maps quaternion rotations into SL(2, ℂ), the double cover of the Lorentz group
+ SO⁺(3, 1), so that branching unfolds in hyperbolic 3-space (BioChain AI 2026d, §3)
+ [ESTABLISHED]. The precise statement is an inclusion: SU(2) ⊂ SL(2, ℂ) is the stabilizer of the
+ base point of hyperbolic space, and there is no homomorphism SO(3) → SL(2, ℂ) splitting the
+ cover (Fifteen Lemmas, Lemma 8, Proposition 6.3). The projection matrices are exact only if
+ their entries lie in a ring such as the Gaussian integers ℤ[i]; with real entries drift returns. The
+ release takes two exact routes instead: integer quaternions acting on a tree, and the rational
+ ghost map (Hoard 2026e, Sections 7.1 and 7.6).
+
+
+ 4.6 Packet Layouts
+ Three companion papers described the 64 bits of the packet, and they disagreed: a sandwich
+ of an 8-bit North Halo, 16 scaling bits, a 32-bit quaternion core and an 8-bit South Halo
+ (BioChain AI 2026e); four 16-bit phases X, Y, Z, W (BioChain AI 2026f); and 16 ﬁbres × 4
+ phases (BioChain AI 2026g). The release adopts the Einstein Tile (Hoard 2026e, Deﬁnition 8.1),
+ onto which the earlier layouts map: the sandwich's 32-bit core is the core word, its halos are
+ the header and gate bytes, and its 16 scaling bits are the scale register. As ﬁeld maps they are
+ [SUPERSEDED]; the 16-ﬁbre × 4-phase multiplex of BioChain AI (2026g) survives as an
+ addressing of the same 64 bits.
+
+
+ 4.7 Claims About the Protocol That Do Not Survive
+       Lossless pruning (BioChain AI 2026e). [SUPERSEDED] Lossless only in the sense of
+       Hoard (2026e), Proposition 8.3(2).
+       The South Halo as an integrity check (BioChain AI 2026f, §3.1). [SUPERSEDED] An
+       8-bit header splits the 2⁵⁶ payloads into 256 classes of 2⁴⁸ each on average, so it is a fast
+       pre-ﬁlter and never an integrity check (Fifteen Lemmas, Lemma 15 Part 2). Integrity comes
+       from a Merkle root (Hoard 2026e, Section 9.6).
+       The zeta ﬁlter (BioChain AI 2026f, §2.1). [HEURISTIC] The energy check E > ζ(½ +
+       it₇) compares a real number with a complex one. It becomes a well-deﬁned ﬁlter once
+       restated with a modulus, E > |ζ(½ + it₇)|, and stays a heuristic.
+       Twenty-four streams collapsing to nine solitons (BioChain AI 2026e, Stage 2).
+       [OPEN] No rule is given that ﬁxes nine; Problem 5 here.
+
+
+ 4.8 The Coherence Score
+ The voxel-alignment review presents Φ = (1/N)‖Σ q̂ _i‖ as a score that "mathematically
+ guarantees the integrity" of a packet (BioChain AI 2026h). Φ is invariant under frame changes
+ but not under q_i ↦ −q_i, which represents the same rotation, and it measures agreement
+ among packets, so a coherent error scores as high as a coherent truth. Hoard (2026e),
+ Proposition 9.1, gives the sign-invariant form Φ_M, and Section 9.6 there keeps it as an
+ advisory Helix A score [HEURISTIC].
+
+                                                       — 13 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)         Geometric Engine of Time
+
+
+
+ 4.9 Errata of the Companion Papers
+                               Table 5: Errata and audit of the companion papers.
+
+        Paper and
+   #                     The paper states               Finding                                 Resolution
+        location
+
+   1    Hoard 2026a,     Angular velocity               ω_n is proportional to W_n = 16 −       Wording only; no
+        §III.2           "exponentially accelerates"    2n: linear, doubling from tier 4 to     eﬀect on the sieve
+                         toward the core                tier 0
+
+   2    BioChain AI      Golden shear cφ/N in the       Not invariant under c → c + N           Superseded in
+        2026b,           metric                                                                 BioChain AI 2026a,
+        Deﬁnition 3.1                                                                           §3.2
+
+   3    BioChain AI      Dense covering because         Density depends on the ratio of         Section 4.1 here
+        2026c, §2.2      r₁/r₂ = φ                      angular rates
+
+   4    BioChain AI      Δq = e^{iΔθ₁} e^{jΔθ₂},        Leaves the torus in 1,000 of 1,000      Two-sided delta,
+        2026c, §3.1      applied on the left            trials                                  Proposition 5.1
+
+   5    BioChain AI      Solitons form strictly at      No lattice point lies on the golden     Theorems 5.2 and
+        2026c, §4.1      prime quadrances on the        torus                                   5.3
+                         torus
+
+   6    BioChain AI      16 multiplications by a        16 is the direct Hamilton product       Proposition 7.3
+        2026c, §5        Strassen-like scheme
+
+   7    BioChain AI      Every generated Hurwitz        The inverse q̄ /N(q) of a non-unit is   Section 4.2 here
+        2026d, §2.1      path has an inverse            not a Hurwitz integer
+
+   8    BioChain AI      Quaternion matrices are        L(q)ᵀL(q) = N(q)I; skew only for w =    Section 4.2 here
+        2026d, §2.2      skew-symmetric                 0
+
+   9    BioChain AI      D₃ folding cuts memory by      True for the curve tables, not for      Section 4.3 here
+        2026d, §4.2      66.6 %                         data
+
+   10   BioChain AI      T_n ≡ T_n (mod 720);           The congruence is a tautology; the      Theorem 4.2 and
+        2026d, §5        identity guaranteed at step    cyclic holonomy is identically 1;       Section 4.4 here
+                         720                            arbitrary deltas close in 4.6 % of
+                                                        runs
+
+   11   BioChain AI      TQF pruning on scan lines      Every scan-line triple is collinear     Proposition 8.3
+        2026e, Stage 3   with no data loss
+
+   12   BioChain AI      Q₁ + Q₂ = Q₃ marks a linear    That is the right-angle condition       Proposition 8.3(3)
+        2026e, Stage 3   node
+        ﬁgure
+
+   13   BioChain AI      Three diﬀerent maps of the     Mutually inconsistent                   Einstein Tile,
+        2026e, 2026f,    64 bits                                                                Deﬁnition 8.1;
+        2026g                                                                                   Section 4.6 here
+
+   14   BioChain AI      E > ζ(½ + it₇)                 Compares a real with a complex          Section 4.7 here
+        2026f, §2.1                                     number
+
+   15   BioChain AI      TQF collinearity allows        Collinearity alone does not ﬁx a        Proposition 8.3(2)
+        2026f, §2.2      projection to 2D "with zero    point's position on its line
+                         loss of ﬁdelity"
+
+   16   BioChain AI      Φ "mathematically              Φ is not sign-invariant and             Proposition 9.1;
+        2026h            guarantees the integrity" of   measures agreement, not truth           Section 4.8 here
+                         a packet
+
+   17   BioChain AI      The 720-frame cycle            No boundary convention makes the        Theorem 6.1;
+        2026d, §5        removes ﬂoating-point drift    cycle remove drift (Fifteen Lemmas,     Proposition 6.2;
+                                                        Lemma 12; Hoard 2026d,                  Section 4.4 here
+                                                        Proposition 4.6)
+
+
+
+
+                                                        — 14 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)     Geometric Engine of Time
+
+
+
+        Paper and
+   #                      The paper states             Finding                              Resolution
+        location
+
+   18   BioChain AI       The South Halo carries a     An 8-bit header has 2⁴⁸ payloads     Section 4.7 here;
+        2026f, §3.1       parity checksum for          per value on average, and a linear   integrity by Merkle
+                          neighbour veriﬁcation        checksum can be steered              root, Section 9.6
+
+
+
+
+ 5 Open Problems
+ Ten problems remain open. Each is stated in the manner of a registered report, following the
+ cubit installment (Hoard 2026d, Section 8): the evidence so far, a test with its decision rule
+ ﬁxed before any new computation or measurement, and whether the release depends on the
+ answer. It depends on none of them. A computation can refute a conjecture about inﬁnitely
+ many objects but never prove it, and the decision rules say so.
+
+                      Table 6: Open problems, their tests and their bearing on the release.
+
+                                                                                            Release depends
+   #    Problem                              Status           Test
+                                                                                            on it?
+
+   1    Inﬁnitely many prime Lucas           [OPEN]           Primality of L_{2^k} for      No
+        numbers L_{2^k}                                       further k
+
+   2    A lattice line with inﬁnitely many   [OPEN]           Counts against the            No
+        prime-norm nodes                                      Bateman–Horn prediction
+
+   3    Oracle bias above 1 for factoring    [CONJECTURAL]    Preregistered semiprime       No
+                                                              benchmark
+
+   4    Trefoil knot invariants and prime    [OPEN]           Requires a stated             No
+        quadrances                                            mechanism ﬁrst
+
+   5    A rule that ﬁxes nine solitons       [OPEN]           Requires a stated rule ﬁrst   No
+
+   6    Positive ﬂux for drifts that vary    [OPEN]           Exhaustive search on small    No
+        from cell to cell                                     tori
+
+   7    Unique cubic reconstruction          [OPEN]           Search for distinct cubes     No
+        from triple-quad measurements                         with equal measurements
+
+   8    The alignment handshake              [HEURISTIC]      Protocol H                    No; it tests the
+        between real AI systems                                                             application
+
+   9    A prime potential deﬁned             [OPEN]           The falsiﬁable test of the    No
+        without primality                                     ﬁrst edition
+
+   10   The resolution rule δθ ≈ 1/√Q        [HEURISTIC]      Covering radius of lattice    No; it ﬁxes the
+                                                              directions                    horizons of Section
+                                                                                            8.2
+
+
+ Problem 1 (Lucas Primes on the Fibonacci Tori). [OPEN] Raised by Hoard (2026e),
+ Theorem 5.3.
+
+ Are inﬁnitely many of the Lucas numbers L_{2^k} prime?
+
+ Evidence. L₂ = 3, L₄ = 7, L₈ = 47 and L₁₆ = 2207 are prime; L₃₂ = 4,870,847 = 1087 × 4481 is
+ composite, and among even n ≤ 800 no other L_n is prime (Hoard 2026e, Appendix A, section
+ M). The heuristic that a number near x is prime with probability about 1/ln x gives the sum over
+ k of a multiple of 2^{−k}, which converges, so ﬁnitely many are expected, as for the Fermat
+ primes.
+
+
+
+                                                       — 15 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ Test and decision rule. Certify L_{2^k} for k = 10 to 14 by a proven primality test or a factor. A
+ prime refutes nothing; the problem stays open either way.
+
+ Dependence. None. The release uses only the four known primes.
+
+ Problem 2 (Prime Norms Along a Lattice Line). [OPEN] Raised by the ﬁrst edition; Hoard
+ (2026e), Section 8.3.
+
+ Does a lattice line q(t) = q₀ + td, on which N(q(t)) = N(q₀) + 2t⟨q₀, d⟩ + t²N(d) is irreducible
+ with no ﬁxed prime divisor, meet inﬁnitely many nodes of prime norm?
+
+ Evidence. This is a case of Bunyakovsky's conjecture, open for every quadratic polynomial.
+
+ Test and decision rule. For 100 random primitive lines with coordinates below 100, count the
+ prime norms for 0 ≤ t ≤ 10⁷ and compare with the Bateman–Horn prediction (Bateman and
+ Horn 1962). A line whose count falls below one tenth of the prediction refutes the heuristic
+ constant for that line; agreement within 10 % on all lines is recorded as support, not proof.
+
+ Dependence. None. Theorem 8.4 already limits prime traps on a line to two.
+
+ Problem 3 (Oracle Bias for Factoring). [CONJECTURAL] Raised by BioChain AI (2026a),
+ §5.
+
+ Does a geometric oracle raise the probability that a candidate yields a factor above its uniform
+ value?
+
+ Evidence. For the prime task the bias is proven: 3.75 for the 30-node wheel (Hoard 2026e,
+ Propositions 3.2 and 3.3). For factoring no bias has been measured.
+
+ Test and decision rule. On a preregistered set of 10,000 semiprimes of ﬁxed size, compare the
+ success rate of the oracle-ranked search with uniform ranking at equal cost. The conjecture is
+ supported if the ratio's 95 % conﬁdence interval lies above 1 and refuted if it lies at or below 1.
+
+ Dependence. None. The release makes no claim about factoring.
+
+ Problem 4 (Knot Invariants and Prime Quadrances). [OPEN] Raised by BioChain AI
+ (2026d), §8, horizon 1.
+
+ Do knot invariants of the trefoil predict prime quadrances?
+
+ Evidence. None. The trefoil's D₃ symmetry is proven (Proposition 4.1 here), but no map from a
+ knot invariant to a quadrance has been proposed.
+
+ Test and decision rule. Before any test, a mechanism must name the invariant, the quadrance
+ it predicts and the map between them. Without one the problem should be retired.
+
+ Dependence. None.
+
+ Problem 5 (Nine Solitons). [OPEN] Raised by BioChain AI (2026e), Stage 2.
+
+ What rule collapses 24 streams to 9 solitons?
+
+ Evidence. None given. The related rule "3 of 9 streams pass to the cube" has an exact reading:
+ exactly three of the nine C₉ rays end at cube vertices (Fifteen Lemmas, Lemma 8, Proposition
+ 8.2″).
+
+ Test and decision rule. As for Problem 4, a stated rule must come ﬁrst; it is then checked
+ exhaustively over the 24 streams.
+
+
+                                                       — 16 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ Dependence. None.
+
+ Problem 6 (Flux Under Cell-Varying Drift). [OPEN] Raised by Fifteen Lemmas, companion
+ Problem P1; Hoard (2026e), Proposition 2.6.
+
+ On (ℤ/4)³, let every forward step +e_k carry more probability than the reverse step from the
+ neighbouring cell, with rates that vary from cell to cell. Is the net stationary ﬂux through every
+ cross-section perpendicular to e_k positive?
+
+ Evidence. Edge by edge the statement fails, while the cross-sectional ﬂux was positive in every
+ trial. By Kolmogorov's criterion a current exists exactly when the products of rates around
+ some cycle diﬀer (Hoard 2026d, Proposition 4.8(3)), so the question is whether those cycle
+ imbalances always add up to a positive ﬂux.
+
+ Test and decision rule. Draw 10⁶ random drifts satisfying the hypothesis, compute the
+ stationary state exactly in rational arithmetic, and evaluate every cross-sectional ﬂux. One
+ negative ﬂux refutes the conjecture; none is recorded as support, and a proof is then sought by
+ the tree theorem.
+
+ Dependence. None. Proposition 2.6 covers the translation-invariant case the sieve uses.
+
+ Problem 7 (Cubic Reconstruction). [OPEN] Raised by BioChain AI (2026i).
+
+ Do the triple-quad measurements of a 3-folded packet determine the cube uniquely, up to its
+ symmetries?
+
+ Evidence. The paper states the inverse problem but shows no uniqueness.
+
+ Test and decision rule. Enumerate the integer cubes of edge at most 4 and their measurement
+ vectors. Two inequivalent cubes with equal vectors refute uniqueness; none, at that size, is
+ recorded as support.
+
+ Dependence. None. The release uses scale-normalized quads only as signatures, and Section
+ 9.4 there resolves ambiguous signatures by certiﬁcation.
+
+ Problem 8 (The Alignment Handshake in Practice). [HEURISTIC] Raised by Hoard
+ (2026e), Section 9.
+
+ Does the alignment handshake let two independently built AI systems exchange states exactly
+ and certify their relative frame?
+
+ Evidence. In simulation, signature matching succeeded in 499 of 500 trials and exact
+ certiﬁcation in all 500 (Hoard 2026e, Section 9.4). No test with real systems has been run.
+
+ Test and decision rule (Protocol H). Two systems with independently trained encoders each map
+ the same 1,000 preregistered objects into the lattice and run the handshake of Hoard (2026e),
+ Figure 1. Primary outcome: the fraction of sessions that end in an exact certiﬁcate. Secondary
+ outcomes: the number of rounds, and the fraction of certiﬁed anchor pairs that a blinded
+ human panel judges to denote the same object. Every certiﬁcate is exact by construction, so a
+ single certiﬁcate that fails independent re-veriﬁcation refutes the implementation. The protocol
+ is supported if at least 95 % of sessions certify and the panel agreement exceeds the
+ agreement of randomly paired anchors by a margin ﬁxed in advance. Semantic agreement is
+ reported separately, because no certiﬁcate can establish it.
+
+ Dependence. None for the mathematics; the protocol tests the application.
+
+
+                                                       — 17 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)           Geometric Engine of Time
+
+
+
+ Problem 9 (A Prime Potential Without Primality). [OPEN] Raised by the ﬁrst edition.
+
+ Is there a potential on the lattice, deﬁned without a primality test or a factorization of Q, whose
+ minima are exactly the prime-quadrance nodes?
+
+ Evidence. None. Under the Dual-Helix principle the sieve does not need one (Hoard 2026e,
+ Section 3).
+
+ Test and decision rule. The ﬁrst edition's falsiﬁable test: a proposed rule is refuted if its minima
+ miss a prime quadrance or include a composite one, checked for all Q ≤ 10⁶.
+
+ Dependence. None.
+
+ Problem 10 (The Resolution Rule). [HEURISTIC] Raised by the source note, §6; Hoard
+ (2026e), Section 8.2.
+
+ Is δθ ≈ 1/√Q the right angular resolution of the lattice directions of norm at most Q?
+
+ Evidence. The rule sets both precision horizons of the release, Q ≈ 10¹² for six decimal places
+ and Q ≈ 2.3 × 10⁷ for cubit-anchored lattices. In three dimensions the lattice directions of
+ norm at most Q are spaced about Q^{−3/4} apart in angle on average, while the largest gaps,
+ next to directions of small norm, are of order Q^{−1/2}, so the rule matches the worst case
+ rather than the average.
+
+ Test and decision rule. Compute the covering radius of the primitive directions of norm at most
+ Q on S² and S³ for Q up to 10⁶. The rule is conﬁrmed if √Q times the covering radius stays
+ within a ﬁxed factor of 1 across that range, and replaced by the ﬁtted law otherwise; the
+ horizons of Section 8.2 are then recomputed from it.
+
+ Dependence. Only the horizons, which are tagged [HEURISTIC / COMPUTED]; no proof uses
+ them.
+
+
+
+ 6 Veriﬁcation
+ The script verify_fp_sieve.py of Hoard (2026e), Appendix A, reproduces every number in this
+ companion. Table 7 lists the sections that check it.
+
+                     Table 7: Sections of the veriﬁcation script that check this companion.
+
+   Section      What it checks here
+
+   A, H         Arithmetic and widths of the source note, including A_R(2, 3, 5) = 24 (Section 3)
+
+   B            No collinear prime triple, which settles item 11 of Table 4 (Section 3)
+
+   J            Theorem 4.2; random 720-step products close in 92 of 2,000 runs (Section 4.4)
+
+   L            The one-sided delta leaves the torus in 1,000 of 1,000 trials (Section 4.1)
+
+   M            Lucas numbers L_n for even n ≤ 800 (Problem 1)
+
+   N, X         Proposition 4.1: trefoil symmetries and the six integer rotations of D₃ (Section 4.3)
+
+   O            The right-angle reading Q₁ + Q₂ = Q₃; the identities of L(q) (Sections 3 and 4.2)
+
+   R            Statistics of the second edition's byte core, kept for comparison (Section 1.3)
+
+   S            Φ is frame-invariant but not sign-invariant (Section 4.8)
+
+   Y            1,712 of 1,877 primes reached by the Form 1 core (Section 1.3)
+
+   Z            The cubit results that the release adds (Section 1.1)
+
+
+                                                         — 18 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ References
+    1. BioChain AI — SHD-CCP Architecture Research (2026a). A Uniﬁed Dual-Helix Framework for
+       Geometrically-Guided Pollard's Rho: Cyclic Feature Embeddings, Quadrance Oracles, and
+       Exact Certiﬁcation. Consolidated Technical Report.
+    2. BioChain AI — SHD-CCP Architecture Research (2026b). The Golden Strassen-Cliﬀord
+       Geodesic Embedding: A c-Parameterized Geometric Moduli Space.
+    3. BioChain AI — SHD-CCP Architecture Research (2026c). Quaternionic Delta Encoding on
+       Golden Strassen-Cliﬀord Toroids: Wave Collision and Sub-Cubic Matrix Optimization in the
+       SHD-CCP 64-bit Protocol.
+    4. BioChain AI — SHD-CCP Architecture Research (2026d). Topological Symmetry Folding and
+       Hyperbolic Projection in the SHD-CCP Framework: A 720:1 Quaternionic Cyclic System.
+       Posted on Academia.edu.
+    5. BioChain AI — Schism Labs (2026e). SHD-CCP Review: The 3-Nested Decoding Framework.
+    6. BioChain AI — SHD-CCP Architecture Group / Schism Labs (2026f). The Chiral Compression
+       Engine: Geometric Synchronization of the SHD-CCP Protocol, version 2.0. February 2026.
+    7. BioChain AI — Schism Labs (2026g). SHD-CCP Review: The Trefoil Projection Protocol.
+    8. BioChain AI — Schism Labs (2026h). SHD-CCP Quaternion Equilibrium and Voxel
+       Alignment: Review.
+    9. BioChain AI — Research & Development (2026i). Extending the Framework: Triple-Quad
+       Function on a 3-Folded Packet.
+  10. Bateman, P. T. & Horn, R. A. (1962). A heuristic asymptotic formula concerning the
+      distribution of prime numbers. Mathematics of Computation 16, 363–367.
+  11. Bunyakovsky, V. (1857). Sur les diviseurs numériques invariables des fonctions
+      rationnelles entières. Mémoires de l'Académie des Sciences de St-Pétersbourg 6, 305–329.
+  12. Butt, F., Colmenarez, L., Weilandt, E., Peham, T., Wille, R. & Müller, M. (2026).
+      Complementary 3D color codes for transversal quantum logic. arXiv:2607.05107 [quant-
+      ph].
+  13. Hoard, G. (2026). The Fifteen Lemmas of the Geometric Engine: A Uniﬁed Projective,
+      Quaternionic, and Metrological Monograph for the SHD-CCP 64-Bit Cubic Protocol. BioChain
+      AI — SHD-CCP Architecture Research, Consolidated Technical Monograph, October 16,
+      2026. Cited as Fifteen Lemmas.
+  14. Hoard, G. (2026a). The Geometric Engine of Time: Mathematical Architecture of the 6-
+      Channel, 5-Tier Toroidal Orbital Calculator. BioChain AI — SHD-CCP Architecture Research,
+       Consolidated Technical Report (Continued Series). Posted on Academia.edu.
+  15. Hoard, G. (2026d). The Geometric Engine of Time: A Proposal for a Standardization of the
+      Cubit. BioChain AI — SHD-CCP Architecture Research, Consolidated Technical Report
+      (Continued Series).
+  16. Hoard, G. (2026e). The Geometric Engine of Time: The Fokker-Planck Prime Sieve in
+      Quaternionic Lattices. BioChain AI — SHD-CCP Architecture Research, Consolidated
+       Technical Report (Continued Series).
+  17. Kolmogorov, A. (1936). Zur Theorie der Markoﬀschen Ketten. Mathematische Annalen 112,
+      155–160.
+
+
+
+
+                                                       — 19 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+  18. Lubotzky, A., Phillips, R. & Sarnak, P. (1988). Ramanujan graphs. Combinatorica 8, 261–
+      277.
+  19. Source note (2026). The Fokker-Planck Prime Sieve in Quaternionic Lattices. Manuscript, 3
+      pp., May 2026.
+
+ Submission details. Corresponding author: [name, aﬃliation, ORCID and email to be
+ completed before submission]. Keywords: Geometric Engine of Time; Fokker-Planck prime
+ sieve; status of claims; errata; registered report; open problems; SHD-CCP; Fifteen Lemmas;
+ acoustic cubit.
+
+
+
+
+                                                       — 20 —
+

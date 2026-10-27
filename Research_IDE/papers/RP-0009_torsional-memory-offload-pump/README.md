@@ -1,3 +1,5 @@
+> **Official release collection:** designated by the repository owner on 2026-10-27. [Academia publication](https://www.academia.edu/169060820/The_Torsional_Markov_Memory_Offload_Pump_A_Three_Scale_Quaternionic_Delta_Chain_with_Inverse_Compensation_and_Non_Equilibrium_Circulation_Owl_Academy) · [Designation and source provenance](workflows/official-designation.md). Scientific audit and Lean status remain separate.
+
 # The Torsional Markov Memory-Offload Pump: A Three-Scale Quaternionic Delta-Chain with Inverse Compensation and Non-Equilibrium Circulation
 
 RP-0009 · WORK-0004 · archived research reference · relevance triage on 2026-10-26.

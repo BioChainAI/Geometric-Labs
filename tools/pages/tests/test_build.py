@@ -104,6 +104,21 @@ class PageBuild(unittest.TestCase):
             alias.unlink()
             with self.assertRaises(ValueError): build.validate_artifact(output)
 
+    def test_only_official_pdfs_published_and_tampering_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output=Path(directory)/'site';build.build(output)
+            corpus=json.loads((output/'research-ide/official/CATALOG.json').read_text())
+            expected={r['pdf_path'] for r in corpus['documents']}
+            actual={p.relative_to(output/'research-ide').as_posix() for p in (output/'research-ide/papers').rglob('*.pdf')}
+            self.assertEqual(actual,expected)
+            self.assertFalse(any('RP-0006_' in p or 'RP-0011_' in p for p in actual))
+            extra=output/'archive.pdf';extra.write_bytes(b'unapproved')
+            with self.assertRaises(ValueError): build.validate_artifact(output)
+            extra.unlink()
+            source=output/'research-ide'/corpus['documents'][0]['pdf_path']
+            source.write_bytes(b'tampered')
+            with self.assertRaises(ValueError): build.validate_artifact(output)
+
     def test_research_ide_alias_wrong_or_escaping_redirect_fails(self):
         with tempfile.TemporaryDirectory() as directory:
             output=Path(directory)/'site';build.build(output)

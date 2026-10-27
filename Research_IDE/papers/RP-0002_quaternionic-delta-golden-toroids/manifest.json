@@ -7,7 +7,7 @@
  "authors": [],
  "source": {
   "citation": "Quaternionic Delta Encoding on Golden Strassen-Clifford Toroids: Wave Collision and Sub-Cubic Matrix Optimization in the SHD-CCP 64-bit Protocol",
-  "url": "",
+  "url": "https://www.academia.edu/165176526/Quaternionic_Delta_Encoding_on_Golden_Strassen_Clifford_Toroids_Wave_Collision_and_Sub_Cubic_Matrix_Optimization_in_the_SHD_CCP_64_bit_Protocol_BioChain_AI_SHD_CCP_Architecture_Research",
   "license": "unspecified in intake; release clearance pending",
   "pages": 6
  },
@@ -52,6 +52,13 @@
    "sha256": "2a2e46aba7261106c1b30d881d0630acbbe8a9ab74c4c7ecf2d92ace4f843ff2",
    "bytes": 139520,
    "added": "2026-10-26"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "8a345afc6ed04dd8985ac8e7ffd742663d6e66e72c0d2f07ba06a2e61e25cbd9",
+   "bytes": 1048,
+   "added": "2026-10-27"
   }
  ],
  "archive": {
@@ -60,7 +67,7 @@
   "revision_label": null,
   "document_date": null,
   "received_date": "2026-10-26",
-  "release_status": "research-draft",
+  "release_status": "official-release",
   "disposition": "retained-reference",
   "review_level": "relevance-triaged",
   "source_artifact": "source/Quaternionic_Delta_Encoding_on_Golden_St.pdf",
@@ -68,9 +75,9 @@
   "topics": [
    "delta-encoding",
    "golden-torus",
-   "projection",
+   "hardware",
    "prime-sieve",
-   "hardware"
+   "projection"
   ],
   "relevance": [
    {
@@ -104,6 +111,20 @@
    "status": "no-exact-match-in-available-earlier-uploads",
    "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
   },
-  "release_record": null
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "165176526",
+   "publication_url": "https://www.academia.edu/165176526/Quaternionic_Delta_Encoding_on_Golden_Strassen_Clifford_Toroids_Wave_Collision_and_Sub_Cubic_Matrix_Optimization_in_the_SHD_CCP_64_bit_Protocol_BioChain_AI_SHD_CCP_Architecture_Research",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "2a2e46aba7261106c1b30d881d0630acbbe8a9ab74c4c7ecf2d92ace4f843ff2",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
  }
 }

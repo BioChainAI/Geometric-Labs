@@ -1,0 +1,8 @@
+{
+  "source_sha256": "676170e4905bb34af14ef8830f7d54f59eb65fa342e8045ec452b2778a5b1765",
+  "command": "pdftotext -layout SOURCE.pdf extracted-layout.txt",
+  "tool": "Poppler pdftotext 25.03.0",
+  "pages": 13,
+  "status": "derived search text; not verified transcription",
+  "text_characters": 42158
+}

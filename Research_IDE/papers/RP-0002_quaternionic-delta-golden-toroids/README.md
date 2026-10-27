@@ -1,3 +1,5 @@
+> **Official release collection:** designated by the repository owner on 2026-10-27. [Academia publication](https://www.academia.edu/165176526/Quaternionic_Delta_Encoding_on_Golden_Strassen_Clifford_Toroids_Wave_Collision_and_Sub_Cubic_Matrix_Optimization_in_the_SHD_CCP_64_bit_Protocol_BioChain_AI_SHD_CCP_Architecture_Research) · [Designation and source provenance](workflows/official-designation.md). Scientific audit and Lean status remain separate.
+
 # Quaternionic Delta Encoding on Golden Strassen-Clifford Toroids: Wave Collision and Sub-Cubic Matrix Optimization in the SHD-CCP 64-bit Protocol
 
 RP-0002 · WORK-0002 · archived research reference · relevance triage on 2026-10-26.

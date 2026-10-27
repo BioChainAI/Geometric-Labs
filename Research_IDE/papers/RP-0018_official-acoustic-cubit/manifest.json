@@ -1,0 +1,176 @@
+{
+ "schema_version": 1,
+ "id": "RP-0018",
+ "slug": "official-acoustic-cubit",
+ "title": "The Geometric Engine of Time: A Proposal for a Standardization of the Cubit",
+ "tier": "core",
+ "authors": [],
+ "source": {
+  "citation": "The Geometric Engine of Time: A Proposal for a Standardization of the Cubit",
+  "url": "https://www.academia.edu/178882482/The_Geometric_Engine_of_Time_A_Proposal_for_a_Standardization_of_the_Cubit",
+  "license": "unspecified; no additional reuse license inferred",
+  "pages": 27
+ },
+ "tags": [
+  "calibration",
+  "clock-model",
+  "metrology",
+  "uncertainty"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-27",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "3bb04f0ff7b2c42facf73261e18af340bdad9ffafd48e089c08e94a99d605a12",
+   "bytes": 141692,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "a77acd6d09624106beca00b970bc8231b9aa0c872883dff34b3d15b1032cff1c",
+   "bytes": 302,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/The_Geometric_Engine_of_Time_A_Proposal.pdf",
+   "kind": "source-pdf",
+   "sha256": "66e482ae727baa54f3af8113da418193b584fa80ce48e6f1b23d56a9b5dfa3ec",
+   "bytes": 547509,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "c5966865ccd2715536febebfb4aa9e3e34ae8a7e9167407dd6f0048c74a56e4b",
+   "bytes": 931,
+   "added": "2026-10-27"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0010",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-27",
+  "release_status": "official-release",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/The_Geometric_Engine_of_Time_A_Proposal.pdf",
+  "source_sha256": "66e482ae727baa54f3af8113da418193b584fa80ce48e6f1b23d56a9b5dfa3ec",
+  "topics": [
+   "calibration",
+   "clock-model",
+   "metrology",
+   "uncertainty"
+  ],
+  "relevance": [
+   {
+    "repository": "Geometric-Labs",
+    "role": "primary",
+    "reason": "PDF §§3–4 motivates Cramer, GUM, exact caesium bookkeeping and TQF checks; Appendix A records corrections."
+   },
+   {
+    "repository": "Manifold-Projection",
+    "role": "supporting",
+    "reason": "Calibration uncertainty must survive frame transforms and views."
+   },
+   {
+    "repository": "PolyShard-Agent",
+    "role": "supporting",
+    "reason": "Own local instrument/environment readings and explicit calibration IDs."
+   },
+   {
+    "repository": "Polycentric-Orchestrator",
+    "role": "supporting",
+    "reason": "Reject stale/incompatible calibration and preserve frame/clock uncertainty."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "context",
+    "reason": "Future calibration procedure/evidence approval is distinct from a mathematical proof."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "context",
+    "reason": "Sensors and clocks need hardware-specific realization before timing/measurement claims."
+   }
+  ],
+  "relations": [],
+  "prior_upload": {
+   "status": "distinct supplied PDF; no exact stored source match"
+  },
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "178882482",
+   "publication_url": "https://www.academia.edu/178882482/The_Geometric_Engine_of_Time_A_Proposal_for_a_Standardization_of_the_Cubit",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "66e482ae727baa54f3af8113da418193b584fa80ce48e6f1b23d56a9b5dfa3ec",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "User-supplied PDF matched to the user-supplied Academia publication title.",
+   "inheritance": [
+    {
+     "from": "RP-0011",
+     "source_sha256": "186f8c4a7194448927fc771f4a20fdad5e5aa32247c7feff0ac94202111056fe",
+     "tags": [
+      "calibration",
+      "clock-model",
+      "metrology",
+      "uncertainty"
+     ],
+     "topics": [
+      "calibration",
+      "metrology",
+      "uncertainty",
+      "clock-model"
+     ],
+     "relevance": [
+      {
+       "repository": "Geometric-Labs",
+       "role": "primary",
+       "reason": "PDF §§3–4 motivates Cramer, GUM, exact caesium bookkeeping and TQF checks; Appendix A records corrections."
+      },
+      {
+       "repository": "Manifold-Projection",
+       "role": "supporting",
+       "reason": "Calibration uncertainty must survive frame transforms and views."
+      },
+      {
+       "repository": "PolyShard-Agent",
+       "role": "supporting",
+       "reason": "Own local instrument/environment readings and explicit calibration IDs."
+      },
+      {
+       "repository": "Polycentric-Orchestrator",
+       "role": "supporting",
+       "reason": "Reject stale/incompatible calibration and preserve frame/clock uncertainty."
+      },
+      {
+       "repository": "Kernel-Registry",
+       "role": "context",
+       "reason": "Future calibration procedure/evidence approval is distinct from a mathematical proof."
+      },
+      {
+       "repository": "FractalOS-runtime",
+       "role": "context",
+       "reason": "Sensors and clocks need hardware-specific realization before timing/measurement claims."
+      }
+     ]
+    }
+   ],
+   "replaces_references": [
+    "RP-0011"
+   ],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
+ }
+}
