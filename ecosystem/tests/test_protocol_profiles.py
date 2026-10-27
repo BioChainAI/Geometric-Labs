@@ -7,6 +7,7 @@ import unittest
 BASE = Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(BASE/'tools'))
 from protocol_compatibility import receive
+from preservation import preservation_errors
 
 
 class ProtocolProfiles(unittest.TestCase):
@@ -44,12 +45,9 @@ class ProtocolProfiles(unittest.TestCase):
         with self.assertRaises(ValueError):
             receive(bytes(7),wire_format_id='einstein-tile/1',semantic_profile_id='glab-local-v1')
 
-    def test_all_original_tracked_bytes_unchanged(self):
-        import hashlib
+    def test_original_reference_bytes_unchanged(self):
         snapshot = json.loads((BASE/'docs/status/preservation.v1.json').read_text())
-        root = BASE.parent
-        for name,digest in snapshot['sha256'].items():
-            self.assertEqual(hashlib.sha256((root/name).read_bytes()).hexdigest(),digest,name)
+        self.assertEqual(preservation_errors(BASE.parent, snapshot), [])
 
 
 if __name__=='__main__':

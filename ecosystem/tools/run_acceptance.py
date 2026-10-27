@@ -53,7 +53,7 @@ def main():
               'python':platform.python_version(),'platform':platform.platform(),
               'status':'PASS' if all(r['returncode']==0 for r in outcomes) else 'FAIL',
               'commands':outcomes,'source_sha256':{str(p.relative_to(BASE)):hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(sources)},
-              'not_executed':['Python 3.10/3.11 locally','actual 32-bit host','Docker','GPU/H100','Loihi2','QEMU','production identity','CubiLoom persistence/replication']}
+              'not_executed':['Python runtimes other than the recorded version','actual 32-bit host','Docker','GPU/H100','Loihi2','QEMU','production identity','CubiLoom persistence/replication']}
     (args.output_dir/'acceptance.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
     return 0 if report['status']=='PASS' else 1
 

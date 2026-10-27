@@ -131,35 +131,44 @@ def scan(root=ROOT):
 
 class Links(HTMLParser):
     def __init__(self):
-        super().__init__(); self.links = []; self.ids = set(); self.title = False
+        super().__init__(); self.links = []; self.ids = set(); self.title = False; self.refresh = []
     def handle_starttag(self, tag, attrs):
         attrs = dict(attrs)
         if tag == 'title': self.title = True
+        if tag == 'meta' and attrs.get('http-equiv', '').lower() == 'refresh':
+            value = attrs.get('content', '')
+            if not value.startswith('0; url='): raise ValueError('invalid immediate redirect')
+            self.refresh.append(value[len('0; url='):])
         if 'id' in attrs: self.ids.add(attrs['id'])
         for name in ('src', 'href'):
             if name in attrs: self.links.append(attrs[name])
 
 
 def validate_artifact(output):
-    """Validate generated JSON and root local links; copies have their own scope."""
+    """Validate generated JSON, homepage and compatibility redirect links."""
     output = Path(output).resolve()
     status = json.loads((output/'data/status.json').read_text())
     if status['schema'] != 'geometric-labs.pages-status.v1' or len(status['files']) != status['tracked_files']:
         raise ValueError('invalid generated snapshot schema/count')
-    parser = Links(); parser.feed((output/'index.html').read_text())
-    if not parser.title: raise ValueError('landing page requires a title')
-    for link in parser.links:
-        parts = urlsplit(link)
-        if parts.scheme:
-            if parts.scheme != 'https': raise ValueError('unsafe external URL')
-            continue
-        if parts.netloc: raise ValueError('protocol-relative URL refused')
-        if parts.path:
-            target = (output/unquote(parts.path)).resolve()
-            if not target.is_relative_to(output) or not target.is_file():
-                raise ValueError('broken/escaping local link: ' + link)
-        elif parts.fragment and parts.fragment not in parser.ids:
-            raise ValueError('missing page anchor: ' + link)
+    for relative in ('index.html', 'Research_IDE/index.html'):
+        page = output/relative
+        if not page.is_file(): raise ValueError('missing published route: ' + relative)
+        parser = Links(); parser.feed(page.read_text())
+        if not parser.title: raise ValueError('page requires a title: ' + relative)
+        if relative == 'Research_IDE/index.html' and parser.refresh != ['../research-ide/index.html']:
+            raise ValueError('Research IDE alias must redirect to the canonical route')
+        for link in parser.links + parser.refresh:
+            parts = urlsplit(link)
+            if parts.scheme:
+                if parts.scheme != 'https': raise ValueError('unsafe external URL')
+                continue
+            if parts.netloc: raise ValueError('protocol-relative URL refused')
+            if parts.path:
+                target = (page.parent/unquote(parts.path)).resolve()
+                if not target.is_relative_to(output) or not target.is_file():
+                    raise ValueError('broken/escaping local link: ' + link)
+            elif parts.fragment and parts.fragment not in parser.ids:
+                raise ValueError('missing page anchor: ' + link)
     if not (output/'checkpoint/index.html').is_file() or not (output/'research-ide/index.html').is_file():
         raise ValueError('missing published workbench/checkpoint')
     if any((output/p).exists() for p in ('.git', 'ecosystem/workspaces', '.env', 'src', 'verification')):
@@ -200,6 +209,8 @@ def build(output, *, root=ROOT, require_clean=False):
         target=output/'checkpoint'/destination; target.parent.mkdir(exist_ok=True)
         shutil.copy2(cp/source,target)
     (output/'research-ide').mkdir(); shutil.copy2(root/'Research_IDE/index.html', output/'research-ide/index.html')
+    (output/'Research_IDE').mkdir()
+    shutil.copy2(root/'site/research-ide-redirect.html', output/'Research_IDE/index.html')
     (output/'UPDATE_PROCEDURE.md').write_text((root/'site/README.md').read_text())
     validate_artifact(output)
     return data

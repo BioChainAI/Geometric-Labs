@@ -1,0 +1,61 @@
+{
+  "schema": "geometric-labs.archive-ci-pages-validation.v1",
+  "date": "2026-10-27",
+  "base_commit": "30301853ef7db35821826aca0eba1d23272cc4b7",
+  "reports": [
+    {
+      "name": "acceptance-python310",
+      "status": "PASS",
+      "python": "3.10.22",
+      "sha256": "bb0f862802a04bee24b76c915293fa99c79bf26591b04ce94336ce95a9f554ad",
+      "local_report": "/tmp/geometric-fix-final-310/acceptance.json"
+    },
+    {
+      "name": "acceptance-python312",
+      "status": "PASS",
+      "python": "3.12.14",
+      "sha256": "27ba5feb58419311d8990d0469cc9457ab26023ec044ff815d32f4ea62eeb6c4",
+      "local_report": "/tmp/geometric-fix-final-312/acceptance.json"
+    },
+    {
+      "name": "geot",
+      "status": "PASS",
+      "python": null,
+      "sha256": "8e88ca6180438b30e00a0cccea4a54fd7da63db907a5a58dad84498044e58d1c",
+      "local_report": "/tmp/geometric-fix-geot-checks/validation.json"
+    }
+  ],
+  "offline_test_methods": 23,
+  "geot_unique_methods": 89,
+  "library_archive_test_methods": 27,
+  "pages_unit_test_methods": 14,
+  "preservation": {
+    "historical_snapshot_entries": 66,
+    "immutable_entries": 64,
+    "mutable_navigation_only": [
+      "README.md",
+      "docs/papers/README.md"
+    ],
+    "snapshot_unchanged": true
+  },
+  "pages": {
+    "github_main_run": "https://github.com/BioChainAI/Geometric-Labs/actions/runs/40455672449",
+    "public_run_status": "Success",
+    "project_url": "https://biochainai.github.io/Geometric-Labs/",
+    "local_browser_smoke": "PASS",
+    "live_http_status": null,
+    "live_http_limit": "Environment proxy refuses github.io with tunnel 403; new feature-branch redirect requires reviewed main deployment.",
+    "reported_404_url": "https://biochainai.github.io/Geometric-Labs/Research_IDE/index.html",
+    "root_cause": "Case-sensitive path absent from artifact; canonical IDE uses research-ide/index.html.",
+    "compatibility_redirect": "Research_IDE/index.html -> ../research-ide/index.html",
+    "browser_checks": [
+      "desktop: sections, filters, search, empty state, development-loop reset, evidence label",
+      "mobile 390px: no horizontal page overflow, keyboard skip link and filtering",
+      "homepage: no runtime errors or third-party network requests",
+      "project subpath: local CSS/JS/data, checkpoint, IDE and update guide resolve",
+      "Research_IDE/index.html: reported case-sensitive URL redirects to the canonical Research IDE",
+      "untrusted commit text: rendered inert with textContent",
+      "data failure: accessible error state and source/checkpoint fallbacks"
+    ]
+  }
+}

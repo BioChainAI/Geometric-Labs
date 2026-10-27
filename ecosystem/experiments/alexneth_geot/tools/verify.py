@@ -26,7 +26,7 @@ def main():
            ('protocol-gate',[sys.executable,'ecosystem/tools/protocol_compatibility.py','--output',str(args.output_dir/'protocol.json')]),
            ('vision-interop',[sys.executable,str(BASE/'tools/interop.py'),'--output',str(args.output_dir/'interop.json')]),
            ('release-lock',[sys.executable,'ecosystem/tools/glab.py','check-lock'])]
-    expected_counts={'root-baseline':40,'ecosystem-offline':20,'ecosystem-integration':4,'research-primitives':6,'geot-tests':16}
+    expected_counts={'root-baseline':40,'ecosystem-offline':23,'ecosystem-integration':4,'research-primitives':6,'geot-tests':16}
     results=[]
     for name,command in cases:
         result=subprocess.run(command,cwd=ROOT,env=env,text=True,capture_output=True)

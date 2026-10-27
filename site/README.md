@@ -102,11 +102,21 @@ only a previously marked generated directory; unrelated directories are refused.
 
 ## Published routes and maintenance
 
+The public homepage is **https://biochainai.github.io/Geometric-Labs/** (or
+`https://biochainai.github.io/Geometric-Labs/index.html`). The Research IDE is
+`https://biochainai.github.io/Geometric-Labs/research-ide/index.html`.
+`site/index.html` is a repository source path; the builder places the homepage
+at the published site root. Opening a GitHub source-file URL is not a Pages visit.
+The previously shared `/Geometric-Labs/Research_IDE/index.html` URL is preserved
+as a static redirect to the canonical lower-case route, including a clickable
+fallback link. Pages paths are case-sensitive.
+
 - `index.html`: landing page; `assets/`: first-party CSS/JS.
 - `data/status.json`: machine-readable build scan; exact-source GitHub links.
 - `checkpoint/`: frozen historical overview/map/inventory and its evidence.
 - `research-ide/index.html`: original IDE page copied unchanged. It uses its
   declared external CDN assets and manual exports; Lean is not run in the page.
+- `Research_IDE/index.html`: compatibility redirect for the repository-case URL.
 - `UPDATE_PROCEDURE.md`: this maintenance procedure.
 
 The project Pages base path is supported through relative URLs (no `/assets/`
