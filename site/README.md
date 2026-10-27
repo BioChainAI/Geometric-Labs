@@ -76,8 +76,10 @@ only a previously marked generated directory; unrelated directories are refused.
    validator checks local root-page links and an artifact allowlist. It does not
    perform external link health checks or verify the older Research IDE browser.
 6. **Review the artifact:** it should contain homepage assets/data, selected
-   checkpoint files and the standalone Research IDE page—not all source, nested
-   repositories, virtualenvs, credentials, raw paper uploads or model artifacts.
+   checkpoint files and the Research IDE with its generated official catalog,
+   corpus loader and exactly the selected official PDFs. Archived predecessors,
+   arbitrary uploads, nested repositories, virtualenvs, credentials and model
+   artifacts are excluded.
    Metadata and history are public site content: review paths and commit subjects
    before publishing a repository with private material.
 7. **Publish through review:** commit/push a feature branch, inspect PR checks,
@@ -114,8 +116,12 @@ fallback link. Pages paths are case-sensitive.
 - `index.html`: landing page; `assets/`: first-party CSS/JS.
 - `data/status.json`: machine-readable build scan; exact-source GitHub links.
 - `checkpoint/`: frozen historical overview/map/inventory and its evidence.
-- `research-ide/index.html`: original IDE page copied unchanged. It uses its
+- `research-ide/index.html`: versioned IDE with the official collection. It uses its
   declared external CDN assets and manual exports; Lean is not run in the page.
+- `research-ide/official-corpus.js` and `research-ide/official/CATALOG.json`: the
+  local official-collection loader and selected metadata.
+- `research-ide/papers/.../source/*.pdf`: only source PDFs selected by that
+  validated official catalog; no bulk archive copy.
 - `Research_IDE/index.html`: compatibility redirect for the repository-case URL.
 - `UPDATE_PROCEDURE.md`: this maintenance procedure.
 

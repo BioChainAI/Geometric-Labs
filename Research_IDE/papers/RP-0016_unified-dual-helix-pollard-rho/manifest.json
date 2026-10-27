@@ -1,0 +1,120 @@
+{
+ "schema_version": 1,
+ "id": "RP-0016",
+ "slug": "unified-dual-helix-pollard-rho",
+ "title": "A Unified Dual-Helix Framework for Geometrically-Guided Pollard’s Rho",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "A Unified Dual-Helix Framework for Geometrically-Guided Pollard’s Rho",
+  "url": "https://www.academia.edu/169490450/A_Unified_Dual_Helix_Framework_for_Geometrically_Guided_Pollards_Rho",
+  "license": "unspecified; no additional reuse license inferred",
+  "pages": 13
+ },
+ "tags": [
+  "certification",
+  "cryptographic-research",
+  "heuristic-search",
+  "prime-sieve"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-27",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "f149636d2223670649674195dd6e5edf5b4fc9f25edc8b4c8176dd9e43817462",
+   "bytes": 42937,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "3afe29f462c9425c971f00715dc507634fc18788a7b112bb97b7bb89ffa023de",
+   "bytes": 301,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/A_Unified_Dual_Helix_Framework_for_Geome.pdf",
+   "kind": "source-pdf",
+   "sha256": "676170e4905bb34af14ef8830f7d54f59eb65fa342e8045ec452b2778a5b1765",
+   "bytes": 210140,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "8a9a7d145e44b681f7ee6a795f3b6af40cbbd7db12af2672c913061d28aae67d",
+   "bytes": 919,
+   "added": "2026-10-27"
+  }
+ ],
+ "archive": {
+  "topics": [
+   "certification",
+   "cryptographic-research",
+   "heuristic-search",
+   "prime-sieve"
+  ],
+  "relevance": [
+   {
+    "repository": "Geometric-Labs",
+    "role": "primary",
+    "reason": "PDF §§2–8: exact GCD certification, checkpoint reconstruction and controlled search experiments."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "supporting",
+    "reason": "Separate unconditional factor correctness from unproven oracle-bias acceleration."
+   },
+   {
+    "repository": "SHD-CCP-core",
+    "role": "supporting",
+    "reason": "Feature/packet representations remain reviewed profiles, not a cryptographic shortcut."
+   },
+   {
+    "repository": "CubiLoom",
+    "role": "context",
+    "reason": "Checkpoint history is a candidate retention workload."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "context",
+    "reason": "Net speedup requires oracle/reconstruction/GCD cost measurements."
+   }
+  ],
+  "schema_version": 1,
+  "work_id": "WORK-0015",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-27",
+  "release_status": "official-release",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/A_Unified_Dual_Helix_Framework_for_Geome.pdf",
+  "source_sha256": "676170e4905bb34af14ef8830f7d54f59eb65fa342e8045ec452b2778a5b1765",
+  "relations": [],
+  "prior_upload": {
+   "status": "distinct supplied PDF; no exact stored source match"
+  },
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "169490450",
+   "publication_url": "https://www.academia.edu/169490450/A_Unified_Dual_Helix_Framework_for_Geometrically_Guided_Pollards_Rho",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "676170e4905bb34af14ef8830f7d54f59eb65fa342e8045ec452b2778a5b1765",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "User-supplied PDF matched to the user-supplied Academia publication title.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
+ }
+}

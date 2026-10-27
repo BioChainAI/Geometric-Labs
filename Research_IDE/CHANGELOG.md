@@ -2,6 +2,16 @@
 
 Changes to the IDE build and to this folder's tooling. Changes to individual papers are recorded in each paper's `RESEARCH_LOG.md`.
 
+## 2026-10-27 — SHD-CCP IDE v3.3
+
+* Replaced six built-in sample documents with the fifteen owner-designated Academia publications; official releases open by default.
+* Preserved the Research Desk for manual archived PDF/Markdown imports; imported files never join the official collection.
+* Added source metadata, publication links, repository/label display and SHA-256-checked PDF loading in the inspector.
+* Added a deterministic official catalog, owner-designation records, inherited metadata provenance and current-reference resolution.
+* Kept older PDFs and original sample build in Git history. Updated the IDE lock, retaining its previous hash, and pinned the new local corpus-loader hash.
+* Paper browsing continues when optional icon/3D CDNs are unavailable. PDF inspection still requires PDF.js; its download link remains available if the library fails to load.
+* Official status records the owner's publication choice. No Lean compilation, independent proof audit, additional paper license or trained-model result is implied.
+
 ## 2026-10-23
 
 ### Added

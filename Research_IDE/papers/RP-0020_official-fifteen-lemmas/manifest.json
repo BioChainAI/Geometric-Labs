@@ -1,0 +1,200 @@
+{
+ "schema_version": 1,
+ "id": "RP-0020",
+ "slug": "official-fifteen-lemmas",
+ "title": "The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine",
+ "tier": "core",
+ "authors": [],
+ "source": {
+  "citation": "The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine",
+  "url": "https://www.academia.edu/179239437/The_Geometric_Engine_of_Time_The_Fifteen_Lemmas_of_the_Geometric_Engine",
+  "license": "unspecified; no additional reuse license inferred",
+  "pages": 36
+ },
+ "tags": [
+  "certification",
+  "exact-arithmetic",
+  "foundations",
+  "memory",
+  "protocol"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-27",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "5d8cf8ce858407a905f63731c98dfa09c6754e3bdd28baf1031c516256c4ef6a",
+   "bytes": 206947,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "78ab013688a3d613ea32ef1039f091800b0f7638b801135098246cf8d83e43f1",
+   "bytes": 302,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/The_Geometric_Engine_of_Time_The_Fifteen.pdf",
+   "kind": "source-pdf",
+   "sha256": "df9e4096a67ca198db4673b594e7b7d00eca5fac5a2a2d4451e77c051ba42968",
+   "bytes": 727629,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "884ef28168af6462ef946296a49b493c47d1801578df60641f64e957607c5e97",
+   "bytes": 928,
+   "added": "2026-10-27"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0006",
+  "revision_label": null,
+  "document_date": "2026-10-16",
+  "received_date": "2026-10-27",
+  "release_status": "official-release",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/The_Geometric_Engine_of_Time_The_Fifteen.pdf",
+  "source_sha256": "df9e4096a67ca198db4673b594e7b7d00eca5fac5a2a2d4451e77c051ba42968",
+  "topics": [
+   "certification",
+   "exact-arithmetic",
+   "foundations",
+   "memory",
+   "protocol"
+  ],
+  "relevance": [
+   {
+    "repository": "Geometric-Labs",
+    "role": "primary",
+    "reason": "Cross-cutting reference for exact arithmetic and integration verification; preserve claim scope and per-lemma evidence."
+   },
+   {
+    "repository": "SHD-CCP-core",
+    "role": "supporting",
+    "reason": "PDF §6 proposes Tile and form semantics; compare through explicit profiles before adoption."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "supporting",
+    "reason": "PDF claim tags and Appendix A motivate claim/evidence registration, not automatic certification."
+   },
+   {
+    "repository": "CubiLoom",
+    "role": "supporting",
+    "reason": "PDF §7.4 and Lemma 15 motivate parity/history retention and integrity."
+   },
+   {
+    "repository": "Manifold-Projection",
+    "role": "supporting",
+    "reason": "PDF §§7.1–7.5: views, interleave and geometric handshake proposals."
+   },
+   {
+    "repository": "PolyShard-Agent",
+    "role": "context",
+    "reason": "PDF §§7.2–7.3: local frame/clock observations need explicit envelopes."
+   },
+   {
+    "repository": "Polycentric-Orchestrator",
+    "role": "context",
+    "reason": "PDF §7 system composition is a coordination proposal, not current scene materialization."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "context",
+    "reason": "PDF §7.7 names 64 streams; runtime mapping and performance remain independent engineering."
+   }
+  ],
+  "relations": [],
+  "prior_upload": {
+   "status": "distinct supplied PDF; no exact stored source match"
+  },
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "179239437",
+   "publication_url": "https://www.academia.edu/179239437/The_Geometric_Engine_of_Time_The_Fifteen_Lemmas_of_the_Geometric_Engine",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "df9e4096a67ca198db4673b594e7b7d00eca5fac5a2a2d4451e77c051ba42968",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "User-supplied PDF matched to the user-supplied Academia publication title.",
+   "inheritance": [
+    {
+     "from": "RP-0006",
+     "source_sha256": "c48fc37963ac817bfd7c6dae80f08570545a424b37eaf0c32123fdd66935f74d",
+     "tags": [
+      "certification",
+      "exact-arithmetic",
+      "foundations",
+      "memory",
+      "protocol"
+     ],
+     "topics": [
+      "foundations",
+      "protocol",
+      "exact-arithmetic",
+      "memory",
+      "certification"
+     ],
+     "relevance": [
+      {
+       "repository": "Geometric-Labs",
+       "role": "primary",
+       "reason": "Cross-cutting reference for exact arithmetic and integration verification; preserve claim scope and per-lemma evidence."
+      },
+      {
+       "repository": "SHD-CCP-core",
+       "role": "supporting",
+       "reason": "PDF §6 proposes Tile and form semantics; compare through explicit profiles before adoption."
+      },
+      {
+       "repository": "Kernel-Registry",
+       "role": "supporting",
+       "reason": "PDF claim tags and Appendix A motivate claim/evidence registration, not automatic certification."
+      },
+      {
+       "repository": "CubiLoom",
+       "role": "supporting",
+       "reason": "PDF §7.4 and Lemma 15 motivate parity/history retention and integrity."
+      },
+      {
+       "repository": "Manifold-Projection",
+       "role": "supporting",
+       "reason": "PDF §§7.1–7.5: views, interleave and geometric handshake proposals."
+      },
+      {
+       "repository": "PolyShard-Agent",
+       "role": "context",
+       "reason": "PDF §§7.2–7.3: local frame/clock observations need explicit envelopes."
+      },
+      {
+       "repository": "Polycentric-Orchestrator",
+       "role": "context",
+       "reason": "PDF §7 system composition is a coordination proposal, not current scene materialization."
+      },
+      {
+       "repository": "FractalOS-runtime",
+       "role": "context",
+       "reason": "PDF §7.7 names 64 streams; runtime mapping and performance remain independent engineering."
+      }
+     ]
+    }
+   ],
+   "replaces_references": [
+    "RP-0006"
+   ],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
+ }
+}

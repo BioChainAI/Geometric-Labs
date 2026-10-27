@@ -1,7 +1,7 @@
 {
  "file": "index.html",
  "name": "Geometric Labs PDF-to-Markdown & LaTeX Research IDE",
- "ide_version": "SHD-CCP IDE v3.2",
+ "ide_version": "SHD-CCP IDE v3.3 — official release corpus",
  "upload_name": "geometric_labs_pdf_to_markdown_latex_research_ide_11.html",
  "guide": "docs/MASTER_OPERATION_GUIDE.md",
  "runtime_dependencies": [
@@ -12,7 +12,14 @@
   "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128",
   "https://unpkg.com/lucide@latest (unpinned)"
  ],
- "sha256": "cf6014732eb39d4ae3019e5ca0e48e0b481586997a6b271f3f069012b673ed36",
- "bytes": 343280,
- "locked": "2026-10-23"
+ "sha256": "fd25d067684ce6afc27d840532afd2e0ee8dccc0f8881c3205e0717d5588b24f",
+ "bytes": 330621,
+ "locked": "2026-10-27",
+ "previous_ide_sha256": "cf6014732eb39d4ae3019e5ca0e48e0b481586997a6b271f3f069012b673ed36",
+ "assets": [
+  {
+   "file": "official-corpus.js",
+   "sha256": "bb92d111525039c58bfab61853f9ca61d98965eace35a2d8cb581670cbbf8ed8"
+  }
+ ]
 }

@@ -1,0 +1,673 @@
+                A Unified Dual-Helix Framework for
+                Geometrically-Guided Pollard’s Rho
+        Cyclic Feature Embeddings, Quadrance Oracles, and Exact Certification
+
+                       BioChain AI — SHD-CCP Architecture Research
+
+                                  Consolidated Technical Report
+
+
+                                                 Abstract
+      This report consolidates five source manuscripts on the Schism Dual-Helix / Continuous-
+      Certification Protocol (SHD-CCP) into a single technical framework for accelerating the
+      integer-factorization routine Pollard’s Rho. All constructions, definitions, and results of
+      the source manuscripts are preserved. The framework rests on one governing principle—
+      geometry helps search; arithmetic proves correctness—realized as a Dual-Helix architecture:
+      a continuous, heuristic geometric oracle (Helix A) that ranks candidate collision indices,
+      and a discrete, exact certifier (Helix B) that reconstructs true modular residues and applies
+      a classical GCD test. We show that this architecture is unconditionally
+                                                                           √         exact whenever
+      it reports a factor, and that its state-reconstruction cost is O( T ) via standard check-
+      pointing. Its acceleration over classical baselines is not proven; it is contingent on a single
+      empirical premise—the Oracle Bias Hypothesis β > 1—for which no evidence is currently
+      supplied. We integrate the harmonic (torus), quaternionic (S 3 ), and hyperbolic feature em-
+      beddings; the path-length, Euclidean-quadrance, and rational-hyperbolic-quadrance scores;
+      the empirical linear surrogate and the heuristic feature combinator; and the Fokker–Planck
+      / FP4 candidate sampler. Two source claims are explicitly re-scoped: the polylogarithmic
+      jump-ahead of the operator-embedding manuscript is presented as an open problem (and
+      is shown to√contradict a standard cryptographic hardness assumption in the c = 0 case),
+      and the O( N√log N ) reconstruction bound is presented as unsupported and superseded by
+      the honest O( T ) analysis. Every quantitative claim is annotated with a status tag; see
+      Table 1.
+
+Editorial Note. This is a synthesis document. Text originating from the source manuscripts
+is reproduced faithfully. Text added to link the manuscripts, to reconcile conflicts between
+them, or to record a critique is marked as an Editorial Note, an Obstruction, or with an
+inline status tag: [PROVEN], [HEURISTIC], [CONJECTURAL], [OPEN], [SUPER-
+SEDED]. The status vocabulary is: Proven (a correct mathematical statement with a valid
+proof); Heuristic (an engineering device offered without a theorem, and explicitly not claimed
+as one); Conjectural (an unproven premise the framework depends on); Open (a target that
+would require new mathematics and is not achieved here); Superseded (a source claim replaced
+by a stronger or more defensible statement elsewhere in this report).
+
+
+Contents
+1 Introduction: The Dual-Helix Governance Model                                                         2
+
+2 The Algebraic Obstruction to Exact Acceleration                                                       3
+  2.1 Infinite-dimensionality of exact linearization . . . . . . . . . . . . . . . . . . . . .          3
+  2.2 The finite-dimension pigeonhole obstruction . . . . . . . . . . . . . . . . . . . . .             3
+  2.3 Geometric framing via the Triple Quad Formula . . . . . . . . . . . . . . . . . .                 3
+  2.4 No addition law for the generic quadratic map . . . . . . . . . . . . . . . . . . .               3
+  2.5 Solvable special cases . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .        4
+  2.6 The jump-ahead as an open problem . . . . . . . . . . . . . . . . . . . . . . . . .               4
+
+                                                    1
+3 Helix A: The c-Parameterized Geometric Feature Space                                              5
+  3.1 Cyclic feature maps and the modular-invariance requirement . . . . . . . . . . .              5
+  3.2 The metric deformation: reconciling the two proposals . . . . . . . . . . . . . . .           5
+  3.3 State embeddings into the manifold . . . . . . . . . . . . . . . . . . . . . . . . . .        6
+  3.4 Feature scores . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .    6
+  3.5 The evaluation obstruction and the empirical surrogate . . . . . . . . . . . . . .            7
+  3.6 The heuristic feature combinator and drift . . . . . . . . . . . . . . . . . . . . . .        7
+  3.7 The Fokker–Planck / FP4 candidate sampler . . . . . . . . . . . . . . . . . . . .             8
+
+4 Helix B: Exact Certification and State Reconstruction                                             8
+  4.1 Exact GCD certification . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .       8
+  4.2 State reconstruction via structural checkpointing . . . . . . . . . . . . . . . . . .         8
+
+5 The Oracle Bias Hypothesis and Conditional Acceleration                                           9
+
+6 Empirical Validation Protocol                                                                    10
+
+7 Status of Claims                                                                                 10
+
+8 Conclusion                                                                                       11
+
+A Notation and Construction Catalogue                                                              11
+
+
+1    Introduction: The Dual-Helix Governance Model
+Given a composite integer N (equivalently n; the source manuscripts use both), classical Pol-
+lard’s Rho seeks a nontrivial prime factor p by iterating the quadratic modular recurrence
+
+                          xt+1 ≡ x2t + c   (mod N ),       f (x) = x2 + c.                         (1)
+
+A collision xi ≡ xj (mod p) implies p | gcd(xi − xj , N ); if
+
+                                  1 < d = gcd(xi − xj , N ) < N,                                   (2)
+
+a nontrivial factor has been found. Classical implementations locate such collisions via Floyd’s
+or Brent’s cycle detection.
+    The SHD-CCP architecture is an exact-verification wrapper around this routine that decou-
+ples heuristic candidate generation from exact certification:
+
+ Helix A (Heuristic Oracle). A massively parallel, low-precision, continuous topological
+  space. Discrete modular states are embedded into a geometric manifold; a scalar feature
+  score ranks candidate index pairs (i, j) by geometric proximity. Helix A is a candidate
+  generator only; its outputs are strictly untrusted.
+
+ Helix B (Authoritative Certification). A rigid discrete integer framework. It recon-
+  structs the exact residues xi , xj ∈ Z/N Z for the top-ranked candidates and applies the
+  classical test (2).
+
+Editorial Note. The five source manuscripts describe variants of Helix A (different embeddings
+and scores) sharing one Helix B (GCD certification plus state reconstruction). The logical spine
+of this report is therefore: (i) establish why exact algebraic acceleration is unavailable (§2); (ii)
+motivate the heuristic-oracle detour (§1); (iii) catalogue the oracle constructions (§3); (iv) state
+the exact and honestly-bounded certifier (§4); (v) isolate the single conjecture on which all
+acceleration depends (§5); and (vi) give the protocol that would test it (§6).
+
+
+                                                 2
+2     The Algebraic Obstruction to Exact Acceleration
+The natural way to accelerate (1) would be an exact jump-ahead : computing f T (x) (the T -
+fold composition) in O(log T ) operations, as one does for elliptic-curve scalar multiplication
+via double-and-add, or for linear recurrences via matrix exponentiation. Several independent
+obstructions rule this out for the generic quadratic map.
+
+2.1   Infinite-dimensionality of exact linearization
+To linearize the nonlinear map (1) one seeks a lift Φ and a matrix Mc with
+                                      Φ(x2 + c) = Mc · Φ(x).                                     (3)
+Under Carleman linearization or the Koopman operator, this requires an infinite-dimensional
+matrix, because the degree of x continuously doubles under squaring, generating the tower
+1, x, x2 , x4 , . . . . Truncating the infinite matrix yields only an approximation, which is useless
+for an exact algorithm evaluated modulo N .
+
+2.2   The finite-dimension pigeonhole obstruction
+A fixed finite (e.g. 64 × 64) linear embedding cannot universally embed the exact chronologies
+of (1) for arbitrary N . Because Z/N Z contains N states, exact point-to-point chronological
+recovery requires an N -dimensional space (e.g. a one-hot embedding Φ(x) = ex ∈ RN ). Forcing
+N states into a static 64-dimensional container triggers the pigeonhole principle: Φ(a) = Φ(b)
+for some a ̸= b. Once two states collide, their future trajectories cannot be differentiated,
+destroying exact modular recovery. Hence the 64 × 64 Toda/Kogame geometry H64 cannot act
+as the global state container.
+
+2.3   Geometric framing via the Triple Quad Formula
+The operator-embedding manuscript reframes squaring geometrically using Quadrance (squared
+distance). The Triple Quad Formula (TQF) states the exact condition for three collinear points,
+                              (Q1 + Q2 + Q3 )2 = 2 (Q21 + Q22 + Q23 ),                           (4)
+and the manuscript proposes to “prune Q2 ” so that any scalar growth registering as flat geo-
+metrically frustrates unbounded expansion, redirecting the (otherwise infinite) algebraic tower
+into a bounded geometric shape.
+Editorial Note. Equation (4) is a correct classical identity of rational trigonometry. However,
+“pruning Q2 ” is a heuristic narrative, not a proof that the resulting bounded object retains
+enough information to recover f T (x) exactly. The pigeonhole obstruction above shows that
+no bounded-dimensional object can retain that information globally. The manuscript itself
+acknowledges this and pivots to a “generative kernel” interpretation (§2.6); we track that pivot
+honestly there.
+
+2.4   No addition law for the generic quadratic map
+For elliptic curves, points form an abelian group with a closed-form rational addition law P + Q,
+so iP is computed in O(log i) by double-and-add. For the pseudo-random walk (1) this luxury
+is absent. To leap from step i to step i + j without computing intermediate states, one would
+need an addition formula
+                                                                       
+                      f (i+j) (x) = Combine f (i) (x), f (j) (x), c, N   (mod N ).            (5)
+No known efficiently computable such Combine exists for generic c, and the SHD-CCP archi-
+tecture does not assume one exists.
+
+                                                 3
+2.5   Solvable special cases
+Two boundary values of c admit exact structure:
+                       i
+  c = 0: f (i) (x) ≡ x2 (mod N ). Iteration is exact exponentiation (repeated squaring of the
+   argument).
+  c = −2: under the substitution x = z + z −1 , iteration corresponds to z 7→ z 2 , giving
+   Chebyshev-type identities Tm (Tn (x)) = Tmn (x).
+These cases are correct and useful for testing, but they are measure-zero in c and do not extend
+to the generic recurrence.
+
+2.6   The jump-ahead as an open problem
+The operator-embedding manuscript proposes to escape the pigeonhole obstruction by treating
+the 64-vertex geometry not as a container but as a generative kernel : a local rule of growth M64
+whose Sierpinski-self-similar folding weaves an expanding toroidal accumulator Mtorus capable
+of holding N states. To yield a sub-linear jump-ahead, four conditions are posited:
+ (I) An injective encoder EN : Z/N Z → Mtorus .
+(II) A local generator GM64 : Mtorus → Mtorus .
+(III) An exact decoder DN : Mtorus → Z/N Z.
+(IV) Exact equivariance:                        
+                               DN GTM64 (EN (x)) = f T (x)    (mod N ).                       (6)
+
+The manuscript then asserts a “Quadrance Scaling Rule” making the fold isomorphic to an
+associative algebraic operation, hence a semigroup relation and a repeated-squaring shortcut,
+                                                         b1      b2
+                           Ga+b = Ga ◦ Gb ,    GT = G2 ◦ G2 ◦ · · · ,                         (7)
+
+claimed to compute the step-T state in O(poly(log T, log N )).
+Open Problem 2.1 (Exact sub-linear jump-ahead for the quadratic map). [OPEN] Con-
+struct explicit maps (EN , GM64 , DN ) satisfying (I)–(IV) such that a single application of G has
+cost bounded independently of T , thereby realizing (6) in O(poly(log T, log N )).
+Editorial Note. Conditions (I)–(IV) are the correct formal statement of what a jump-ahead
+requires; this is a genuine contribution of the source manuscript. However, the manuscript does
+not construct maps satisfying them—it asserts their existence via “Quadrance.” The semigroup
+relation (7) is trivially true for any iterated map (function composition is associative), but
+                                              k
+associativity alone does not yield a cheap G2 . Matrix/group exponentiation is fast because each
+squaring acts on a fixed-size object at bounded cost; the pigeonhole and infinite-dimensionality
+obstructions above are exactly the statement that no such fixed-size, exactly-composable object
+exists for the generic quadratic map. Problem 2.1 is therefore not solved here.
+Obstruction (The c = 0 case is at least as hard as factoring N ). Consider Problem 2.1 at
+                           T                                                           T
+c = 0, where f T (x) ≡ x2 (mod N ). A polylogarithmic method for computing x2 mod N
+from (x, T, N ) without the factorization of N would violate the repeated-squaring / time-lock
+assumption (Rivest–Shamir–Wagner): reducing the exponent 2T modulo λ(N ) = lcm(p−1, q−1)
+requires knowing λ(N ), i.e. the factorization of N . Since recovering that factorization is the
+very goal of the algorithm, a working jump-ahead in this case would be circular —it would
+presuppose the answer. This does not merely leave Problem 2.1 unproven; it makes the claimed
+capability contradict a standard cryptographic hardness assumption in the one sub-case that
+can be checked exactly.
+
+                                                4
+Editorial Note. Consequence for the framework. Because Problem 2.1 is unsolved, the
+working architecture does not use a jump-ahead. The remaining four manuscripts are built
+on the opposite√ premise (no shortcut exists), which is precisely why they require a heuristic
+oracle plus O( T ) checkpointed reconstruction (§4). The operator-embedding manuscript is
+thus positioned here as motivation and open problem, not as a delivered acceleration mechanism.
+                        k
+Its conclusion—that G2 can be computed in O(poly(log T, log N ))—is reclassified [OPEN].
+
+
+3     Helix A: The c-Parameterized Geometric Feature Space
+Since exact acceleration is unavailable, Helix A pursues heuristic feature correlation: embed the
+orbit into a continuous manifold, compress each state to a scalar score, and use those scores
+to bias candidate selection. This section catalogues the embeddings and scores from all five
+manuscripts and reconciles their conflicts.
+
+3.1   Cyclic feature maps and the modular-invariance requirement
+A continuous feature attached to the parameter c must be well-defined on the residue class
+c ∈ Z/N Z. A fractional embedding c/N fails this: since c ≡ c + kN (mod N ), the value c/N
+depends on the chosen integer representative and is not modular invariant. To be rigorous the
+embedding must be perfectly periodic.
+Definition 3.1 (Cyclic (harmonic) feature map). Define the continuous periodic feature
+                                                   
+                                                2πc
+                                    ψ(c) = cos        .                                        (8)
+                                                 N
+Then c ≡ c′ (mod N ) ⇒ ψ(c) = ψ(c′ ). The map is not injective on Z/N Z (since ψ(c) =
+ψ(N −c)); it intentionally compresses c, losing directional information. A fully injective encoding
+uses the complete root of unity Ψ(c) = e2πic/N , with ψ(c) = Re Ψ(c).
+
+3.2   The metric deformation: reconciling the two proposals
+Two source manuscripts deform a 2D metric tensor on a flat torus by c. They disagree, and
+one is invalid by the criterion of §3.1.
+
+Proposal A (harmonic, retained).
+Definition 3.2 (Positive-definite harmonic metric). Let Mc be a flat torus T2 = R2 /Z2 . With
+coupling constant |λ| < 1,                               !
+                                              1    λψ(c)
+                                  gµν (c) =                .                              (9)
+                                            λψ(c)    1
+Proposition 3.3 (Strict positive-definiteness). [PROVEN] det gµν (c) = 1 − λ2 ψ(c)2 . Since
+|λ| < 1 and |ψ(c)| ≤ 1, det gµν (c) > 0 for all c; the eigenvalues µ1,2 (c) = 1 ± λψ(c) are
+strictly positive; the metric is strictly positive definite. For each fixed c it is a constant flat
+metric—deforming inner products on tangent spaces without introducing coordinate-dependent
+curvature.
+
+Proposal B (golden shear, corrected). The geodesic-embedding manuscript instead pro-
+poses, with the golden ratio φ,                    cφ 
+                                                 1
+                                    gµν (c) =  cφ N  ,                        (10)
+                                                    φ2
+                                                N
+the fractional shear cφ/N “physically stretching” the manifold.
+
+                                                5
+Editorial Note. The shear term cφ/N in (10) is a fractional embedding in c/N and therefore
+not modular invariant by §3.1: the same residue class yields different geometries under different
+integer representatives of c. We reconcile the two proposals by adopting (9), i.e. replacing
+the offending term cφ/N 7→ λψ(c) = λ cos(2πc/N ). Metric (10) is retained here only as the
+historical proposal; it is reclassified [SUPERSEDED] in favor of (9).
+
+3.3    State embeddings into the manifold
+The manuscripts supply three concrete embeddings of the discrete orbit; all are retained as
+members of one family of heuristic feature maps EN,c : Z/N Z → Mc .
+Definition 3.4 (Flat-torus embedding).
+                                                         
+                                         xt x2t + c mod N
+                          EN,c (xt ) =     ,                ∈ T2 .                              (11)
+                                         N         N
+
+Consecutive images are joined by shortest-lift displacements ∆t = (∆ut , ∆vt ) ∈ [− 12 , 12 ]2 , and
+γc denotes the piecewise-linear interpolation through the lifted points.
+Definition 3.5 (S 3 ⊂ R4 toroidal embedding). With rc2 + s2c = 1,
+                                                                                         
+                                                            2π(x2 +c)           2π(x2 +c)
+              EN,c (x) = rc cos 2πx
+                                 N  , r c sin 2πx
+                                               N  , s c cos    N      , s c sin    N        ,   (12)
+
+a flat torus in S 3 ⊂ R4 inheriting the ambient Euclidean metric.
+Definition 3.6 (Quaternionic delta encoding and rational Lorentz lift). The step xk is encoded
+as a unit quaternion rotation with phase proportional to the residue,
+                                                                                  2π
+                              ∆qk = cos(θxk ) + u sin(θxk ),                 θ=       ,         (13)
+                                                                                  720
+where u is a unit vector in R3 and θ obeys the 720◦ spinor cyclic constraint. The state qi ∈
+S 3 ∩ Q4 is the ordered product of prior deltas, lifted to the hyperboloid H3 by the rational
+Lorentz lift                                                 
+                                                 1 x i y i zi
+                              En (xi ) = q̃i =     , , ,        .                        (14)
+                                                 wi wi wi wi
+
+3.4    Feature scores
+Definition 3.7 (Path-length functional). The score of an orbit after i steps is the arc length
+of the interpolated trajectory (a finite sum for the piecewise-linear path):
+                             i−1 q
+                             X                      i−1 q
+                                                    X
+                  Lc (i) =           ∆⊤
+                                      t g(c) ∆t =             ∆u2t + 2λψ(c) ∆ut ∆vt + ∆vt2 .    (15)
+                             t=0                    t=0
+
+Definition 3.8 (Euclidean quadrance score).
+                                                                2
+                         χc (i) = EN,c (xi ) − EN,c (x0 ) 2 ,               0 ≤ χc (i) ≤ 4.     (16)
+
+Collapsing the 4D state to one nonnegative scalar intentionally discards angular and directional
+information; χc is a rough radial feature.
+Definition 3.9 (Rational hyperbolic quadrance). For the Lorentz-lifted states,
+
+                                          Qh (i, j) = ⟨q̃i , q̃j ⟩2L − 1,                       (17)
+
+designed to correlate heuristically with the modular difference structure xi − xj (mod n); can-
+didate pairs are prioritized where Qh (i, j) → 0.
+
+                                                          6
+Definition 3.10 (Golden geodesic-compression score).
+                                                     
+                                        φ 2⌊logϕ i⌋                     
+                    χc (i) = Qseed ·  q               × Tr M⊗⌊log ϕ i⌋
+                                                                           .                  (18)
+                                                   2         64
+                                        1 − cϕ  N
+
+Remark 3.11 (Status of the scores). All scores above are heuristic. Every manuscript is explicit
+that the score is not the modular iterate: χc (i) ̸≡ f i (x) (mod N ). Scores (15), (16), (17) are
+well-defined and computable; they are marked [HEURISTIC]. Score (18) is retained verbatim
+but flagged: it depends on the non-invariant term cφ/N (see §3.2) and combines a logϕ -indexed
+golden power with a Kronecker-power trace of M64 without a derivation connecting it to orbit
+structure; it is marked [HEURISTIC] with the caveat that it is not shown to carry collision-
+relevant signal.
+
+3.5    The evaluation obstruction and the empirical surrogate
+Although Lc (i) is a finite sum, evaluating it for many candidate indices requires the corre-
+sponding orbit segments, which requires sequential modular iteration—defeating the point of a
+low-cost ranking layer. The exact length is therefore replaced by a fitted surrogate.
+Heuristic Assumption 3.12 (Statistical linearization). [HEURISTIC] The segment lengths
+ℓt (c) behave as weakly dependent samples from a stationary distribution with finite mean mc ,
+so that by an empirical law of large numbers Lc (i)/i → mc as i → ∞.
+    Under Assumption 3.12, the path-length is approximated by an empirical linear regression
+
+                                         Lec (i) ≈ α(c) i + β(c),                             (19)
+
+with α(c), β(c) fitted from observed orbit data.
+Remark 3.13. Model (19) is a feature-engineering heuristic, not a theorem of the orbit; it yields
+a constant-time scalar per candidate. Because ∆Lec (i, j) = |α(c)(i − j)|, a purely linear model
+predominantly ranks nearby indices; a more expressive candidate generator evaluates pairwise
+features                                                                 
+                              Φc (i, j) = F i, j, Lec (i), Lec (j), ψ(c)                     (20)
+to emit a probability distribution Dχ over correlated geometric pairs.
+
+3.6    The heuristic feature combinator and drift
+Absent an exact addition law (5), the oracle uses an approximately compositional rule modeled
+on a Euclidean quadrance expansion.
+Definition 3.14 (Feature combinator). [HEURISTIC]
+                                                             p
+     χc (i) ∗c χc (j) = χc (i) + χc (j) + 2 ρc χc (i), χc (j) χc (i) χc (j),   −1 ≤ ρc ≤ 1,   (21)
+
+where ρc is a correlation parameter learned from localized orbit data. The rule preserves non-
+negativity and acts as a predictive radial model for feature concatenation, estimating proximity
+without generic associativity.
+Definition 3.15 (Normalized feature drift).
+                                                                      
+                                        χc (i + j) − χc (i) ∗c χc (j)
+                                 δi,j =                                 .                     (22)
+                                               1 + χc (i + j)
+As δi,j grows, the predictive advantage of the combinator degrades and the oracle’s sampling
+distribution reverts toward uniformity.
+
+                                                    7
+3.7   The Fokker–Planck / FP4 candidate sampler
+The oracle’s probability mass is evolved by a continuous diffusion whose tensor is steered by a
+geometric feature.
+Definition 3.16 (Fokker–Planck prime sieve). [HEURISTIC]
+                    ∂ρ                                                1
+                       = ∇ · D(Q)∇ρ − V (Q)ρ,            D(Q) =                ,               (23)
+                    ∂t                                            1 + α · χ(Q)
+with χ(Q) the TQF collinearity feature. Probability gradients are executed in 4-bit floating
+point (E4M3 NVFP4). A deterministic “Smallest-Three” bounded-error quantization induces
+an equivalence relation
+                     u ∼FP4 v ⇐⇒ SmallestThree(u) = SmallestThree(v),                          (24)
+connecting states whose rounded FP4 feature vectors agree and forming a quantization-induced
+clique complex. Projecting the sequence onto the irrational Golden Strassen–Clifford Toroid
+(r1 /r2 = φ) prior to quantization is intended to heuristically decorrelate trivial global N -cycles
+from persistent local structure.
+Editorial Note. The constructions of §3.6–§3.7 are internally consistent as feature engineering.
+None is accompanied by a theorem relating its output to modular collision probability; each is
+correctly labeled heuristic by its own manuscript. Their collective purpose is only to shape the
+sampling distribution Dχ , whose usefulness is the subject of the single conjecture in §5.
+
+
+4     Helix B: Exact Certification and State Reconstruction
+Because every Helix A score is a lossy scalar that cannot recover exact residues, Helix B must
+reconstruct the true xi , xj ∈ Z/N Z and apply the exact test. This layer carries the framework’s
+only unconditional guarantees.
+
+4.1   Exact GCD certification
+Theorem 4.1 (Exactness of Dual-Helix certification). [PROVEN] Let N be composite and
+xk+1 ≡ x2k + c (mod N ). Suppose Helix A outputs candidate indices (i, j). For each pair,
+Helix B reconstructs the exact residues xi , xj via checkpointed procedural seeds and computes d =
+gcd(xi − xj , N ). Then every reported factor d satisfying 1 < d < N is a mathematically certified
+nontrivial factor of N , unconditionally and independently of the correctness or resolution of the
+heuristic oracle.
+Proof. Since d = gcd(xi − xj , N ), we have d | N . The condition 1 < d < N excludes the
+trivial divisors 1 and N , so d is a proper nontrivial factor. The oracle influences only which
+candidate pairs are proposed (the bias β); it cannot affect the arithmetic value of the GCD.
+Hence the validity of the reported factor is fully isolated from any topological assumption or
+FP4 quantization boundary.
+
+4.2   State reconstruction via structural checkpointing
+Retrieving xi from x0 by naive iteration is O(N ) in the worst case. A standard memory–time
+tradeoff removes this.
+Theorem 4.2 (Checkpointed√      reconstruction). [PROVEN] Fix a sequence horizon T . Store
+checkpoints every L = ⌈ T ⌉ steps. To reconstruct any xi with 0 ≤ i ≤ T , restart from the
+nearest preceding checkpoint m = ⌊i/L⌋ and iterate forward at most L − 1 steps. This yields
+                                              √                 √
+                         Treconstruct (i) ∈ O( T ),  M (T ) ∈ O( T ).                    (25)
+
+                                                 8
+                            √
+Proof. There are ⌈T /L⌉ = O(√ T ) checkpoints, giving the memory bound; each reconstruction
+performs at most L − 1 = O( T ) forward steps.
+
+Reconciling the reconstruction√      claims. Two manuscripts instead assert a reconstruction
+bound Treconstruct (i, j) ∈ O( N log N ) via “SHD-CCP indexing” / “Prime Triplet Indexing”
+over the generator set
+                                I = {(p, p + 2, p + 6) | p ∈ P},                        (26)
+using a 64-bit “Einstein Tile” packet as a deterministic procedural seed.
+                                √
+Editorial Note. The bound O( N log N ) is stated without derivation, and no mechanism is
+given by which the prime-triplet set (26) enables jumping within a pseudo-random orbit; (26)
+is a sparse arithmetic object unrelated to the recurrence’s temporal structure. Theorem 4.2 is
+the defensible statement, with the √
+                                   horizon T (not N ) as the governing parameter. We therefore
+adopt (25) and reclassify the O( N log N ) claim as [SUPERSEDED]. The Einstein-Tile
+packet and the generator set (26) are retained as engineering descriptions of the checkpoint
+encoding, not as a proof of sub-linear reconstruction.
+
+
+5    The Oracle Bias Hypothesis and Conditional Acceleration
+All five manuscripts reduce, in the end, to one premise: that geometric proximity in the chosen
+embedding correlates with a hidden modular collision. We state it once, in unified form.
+Heuristic Assumption 5.1 (Oracle Bias Hypothesis). [CONJECTURAL] Let ΩT = {(i, j) :
+0 ≤ i < j ≤ T } and let U = Unif(ΩT ) be the uniform baseline. Let Dχ be the oracle distribution
+induced by a feature score. Let B = {(i, j) : 1 < gcd(xi − xj , N ) < N } be the success event,
+and p = PrU (B) > 0 the baseline success probability. The oracle exhibits a positive bias β > 1
+if
+                                   Pr (B) ≥ β · Pr (B),                                     (27)
+                                     (i,j)∼Dχ             (i,j)∼U
+
+which is meaningful only when βp ≤ 1.
+Editorial Note. Assumption 5.1 is the load-bearing, unproven claim of the entire framework. No
+manuscript supplies evidence for it, and there is no a priori reason a continuous embedding of
+a pseudo-random sequence should place geometric neighbors in correspondence with collisions
+modulo an unknown prime factor p. Establishing β > 1 empirically—and quantifying it—is the
+sole determinant of whether the architecture accelerates anything (§6).
+Theorem 5.2 (Conditional acceleration). [PROVEN] (arithmetic), conditional on Assump-
+tion 5.1. Let each baseline trial cost Cbaseline (T, N ) and each oracle trial cost at most Coracle (T )+
+Creconstruct (T ) + Cgcd (N ). Under (27), the oracle method has expected cost bounded by
+                                     Coracle (T ) + Creconstruct (T ) + Cgcd (N )
+                         Toracle ≤                                                .                 (28)
+                                                         βp
+Consequently the oracle outperforms uniform traversal if and only if
+                   Coracle (T ) + Creconstruct (T ) + Cgcd (N ) < β · Cbaseline (T, N ).            (29)
+Proof. The expected number of oracle trials to hit B is at most 1/ PrDχ (B) ≤ 1/(βp) by (27);
+multiplying by the per-trial cost gives (28). Comparing (28) against the baseline expected cost
+Cbaseline /p yields (29).
+
+Remark 5.3. The algebra of Theorem 5.2 is elementary and       √ correct; its content is entirely
+inherited from Assumption 5.1. Because Creconstruct (T ) ∈ O( T ) (Theorem 4.2) may dominate
+the per-trial cost, practical acceleration requires β large enough to amortize the reconstruction
+overhead in (29).
+
+                                                    9
+6      Empirical Validation Protocol
+The framework’s value is an empirical question. We collect the source manuscripts’ validation
+steps into one protocol; passing it is necessary before any acceleration claim may be made.
+
+1. Path-length linearity. For semiprime testing moduli N = pq, compute the exact finite
+   sum Lc (i) (15) and fit (19). Report the coefficient of determination R2 and residual distri-
+   butions to test Assumption 3.12.
+
+2. Collision-prediction assessment. For candidate pairs (i, j) sampled via Dχ , measure the
+   correlation between the pairwise score Φc (i, j) (equivalently Qh (i, j)) and the occurrence of
+   successful hidden collisions B. This directly estimates β in Assumption 5.1; a value β ≤ 1
+   falsifies the oracle.
+
+3. Baseline comparison. Compare the total expected cost Toracle against classical Floyd’s
+   and Brent’s cycle detection, verifying inequality (29) operationally rather than assuming it.
+
+
+7      Status of Claims
+Table 1 records the status of every quantitative claim consolidated in this report.
+
+                              Table 1: Consolidated status of claims.
+
+    Claim                              Status                Basis / note
+    Exact GCD certification,           [PROVEN]              Divisibility; oracle-independent.
+    1 <√d < N (Thm. 4.1)
+    O( T ) checkpointed                [PROVEN]              Standard memory–time tradeoff.
+    reconstruction (Thm. 4.2)
+    Metric positive-definiteness for   [PROVEN]              det = 1 − λ2 ψ 2 > 0.
+    |λ| < 1 (Prop. 3.3)
+    Modular invariance of              [PROVEN]              Periodicity of cosine.
+    ψ(c) = cos(2πc/N )
+    Special cases c = 0 (repeated      [PROVEN]              Exact identities.
+    squaring), c = −2 (Chebyshev)
+    Infinite-dimensionality of exact   [PROVEN]              Carleman/Koopman degree
+    linearization                                            doubling.
+    Pigeonhole obstruction for fixed   [PROVEN]              N > 64 forces collisions.
+    64 × 64 embedding
+    Acceleration inequality (29)       [PROVEN]              Elementary; content is in β.
+    (given β)
+    Harmonic metric / path-length      [HEURISTIC]           Feature maps; no collision
+    / quadrance scores                                       theorem.
+    Empirical linear surrogate (19),   [HEURISTIC]           Fitted devices, not theorems.
+    combinator (21), drift (22)
+    Fokker–Planck / FP4 sampler        [HEURISTIC]           Distribution-shaping only.
+    (23)–(24)
+    Golden geodesic score (18)         [HEURISTIC]           Retained; not shown to carry
+                                                             signal.
+    Oracle Bias β > 1                  [CONJECTURAL] Unproven; the load-bearing
+    (Assump. 5.1)                                    premise.
+
+
+
+                                                10
+                                      Table 1 (continued)
+    Claim                             Status                 Basis / note
+                            k
+    Polylog jump-ahead / G2 in        [OPEN]                 Not constructed; contradicts
+    O(poly(log T, log N ))                                   RSW at c = 0.
+    (Prob. 2.1)
+       √
+    O( N log N ) reconstruction via   [SUPERSEDED]           Underived; replaced by
+    prime-triplet indexing                                   Thm. 4.2.
+    Golden shear metric (10) (term    [SUPERSEDED]           Not modular invariant; replaced
+    cφ/N )                                                   by (9).
+
+
+8      Conclusion
+By treating the c-parameterized geometric moduli space as a high-speed, continuous feature
+space rather than an exact algebraic container, the SHD-CCP framework offers a principled
+separation of concerns: geometry proposes, arithmetic disposes. Its guarantees are honest and
+asymmetric.
+   √          What is proven stands on solid ground—exact GCD certification (Theorem 4.1),
+O( T ) reconstruction (Theorem 4.2), the positive-definite flat metric (Proposition 3.3), the
+algebraic-obstruction results, and the elementary cost inequality. What is heuristic is labeled as
+such: the embeddings, scores, combinator, and diffusion sampler shape a candidate distribution
+but carry no theorem of collision. What is conjectural is isolated to a single point—the Oracle
+Bias Hypothesis β > 1 (Assumption 5.1)—upon which every acceleration claim depends and
+for which no evidence is yet supplied. And what remains open is stated plainly: the exact
+sub-linear jump-ahead (Problem 2.1) is not achieved here and, in the checkable c = 0 case,
+would contradict a standard cryptographic hardness assumption.
+    The practical thesis is therefore conditional and testable: if a feature embedding can be
+shown √empirically to satisfy β > 1 by a margin large enough to satisfy inequality (29) against
+the O( T ) reconstruction overhead, then the architecture yields a net reduction in factorization
+time—while, in all cases, every reported factor is unconditionally exact. Resolving that “if” is
+the task of the validation protocol in §6.
+
+
+A       Notation and Construction Catalogue
+For completeness, every symbol and construction consolidated from the source manuscripts is
+listed below.
+
+ Symbol / object                  Meaning
+ f (x) = x2 + c;                  Quadratic modular recurrence (1).
+ xt+1 ≡ x2t + c (mod N )
+ Z/N Z, Z/nZ                      Residue ring modulo N (resp. n).
+ d = gcd(xi − xj , N );           Exact certification / success event (2).
+ 1<d<N
+ Φ(x2 + c) = Mc Φ(x)              Sought linearization (3); infinite-dimensional.
+ 1, x, x2 , x4 , . . .            Degree tower under repeated squaring.
+ (Q1 + Q2 + Q3 )2 =               Triple Quad Formula (4).
+ 2(Q21 + Q22 + Q23 )
+ Φ(x) = ex ∈ RN ;                 One-hot embedding; pigeonhole collision.
+ Φ(a) = Φ(b)
+
+
+
+
+                                               11
+Symbol / object                       Meaning
+H64 , M64 , Mtorus                    Toda/Kogame geometry; generator kernel; toroidal
+                                      accumulator.
+EN , GM64 , DN ; (6)                  Encoder / generator / decoder and exact equivariance
+                                      (jump-ahead conditions I–IV).
+Ga+b = Ga ◦ Gb ;                      Semigroup relation; repeated-squaring target (7).
+           b
+GT = G2 1 ◦ · · ·
+f (i+j) (x) = Combine(· · · )         Hypothetical addition law (5); unknown for generic c.
+                           i
+c = 0 : f (i) (x) ≡ x2 ; c =          Solvable special cases.
+−2 : Tm (Tn (x)) = Tmn (x)
+ψ(c) = cos(2πc/N );                   Harmonic feature map (8); full injective encoding.
+Ψ(c) = e2πic/N
+gµν (c) (9); det = 1 − λ2 ψ 2 ;       Harmonic flat-torus metric; positive definite for |λ| < 1.
+µ1,2 = 1 ± λψ
+gµν (c) (10) with shear cφ/N          Golden metric (superseded; not modular invariant).
+T2 = R2 /Z2                           Flat torus search manifold.
+EN,c (xt ) =                          Flat-torus embedding (11).
+(xt /N, (x2t + c mod N )/N )
+∆t = (∆ut , ∆vt ) ∈ [− 12 , 21 ]2 ;   Shortest-lift displacements; piecewise-linear interpolation.
+γc
+EN,c (x) ∈ S 3 ⊂ R4 ,                 Toroidal S 3 embedding (12).
+rc2 + s2c = 1
+∆qk = cos(θxk ) + u sin(θxk ),        Quaternionic delta (13); 720◦ spinor constraint.
+θ = 2π/720
+qi ∈ S 3 ∩ Q4 ; q̃i =                 Quaternion state; rational Lorentz lift (14).
+(1/wi , xi /wi , yi /wi , zi /wi )
+Lc (i) (15); Lc (i)/i → mc            Path-length functional; law of large numbers.
+Lec (i) ≈ α(c)i + β(c);               Empirical surrogate (19) and its pairwise difference.
+∆Lec (i, j) = |α(c)(i − j)|
+χc (i) = ∥EN,c (xi ) −                Euclidean quadrance score (16).
+EN,c (x0 )∥22 ∈ [0, 4]
+Qh (i, j) = ⟨q̃i , q̃j ⟩2L − 1;       Rational hyperbolic quadrance (17).
+Qh → 0
+χc (i) (18)                           Golden geodesic-compression score.
+χc (i) ∗c χc (j) (21),                Heuristic feature combinator.
+−1 ≤ ρc ≤ 1
+δi,j (22)                             Normalized feature drift.
+Φc (i, j) = F (· · · ) (20); Dχ       Pairwise feature; oracle candidate distribution.
+∂t ρ = ∇·(D(Q)∇ρ) − V (Q)ρ,           Fokker–Planck prime sieve (23).
+D(Q) = 1/(1 + αχ(Q))
+u ∼FP4 v ⇐⇒                           FP4 quantization equivalence (24).
+SmallestThree(u) =
+SmallestThree(v)
+Golden Strassen–Clifford              Irrational-ratio projection target.
+Toroid, √ r1 /r2 = φ
+L = ⌈ T ⌉, m = ⌊i/L⌋;√                Checkpoint schedule and bounds (25).
+Treconstruct , M (T ) ∈ O( T )
+I = {(p, p + 2, p + 6) : p ∈ P};      Prime-triplet generator; 64-bit procedural seed.
+Einstein Tile
+
+
+
+
+                                                   12
+ Symbol / object                     Meaning
+ ΩT = {(i, j) : 0 ≤ i < j ≤               Candidate universe; uniform baseline.
+ T }, U = Unif(ΩT )
+ B, p = PrU (B), β, βp ≤ 1                Success event; baseline probability; bias factor.
+ PrDχ (B) ≥ β PrU (B) (27)                Oracle Bias Hypothesis.
+ Cbaseline , Coracle , Creconstruct , CgcdCost
+                                          ;    model and expected-runtime bound.
+ Toracle (28)
+ βCbaseline >                             Net-acceleration condition.
+ Coracle + Creconstruct + Cgcd
+ (29)
+
+
+Source manuscripts consolidated. (1) Harmonic Feature Embedding: Cyclic Moduli Spaces
+for Pollard’s Rho Orbits; (2) The Golden Strassen–Clifford Geodesic Embedding: A c-Parameterized
+Geometric Moduli Space; (3) The Pseudogroup Law of Quadrance Dynamics: Heuristic Feature
+Combination for c-Parameterized Orbits; (4) Finite-Dimensional Operator Embedding via TQF
+Sierpinski Emergence; (5) Topological Optimization of Pollard’s Rho via Quaternionic Lattices
+and Soliton Collapse Manifolds.
+
+
+
+
+                                                    13
+

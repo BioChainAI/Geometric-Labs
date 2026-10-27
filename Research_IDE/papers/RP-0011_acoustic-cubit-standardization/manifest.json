@@ -22,7 +22,7 @@
  "lean_verification": null,
  "cosmo_id": "",
  "created": "2026-10-26",
- "updated": "2026-10-26",
+ "updated": "2026-10-27",
  "artifacts": [
   {
    "path": "postprocessing/extracted-layout.txt",
@@ -60,7 +60,7 @@
   "document_date": null,
   "received_date": "2026-10-26",
   "release_status": "research-draft",
-  "disposition": "retained-reference",
+  "disposition": "superseded",
   "review_level": "relevance-triaged",
   "source_artifact": "source/The_Geometric_Engine_of_Time_Standardization_of_the_Cubit.pdf",
   "source_sha256": "186f8c4a7194448927fc771f4a20fdad5e5aa32247c7feff0ac94202111056fe",
@@ -113,6 +113,7 @@
    "status": "exact-bytes-seen-previously",
    "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
   },
-  "release_record": null
+  "release_record": null,
+  "current_reference": "RP-0018"
  }
 }

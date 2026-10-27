@@ -1,3 +1,5 @@
+> **Archived reference:** the owner-designated official entry is [RP-0018](../RP-0018_official-acoustic-cubit/README.md). This original PDF and its historical review remain preserved.
+
 # The Geometric Engine of Time: A Proposal for a Standardization of the Cubit
 
 RP-0011 · WORK-0010 · archived research reference · relevance triage on 2026-10-26.

@@ -145,13 +145,13 @@
       "title": "Canonical documentation and paper intake"
     },
     {
-      "entry": "Research_IDE/archive/README.md",
+      "entry": "Research_IDE/official/CATALOG.md",
       "id": "research_ide",
-      "limits": "Preserved research PDFs have source hashes and repository relevance. Official releases require reviewed evidence; IDE labels do not execute Lean.",
+      "limits": "Official publication designation is separate from proof and software acceptance. PDF inspection requires PDF.js; edits remain local until exported.",
       "matches": [
         "Research_IDE/"
       ],
-      "role": "Archive paper revisions, map relevance across eight repositories, and validate manifests and generated reading lists.",
+      "role": "Browse owner-designated official publications, inspect source PDFs, and manually import archived material into the Research Desk.",
       "status": "implemented",
       "title": "Research IDE and paper library"
     },

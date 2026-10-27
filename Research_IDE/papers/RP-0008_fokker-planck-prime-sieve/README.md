@@ -1,3 +1,5 @@
+> **Official release collection:** designated by the repository owner on 2026-10-27. [Academia publication](https://www.academia.edu/179087267/The_Geometric_Engine_of_Time_The_Fokker_Planck_Prime_Sieve_in_Quaternionic_Lattices) · [Designation and source provenance](workflows/official-designation.md). Scientific audit and Lean status remain separate.
+
 # The Geometric Engine of Time: The Fokker-Planck Prime Sieve in Quaternionic Lattices
 
 RP-0008 · WORK-0008 · archived research reference · relevance triage on 2026-10-26.

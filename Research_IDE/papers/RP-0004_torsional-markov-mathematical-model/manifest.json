@@ -7,7 +7,7 @@
  "authors": [],
  "source": {
   "citation": "Mathematical Model for the Torsional Markov Memory-Offload Pump",
-  "url": "",
+  "url": "https://www.academia.edu/168903035/Mathematical_Model_for_the_Torsional_Markov_Memory_Offload_Pump_Theoretical_Physics_and_Topological_Computation_Board",
   "license": "unspecified in intake; release clearance pending",
   "pages": 7
  },
@@ -50,6 +50,13 @@
    "sha256": "aa071a57783b662299bc62c052610190f6bdece24c61aa391a77fb69f6165855",
    "bytes": 69250,
    "added": "2026-10-26"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "14cd679de4e6104aff2f2b4fa9487f617de37eb6f18c96c15e0bae228831d6df",
+   "bytes": 980,
+   "added": "2026-10-27"
   }
  ],
  "archive": {
@@ -58,15 +65,15 @@
   "revision_label": null,
   "document_date": null,
   "received_date": "2026-10-26",
-  "release_status": "research-draft",
+  "release_status": "official-release",
   "disposition": "retained-reference",
   "review_level": "relevance-triaged",
   "source_artifact": "source/Mathematical_Model_for_the_Torsional_Mar.pdf",
   "source_sha256": "aa071a57783b662299bc62c052610190f6bdece24c61aa391a77fb69f6165855",
   "topics": [
-   "memory",
    "delta-encoding",
-   "markov-pump"
+   "markov-pump",
+   "memory"
   ],
   "relevance": [
    {
@@ -95,6 +102,20 @@
    "status": "no-exact-match-in-available-earlier-uploads",
    "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
   },
-  "release_record": null
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "168903035",
+   "publication_url": "https://www.academia.edu/168903035/Mathematical_Model_for_the_Torsional_Markov_Memory_Offload_Pump_Theoretical_Physics_and_Topological_Computation_Board",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "aa071a57783b662299bc62c052610190f6bdece24c61aa391a77fb69f6165855",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
  }
 }

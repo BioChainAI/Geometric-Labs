@@ -1,3 +1,5 @@
+> **Official release collection:** designated by the repository owner on 2026-10-27. [Academia publication](https://www.academia.edu/169059586/The_Hyperbolic_Sparsemax_Pump_A_Rational_Parity_Safe_Executable_Kernel_for_the_SHD_CCP_Lattice_Owl_Academy) · [Designation and source provenance](workflows/official-designation.md). Scientific audit and Lean status remain separate.
+
 # The Hyperbolic Sparsemax Pump: A Rational, Parity-Safe Executable Kernel for the SHD–CCP Lattice
 
 RP-0005 · WORK-0005 · archived research reference · relevance triage on 2026-10-26.

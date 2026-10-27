@@ -1,0 +1,113 @@
+{
+ "schema_version": 1,
+ "id": "RP-0015",
+ "slug": "torsional-trefoil-markov-theorem",
+ "title": "Formal Proof: The Torsional Trefoil Markov Pump Theorem (TTMPT)",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "Formal Proof: The Torsional Trefoil Markov Pump Theorem (TTMPT)",
+  "url": "https://www.academia.edu/168904328/Formal_Proof_The_Torsional_Trefoil_Markov_Pump_Theorem_TTMPT_Owl_Academy",
+  "license": "unspecified; no additional reuse license inferred",
+  "pages": 5
+ },
+ "tags": [
+  "analytic-model",
+  "markov-pump",
+  "routing"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-27",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "aa8f50c440d9dced92826abc69cb573226ee052960d873cd0103e0c91666b684",
+   "bytes": 15320,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "ab1246869fadf9f7c5e64333f91617ca3cc5d588cc52d7c34a94d3fac7dd9b96",
+   "bytes": 300,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/Formal_Proof_The_Torsional_Trefoil_Marko.pdf",
+   "kind": "source-pdf",
+   "sha256": "53e29adea431cef1e5272838426841c89431407e620e619c24d2b4368ab95725",
+   "bytes": 64936,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "c7dbc83659c81dfef8d77d56ad1f39f544d2f10a505fffa7333b1b805a543398",
+   "bytes": 923,
+   "added": "2026-10-27"
+  }
+ ],
+ "archive": {
+  "topics": [
+   "analytic-model",
+   "markov-pump",
+   "routing"
+  ],
+  "relevance": [
+   {
+    "repository": "Geometric-Labs",
+    "role": "primary",
+    "reason": "PDF Theorem 1 and proof: check stated probability/current assumptions independently."
+   },
+   {
+    "repository": "SHD-CCP-core",
+    "role": "supporting",
+    "reason": "Analytic companion vocabulary; exponential valve is distinct from rational sparsemax execution."
+   },
+   {
+    "repository": "Polycentric-Orchestrator",
+    "role": "context",
+    "reason": "Possible future coordination model; no current scheduling policy is established."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "supporting",
+    "reason": "Preserve theorem hypotheses and source/proof-review status separately."
+   }
+  ],
+  "schema_version": 1,
+  "work_id": "WORK-0014",
+  "revision_label": null,
+  "document_date": "2026-06-19",
+  "received_date": "2026-10-27",
+  "release_status": "official-release",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/Formal_Proof_The_Torsional_Trefoil_Marko.pdf",
+  "source_sha256": "53e29adea431cef1e5272838426841c89431407e620e619c24d2b4368ab95725",
+  "relations": [],
+  "prior_upload": {
+   "status": "distinct supplied PDF; no exact stored source match"
+  },
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "168904328",
+   "publication_url": "https://www.academia.edu/168904328/Formal_Proof_The_Torsional_Trefoil_Markov_Pump_Theorem_TTMPT_Owl_Academy",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "53e29adea431cef1e5272838426841c89431407e620e619c24d2b4368ab95725",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "User-supplied PDF matched to the user-supplied Academia publication title.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
+ }
+}

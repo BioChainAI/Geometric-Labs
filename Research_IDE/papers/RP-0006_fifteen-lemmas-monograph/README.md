@@ -1,3 +1,5 @@
+> **Archived reference:** the owner-designated official entry is [RP-0020](../RP-0020_official-fifteen-lemmas/README.md). This original PDF and its historical review remain preserved.
+
 # The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine
 
 RP-0006 · WORK-0006 · archived research reference · relevance triage on 2026-10-26.

@@ -11,6 +11,7 @@ serve:
 check:
 	$(LIB) check
 	$(PYTHON) tools/archive.py check
+	$(PYTHON) tools/releases.py check
 	$(MAKE) test
 
 test:
@@ -19,6 +20,7 @@ test:
 index:
 	$(LIB) index
 	$(PYTHON) tools/archive.py index
+	$(PYTHON) tools/releases.py index
 
 archive-index:
 	$(LIB) index

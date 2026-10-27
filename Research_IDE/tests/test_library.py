@@ -34,7 +34,7 @@ class TestLibrary(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp())
         for name in ("templates", "papers", "inbox"):
             shutil.copytree(ROOT / name, self.tmp / name)
-        for name in ("index.html", "ide.lock.json"):
+        for name in ("index.html", "ide.lock.json", "official-corpus.js"):
             shutil.copy(ROOT / name, self.tmp / name)
         for stale in (self.tmp / "inbox").iterdir():
             if stale.name != "README.md":
@@ -71,6 +71,10 @@ class TestLibrary(unittest.TestCase):
         self.assertIn("Demo \\| paper", (self.tmp / "CATALOG.md").read_text())
         second = library.scaffold(self.tmp, "second", "Second")
         self.assertEqual(int(second.name[3:7]), int(self.pid[3:]) + 1)
+
+    def test_corpus_loader_hash_is_checked_with_the_ide(self):
+        (self.tmp/'official-corpus.js').write_text('changed loader')
+        self.assertRejected('official-corpus.js does not match')
 
     def test_ingest_sorts_every_ide_export(self):
         for name in EXPORTS:

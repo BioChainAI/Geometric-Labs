@@ -1,3 +1,5 @@
+> **Official release collection:** designated by the repository owner on 2026-10-27. [Academia publication](https://www.academia.edu/171106117/The_Geometric_Engine_of_Time_Mathematical_Architecture_of_the_6_Channel_5_Tier_Toroidal_Orbital_Calculator) · [Designation and source provenance](workflows/official-designation.md). Scientific audit and Lean status remain separate.
+
 # The Geometric Engine of Time: Mathematical Architecture of the 6-Channel, 5-Tier Toroidal Orbital Calculator
 
 RP-0010 · WORK-0009 · archived research reference · relevance triage on 2026-10-26.

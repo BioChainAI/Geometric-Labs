@@ -1,0 +1,170 @@
+{
+ "schema_version": 1,
+ "id": "RP-0019",
+ "slug": "fokker-planck-companion",
+ "title": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve — Companion: Status of Claims, Audit and Open Problems",
+ "tier": "core",
+ "authors": [],
+ "source": {
+  "citation": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve — Companion: Status of Claims, Audit and Open Problems",
+  "url": "https://www.academia.edu/179087320/The_Geometric_Engine_of_Time_The_Fokker_Planck_Prime_Sieve_Companion_Status_of_Claims_Audit_and_Open_Problems",
+  "license": "unspecified; no additional reuse license inferred",
+  "pages": 20
+ },
+ "tags": [
+  "audit",
+  "certification",
+  "claim-status",
+  "exact-arithmetic",
+  "frame-alignment",
+  "open-problems",
+  "prime-sieve"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-27",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "a8fa2e067026a5b118a78f93cd5bbaa60b0da45c132592a6e3457c5eab9e23fd",
+   "bytes": 74729,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "bb42c14edfa5f539d30abf795411e29a84ac35d3f4619366ab762deaf4df6295",
+   "bytes": 301,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/The_Geometric_Engine_of_Time_The_Fokker.pdf",
+   "kind": "source-pdf",
+   "sha256": "114153b10b4489371a9d0108f5ed278ad4e1f6785c5cc37388688a513e09ba3e",
+   "bytes": 250535,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "e0407b4f31432f710e4e3aae529c20aac8f397cbb663e118616e33ef2d4c1434",
+   "bytes": 963,
+   "added": "2026-10-27"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0017",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-27",
+  "release_status": "official-release",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/The_Geometric_Engine_of_Time_The_Fokker.pdf",
+  "source_sha256": "114153b10b4489371a9d0108f5ed278ad4e1f6785c5cc37388688a513e09ba3e",
+  "topics": [
+   "audit",
+   "certification",
+   "claim-status",
+   "exact-arithmetic",
+   "frame-alignment",
+   "open-problems",
+   "prime-sieve"
+  ],
+  "relevance": [
+   {
+    "repository": "Geometric-Labs",
+    "role": "primary",
+    "reason": "Exact prime certification, frame alignment and arithmetic verification; review corrections against current source/tests."
+   },
+   {
+    "repository": "SHD-CCP-core",
+    "role": "supporting",
+    "reason": "Hurwitz anchors and Tile representation must respect the canonical profile."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "supporting",
+    "reason": "Separate proposer heuristics from certified prime/norm and calibration evidence."
+   },
+   {
+    "repository": "Manifold-Projection",
+    "role": "supporting",
+    "reason": "Invariant and Horn-frame alignment proposals inform explicit coordinate transforms."
+   },
+   {
+    "repository": "PolyShard-Agent",
+    "role": "context",
+    "reason": "Future locally calibrated observations; mathematical alignment does not create consent or authentication."
+   }
+  ],
+  "relations": [],
+  "prior_upload": {
+   "status": "distinct supplied PDF; no exact stored source match"
+  },
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "179087320",
+   "publication_url": "https://www.academia.edu/179087320/The_Geometric_Engine_of_Time_The_Fokker_Planck_Prime_Sieve_Companion_Status_of_Claims_Audit_and_Open_Problems",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "114153b10b4489371a9d0108f5ed278ad4e1f6785c5cc37388688a513e09ba3e",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "User-supplied PDF matched to the user-supplied Academia publication title.",
+   "inheritance": [
+    {
+     "from": "RP-0008",
+     "source_sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
+     "tags": [
+      "certification",
+      "exact-arithmetic",
+      "frame-alignment",
+      "prime-sieve"
+     ],
+     "topics": [
+      "prime-sieve",
+      "certification",
+      "exact-arithmetic",
+      "frame-alignment"
+     ],
+     "relevance": [
+      {
+       "repository": "Geometric-Labs",
+       "role": "primary",
+       "reason": "Exact prime certification, frame alignment and arithmetic verification; review corrections against current source/tests."
+      },
+      {
+       "repository": "SHD-CCP-core",
+       "role": "supporting",
+       "reason": "Hurwitz anchors and Tile representation must respect the canonical profile."
+      },
+      {
+       "repository": "Kernel-Registry",
+       "role": "supporting",
+       "reason": "Separate proposer heuristics from certified prime/norm and calibration evidence."
+      },
+      {
+       "repository": "Manifold-Projection",
+       "role": "supporting",
+       "reason": "Invariant and Horn-frame alignment proposals inform explicit coordinate transforms."
+      },
+      {
+       "repository": "PolyShard-Agent",
+       "role": "context",
+       "reason": "Future locally calibrated observations; mathematical alignment does not create consent or authentication."
+      }
+     ]
+    }
+   ],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
+ }
+}

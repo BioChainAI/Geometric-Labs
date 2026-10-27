@@ -1,3 +1,5 @@
+> **Official release collection:** designated by the repository owner on 2026-10-27. [Academia publication](https://www.academia.edu/168903035/Mathematical_Model_for_the_Torsional_Markov_Memory_Offload_Pump_Theoretical_Physics_and_Topological_Computation_Board) · [Designation and source provenance](workflows/official-designation.md). Scientific audit and Lean status remain separate.
+
 # Mathematical Model for the Torsional Markov Memory-Offload Pump
 
 RP-0004 · WORK-0004 · archived research reference · relevance triage on 2026-10-26.

@@ -7,7 +7,7 @@
  "authors": [],
  "source": {
   "citation": "The Hyperbolic Sparsemax Pump: A Rational, Parity-Safe Executable Kernel for the SHD–CCP Lattice",
-  "url": "",
+  "url": "https://www.academia.edu/169059586/The_Hyperbolic_Sparsemax_Pump_A_Rational_Parity_Safe_Executable_Kernel_for_the_SHD_CCP_Lattice_Owl_Academy",
   "license": "unspecified in intake; release clearance pending",
   "pages": 10
  },
@@ -52,6 +52,13 @@
    "sha256": "f3b0f01f9846edbc7906596f3b37e9cca80eca07bddf5305ee13257a7dd4f31d",
    "bytes": 137169,
    "added": "2026-10-26"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "97730c9389c96b71d1d506f9977ef50706f00196a3825ccb60de69a3fb3b181b",
+   "bytes": 969,
+   "added": "2026-10-27"
   }
  ],
  "archive": {
@@ -60,17 +67,17 @@
   "revision_label": null,
   "document_date": "2026-06-21",
   "received_date": "2026-10-26",
-  "release_status": "research-draft",
+  "release_status": "official-release",
   "disposition": "retained-reference",
   "review_level": "relevance-triaged",
   "source_artifact": "source/The_Hyperbolic_Sparsemax_Pump_A_Rational.pdf",
   "source_sha256": "f3b0f01f9846edbc7906596f3b37e9cca80eca07bddf5305ee13257a7dd4f31d",
   "topics": [
-   "sparsemax",
-   "exact-rational",
    "alexneth-geot",
+   "exact-rational",
+   "markov-pump",
    "routing",
-   "markov-pump"
+   "sparsemax"
   ],
   "relevance": [
    {
@@ -104,6 +111,20 @@
    "status": "no-exact-match-in-available-earlier-uploads",
    "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
   },
-  "release_record": null
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "169059586",
+   "publication_url": "https://www.academia.edu/169059586/The_Hyperbolic_Sparsemax_Pump_A_Rational_Parity_Safe_Executable_Kernel_for_the_SHD_CCP_Lattice_Owl_Academy",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "f3b0f01f9846edbc7906596f3b37e9cca80eca07bddf5305ee13257a7dd4f31d",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
  }
 }

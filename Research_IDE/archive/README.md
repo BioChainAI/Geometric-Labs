@@ -2,6 +2,8 @@
 
 Start with the [document index](INDEX.md), the [architecture reading map](ARCHITECTURE_MAP.md),
 or a repository reading list below. The first batch contains **11 PDFs grouped into 10 works**.
+The [official publication collection](../official/README.md) now selects fifteen current papers;
+the full library retains twenty document entries, including archived predecessors.
 This archive lives in Geometric-Labs; the other seven repositories reference stable document
 IDs and hashes rather than keeping diverging PDF copies. No other repository was modified.
 
@@ -32,7 +34,7 @@ work identity, dates, release status, primary/supporting/context relevance and e
 document relations. Generated indexes are views of that block. Existing library stages and
 Lean statuses retain their original meanings.
 
-All eleven entries are **retained research references**, with library stage `intake`,
+At initial intake, all eleven entries were **retained research references**, with library stage `intake`,
 review level `relevance-triaged`, Lean status `none`, and release status `research-draft`.
 Archiving here does **not** imply a document is abandoned, superseded, proved or an official
 release. Dates read from the documents are recorded when explicit; other document dates and
@@ -42,11 +44,14 @@ Relation direction is explicit: `A corrects B` or `A supersedes B` points from t
 or replacing document to the affected reference. A correction may concern only one claim.
 Use `related-to` or `clarifies` when evidence does not establish replacement. A supersession
 edge needs an editorial statement or documented author decision and must be acyclic.
-The initial set contains **no confirmed whole-document supersession edges**. The Cubit PDF's
+The initial set contained **no confirmed whole-document supersession edges**. Current-reference
+replacement is now recorded separately for the owner-designated Cubit and Fifteen Lemmas sources. The Cubit PDF's
 declared predecessor, *Metrological Foundations*, has not been supplied in this batch.
 
-An official release needs an explicit version, approver/date, license, tracked release
-evidence and a release record bound to the exact PDF hash. The validator checks recorded
+Technical release approval records require a version, approver/date, license and tracked evidence
+bound to the PDF hash. The owner-designated official publication collection uses a separate
+`owner-designated-publication` record with Academia identity, authority/date, exact source hash
+and designation evidence; unknown versions and licensing remain null. The validator checks recorded
 metadata and file integrity; it does not authenticate an approver or independently prove
 the paper. Approval and scientific review happen through a reviewed release PR. Source
 phrases such as `[PROVEN]`, “registered report” and “Release” remain author statements until
@@ -148,5 +153,6 @@ needs review. No complete proof audit, external citation validation, original em
 execution, training benchmark or physical experiment is claimed.
 
 The [Pages homepage](../../site/README.md) scans the library catalog count. Its section copy
-now points here. PDF browsing uses repository links; the curated static Pages artifact does
+now points here. The curated static Pages artifact publishes only the selected official PDFs;
+older references remain available through repository links and manual import. It does
 not automatically publish this entire research archive. Historical checkpoints remain unchanged.

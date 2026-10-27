@@ -232,6 +232,11 @@ def check(root: Path) -> list[str]:
         elif load_json(lock_path).get("sha256") != sha256(root / IDE_FILE):
             errors.append(f"{IDE_FILE} does not match {IDE_LOCK} (run lock-ide and "
                           f"record the new IDE version in CHANGELOG.md)")
+        if lock_path.is_file():
+            for asset in load_json(lock_path).get('assets', []):
+                path = root/asset['file']
+                if not path.is_file() or sha256(path) != asset['sha256']:
+                    errors.append(f"{asset['file']} does not match {IDE_LOCK}")
     return errors
 
 
@@ -446,6 +451,8 @@ def lock_ide(root: Path) -> dict:
     lock = load_json(lock_path) if lock_path.is_file() else {}
     lock.update({"file": IDE_FILE, "sha256": sha256(root / IDE_FILE),
                  "bytes": (root / IDE_FILE).stat().st_size, "locked": today()})
+    if (root/'official-corpus.js').is_file():
+        lock['assets'] = [{'file': 'official-corpus.js', 'sha256': sha256(root/'official-corpus.js')}]
     dump_json(lock_path, lock)
     return lock
 

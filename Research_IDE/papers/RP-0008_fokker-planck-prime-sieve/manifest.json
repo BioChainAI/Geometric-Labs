@@ -7,7 +7,7 @@
  "authors": [],
  "source": {
   "citation": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve in Quaternionic Lattices",
-  "url": "",
+  "url": "https://www.academia.edu/179087267/The_Geometric_Engine_of_Time_The_Fokker_Planck_Prime_Sieve_in_Quaternionic_Lattices",
   "license": "unspecified in intake; release clearance pending",
   "pages": 38
  },
@@ -22,7 +22,7 @@
  "lean_verification": null,
  "cosmo_id": "",
  "created": "2026-10-26",
- "updated": "2026-10-26",
+ "updated": "2026-10-27",
  "artifacts": [
   {
    "path": "postprocessing/extracted-layout.txt",
@@ -51,6 +51,13 @@
    "sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
    "bytes": 747401,
    "added": "2026-10-26"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "33b3d7941f687668366ee0289e3c0ebcd49af93eed7fc27464f25eb040b6a1ba",
+   "bytes": 1102,
+   "added": "2026-10-27"
   }
  ],
  "archive": {
@@ -59,16 +66,16 @@
   "revision_label": null,
   "document_date": null,
   "received_date": "2026-10-26",
-  "release_status": "research-draft",
+  "release_status": "official-release",
   "disposition": "retained-reference",
   "review_level": "relevance-triaged",
   "source_artifact": "source/The_Geometric_Engine_of_Time_Fokker-Planck_Prime_Sieve_Release.pdf",
   "source_sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
   "topics": [
-   "prime-sieve",
    "certification",
    "exact-arithmetic",
-   "frame-alignment"
+   "frame-alignment",
+   "prime-sieve"
   ],
   "relevance": [
    {
@@ -108,6 +115,20 @@
    "status": "exact-bytes-seen-previously",
    "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
   },
-  "release_record": null
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "179087267",
+   "publication_url": "https://www.academia.edu/179087267/The_Geometric_Engine_of_Time_The_Fokker_Planck_Prime_Sieve_in_Quaternionic_Lattices",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "c1a60d1ed7fa51da53655661cd9175347f0838cf3eb2cd3bb85f6bfd213937c2",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "The user designated the main sieve Academia publication. Its title-matched 38-page PDF is preserved from the earlier archive intake. The current short-named Fokker upload is the separate companion; remote Academia PDF bytes were not verified.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
  }
 }

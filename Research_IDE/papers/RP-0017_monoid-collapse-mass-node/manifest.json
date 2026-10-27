@@ -1,0 +1,120 @@
+{
+ "schema_version": 1,
+ "id": "RP-0017",
+ "slug": "monoid-collapse-mass-node",
+ "title": "Monoid Collapse and Mass-Node Traversal in Relational Space: A Hybrid Coarse-Grained Search Framework",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "Monoid Collapse and Mass-Node Traversal in Relational Space: A Hybrid Coarse-Grained Search Framework",
+  "url": "https://www.academia.edu/171475615/Monoid_Collapse_and_Mass_Node_Traversal_in_Relational_Space_A_Hybrid_Coarse_Grained_Search_Framework",
+  "license": "unspecified; no additional reuse license inferred",
+  "pages": 8
+ },
+ "tags": [
+  "coarse-graining",
+  "graph-search",
+  "monoids",
+  "projection"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-27",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "ee51eec3a94c2dd633ab332089bdf50a7ef51438ffa7bd3322d524e083996173",
+   "bytes": 24220,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "6164a84a1321d98ef6ef04ddf3c8b9c9d9b55ff7c86886f1ddfdc3ebb4169124",
+   "bytes": 300,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/Monoid_Collapse_and_Mass_Node_Traversal.pdf",
+   "kind": "source-pdf",
+   "sha256": "d9599345b6c2dd41d11070d5e3c43c38799fde72e7fdbfe04c2beff0b5a0caf0",
+   "bytes": 98126,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "2bd9d5fdbcb97cb7b74fe3e4909019c9341fa6b2325e4bbf8a627f2a2ee48cda",
+   "bytes": 951,
+   "added": "2026-10-27"
+  }
+ ],
+ "archive": {
+  "topics": [
+   "coarse-graining",
+   "graph-search",
+   "monoids",
+   "projection"
+  ],
+  "relevance": [
+   {
+    "repository": "Manifold-Projection",
+    "role": "primary",
+    "reason": "PDF §§3–6: coarse geometric state and sparse weighted-graph views."
+   },
+   {
+    "repository": "Polycentric-Orchestrator",
+    "role": "supporting",
+    "reason": "Candidate sparse relational search with explicit nonnegative edge costs."
+   },
+   {
+    "repository": "Geometric-Labs",
+    "role": "supporting",
+    "reason": "Test homomorphism assumptions, information loss and sparse-graph cost comparisons."
+   },
+   {
+    "repository": "CubiLoom",
+    "role": "context",
+    "reason": "Possible graph/event representation; persistent semantics remain separate."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "context",
+    "reason": "Record sparsity and state-aggregation preconditions for any approved operator."
+   }
+  ],
+  "schema_version": 1,
+  "work_id": "WORK-0016",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-27",
+  "release_status": "official-release",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/Monoid_Collapse_and_Mass_Node_Traversal.pdf",
+  "source_sha256": "d9599345b6c2dd41d11070d5e3c43c38799fde72e7fdbfe04c2beff0b5a0caf0",
+  "relations": [],
+  "prior_upload": {
+   "status": "distinct supplied PDF; no exact stored source match"
+  },
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "171475615",
+   "publication_url": "https://www.academia.edu/171475615/Monoid_Collapse_and_Mass_Node_Traversal_in_Relational_Space_A_Hybrid_Coarse_Grained_Search_Framework",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "d9599345b6c2dd41d11070d5e3c43c38799fde72e7fdbfe04c2beff0b5a0caf0",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "User-supplied PDF matched to the user-supplied Academia publication title.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
+ }
+}

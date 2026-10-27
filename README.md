@@ -61,7 +61,8 @@ signature; details and remaining specification limits are in
 [specification status](docs/specification_status.md). Tests are executable
 conformance evidence, not proofs of the blueprint's physical or security claims.
 
-The [research archive](Research_IDE/archive/README.md) preserves the first eleven PDFs
+The [official paper collection](Research_IDE/official/README.md) opens by default in the Research IDE.
+The [research archive](Research_IDE/archive/README.md) preserves source PDFs and earlier references
 with hashes, revision families and reading lists across eight repositories. The earlier
 [paper intake manifest](docs/papers/README.md) links to that central library. The supplied
 [interactive walkthrough](interactive/geometric_engine_8_step_walkthrough.html)

@@ -7,7 +7,7 @@
  "authors": [],
  "source": {
   "citation": "The Torsional Markov Memory-Offload Pump: A Three-Scale Quaternionic Delta-Chain with Inverse Compensation and Non-Equilibrium Circulation",
-  "url": "",
+  "url": "https://www.academia.edu/169060820/The_Torsional_Markov_Memory_Offload_Pump_A_Three_Scale_Quaternionic_Delta_Chain_with_Inverse_Compensation_and_Non_Equilibrium_Circulation_Owl_Academy",
   "license": "unspecified in intake; release clearance pending",
   "pages": 9
  },
@@ -51,6 +51,13 @@
    "sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990",
    "bytes": 118285,
    "added": "2026-10-26"
+  },
+  {
+   "path": "workflows/official-designation.md",
+   "kind": "other",
+   "sha256": "ddd444db27ef434b21ffaa9c395cd919a4b3d53a03c0aa85cbfd43493a8bcfb4",
+   "bytes": 1012,
+   "added": "2026-10-27"
   }
  ],
  "archive": {
@@ -59,15 +66,15 @@
   "revision_label": null,
   "document_date": "2026-06-21",
   "received_date": "2026-10-26",
-  "release_status": "research-draft",
+  "release_status": "official-release",
   "disposition": "retained-reference",
   "review_level": "relevance-triaged",
   "source_artifact": "source/The_Torsional_Markov_Memory_Offload_Pump.pdf",
   "source_sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990",
   "topics": [
-   "memory",
    "delta-encoding",
    "markov-pump",
+   "memory",
    "sparsemax"
   ],
   "relevance": [
@@ -113,6 +120,20 @@
    "status": "exact-bytes-seen-previously",
    "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
   },
-  "release_record": null
+  "release_record": {
+   "basis": "owner-designated-publication",
+   "publication_id": "169060820",
+   "publication_url": "https://www.academia.edu/169060820/The_Torsional_Markov_Memory_Offload_Pump_A_Three_Scale_Quaternionic_Delta_Chain_with_Inverse_Compensation_and_Non_Equilibrium_Circulation_Owl_Academy",
+   "designated_by": "BioChainAI repository owner (explicit user instruction)",
+   "designation_date": "2026-10-27",
+   "version": null,
+   "license": null,
+   "source_sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990",
+   "evidence": "workflows/official-designation.md",
+   "source_note": "Current upload exactly matches this preserved source PDF; no duplicate file was added.",
+   "inheritance": [],
+   "replaces_references": [],
+   "scientific_verification": "Separate from official designation; existing triage/Lean status unchanged."
+  }
  }
 }
