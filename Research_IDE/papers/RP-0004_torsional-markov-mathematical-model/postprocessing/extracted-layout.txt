@@ -1,0 +1,434 @@
+             Mathematical Model for the Torsional Markov
+                      Memory-OfÒoad Pump
+                     Theoretical Physics & Topological Computation Board
+
+
+                                                    Abstract
+           You can express the system as a three-scale quaternionic Markov pump whose memory
+       is distributed across three coupled cyclic gears:
+          - Outer gear: 12-point gear, 720-frame quaternion chain
+          - Middle gear: 10-point gear, 72-frame inverse quaternion chain
+          - Inner gear: 8-point gear, 10-frame quaternion chain
+          The essential idea is:
+
+       large memory chain ←→ compressed inverse correction chain ←→ coarse equilibrium chain
+
+       where information flows both upward and downward through quaternionic delta maps while
+       preserving rotational coherence.
+
+
+1      Define the Three Quaternion Chains
+Let the three gears carry unit-quaternion states:
+
+                                      qn(12) ∈ H,       n = 0, . . . , 719
+                                       (10)
+                                      qm    ∈ H,        m = 0, . . . , 71
+                                         (8)
+                                        q`     ∈ H,        ` = 0, . . . , 9
+with
+                                                                   (8)
+                                     kqn(12) k = kqm
+                                                   (10)
+                                                        k = kq` k = 1
+The outer chain is the high-resolution memory layer, the middle chain is the inverse compen-
+sating layer, and the inner chain is the coarse torsional anchor.
+
+
+2      Outer 720-Frame Quaternion Chain
+The outer 12-point gear stores the full non-compressed rotation history as quaternionic deltas:
+                                                              
+                                                           (12) −1
+                                         ∆qn(12) = qn(12) qn−1
+
+The full state is reconstructed by
+                                                       (12)              (12) (12)
+                                   qn(12) = ∆qn(12) ∆qn−1 · · · ∆q1          q0
+
+Because the outer ring has 720 frames and 12 gear positions, each tooth corresponds to
+                                                    720
+                                                        = 60
+                                                     12
+
+                                                       1
+frames per outer tooth. So define the tooth index
+
+                                                   a(n) = n mod 12
+
+and the local frame-within-tooth index
+                                                                    jnk
+                                                         r(n) =
+                                                                       12
+This gives the outer memory address:
+                                                                (12)
+                                                               qa,r
+where a ∈ Z12 ,          r ∈ Z60 .
+
+
+3   Middle 72-Frame Inverse Quaternion Chain
+The middle 10-point gear runs inversely, so its update direction is opposite the outer gear. Let
+ (10)
+qm be the middle gear state. Its inverse delta is naturally written as
+                                                               −1
+                                             (10)    (10)    (10)
+                                           ∆qm    = qm−1 qm
+                            
+             (10)        (10) −1
+rather than qm          qm−1     . This means the middle chain absorbs or cancels torsional drift from
+the outer layer.
+   Since the middle gear has 72 frames and 10 positions, the natural scale is
+                                                           72
+                                                              = 7.2
+                                                           10
+frames per middle tooth. Because this is not an integer, the middle gear is phase-shearing rela-
+tive to the outer and inner gears. That is useful: it prevents the same alignment from repeating
+too quickly.
+    The middle address can be written as
+
+                                                   b(m) = m mod 10
+
+with phase
+                                                                         m
+                                                         φ10 (m) =
+                                                                         72
+The inverse chain is reconstructed by
+                                                                                            −1
+                                      (10)    (10)          (10)       (10)           (10)
+                                     qm    = q0          ∆q1       ∆q2        · · · ∆qm
+
+or equivalently,
+                                                                     
+                                      (10)     (10)   (10)        (10) −1 (10)
+                                     qm    = ∆qm    ∆qm−1 · · · ∆q1      q0
+
+depending on whether you want right-acting or left-acting quaternion updates.
+
+
+4   Inner 10-Frame Chain on the 8-Point Gear
+The lowest gear is the coarsest memory layer:
+                                                   (8)
+                                                  q` ,          ` = 0, . . . , 9
+
+
+                                                                2
+with deltas                                                         −1
+                                          (8)       (8)        (8)
+                                        ∆q`     = q`          q`−1
+
+Since it has 10 frames running on an 8-point gear, the phase is
+
+                                             c(`) = ` mod 8
+
+and the global phase is
+                                              `
+                                                φ8 (`) =
+                                             10
+The mismatch between 10 frames and 8 gear points creates a small torsional fold each cycle.
+This is the innermost fractal folding step.
+
+
+5     Coupling the Three Gears by Geometric Scaling
+The system should scale in one consistent direction. A natural scaling map is
+
+                                             720 → 72 → 10
+
+So the outer-to-middle projection is approximately
+                                                 j k
+                                             72     n
+                                      m=        n =
+                                            720     10
+
+and the middle-to-inner projection is                     
+                                                       10
+                                              `=          m
+                                                       72
+Thus the scale maps are                                        jnk
+                                         P12→10 (n) =
+                                                                  10
+and                                                                   
+                                                    10m
+                                        P10→8 (m) =
+                                                     72
+The corresponding lifting maps are
+
+                                         L10→12 (m) = 10m
+
+and                                                                   
+                                                     72`
+                                         L8→10 (`) =
+                                                     10
+These let information flow down and back up:
+                                          P                   P
+                                            12→10 (10) 10→8 (8)
+                                     q (12) −→   q     −→ q
+
+and
+                                         L                L
+                                         8→10 (10)
+                                   q (8) −→  q     10→12 (12)
+                                                   −→   q
+This is the memory ofÒoading pipeline.
+
+
+
+
+                                                     3
+6   Quaternionic Downsampling: OfÒoading Memory Downward
+To ofÒoad the outer 720-frame memory chain into the middle 72-frame chain, group every 10
+outer deltas together:
+                              (12→10)     (12)    (12)          (12)
+                           ∆Qm        = ∆q10m+9 ∆q10m+8 · · · ∆q10m
+for m = 0, . . . , 71. This compresses ten fine updates into one coarse torsional update.
+    Then the middle inverse gear stores the compensating inverse:
+                                                       −1
+                                       (10)     (12→10)
+                                     ∆qm    = ∆Qm
+
+So the middle layer acts as a stabilizing counter-rotation. That is the first memory ofÒoad:
+720 frames → 72 inverse blocks.
+
+
+7   Second OfÒoad: Middle Chain to Inner Chain
+Now compress the 72 middle deltas into 10 inner deltas. Since 72/10 = 7.2, use variable block
+sizes. For each inner index `, define
+                                                       
+                                                 10m
+                                      A` = m :         =`
+                                                  72
+
+Then define                                           ←
+                                         (10→8)
+                                                      Y
+                                                               (10)
+                                      ∆Q`         =          ∆qm
+                                                      m∈A`
+
+The arrow means multiplication must preserve chronological order, because quaternion multi-
+plication is noncommutative.
+    Then set
+                                       (8)     (10→8)
+                                     ∆q` = ∆Q`
+or, if the inner gear is meant to act as an equilibrium anchor,
+                                                                
+                                      (8)                 (10→8)
+                                   ∆q` = Normalize ∆Q`
+
+This gives the second memory ofÒoad: 72 inverse frames → 10 coarse equilibrium frames.
+
+
+8   Upward Reconstruction: Flowing Data Back Up the Chain
+To reconstruct fine detail from lower layers, use a lifted correction. From inner to middle:
+                                                         w m
+                                       c (10)
+                                      ∆q m    =   ∆q
+                                                     (8)
+                                                     `(m)
+                 
+where `(m) = 10m
+               72   and wm is a fractional interpolation weight.
+  For unit quaternions, fractional powers are well-defined using the exponential map:
+
+                                        q w = exp (w log q)
+
+So the lifted middle approximation is
+                                                      (10) (10)
+                                          (10)
+                                        qbm      c
+                                               = ∆q   bm−1
+                                                    m q
+
+
+
+                                                  4
+Then from middle to outer:                               
+                                       c (12)        (10) 1/10
+                                       ∆q n   =   ∆q m(n)
+               n
+where m(n) =    10   . Thus the reconstructed outer state is
+
+                                                   c (12)
+                                         qbn(12) = ∆q n q
+                                                           (12)
+                                                          bn−1
+
+This gives upward information flow: 10 → 72 → 720.
+
+
+9     Markov Pump Structure
+The image gives the directed current condition:
+
+                                      Jij = πi Kij − πj Kji > 0
+
+and
+                                       J = Jα + Jβ + Jγ > 0
+For your three-gear system, treat each gear layer as a Markov state: Xt ∈ {12, 10, 8}, where:
+    - 12 means high-resolution outer memory
+
+    - 10 means inverse middle correction
+
+    - 8 means coarse inner equilibrium
+    Define the transition matrix
+                                                          
+                                       K12,12 K12,10 K12,8
+                                  K = K10,12 K10,10 K10,8 
+                                       K8,12 K8,10 K8,8
+                                            
+with stationary distribution π = π12 π10 π8 .
+   The directed memory currents are
+
+                                   J12,10 = π12 K12,10 − π10 K10,12
+
+                                     J10,8 = π10 K10,8 − π8 K8,10
+                                     J8,12 = π8 K8,12 − π12 K12,8
+A torsional pump condition is
+                                      J12,10 + J10,8 + J8,12 > 0
+This means the system has a net directed circulation of memory, rather than passive reversible
+diffusion.
+
+
+10 Equilibrium Constraint
+To keep the whole mechanism in geometric equilibrium, require the net cycle product to close
+to identity up to a small controlled holonomy:
+
+                                        H = Q(8) Q(10) Q(12)
+
+where
+                                                   719
+                                                   Y
+                                         Q(12) =         ∆qn(12)
+                                                   n=0
+
+
+                                                   5
+                                                         71
+                                                         Y
+                                         Q(10) =                 (10)
+                                                               ∆qm
+                                                         m=0
+                                                         9
+                                                         Y
+                                               (8)               (8)
+                                           Q         =         ∆q`
+                                                         `=0
+
+Perfect closure would mean H = 1 or approximately, k log Hk ≈ 0.
+   In practice, after each cycle you renormalize: q ← kqk
+                                                        q
+                                                          and correct residual drift using  =
+log H. Then distribute the correction back through the gears:
+                                         (s)                            (s)
+                                    ∆qk ← exp (−λs ) ∆qk
+
+where s ∈ {12, 10, 8} and λ12 + λ10 + λ8 = 1. This keeps the pump coherent.
+
+
+11 Fractal Folding Inward Every Cyclic Step
+The inward folding can be described by a recursive scale map:
+
+                                                F0 = q (12)
+
+                                         F1 = P12→10 (F0 )−1
+                                           F2 = P10→8 (F1 )
+Then each full pump cycle updates by
+
+                                          Fr+1 = Pr (Fr )σr
+
+where σr ∈ {1, −1}.
+    The middle gear has σ10 = −1 because it runs inverse, while the outer and inner gears have
+σ12 = 1,     σ8 = 1. So the sign pattern is (+, −, +). This creates inward folding without losing
+orientation coherence.
+
+
+12 Algorithmic Memory-OfÒoading Procedure
+The full algorithm can be stated as follows.
+
+  1. Store outer deltas
+     For every frame n:
+                                                               
+                                                            (12) −1
+                                          ∆qn(12) = qn(12) qn−1
+
+  2. Compress outer blocks into middle inverse deltas
+     For every m = 0, . . . , 71:
+                                                              
+                                    (10)     (12)          (12) −1
+                                  ∆qm    = ∆q10m+9 · · · ∆q10m
+
+  3. Compress middle deltas into inner coarse deltas
+     For every ` = 0, . . . , 9:                           
+                                                  Y←
+                                   (8)
+                                 ∆q = Normalize 
+                                     `
+                                                       (10) 
+                                                     ∆qm
+                                                                     m∈A`
+
+
+
+
+                                                         6
+  4. Compute Markov memory current
+
+                                               Jij = πi Kij − πj Kji
+      Require:
+                                             J12,10 + J10,8 + J8,12 > 0
+
+  5. Check cycle closure
+
+                                               H = Q(8) Q(10) Q(12)
+      and enforce:
+                                                   k log Hk ≈ 0
+
+  6. Renormalize every quaternion
+                                                            q
+                                                     q←
+                                                           kqk
+
+  7. Flow data back upward when needed
+     Use quaternion interpolation:
+                                   c = exp (w log q)
+                                   ∆q
+      to lift coarse rotations back into finer chains.
+
+
+13 Final Compact Expression
+The whole torsional Markov pump can be summarized as:
+                                         1
+                                                  !
+                                         Y          (12)
+                                qn(12) =   ∆qr(12) q0
+                                                   r=n
+
+with ofÒoading maps
+                                                     10m
+                                                                         !−1
+                                                     Y
+                                      (10)
+                                    ∆qm    =                   ∆qr(12)
+                                                  r=10m+9
+
+and                                                                           
+                                                               ←
+                                                               Y
+                                    (8)
+                                 ∆q`      = Normalize                  (10) 
+                                                                      ∆qm
+                                                               m∈A`
+
+subject to the Markov pump condition
+
+                                          J12,10 + J10,8 + J8,12 > 0
+
+and the quaternionic equilibrium condition
+
+                                          H = Q(8) Q(10) Q(12) ≈ 1
+
+   So the mechanism is mathematically a multi-resolution quaternion delta chain with an
+inverse middle compensator and a non-equilibrium Markov circulation current. The outer
+layer stores fine memory, the middle layer stores inverse torsional correction, and the inner
+layer stores coarse equilibrium structure.
+
+
+
+                                                      7
+

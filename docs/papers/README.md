@@ -1,8 +1,10 @@
 # Research paper intake manifest
 
-No PDFs have been supplied. Names below are descriptive titles mentioned in the
-blueprint, not fabricated filenames or verified section citations. Place the
-actual PDFs in `core/` and `series/`; then reconcile exact links and citations.
+The initial blueprint intake below is retained for provenance. Eleven supplied PDFs are
+now preserved centrally in the [Research IDE archive](../../Research_IDE/archive/README.md),
+with [repository relevance](../../Research_IDE/archive/INDEX.md), stable RP IDs and hashes.
+Use that library for new intake rather than duplicating files into `core/` and `series/`.
+The expected-source list below is not a declaration that every named source is available.
 
 | Tier | Expected paper / source | Governed modules | Verification pillar |
 |---|---|---|---|

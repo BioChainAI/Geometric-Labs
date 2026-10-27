@@ -1,5 +1,226 @@
 {
  "schema_version": 1,
- "next_id": "RP-0001",
- "papers": []
+ "next_id": "RP-0012",
+ "papers": [
+  {
+   "id": "RP-0001",
+   "title": "Introduction to 4D Coordinate Geometry for the Golden Strassen Clifford Toroid",
+   "path": "papers/RP-0001_four-dimensional-coordinate-geometry",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "geometry",
+    "golden-torus",
+    "projection"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0002",
+   "title": "Quaternionic Delta Encoding on Golden Strassen-Clifford Toroids: Wave Collision and Sub-Cubic Matrix Optimization in the SHD-CCP 64-bit Protocol",
+   "path": "papers/RP-0002_quaternionic-delta-golden-toroids",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "delta-encoding",
+    "golden-torus",
+    "hardware",
+    "prime-sieve",
+    "projection"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0003",
+   "title": "Extending the Framework: Triple-Quad Function on a 3-Folded Packet",
+   "path": "papers/RP-0003_triple-quad-folded-packet",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "alexneth-geot",
+    "folded-features",
+    "inverse-problems",
+    "topological-data-analysis"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0004",
+   "title": "Mathematical Model for the Torsional Markov Memory-Offload Pump",
+   "path": "papers/RP-0004_torsional-markov-mathematical-model",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "delta-encoding",
+    "markov-pump",
+    "memory"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0005",
+   "title": "The Hyperbolic Sparsemax Pump: A Rational, Parity-Safe Executable Kernel for the SHD–CCP Lattice",
+   "path": "papers/RP-0005_hyperbolic-sparsemax-pump",
+   "tier": "core",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "alexneth-geot",
+    "exact-rational",
+    "markov-pump",
+    "routing",
+    "sparsemax"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0006",
+   "title": "The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine",
+   "path": "papers/RP-0006_fifteen-lemmas-monograph",
+   "tier": "core",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "certification",
+    "exact-arithmetic",
+    "foundations",
+    "memory",
+    "protocol"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-26",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0007",
+   "title": "Memory in the Twelve-Engine Hierarchy",
+   "path": "papers/RP-0007_twelve-engine-memory",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "erasure-recovery",
+    "memory",
+    "phase-routing"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-26",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0008",
+   "title": "The Geometric Engine of Time: The Fokker-Planck Prime Sieve in Quaternionic Lattices",
+   "path": "papers/RP-0008_fokker-planck-prime-sieve",
+   "tier": "core",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "certification",
+    "exact-arithmetic",
+    "frame-alignment",
+    "prime-sieve"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-26",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0009",
+   "title": "The Torsional Markov Memory-Offload Pump: A Three-Scale Quaternionic Delta-Chain with Inverse Compensation and Non-Equilibrium Circulation",
+   "path": "papers/RP-0009_torsional-memory-offload-pump",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "delta-encoding",
+    "markov-pump",
+    "memory",
+    "sparsemax"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0010",
+   "title": "The Geometric Engine of Time: Mathematical Architecture of the 6-Channel, 5-Tier Toroidal Orbital Calculator",
+   "path": "papers/RP-0010_six-channel-five-tier-architecture",
+   "tier": "series",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "clock-model",
+    "geometry",
+    "projection",
+    "tier-laws"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-27",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  },
+  {
+   "id": "RP-0011",
+   "title": "The Geometric Engine of Time: A Proposal for a Standardization of the Cubit",
+   "path": "papers/RP-0011_acoustic-cubit-standardization",
+   "tier": "core",
+   "stage": "intake",
+   "lean_status": "none",
+   "tags": [
+    "calibration",
+    "clock-model",
+    "metrology",
+    "uncertainty"
+   ],
+   "cosmo_id": "",
+   "updated": "2026-10-26",
+   "artifacts": {
+    "postprocessing": 3,
+    "source": 1
+   }
+  }
+ ]
 }

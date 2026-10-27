@@ -1,0 +1,109 @@
+{
+ "schema_version": 1,
+ "id": "RP-0002",
+ "slug": "quaternionic-delta-golden-toroids",
+ "title": "Quaternionic Delta Encoding on Golden Strassen-Clifford Toroids: Wave Collision and Sub-Cubic Matrix Optimization in the SHD-CCP 64-bit Protocol",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "Quaternionic Delta Encoding on Golden Strassen-Clifford Toroids: Wave Collision and Sub-Cubic Matrix Optimization in the SHD-CCP 64-bit Protocol",
+  "url": "",
+  "license": "unspecified in intake; release clearance pending",
+  "pages": 6
+ },
+ "tags": [
+  "delta-encoding",
+  "golden-torus",
+  "hardware",
+  "prime-sieve",
+  "projection"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-26",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "e501f7b2e3164a7eeaaf22c287684755d68e3bfe1f0d3978f44288a52e0acc01",
+   "bytes": 8595,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "c3a9d8ae77fd0a2c7408874759c7a9ab87bc61a787a71b12aaabdec421b57517",
+   "bytes": 591,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/pdfinfo.txt",
+   "kind": "other",
+   "sha256": "55e60f4c4b4b9bdd2ae16a6e5d45ce45689053a18201a9abf5a7ef88eb1aaa1f",
+   "bytes": 488,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/Quaternionic_Delta_Encoding_on_Golden_St.pdf",
+   "kind": "source-pdf",
+   "sha256": "2a2e46aba7261106c1b30d881d0630acbbe8a9ab74c4c7ecf2d92ace4f843ff2",
+   "bytes": 139520,
+   "added": "2026-10-26"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0002",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-26",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/Quaternionic_Delta_Encoding_on_Golden_St.pdf",
+  "source_sha256": "2a2e46aba7261106c1b30d881d0630acbbe8a9ab74c4c7ecf2d92ace4f843ff2",
+  "topics": [
+   "delta-encoding",
+   "golden-torus",
+   "projection",
+   "prime-sieve",
+   "hardware"
+  ],
+  "relevance": [
+   {
+    "repository": "SHD-CCP-core",
+    "role": "primary",
+    "reason": "PDF §3 motivates delta representation; any normative byte or phase meaning requires a separate profile RFC."
+   },
+   {
+    "repository": "Manifold-Projection",
+    "role": "supporting",
+    "reason": "PDF §2 supports experimental toroidal views; distinguish S³ from its torus subset."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "supporting",
+    "reason": "PDF §5 motivates a candidate MAC DAG; requires measured CPU/hardware implementation."
+   },
+   {
+    "repository": "CubiLoom",
+    "role": "context",
+    "reason": "Delta-history motivation; the document is not an event-storage specification."
+   },
+   {
+    "repository": "Geometric-Labs",
+    "role": "supporting",
+    "reason": "Counterexamples and arithmetic tests should precede promotion of geometry, prime or speed claims."
+   }
+  ],
+  "relations": [],
+  "prior_upload": {
+   "status": "no-exact-match-in-available-earlier-uploads",
+   "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
+  },
+  "release_record": null
+ }
+}

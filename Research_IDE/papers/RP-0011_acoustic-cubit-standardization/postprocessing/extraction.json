@@ -1,0 +1,9 @@
+{
+  "source_sha256": "186f8c4a7194448927fc771f4a20fdad5e5aa32247c7feff0ac94202111056fe",
+  "command": "pdftotext -layout SOURCE.pdf extracted-layout.txt",
+  "tool": "Poppler pdftotext 25.03.0",
+  "text_characters": 143733,
+  "pdf_pages": 27,
+  "status": "derived-search-text-not-a-verified-transcription",
+  "limitations": "Equations, symbols, page order and glyphs may be lost or corrupted; cite/check the unchanged PDF. No OCR or formal proof verification was performed."
+}

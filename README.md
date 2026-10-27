@@ -58,7 +58,9 @@ signature; details and remaining specification limits are in
 [specification status](docs/specification_status.md). Tests are executable
 conformance evidence, not proofs of the blueprint's physical or security claims.
 
-The [paper intake manifest](docs/papers/README.md) awaits actual PDFs. The supplied
+The [research archive](Research_IDE/archive/README.md) preserves the first eleven PDFs
+with hashes, revision families and reading lists across eight repositories. The earlier
+[paper intake manifest](docs/papers/README.md) links to that central library. The supplied
 [interactive walkthrough](interactive/geometric_engine_8_step_walkthrough.html)
 is preserved unchanged; browser assets may require Internet access.
 

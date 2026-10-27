@@ -1,0 +1,109 @@
+{
+ "schema_version": 1,
+ "id": "RP-0005",
+ "slug": "hyperbolic-sparsemax-pump",
+ "title": "The Hyperbolic Sparsemax Pump: A Rational, Parity-Safe Executable Kernel for the SHD–CCP Lattice",
+ "tier": "core",
+ "authors": [],
+ "source": {
+  "citation": "The Hyperbolic Sparsemax Pump: A Rational, Parity-Safe Executable Kernel for the SHD–CCP Lattice",
+  "url": "",
+  "license": "unspecified in intake; release clearance pending",
+  "pages": 10
+ },
+ "tags": [
+  "alexneth-geot",
+  "exact-rational",
+  "markov-pump",
+  "routing",
+  "sparsemax"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-26",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "6e4ffac4907fdbfba2e3b187fdde6b282c8534fc68c9a4ef39b61d64834180a9",
+   "bytes": 29611,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "c989fc94abe98928250e6e7d809d843603b313a06c1e305388400cd49ff0b528",
+   "bytes": 593,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/pdfinfo.txt",
+   "kind": "other",
+   "sha256": "dcd9caf387cad267da25df787255ce1d0bd445c1a55422bec2d2a4b296af8faa",
+   "bytes": 489,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/The_Hyperbolic_Sparsemax_Pump_A_Rational.pdf",
+   "kind": "source-pdf",
+   "sha256": "f3b0f01f9846edbc7906596f3b37e9cca80eca07bddf5305ee13257a7dd4f31d",
+   "bytes": 137169,
+   "added": "2026-10-26"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0005",
+  "revision_label": null,
+  "document_date": "2026-06-21",
+  "received_date": "2026-10-26",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/The_Hyperbolic_Sparsemax_Pump_A_Rational.pdf",
+  "source_sha256": "f3b0f01f9846edbc7906596f3b37e9cca80eca07bddf5305ee13257a7dd4f31d",
+  "topics": [
+   "sparsemax",
+   "exact-rational",
+   "alexneth-geot",
+   "routing",
+   "markov-pump"
+  ],
+  "relevance": [
+   {
+    "repository": "SHD-CCP-core",
+    "role": "primary",
+    "reason": "PDF §§2–10: candidate exact-rational routing operator; canonical promotion requires a reviewed profile and bounded representation."
+   },
+   {
+    "repository": "Geometric-Labs",
+    "role": "supporting",
+    "reason": "Closest mathematical source for the Fraction oracle and float AlexNet-H/GEOT router; full pump remains separate work."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "supporting",
+    "reason": "Exact fraction width/overflow and execution ABI must be specified before device parity claims."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "supporting",
+    "reason": "Store operator assumptions, numeric domain and evidence separately from author theorem tags."
+   },
+   {
+    "repository": "PolyShard-Agent",
+    "role": "context",
+    "reason": "Possible trained local feature-routing use; no production inference acceptance follows from paper triage."
+   }
+  ],
+  "relations": [],
+  "prior_upload": {
+   "status": "no-exact-match-in-available-earlier-uploads",
+   "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
+  },
+  "release_record": null
+ }
+}

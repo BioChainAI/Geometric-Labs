@@ -1,0 +1,140 @@
+{
+ "schema_version": 1,
+ "id": "RP-0006",
+ "slug": "fifteen-lemmas-monograph",
+ "title": "The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine",
+ "tier": "core",
+ "authors": [],
+ "source": {
+  "citation": "The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine",
+  "url": "",
+  "license": "unspecified in intake; release clearance pending",
+  "pages": 36
+ },
+ "tags": [
+  "certification",
+  "exact-arithmetic",
+  "foundations",
+  "memory",
+  "protocol"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-26",
+ "updated": "2026-10-26",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "d2edb7f58e44c794a70268ac43bf04692a7ac19081859e24324a581977962a7f",
+   "bytes": 223555,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "b4de87a9af7fdf495f8c1cd0a7ed5558d5760929935239efd5487ce2b9cccd82",
+   "bytes": 476,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/pdfinfo.txt",
+   "kind": "other",
+   "sha256": "4277ac18a6a5af3c0e3745dd7732d208c3136e43d00dd96e5b7a409e0b666d70",
+   "bytes": 551,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "source/The_Geometric_Engine_of_Time_The_Fifteen_Lemmas.pdf",
+   "kind": "source-pdf",
+   "sha256": "c48fc37963ac817bfd7c6dae80f08570545a424b37eaf0c32123fdd66935f74d",
+   "bytes": 715783,
+   "added": "2026-10-26"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0006",
+  "revision_label": null,
+  "document_date": "2026-10-16",
+  "received_date": "2026-10-26",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/The_Geometric_Engine_of_Time_The_Fifteen_Lemmas.pdf",
+  "source_sha256": "c48fc37963ac817bfd7c6dae80f08570545a424b37eaf0c32123fdd66935f74d",
+  "topics": [
+   "foundations",
+   "protocol",
+   "exact-arithmetic",
+   "memory",
+   "certification"
+  ],
+  "relevance": [
+   {
+    "repository": "Geometric-Labs",
+    "role": "primary",
+    "reason": "Cross-cutting reference for exact arithmetic and integration verification; preserve claim scope and per-lemma evidence."
+   },
+   {
+    "repository": "SHD-CCP-core",
+    "role": "supporting",
+    "reason": "PDF §6 proposes Tile and form semantics; compare through explicit profiles before adoption."
+   },
+   {
+    "repository": "Kernel-Registry",
+    "role": "supporting",
+    "reason": "PDF claim tags and Appendix A motivate claim/evidence registration, not automatic certification."
+   },
+   {
+    "repository": "CubiLoom",
+    "role": "supporting",
+    "reason": "PDF §7.4 and Lemma 15 motivate parity/history retention and integrity."
+   },
+   {
+    "repository": "Manifold-Projection",
+    "role": "supporting",
+    "reason": "PDF §§7.1–7.5: views, interleave and geometric handshake proposals."
+   },
+   {
+    "repository": "PolyShard-Agent",
+    "role": "context",
+    "reason": "PDF §§7.2–7.3: local frame/clock observations need explicit envelopes."
+   },
+   {
+    "repository": "Polycentric-Orchestrator",
+    "role": "context",
+    "reason": "PDF §7 system composition is a coordination proposal, not current scene materialization."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "context",
+    "reason": "PDF §7.7 names 64 streams; runtime mapping and performance remain independent engineering."
+   }
+  ],
+  "relations": [
+   {
+    "kind": "clarifies",
+    "target": "RP-0001",
+    "evidence": "Lemma 11, PDF p. 12: rational closure versus irrational angular winding; geometry alone is insufficient."
+   },
+   {
+    "kind": "clarifies",
+    "target": "RP-0002",
+    "evidence": "Lemma 14, PDF p. 20: a prime-trap sieve samples primes supplied to it; this limits earlier prime-soliton narratives."
+   },
+   {
+    "kind": "clarifies",
+    "target": "RP-0010",
+    "evidence": "Lemmas 4 and 11 separate winding/radius laws and rational versus golden closure."
+   }
+  ],
+  "prior_upload": {
+   "status": "no-exact-match-in-available-earlier-uploads",
+   "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
+  },
+  "release_record": null
+ }
+}

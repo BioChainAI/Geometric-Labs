@@ -1,0 +1,95 @@
+{
+ "schema_version": 1,
+ "id": "RP-0001",
+ "slug": "four-dimensional-coordinate-geometry",
+ "title": "Introduction to 4D Coordinate Geometry for the Golden Strassen Clifford Toroid",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "Introduction to 4D Coordinate Geometry for the Golden Strassen Clifford Toroid",
+  "url": "",
+  "license": "unspecified in intake; release clearance pending",
+  "pages": 4
+ },
+ "tags": [
+  "geometry",
+  "golden-torus",
+  "projection"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-26",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "1302cddcd90e683821f2c9c2e45e0dc505bc49d05eab3714599dd3d02d8f58a6",
+   "bytes": 3757,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "12acc41af71932e284768284b472974038d34121dc9c02a7a0802c7f43a88f0f",
+   "bytes": 591,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/pdfinfo.txt",
+   "kind": "other",
+   "sha256": "8fa1f76baf2f1df843568a9a2851dc1b0ea9e901bc546ffc7f1e2f0e322f0966",
+   "bytes": 488,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/Introduction_to_4D_Coordinate_Geometry_f.pdf",
+   "kind": "source-pdf",
+   "sha256": "0ac941df0ba95de85ba14cf570b2c87a45f1e940a1ceb25022f0bfc05f86f9df",
+   "bytes": 113213,
+   "added": "2026-10-26"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0001",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "2026-10-26",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/Introduction_to_4D_Coordinate_Geometry_f.pdf",
+  "source_sha256": "0ac941df0ba95de85ba14cf570b2c87a45f1e940a1ceb25022f0bfc05f86f9df",
+  "topics": [
+   "geometry",
+   "golden-torus",
+   "projection"
+  ],
+  "relevance": [
+   {
+    "repository": "Manifold-Projection",
+    "role": "primary",
+    "reason": "PDF §§2–5: parameterization and winding visualization, with coordinate-domain checks."
+   },
+   {
+    "repository": "Geometric-Labs",
+    "role": "supporting",
+    "reason": "Reference tests for golden radii and distinction between geometry and trajectory assumptions."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "context",
+    "reason": "Potential sampling workload only; no executable kernel or benchmark is supplied."
+   }
+  ],
+  "relations": [],
+  "prior_upload": {
+   "status": "no-exact-match-in-available-earlier-uploads",
+   "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
+  },
+  "release_record": null
+ }
+}

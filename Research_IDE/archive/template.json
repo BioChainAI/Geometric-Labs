@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "work_id": "WORK-0000",
+  "revision_label": null,
+  "document_date": null,
+  "received_date": "YYYY-MM-DD",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "unreviewed",
+  "source_artifact": "source/original-filename.pdf",
+  "source_sha256": "REPLACE_WITH_ACTUAL_SHA256",
+  "topics": ["replace-topic"],
+  "relevance": [
+    {"repository": "Geometric-Labs", "role": "primary", "reason": "REPLACE with section/page and concrete application."}
+  ],
+  "relations": [],
+  "prior_upload": {"status": "unknown", "basis": "REPLACE with scope of comparison."},
+  "release_record": null
+}

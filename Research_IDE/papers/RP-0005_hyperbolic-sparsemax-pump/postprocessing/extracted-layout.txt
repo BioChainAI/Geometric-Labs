@@ -1,0 +1,514 @@
+                                                                                                           1
+
+
+
+
+                   The Hyperbolic Sparsemax Pump:
+      A Rational, Parity-Safe Executable Kernel for the SHD–CCP Lattice
+
+                                             Owl Academy
+                                              BioChain AI
+                                              Garrett Hoard
+
+                                              June 21, 2026
+
+
+                                                 Abstract
+     We construct a deterministic transition kernel (the Hyperbolic Sparsemax Kernel ) on the 64-
+     voxel toroidal lattice V = (Z/4Z)3 underlying the Symbolic High-Dimensional Context Com-
+     pression Protocol (SHD–CCP), and prove that it is rational, row-stochastic, exactly sparse, and
+     free of transcendental operations. Each voxel carries a rational unit quaternion whose scalar
+     part is confined to a bounded annulus. A square-root-free Lorentz lift sends each spinor to
+     an exactly rational point of the hyperboloid H3 , on which a rational hyperbolic quadrance
+                      2
+     Qh = ⟨q̃i , q̃j ⟩L − 1 = sinh2 dH acts as a symmetric, nonnegative, point-separating metric kernel.
+     Logits formed from Qh , a bounded inverse temperature, and a torsional resistance term are
+     projected onto the probability simplex by sparsemax. Because this projection uses only field
+     arithmetic, comparison, and positive-part thresholding, the entire executable pipeline is closed
+     in Q; the computation is therefore bit-reproducible across hardware and the discrete SHD–
+     CCP parity invariant is protected. Equipping the sparsemax support with a symmetric rational
+     base walk and a rational reverse-valve yields an executable kernel K  b that remains rational and
+     row-stochastic while breaking detailed balance relative to the reversible base measure, with a
+     nonnegative (and, under a mild support condition, strictly positive) base-referenced forward
+     current. Replacing the rational valve by an exponential valve recovers the analytic softmax
+     companion (the Torsional Trefoil Markov Pump). All stated results are proved; we close by de-
+     limiting the scope of the current-positivity statement and the role of the topological vocabulary.
+
+
+1    Introduction
+The analytic companion to this work (the Torsional Trefoil Markov Pump) provides a continuous
+mechanism that breaks detailed balance and advances a longitudinal binding scalar through an
+asymmetric transition kernel. Realising such dynamics on discrete, dynamically reconfigurable
+hardware is delicate: transcendental primitives (exponentials, logarithms, square roots, inverse
+hyperbolic functions) are evaluated in floating point, and the resulting rounding drift can corrupt
+the discrete invariants the protocol relies on to avoid gridlock.
+    This paper isolates the part of the construction that can be executed exactly. We reserve the
+words softmax and exponential attenuation for the analytic limit, and on the executable lattice we
+use instead a sparsemax rectifier together with a rational attenuation valve. The key observation is
+structural rather than numerical: sparsemax is a Euclidean projection onto the probability simplex,
+so it is computed with arithmetic, comparison, and thresholding alone and never leaves the field
+Q. Combined with a square-root-free lift to the hyperboloid, this keeps every executable quantity
+rational, which is exactly what makes the pipeline deterministic and reproducible across devices.
+The Hyperbolic Sparsemax Pump                                                                       2
+
+
+    We carefully separate the spinor that encodes local orientation from the point that carries
+the hyperbolic score: orientation lives on the quaternion sphere S 3 , while scoring is performed
+after a Lorentz lift to the hyperboloid H3 . With this separation in place, the remainder of the
+paper proves that the executable kernel is rational, row-stochastic, sparse, parity-safe, and capable
+of supporting a base-referenced forward current, and that its analytic completion reproduces the
+continuous pump.
+
+
+2    Lattice, Spinors, and Standing Assumptions
+The lattice.    The ambient discrete space is the toroidal lattice
+
+                                      V = (Z/4Z)3 ,         |V | = 64,
+
+partitioned into a core of 8 voxels and a mantle of 56 voxels. A voxel is indexed by a triple
+of residues modulo 4. In the SHD–CCP interpretation the three axes correspond to the three
+arms of the trefoil and the four coordinate positions to four phases; torsional chirality and phase-
+lifting resolve the six signed face-neighbor directions into a 12-channel coupling space, in which
+several channels may project onto the same lattice neighbor while remaining distinct before row
+aggregation. This labeling fixes the chirality and resistance conventions used below; as recorded in
+the scope remarks of Section 13, the theorems themselves do not depend on it.
+
+Spinors and the lift.      Each voxel i ∈ V carries a rational spinor
+
+                qi = (wi , mi ) ∈ S 3 ∩ Q4 ,     mi = (xi , yi , zi ),   wi2 + ∥mi ∥2 = 1.
+
+We write the Minkowski bilinear form on R4 as
+
+                                          ⟨a, b⟩L = a0 b0 − a · b.
+
+Standing assumptions.
+Assumption A1 (Rational annular spinors). Every spinor is a rational unit quaternion with scalar
+part bounded away from both extremes,
+
+                                      0 < wmin ≤ wi ≤ wmax < 1.
+
+Assumption A2 (Rational hardware constraints). The torsional resistance is Aij = A0 sij χij with
+A0 , sij ∈ Q≥0 , attenuation strength λ ∈ Q>0 , and chirality indicator χij ∈ {0, 1} (0 on forward
+edges, 1 on reverse edges).
+Assumption A3 (Candidate neighborhood). For each voxel i, the finite candidate set Ni consists
+of the self-loop i → i together with the face-neighbor transitions resolved through the 12 torsional
+channel labels.
+Assumption A4 (Octet residual quarantine). No transcendental function is evaluated in the
+executable 64-state transition path. Irrational residuals are recorded only in a separate parity
+buffer and are never fed back into the rational kernel before rationalization.
+   Our objective is to define a transition row Si· over Ni , using only rational operations, such that
+every entry is a nonnegative rational, the row sums to one, most entries are exactly zero, and no
+exponential, root, or trigonometric evaluation is required.
+The Hyperbolic Sparsemax Pump                                                                           3
+
+
+3    The Rational Lorentz Lift
+Definition 1 (Lorentz lift). For qi = (wi , mi ) with wi > 0 define
+                                                                                               
+                                           1                             1 x i y i zi
+                            Φ(qi ) = q̃i =    (1, mi ) =                   ,  ,   ,                 .
+                                           wi                            wi wi wi wi
+
+Theorem 2 (Closed rational lift). Under Assumption A1, for every i the lift q̃i has rational
+coordinates and lies on the positive sheet of the hyperboloid
+                                          
+                                      H3 = q̃ : ⟨q̃, q̃⟩L = 1, q̃0 > 0 .
+
+Proof. Compute the Minkowski self-product:
+
+                                                         2             2       1 − ∥mi ∥2
+                                                     1
+                               ⟨q̃i , q̃i ⟩L =                 −   mi
+                                                                             =              .
+                                                     wi            wi                wi2
+
+Since qi ∈ S 3 we have wi2 + ∥mi ∥2 = 1, hence 1 − ∥mi ∥2 = wi2 and
+
+                                                                    wi2
+                                                 ⟨q̃i , q̃i ⟩L =        = 1.
+                                                                    wi2
+
+Moreover q̃i,0 = 1/wi > 0, so q̃i ∈ H3 . All coordinates are quotients of rationals with nonzero
+rational denominator wi , hence rational.
+                                                  q
+Remark 3. The lift exploits the identity wi = 1 − ∥mi ∥2 , which holds automatically for a unit
+quaternion. Storing the scalar part explicitly therefore removes the square root that the standard
+ball-to-hyperboloid map would require, and is what keeps Φ inside Q. The orientation spinor
+qi ∈ S 3 and its hyperbolic score point q̃i ∈ H3 are distinct objects related by Φ.
+
+
+4    Hyperbolic Quadrance
+Definition 4 (Hyperbolic quadrance). For lifted points q̃i , q̃j define
+
+                                           Qh (i, j) = ⟨q̃i , q̃j ⟩2L − 1.
+
+   This is a rational surrogate for the hyperbolic distance dH (i, j) = arcosh ⟨q̃i , q̃j ⟩L , whose eval-
+uation would introduce a transcendental function. Since ⟨q̃i , q̃j ⟩L = cosh dH , one has Qh =
+cosh2 dH − 1 = sinh2 dH , a monotone, rational function of distance.
+
+Theorem 5 (Quadrance is a rational metric kernel). For all i, j,
+
+                                Qh (i, j) ∈ Q≥0 ,                  Qh (i, j) = Qh (j, i),
+
+                                         Qh (i, j) = 0 ⇐⇒ qi = qj .
+The Hyperbolic Sparsemax Pump                                                                                   4
+
+
+Proof. Rationality and symmetry. From Definition 1,
+
+                                                1      m i · mj   1 − mi · m j
+                             ⟨q̃i , q̃j ⟩L =         −          =              ∈ Q,
+                                               wi wj    wi wj        wi wj
+                                      2
+so Qh (i, j) = (1 − mi · mj )/(wi wj ) − 1 is rational, and it is symmetric because mi · mj = mj · mi .
+     Nonnegativity. As unit vectors in R4 , the Cauchy–Schwarz inequality gives qi · qj ≤ 1. Writing
+qi · qj = wi wj + mi · mj yields wi wj + mi · mj ≤ 1, i.e.
+
+                                               1 − mi · mj ≥ wi wj > 0.
+
+Dividing by wi wj > 0 gives ⟨q̃i , q̃j ⟩L ≥ 1, hence
+
+                                           Qh (i, j) = ⟨q̃i , q̃j ⟩2L − 1 ≥ 0.
+
+     Point separation. Equality ⟨q̃i , q̃j ⟩L = 1 is equivalent to qi · qj = 1, which for unit vectors holds
+iff qi = qj . The lift is injective: from q̃i one recovers wi = 1/q̃i,0 and then mi = wi (q̃i,1 , q̃i,2 , q̃i,3 ).
+Therefore Qh (i, j) = 0 ⇐⇒ ⟨q̃i , q̃j ⟩L = 1 ⇐⇒ qi = qj .
+
+
+5    Rational Hyperbolic Logits
+Definition 6 (Inverse temperature and executable logit). For each i set the bounded inverse
+temperature
+
+                                                         1 − wi
+                                                  βi =          ∈ Q>0 ,
+                                                           wi
+
+and for each candidate j ∈ Ni define the executable logit
+
+                                           zi→j = −βi Qh (i, j) − λ Aij .
+
+Lemma 7 (Rational logits). Under Assumptions A1–A2, zi→j ∈ Q for every j ∈ Ni .
+
+Proof. By Theorem 5, Qh (i, j) ∈ Q; by hypothesis βi , λ, Aij ∈ Q. The field Q is closed under
+addition and multiplication, so −βi Qh (i, j) − λAij ∈ Q.
+
+
+6    Sparsemax Projection
+                                                               P
+Definition 8 (Sparsemax row). Let ∆i = {p ∈ R|Ni | : pj ≥ 0,      j∈Ni pj = 1} be the probability
+simplex on Ni . The sparsemax row is the Euclidean projection of the logit vector zi· onto ∆i :
+
+                                 Si· = sparsemax(zi· ) = arg min ∥p − zi· ∥22 .
+                                                                 p∈∆i
+
+
+    Equivalently, sparsemax is the α = 2 member of the entmax family, whose α = 1 limit is
+softmax.
+The Hyperbolic Sparsemax Pump                                                                              5
+
+
+Theorem 9 (Closed form). The minimizer in Definition 8 is unique and given by
+
+                              Sij = [zi→j − τi ]+ ,            [x]+ = max(x, 0),
+                                      P
+where τi is the unique value with         j∈Ni [zi→j − τi ]+ = 1. If Ai = {j : zi→j > τi } denotes the active
+set, then
+                                                    P
+                                                        j∈Ai zi→j − 1
+                                             τi =                       .
+                                                           |Ai |
+
+Proof. Minimize 21 ∥p − z∥22 over ∆i via the Lagrangian
+                                  X                     X            X
+                L(p, τ, µ) = 12       (pj − zj )2 + τ          pj − 1 −  µ j pj ,   µj ≥ 0.
+                                  j                        j                j
+
+
+Stationarity gives pj − zj + τ − µj = 0, i.e. pj = zj − τ + µj . Complementary slackness µj pj = 0
+forces pj = zj − τ when pj > 0 (so µj = 0), and zj − τ ≤ 0 whenPpj = 0. Both cases are summarized
+by pj = [zj − τ ]+ . The multiplier τ is fixed by feasibility      [z − τ ]+ = 1; on the active set
+                             P                                  Pj j         
+Ai = {j : zj > τ } this reads j∈Ai (zj − τ ) = 1, whence τ =      j∈Ai zj − 1 /|Ai |. Strict convexity
+of the squared Euclidean norm on the convex set ∆i gives uniqueness.
+
+
+7    The Hyperbolic Sparsemax Kernel
+Definition 10 (Kernel). The Hyperbolic Sparsemax Kernel is the row operator
+                                                             
+                        Sij = sparsemaxj −βi Qh (i, j) − λAij = [zi→j − τi ]+ .
+
+Theorem 11 (Executable validity). Under Assumptions A1–A4 the row Si· satisfies:
+  (i) (Rationality) Sij ∈ Q for all j;
+                                      P
+ (ii) (Probability row) Sij ≥ 0 and j∈Ni Sij = 1;
+(iii) (Exact sparsity) Sij = 0 whenever zi→j ≤ τi ;
+ (iv) (Nonempty support) the active set Ai = {j : Sij > 0} is nonempty, and the self-loop is always
+      among the maximizers.
+
+Proof. (i) By Lemma 7 the logits are rational. The   P active set Ai is determined by comparisons of
+rationals, which are exact; the threshold τi = ( j∈Ai zi→j − 1)/|Ai | has rational numerator and
+positive-integer denominator, so τi ∈ Q. Each Sij = [zi→j − τi ]+ is then either a rational or 0,
+hence rational.
+P (ii) Nonnegativity is immediate from the positive part, and τi is defined precisely so that
+   j [zi→j − τi ]+ = 1.
+     (iii) If zi→j ≤ τi then zi→j − τi ≤ 0, so [zi→j − τi ]+ = 0; inactive candidates receive exactly zero
+mass, not a small positive value.
+     (iv) If every Sij were 0 the row sum would be 0, contradicting (ii); hence Ai ̸= ∅. For the
+self-loop, Theorem 5 gives Qh (i, i) = 0, and with Aii = 0 we obtain zi→i = 0. For any other
+candidate Qh (i, j) ≥ 0 and Aij ≥ 0, so zi→j = −βi Qh (i, j) − λAij ≤ 0 ≤ zi→i . Thus the self-logit
+is maximal and the self-loop lies among the maximizers, preventing support collapse.
+The Hyperbolic Sparsemax Pump                                                                              6
+
+
+8    Symmetric Base Walk and Rational Reverse-Valve
+To turn the sparse kernel into a pump we add a rational asymmetry layer on its support.
+
+Definition 12 (Reverse-valve). For Aij ≥ 0 define
+
+                                                1
+                                    ρij =            ∈ Q,                 0 < ρij ≤ 1,
+                                            1 + λAij
+
+with ρij < 1 exactly when Aij > 0.
+
+Definition 13 (Symmetric base walk). Let the positive sparsemax support determine the admis-
+sible undirected edges, and choose symmetric rational weights Wij = Wji ∈ Q≥0 on them. Set
+
+                            X                        X                           di                Wij
+                     di =       Wij ,        D=             di ,         πi0 =      ,     Pij0 =       .
+                                                                                 D                 di
+                            j                          i
+
+
+Proposition 14 (Reversibility of the base walk). P 0 is reversible with respect to π 0 .
+                      di Wij   Wij                         Wji
+Proof. πi0 Pij0 =            =     and likewise πj0 Pji0 =     ; since Wij = Wji , detailed balance
+                      D di     D                           D
+πi0 Pij0 = πj0 Pji0 holds.
+
+Definition 15 (Valve-modified pump kernel). Partition the supported oriented edges into a forward
+set E + (edges following forward chirality) and the reverse set E − = {(j, i) : (i, j) ∈ E + }. Define
+                                 
+                                 
+                                  Pij0 ,                                           (i, j) ∈ E + ,
+                                 
+                                 
+                                  0
+                           b ij = Pij ρij ,                                         (i, j) ∈ E − ,
+                           K                X
+                                 
+                                    0+                        0
+                                                                        
+                                 
+                                  P                         Pik 1 − ρik ,          j = i.
+                                  ii
+                                              k:(i,k)∈E −
+
+
+Reverse mass is attenuated and the rejected mass is returned to the diagonal.
+
+Theorem 16 (K                                                b ij ∈ Q, and for every i, P K
+            b is rational and row-stochastic). For all i, j, K                             b ij = 1.
+                                                                                         j
+
+                                                                      b is rational. Fix a row i. Every
+Proof. All of Wij , di , D, Pij0 , ρij are rational, so each entry of K
+                                                                                    P
+supported off-diagonal target is either forward or reverse, so starting from j Pij0 = 1 the only
+changes are, for each reverse edge (i, k), a reduction of the off-diagonal mass from Pik 0 to P 0 ρ , i.e.
+                                                                                               ik ik
+               0 (1 − ρ ), which is added back to the diagonal. The reverse contributions recombine
+a removal of Pik         ik
+     0 ρ + P 0 (1 − ρ ) = P 0 , so
+as Pik  ik   ik        ik         ik
+
+                      X                 X                     X                         X
+                           b ij =
+                           K                      Pij0 +                   0
+                                                                         Pik + Pii0 =         Pij0 = 1.
+                       j            j:(i,j)∈E +            k:(i,k)∈E −                    j
+The Hyperbolic Sparsemax Pump                                                                          7
+
+
+9    Broken Detailed Balance and Forward Current
+Theorem 17 (Base-referenced forward current). For a forward edge (i, j) ∈ E + define the base-
+referenced current
+
+                                            Jij0 = πi0 K          b
+                                                       b ij − π 0 K
+                                                               j ji .
+
+Then
+                                                   Wij        
+                                          Jij0 =       1 − ρji ≥ 0,
+                                                   D
+                                                         b is not reversible with respect to π 0 ,
+with Jij0 > 0 whenever Wij > 0 and ρji < 1. Consequently K
+and the total forward current satisfies
+                                     X                    X         Wij        
+                            J0 =               Jij0 =                   1 − ρji ≥ 0,
+                                                                    D
+                                   (i,j)∈E +            (i,j)∈E   +
+
+
+
+with J0 > 0 as soon as at least one supported forward edge has Wij > 0 and ρji < 1.
+                                b ij = P 0 , while the reverse transition is K
+Proof. For (i, j) ∈ E + we have K                                            b ji = P 0 ρji because
+                                        ij                                           ji
+          −
+(j, i) ∈ E . Hence
+
+                                           Jij0 = πi0 Pij0 − πj0 Pji0 ρji .
+
+By Proposition 14, πi0 Pij0 = πj0 Pji0 = Wij /D, so
+
+                                          Wij   Wij       Wij        
+                                 Jij0 =       −     ρji =     1 − ρji .
+                                          D     D         D
+
+Since Wij ≥ 0 and 0 < ρji ≤ 1, we get Jij0 ≥ 0, strictly positive when Wij > 0 and ρji < 1. A single
+edge with Jij0 ̸= 0 already violates detailed balance with respect to π 0 . Summing over E + gives the
+stated total current.
+
+
+10     Determinism and Parity Safety
+Theorem 18 (Closure in Q). Under Assumptions A1–A4, every executable quantity of the Hy-
+perbolic Sparsemax Pump lies in Q: the spinors qi , the lifts q̃i , the quadrances Qh (i, j), the logits
+zi→j , the thresholds τi , the sparsemax entries Sij , the base weights Wij , the valve factors ρij , and
+the pump entries K  b ij .
+
+Proof. Theorems 2, 5, Lemma 7, and Theorems 11, 16 establish rationality of each listed quantity.
+Every step uses only field operations, comparisons of rationals, and the positive part max(·, 0), each
+of which maps Q to Q. By Assumption A4 no transcendental value enters the 64-state path. Hence
+the pipeline is closed in Q.
+
+Corollary 19 (Parity safety). If rationals are stored in canonical reduced form, then two nodes
+sharing a seed compute bitwise-identical rows Si· and pump rows Kb i· . No floating-point drift can
+therefore alter a discrete parity invariant such as
+
+                                 torusWinding(mantle) mod 7 = core.
+The Hyperbolic Sparsemax Pump                                                                       8
+
+
+Proof. Canonical reduced fractions are unique and hardware-agnostic, so by Theorem 18 the en-
+tire computation is exact and reproducible; the discrete modular relation is a function of exactly
+computed integers and is preserved.
+
+
+11     Annular (Derrick) Stability
+Proposition 20 (Bounded inverse temperature). Under Assumption A1, the inverse temperature
+is uniformly bounded:
+
+                                       1 − wmax        1 − wmin
+                                0<              ≤ βi ≤          < ∞.
+                                         wmax            wmin
+
+Consequently the kernel avoids the delta-collapse limit βi → ∞ (forced as wi → 0+ ) and the
+uniform-diffusion limit βi → 0 (forced as wi → 1− ).
+
+Proof. The map w 7→ (1−w)/w is strictly decreasing on (0, 1) and continuous on the closed annulus
+[wmin , wmax ], so it attains the displayed finite, positive rational bounds. Neither degenerate limit
+is reachable from within the annulus.
+
+   Ties in the active set are separated either by a bounded rational perturbation of βi (or of
+the active-set threshold) when the tied alternatives differ in quadrance or resistance, or otherwise
+by a deterministic canonical rule, e.g. lexicographic voxel–channel ordering. The kernel therefore
+remains stable and deterministic.
+
+
+12     Synthesis
+Theorem 21 (Hyperbolic Sparsemax Pump). Let
+
+                                     V = (Z/4Z)3 ,          qi ∈ S 3 ∩ Q 4 ,
+
+                                        wi ∈ [wmin , wmax ] ⊂ (0, 1),
+
+                                Aij = A0 sij χij ∈ Q≥0 ,             λ ∈ Q>0 .
+
+Then the construction
+
+                                    1
+                            q̃i =      (1, mi ),       Qh (i, j) = ⟨q̃i , q̃j ⟩2L − 1,
+                                    wi
+
+                         zi→j = −βi Qh (i, j) − λAij ,            Sij = [zi→j − τi ]+
+
+defines a rational, exactly sparse, row-stochastic executable kernel (Theorems 2–11). When equipped
+with a symmetric rational base walk P 0 and the rational reverse-valve ρij = 1/(1+λAij ) that returns
+rejected reverse mass to the diagonal, the resulting kernel K  b remains rational and row-stochastic
+(Theorem 16) while breaking detailed balance relative to π 0 , with base-referenced forward current
+                                           X                            
+                                J0 =                 πi0 K          b
+                                                         b ij − π 0 K       ≥ 0,
+                                                                 j ji
+                                         (i,j)∈E +
+The Hyperbolic Sparsemax Pump                                                                       9
+
+
+strictly positive whenever some supported forward edge has nonzero affinity and nontrivial reverse
+attenuation (Theorem 17). The whole executable pipeline is closed in Q and parity-safe (Theo-
+rem 18, Corollary 19), and is annularly stable (Proposition 20).
+
+Analytic companion. If the rational valve is replaced by the exponential valve ρij = e−λAij and
+sparsemax by the Gibbs/softmax row, the construction reproduces the analytic Torsional Trefoil
+Markov Pump, for which the forward current is strictly positive on every supported forward edge.
+The rational kernel above is the executable, parity-safe counterpart of that analytic limit.
+
+
+13     Discussion and Scope
+Remark 22 (On the current). Theorem 17 establishes that K  b is not reversible with respect to the
+                0
+base measure π and that the induced base-referenced current is nonnegative, and strictly positive
+under the stated support condition. The stronger claim that K    b sustains a nonzero stationary
+                                                                      b = π̂) is not asserted here;
+probability current under its own invariant measure π̂ (satisfying π̂ K
+computing π̂ and its circulation is a natural next step and is what would justify the “pump”
+interpretation in the strongest sense.
+Remark 23 (Relation to established results). The construction reuses standard components: the
+sparsemax projection and its threshold characterization [1, 3], the entmax family that interpolates
+to softmax [2], the reversible random walk on a weighted graph [6], and the hyperboloid model of
+hyperbolic space [5]; the term quadrance follows rational trigonometry [4]. The specific contribution
+is their exact-rational realization: a square-root-free Lorentz lift together with a sparsemax (rather
+than softmax) rectifier keep every executable quantity in Q, which is precisely what makes the
+pipeline bit-reproducible and the parity invariant safe.
+Remark 24 (On the topological vocabulary). The trefoil arms, torsional chirality, annular (Derrick)
+stability, and the modular parity invariant supply modeling motivation and fix the chirality and
+resistance conventions of Section 2. The theorems above hold for any rational annular spinor field
+on V and any symmetric rational base weight on the sparsemax support, and do not depend on
+this interpretation.
+
+
+14     Conclusion
+We have given a deterministic, strictly rational, hardware-executable transition kernel on the 64-
+voxel SHD–CCP lattice. By scoring with a square-root-free Lorentz lift and a rational hyperbolic
+quadrance, and by rectifying with sparsemax rather than softmax, the executable pipeline never
+leaves Q: it is rational, row-stochastic, exactly sparse, bit-reproducible, and parity-safe. A sym-
+metric base walk with a rational reverse-valve breaks detailed balance relative to the reversible
+base measure and produces a nonnegative, conditionally strictly positive base-referenced forward
+current, while the exponential limit recovers the analytic pump. The Hyperbolic Sparsemax Pump
+is thus the parity-safe, executable member of the family whose analytic completion is the Torsional
+Trefoil Markov Pump.
+
+
+References
+[1] A. F. T. Martins and R. F. Astudillo. From softmax to sparsemax: A sparse model of attention
+    and multi-label classification. In Proc. ICML, 2016.
+The Hyperbolic Sparsemax Pump                                                                10
+
+
+[2] B. Peters, V. Niculae, and A. F. T. Martins. Sparse sequence-to-sequence models. In Proc.
+    ACL, 2019.
+
+[3] M. Blondel, A. F. T. Martins, and V. Niculae. Learning with Fenchel–Young losses. Journal of
+    Machine Learning Research, 21(35):1–69, 2020.
+
+[4] N. J. Wildberger. Divine Proportions: Rational Trigonometry to Universal Geometry. Wild
+    Egg, 2005.
+
+[5] J. G. Ratcliffe. Foundations of Hyperbolic Manifolds. Graduate Texts in Mathematics 149,
+    Springer, 3rd edition, 2019.
+
+[6] D. A. Levin, Y. Peres, and E. L. Wilmer. Markov Chains and Mixing Times. American
+    Mathematical Society, 2nd edition, 2017.
+

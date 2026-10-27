@@ -1,0 +1,464 @@
+                                                                                                           1
+
+
+
+
+         The Torsional Markov Memory-Offload Pump:
+     A Three-Scale Quaternionic Delta-Chain with Inverse Compensation and
+                         Non-Equilibrium Circulation
+
+                                               Owl Academy
+                                               BioChain AI
+                                               Garrett Hoard
+
+                                               June 21, 2026
+
+
+                                                  Abstract
+       We formalize a three-scale quaternionic Markov pump whose rotational memory is distributed
+       across three coupled cyclic gears: an outer high-resolution memory layer (12-point gear, 720-
+       frame chain), a middle inverse-compensating layer (10-point gear, 72-frame chain), and an inner
+       coarse-equilibrium layer (8-point gear, 10-frame chain). Each layer stores unit-quaternion incre-
+       ments (deltas); coarse layers are obtained from fine layers by ordered products of consecutive
+       deltas, and fine detail is reconstructed from coarse layers by fractional-power (SLERP) lifts. We
+       show that the block products telescope to exact net rotations, that the variable down-sampling
+       blocks partition the frame index, and that the fractional-power lift reconstructs exactly on the
+       principal branch. Treating the three gear layers as the states of a Markov chain, a net cyclic
+       current J12,10 + J10,8 + J8,12 > 0 encodes directed (non-reversible) circulation of memory rather
+       than passive diffusion; at stationarity the three edge currents coincide, so the pump condition
+       reduces to positivity of a single cycle current. Geometric coherence is maintained by closing the
+       cycle product H = Q(8) Q(10) Q(12) to the identity up to a controlled holonomy, with residual
+       drift redistributed across the gears. We close by describing how this multi-resolution mem-
+       ory hierarchy interoperates with the executable, parity-safe Hyperbolic Sparsemax Pump, with
+       which it shares both the unit-quaternion state space and the broken-detailed-balance current
+       condition.
+
+
+1     Introduction
+The system is a three-scale quaternionic Markov pump whose memory is distributed across three
+coupled cyclic gears. Informally,
+
+    large memory chain ←→ compressed inverse correction chain ←→ coarse equilibrium chain,
+
+where information flows both upward and downward through quaternionic delta maps while pre-
+serving rotational coherence. The outer chain is the high-resolution memory layer, the middle chain
+is the inverse compensating layer, and the inner chain is the coarse torsional anchor. The remainder
+of this paper makes each arrow precise: downward flow compresses fine rotation history into coarse
+torsional updates, and upward flow lifts coarse rotations back into finer chains through quaternion
+interpolation. A three-state Markov current supplies the directed circulation that distinguishes an
+active memory pump from passive reversible storage, and a holonomy constraint keeps the whole
+mechanism in geometric equilibrium.
+The Torsional Markov Memory-Offload Pump                                                                                       2
+
+
+2      The Three Quaternion Chains
+Definition 1 (Gear states). Let the three gears carry unit-quaternion states
+
+                                                                                               (8)
+        qn(12) ∈ H (n = 0, . . . , 719),           (10)
+                                                  qm    ∈ H (m = 0, . . . , 71),              qℓ     ∈ H (ℓ = 0, . . . , 9),
+
+with
+                                                                        (8)
+                                           qn(12) = qm
+                                                     (10)
+                                                          = qℓ                  = 1.
+
+   The outer chain (12-point gear, 720 frames) stores the full non-compressed rotation history; the
+middle chain (10-point gear, 72 frames) stores the inverse compensating correction; and the inner
+chain (8-point gear, 10 frames) stores the coarse equilibrium structure.
+
+
+3      Outer 720-Frame Chain
+The outer gear stores the rotation history as quaternionic deltas,
+
+                                                                     (12) −1
+                                              ∆qn(12) = qn(12) qn−1             ,
+
+so that the full state is reconstructed by the ordered product
+
+                                                              (12)        (12) (12)
+                                     qn(12) = ∆qn(12) ∆qn−1 · · · ∆q1         q0 .
+
+With 720 frames distributed over 12 gear positions there are 720/12 = 60 frames per outer tooth.
+Writing the tooth index and the local frame-within-tooth index as
+                                                                                    n
+                                      a(n) = n mod 12,               r(n) =         12    ,
+
+                                           (12)
+yields the outer memory address qa,r with a ∈ Z12 and r ∈ Z60 .
+
+
+4      Middle 72-Frame Inverse Chain
+The middle gear runs inversely, so its update direction is opposite that of the outer gear. Its inverse
+delta is written
+                                         (10)    (10)  (10) −1
+                                      ∆qm     = qm−1 qm
+               (10)   (10)
+rather than qm (qm−1 )−1 ; in this orientation the middle chain absorbs and cancels torsional drift
+from the outer layer. With 72 frames over 10 positions the natural scale is
+
+                                                          72
+                                                          10 = 7.2
+
+frames per middle tooth. Because this is not an integer, the middle gear is phase-shearing relative
+to the outer and inner gears, which prevents the same alignment from recurring too quickly. The
+middle address and phase are
+
+                                                                               m
+                                     b(m) = m mod 10,                φ10 (m) = 72 ,
+The Torsional Markov Memory-Offload Pump                                                                  3
+
+
+and the inverse chain is reconstructed (in left-acting form) by
+
+                              (10)     (10)               (10)              (10) −1 (10)
+                             qm    = ∆qm    ∆qm−1 · · · ∆q1                         q0 .
+
+
+5    Inner 10-Frame Chain on the 8-Point Gear
+The lowest gear is the coarsest memory layer, with deltas
+
+                                               (8)          (8)    (8) −1
+                                       ∆qℓ           = qℓ         qℓ−1        .
+
+With 10 frames running on an 8-point gear, the phase and global phase are
+
+                                                                              ℓ
+                                   c(ℓ) = ℓ mod 8,                  φ8 (ℓ) = 10 .
+
+The mismatch between 10 frames and 8 gear points produces a small torsional fold each cycle, the
+innermost folding step.
+
+
+6    Inter-Scale Coupling
+The system scales in one consistent direction, 720 → 72 → 10. The down-sampling (projection)
+maps are
+                                               n                                  10m 
+                           P12→10 (n) =        10     ,           P10→8 (m) =        72          ,
+
+and the corresponding lifting maps are
+                                                                                    72ℓ 
+                            L10→12 (m) = 10m,                     L8→10 (ℓ) =        10      .
+
+These let information flow down,
+
+                                           P                           P
+                                                         −−→ q (8) ,
+                                          −−−→ q (10) −−10→8
+                                 q (12) −−12→10
+
+and back up,
+                                       L                           L
+                                                      −−−→ q (12) .
+                                         −−→ q (10) −−10→12
+                                 q (8) −−8→10
+
+This is the memory-offloading pipeline.
+
+
+7    Downward Offload I: Outer to Middle
+To offload the outer 720-frame chain into the middle 72-frame chain, group every ten consecutive
+outer deltas into one coarse update,
+
+                     (12→10)        (12)             (12)                  (12)
+                   ∆Qm       = ∆q10m+9 ∆q10m+8 · · · ∆q10m ,                         m = 0, . . . , 71,
+The Torsional Markov Memory-Offload Pump                                                                        4
+
+
+and store its inverse in the middle gear,
+
+                                                      (10)     (12→10)
+                                                                                 −1
+                                                    ∆qm    = ∆Qm                       ,
+
+so that the middle layer acts as a stabilizing counter-rotation. The coarse update is exactly the net
+rotation across its block.
+
+Proposition 2 (Block telescoping). For every m,
+
+                                               (12→10)           (12)          (12)    −1
+                                             ∆Qm       = q10m+9 q10m−1                       .
+
+                                    (12)      (12)    (12)
+Proof. Each factor is ∆qk                  = qk      (qk−1 )−1 . In the ordered product the inner factors cancel
+pairwise:
+
+                (12)                (12)     (12)       (12)    −1 (12)   (12) −1        (12) (12) −1
+           ∆q10m+9 · · · ∆q10m = q10m+9 q10m+8                     q10m+8 q10m+7    · · · q10m q10m−1    ,
+
+         (12)          (12)
+leaving q10m+9 (q10m−1 )−1 . (Associativity of quaternion multiplication is all that is used; commu-
+tativity is not.)
+
+    This realizes the first offload: 720 fine frames become 72 inverse blocks.
+
+
+8    Downward Offload II: Middle to Inner
+Compressing the 72 middle deltas into 10 inner deltas requires variable block sizes, since 72/10 =
+7.2. For each inner index ℓ define the block
+                                                           n         10m       o
+                                                    Aℓ =       m:       72     =ℓ ,
+
+and set the coarse update to the chronologically ordered product
+
+                                                       (10→8)
+                                                                     Y
+                                                                     ←
+                                                                                (10)
+                                                    ∆Qℓ         =             ∆qm    .
+                                                                    m∈Aℓ
+
+
+The order matters because quaternion multiplication is noncommutative. The inner delta is either
+this product or, when the inner gear is to act as an equilibrium anchor, its normalization,
+
+                              (8)          (10→8)                       (8)                      (10→8) 
+                          ∆qℓ       = ∆Qℓ                 or        ∆qℓ       = Normalize ∆Qℓ               .
+
+Proposition 3 (The   P blocks partition the middle index). The sets A0 , . . . , A9 are disjoint and cover
+{0, . . . , 71}, with 9ℓ=0 |Aℓ | = 72. Each block has size |Aℓ | ∈ {7, 8}.
+
+Proof. The map m 7→ ⌊10m/72⌋ is nondecreasing and sends {0, . . . , 71} onto {0, . . . , 9} (at m = 71,
+⌊710/72⌋ = 9), so its level sets Aℓ partition the domain. Each level set is an interval of integers of
+length either ⌈7.2⌉ = 8 or ⌊7.2⌋ = 7, and the lengths sum to the size of the domain, 72.
+
+    This realizes the second offload: 72 inverse frames become 10 coarse equilibrium frames.
+The Torsional Markov Memory-Offload Pump                                                                    5
+
+
+9    Upward Reconstruction
+To reconstruct fine detail, coarse rotations are lifted by fractional powers. For unit quaternions the
+fractional power is defined through the exponential map,
+                                                           
+                                          q w = exp w log q ,
+
+which is the standard spherical-linear (SLERP) interpolation of a rotation. From inner to middle,
+with ℓ(m) = ⌊10m/72⌋ and a fractional weight wm ,
+
+                              (10)       (8)   wm                (10)        (10)      (10)
+                          ∆c qm    = ∆qℓ(m)          ,          qbm    = ∆c q m    qbm−1 ;
+
+and from middle to outer, with m(n) = ⌊n/10⌋,
+
+                                         (10) 1/10                                      (12)
+                         ∆c qn(12) = ∆qm(n)              ,          qbn(12) = ∆c qn(12) qbn−1 .
+
+Upward flow thus proceeds 10 → 72 → 720. The 1/10 exponent distributes one coarse rotation
+evenly across the ten fine frames it governs.
+Proposition 4 (Exact fractional reconstruction). Let q ∈ H be a unit quaternion with rotation
+                                                                   N
+angle in (−π, π), and take the principal branch of log. Then q 1/N    = q for every positive integer
+                                          (12)               (10)                                    (10)
+N ; in particular ten applications of ∆c qn      = (∆qm(n) )1/10 recover the coarse increment ∆qm(n) .
+
+Proof. On the principal branch log q = 2θ û for a unit imaginary axis û and angle θ ∈ (−π, π), so
+                    
+q 1/N = exp N1 log q has axis û and angle θ/N with |θ/N | < π. Powers of a quaternion about a
+                                   N
+fixed axis add angles, hence q 1/N    has axis û and angle θ, i.e. equals q.
+
+
+10     Markov Pump Structure
+Treat each gear layer as the state of a Markov chain, Xt ∈ {12, 10, 8}, where 12 is the high-resolution
+outer memory, 10 the inverse middle correction, and 8 the coarse inner equilibrium. Let
+                                               
+                            K12,12 K12,10 K12,8
+                                               
+                      K = K10,12 K10,10 K10,8  ,                        π = (π12 , π10 , π8 ),
+                            K8,12 K8,10 K8,8
+
+be a row-stochastic transition matrix with stationary distribution π. The directed memory currents
+on the three-cycle are
+
+                  J12,10 = π12 K12,10 − π10 K10,12 ,                J10,8 = π10 K10,8 − π8 K8,10 ,
+
+
+                                     J8,12 = π8 K8,12 − π12 K12,8 .
+
+The torsional pump condition is a net directed circulation,
+
+                                      J12,10 + J10,8 + J8,12 > 0,
+The Torsional Markov Memory-Offload Pump                                                                            6
+
+
+meaning the system actively circulates memory rather than diffusing reversibly.
+
+Lemma 5 (The cycle current is single-valued). For an irreducible chain on {12, 10, 8} with sta-
+tionary π (so πK = π), the three edge currents coincide,
+
+                                               J12,10 = J10,8 = J8,12 =: J,
+
+and hence the pump condition J12,10 + J10,8 + J8,12 > 0 is equivalent to J > 0.
+                                            P
+Proof. Stationarity at state 12 gives π12 = j πj Kj,12 , i.e. π12 (K12,10 +K12,8 ) = π10 K10,12 +π8 K8,12
+after cancelling the self-term π12 K12,12 from both sides. Rearranged, this is J12,10 = J8,12 . The
+same balance at state 10 gives J10,8 = J12,10 . Thus all three currents are equal, and their sum is
+3J.
+
+Remark 6. On a single cycle there is exactly one independent current, so the three-term condition
+is, at stationarity, the positivity of that one circulation; Lemma 5 makes this explicit. This is the
+discrete analogue of a nonzero Schnakenberg cycle affinity [3].
+
+
+11     Equilibrium and Holonomy Control
+To keep the mechanism in geometric equilibrium, require the net cycle product to close to the
+identity up to a small, controlled holonomy. Writing the per-layer net rotations
+
+                             719
+                             Y                                 71
+                                                               Y                                9
+                                                                                                Y       (8)
+                   Q(12) =         ∆qn(12) ,         Q(10) =           (10)
+                                                                     ∆qm    ,          Q(8) =         ∆qℓ ,
+                             n=0                               m=0                              ℓ=0
+
+
+form the holonomy
+
+                                                  H = Q(8) Q(10) Q(12) .
+
+Perfect closure is H = 1, and in practice one enforces ∥log H∥ ≈ 0. After each cycle the states are
+renormalized, q ← q/ ∥q∥, the residual drift ε = log H is measured, and the correction is distributed
+across the gears,
+
+        (12)                        (12)          (10)                          (10)         (8)              (8)
+     ∆qk       ← exp(−λ12 ε) ∆qk           ,   ∆qk       ← exp(−λ10 ε) ∆qk             ,   ∆qk ← exp(−λ8 ε) ∆qk ,
+
+with the allocation weights summing to one,
+
+                                                  λ12 + λ10 + λ8 = 1.
+
+This is a structure-preserving (Lie-group) renormalization that keeps the pump coherent across
+cycles [4].
+The Torsional Markov Memory-Offload Pump                                                                                     7
+
+
+12      Inward Folding (Schematic)
+The inward folding across cycles can be described schematically by a recursive scale map. Starting
+from the outer layer and alternating the projection direction,
+
+                     F0 = q (12) ,          F1 = P12→10 (F0 )−1 ,                 F2 = P10→8 (F1 ),
+
+each pump cycle updates by
+
+                                      Fr+1 = Pr (Fr )σr ,        σr ∈ {+1, −1}.
+
+The middle gear carries σ10 = −1 because it runs inversely, while the outer and inner gears carry
+σ12 = σ8 = +1, giving the sign pattern (+, −, +). This produces inward folding without losing
+orientation coherence.
+Remark 7 (Reading of this section). The equations here are a schematic for the alternating, sign-
+staggered folding; P12→10 and P10→8 denote the layer down-sampling acting on the corresponding
+chain, whose precise quaternionic form is the ordered-product offload of Sections 7–8, and σr records
+the inverse orientation of the middle gear. The sign pattern (+, −, +) is the operative content.
+
+
+13      Algorithm and Compact Form
+The full memory-offloading procedure is:
+                               (12)       (12)   (12)
+ (1) Store outer deltas ∆qn           = qn (qn−1 )−1 for every frame n.
+                                                                              (10)            (12)         (12) −1
+ (2) Compress outer blocks into middle inverse deltas, ∆qm                              = ∆q10m+9 · · · ∆q10m          for m =
+     0, . . . , 71.
+                                                                            (8)                      Q←      (10) 
+ (3) Compress middle deltas into inner coarse deltas, ∆qℓ                         = Normalize         m∈Aℓ ∆qm      for ℓ =
+     0, . . . , 9.
+ (4) Compute the Markov current Jij = πi Kij − πj Kji and require J12,10 + J10,8 + J8,12 > 0.
+ (5) Check cycle closure H = Q(8) Q(10) Q(12) and enforce ∥log H∥ ≈ 0.
+ (6) Renormalize every quaternion, q ← q/ ∥q∥.
+ (7) Flow data upward when needed via ∆c q = exp(w log q) to lift coarse rotations into finer
+     chains.
+     Compactly, the mechanism is the multi-resolution delta chain
+                                                      Q                
+                                                           1     (12)        (12)
+                                           qn(12) =        r=n ∆qr          q0      ,
+
+with offload maps
+                         Q                                                                Q                 
+                (10)          10m        (12) −1                 (8)                             ←      (10)
+              ∆qm    =        r=10m+9 ∆q r       ,            ∆qℓ      = Normalize               m∈Aℓ ∆qm          ,
+
+subject to the Markov pump condition J12,10 + J10,8 + J8,12 > 0 and the quaternionic equilibrium
+condition H = Q(8) Q(10) Q(12) ≈ 1. The outer layer stores fine memory, the middle layer stores
+inverse torsional correction, and the inner layer stores coarse equilibrium structure.
+The Torsional Markov Memory-Offload Pump                                                           8
+
+
+14    Interoperability with the Hyperbolic Sparsemax Pump
+The companion Hyperbolic Sparsemax Pump [1] is an executable, parity-safe transition kernel on
+the 64-voxel SHD–CCP lattice: rational, row-stochastic, exactly sparse, and free of transcendental
+operations. The two constructions are complementary rather than redundant, and they share
+enough structure to be coupled directly.
+
+A common non-equilibrium primitive. Both pumps are driven by the same broken-detailed-
+balance current. The sparsemax pump defines a base-referenced current Jij0 = πi0 K  b ij − π 0 K
+                                                                                               b
+                                                                                            j ji on
+the lattice; the present pump defines Jij = πi Kij − πj Kji on the gear layers. These are the same
+primitive at two scales: the sparsemax current circulates orientation within the fine lattice, while
+the torsional current (Lemma 5) circulates memory between the three coarse layers. A single design
+quantity, the cycle affinity, governs both.
+
+A shared state space. Both layers represent states as unit quaternions. The sparsemax voxel
+spinors qi = (wi , mi ) ∈ S 3 ∩ Q4 are exactly the kind of unit quaternion stored by the outer chain
+    (12)
+as qn . The sparsemax kernel can therefore act as the per-frame generator of the outer memory
+chain: each lattice transition emits a unit-quaternion increment, and the offload pump compresses
+the resulting 720-frame history downward and reconstructs it upward on demand.
+
+A clean rational/transcendental split. The sparsemax forward path is deliberately exact-
+rational, with no exp, log, or root, so that the discrete parity invariant is bit-reproducible. The
+offload pump’s upward reconstruction, by contrast, uses fractional powers q w = exp(w log q), and
+its holonomy correction uses ε = log H. This division of labour maps precisely onto the sparsemax
+paper’s octet-residual quarantine, which requires that transcendental and irrational quantities never
+re-enter the rational kernel: one keeps the rational sparsemax kernel on the executable forward path
+and confines the SLERP lifts and holonomy correction to the offline memory-reconstruction layer,
+where such residuals are already quarantined. Where reconstructed states must re-enter the lattice,
+they are rationalized first, exactly as the quarantine prescribes.
+
+A shared torsional index. Both constructions carry a 12-fold torsional structure: the sparse-
+max lattice resolves its face-neighbor transitions into 12 torsional coupling channels, and the outer
+gear here is a 12-point gear. Identifying the two gives one 12-fold index that the fine kernel scores
+and the coarse pump compresses.
+    In combination, the sparsemax pump is the rational, parity-safe transition engine at the leaf
+scale, and the torsional offload pump is the multi-resolution memory hierarchy that stores, com-
+presses, and reconstructs the orientation history that engine produces, both governed by the same
+directed-circulation condition. Together they realize a complete context-compression loop for the
+SHD–CCP setting that both papers address.
+
+
+15    Scope and Outlook
+This paper specifies a constructive model. The local results are proved: the block products tele-
+scope to exact net rotations (Proposition 2), the down-sampling blocks partition the middle index
+(Proposition 3), the fractional-power lift reconstructs exactly on the principal branch (Proposi-
+tion 4), and the three gear currents coincide at stationarity (Lemma 5). The global claims, that
+the pump offloads and reconstructs memory coherently, are an engineering design rather than a
+The Torsional Markov Memory-Offload Pump                                                         9
+
+
+theorem: quantitative reconstruction-error bounds (the fractional lift is exact only on a single
+principal-branch increment, not for accumulated drift) and the existence of an explicit transition
+matrix K and stationary π realizing a prescribed cycle affinity are natural next steps. The inward-
+folding recursion of Section 12 is schematic, as noted there. With these caveats, the mechanism
+is, mathematically, a multi-resolution quaternion delta chain with an inverse middle compensator
+and a non-equilibrium Markov circulation current, designed to interoperate with the executable
+Hyperbolic Sparsemax Pump.
+
+
+References
+[1] G. Hoard. The Hyperbolic Sparsemax Pump: a rational, parity-safe executable kernel for the
+    SHD–CCP lattice. BioChain AI / Owl Academy, companion paper, 2026.
+
+[2] K. Shoemake. Animating rotation with quaternion curves. In Proc. SIGGRAPH, pages 245–254,
+    1985.
+
+[3] J. Schnakenberg. Network theory of microscopic and macroscopic behavior of master equation
+    systems. Reviews of Modern Physics, 48(4):571–585, 1976.
+
+[4] E. Hairer, C. Lubich, and G. Wanner. Geometric Numerical Integration: Structure-Preserving
+    Algorithms for Ordinary Differential Equations. Springer Series in Computational Mathematics
+    31, 2nd edition, 2006.
+
+[5] D. A. Levin, Y. Peres, and E. L. Wilmer. Markov Chains and Mixing Times. American
+    Mathematical Society, 2nd edition, 2017.
+

@@ -1,0 +1,118 @@
+{
+ "schema_version": 1,
+ "id": "RP-0009",
+ "slug": "torsional-memory-offload-pump",
+ "title": "The Torsional Markov Memory-Offload Pump: A Three-Scale Quaternionic Delta-Chain with Inverse Compensation and Non-Equilibrium Circulation",
+ "tier": "series",
+ "authors": [],
+ "source": {
+  "citation": "The Torsional Markov Memory-Offload Pump: A Three-Scale Quaternionic Delta-Chain with Inverse Compensation and Non-Equilibrium Circulation",
+  "url": "",
+  "license": "unspecified in intake; release clearance pending",
+  "pages": 9
+ },
+ "tags": [
+  "delta-encoding",
+  "markov-pump",
+  "memory",
+  "sparsemax"
+ ],
+ "stage": "intake",
+ "lean_status": "none",
+ "lean_verification": null,
+ "cosmo_id": "",
+ "created": "2026-10-26",
+ "updated": "2026-10-27",
+ "artifacts": [
+  {
+   "path": "postprocessing/extracted-layout.txt",
+   "kind": "other",
+   "sha256": "1ac2660850c550e8096cd69564407593e6345f10d579f23791644816ec9bc375",
+   "bytes": 26562,
+   "added": "2026-10-26"
+  },
+  {
+   "path": "postprocessing/extraction.json",
+   "kind": "other",
+   "sha256": "622330e6c90ee29b125c560ae20b46ef1d477ed6a4bb4fffe27aff9e7b7da9d7",
+   "bytes": 592,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "postprocessing/pdfinfo.txt",
+   "kind": "other",
+   "sha256": "830946f7982cfa7deff7b760b9e489a49ff34f2af9b965242a38b28a82ad7cab",
+   "bytes": 488,
+   "added": "2026-10-27"
+  },
+  {
+   "path": "source/The_Torsional_Markov_Memory_Offload_Pump.pdf",
+   "kind": "source-pdf",
+   "sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990",
+   "bytes": 118285,
+   "added": "2026-10-26"
+  }
+ ],
+ "archive": {
+  "schema_version": 1,
+  "work_id": "WORK-0004",
+  "revision_label": null,
+  "document_date": "2026-06-21",
+  "received_date": "2026-10-26",
+  "release_status": "research-draft",
+  "disposition": "retained-reference",
+  "review_level": "relevance-triaged",
+  "source_artifact": "source/The_Torsional_Markov_Memory_Offload_Pump.pdf",
+  "source_sha256": "5d5544494f2b626665b645df364b5d5f2cf122090169b0e4c3555856298d2990",
+  "topics": [
+   "memory",
+   "delta-encoding",
+   "markov-pump",
+   "sparsemax"
+  ],
+  "relevance": [
+   {
+    "repository": "CubiLoom",
+    "role": "primary",
+    "reason": "PDF §§3–5 and 15 motivate ordered block history and retained residuals; storage/replay remains to be built."
+   },
+   {
+    "repository": "Geometric-Labs",
+    "role": "supporting",
+    "reason": "Test noncommutative telescoping, partitions, branch cases and memory-loss limits."
+   },
+   {
+    "repository": "FractalOS-runtime",
+    "role": "supporting",
+    "reason": "PDF §14 requires a declared rational/transcendental execution boundary."
+   },
+   {
+    "repository": "Polycentric-Orchestrator",
+    "role": "supporting",
+    "reason": "PDF §7 current model may inform a future scheduling policy after K and π are specified."
+   },
+   {
+    "repository": "PolyShard-Agent",
+    "role": "context",
+    "reason": "Potential local history compression; do not export private fine history by implication."
+   }
+  ],
+  "relations": [
+   {
+    "kind": "related-to",
+    "target": "RP-0004",
+    "evidence": "Same named three-scale pump and 720/72/10 construction; fuller exposition but no declared revision/supersession relationship."
+   },
+   {
+    "kind": "related-to",
+    "target": "RP-0005",
+    "evidence": "PDF §14 (pp. 7–8) explicitly explains interoperability with the rational sparsemax companion."
+   }
+  ],
+  "prior_upload": {
+   "status": "exact-bytes-seen-previously",
+   "basis": "SHA-256 comparison of available earlier session attachments; not a historical completeness claim."
+  },
+  "release_record": null
+ }
+}

@@ -1,0 +1,22 @@
+Title:
+Subject:
+Keywords:
+Author:
+Creator:
+Producer:        GPL Ghostscript 10.02.1
+CreationDate:    Mon Apr  6 09:00:03 2026 UTC
+ModDate:         Mon Apr  6 09:00:03 2026 UTC
+Custom Metadata: no
+Metadata Stream: yes
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           4
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       113213 bytes
+Optimized:       no
+PDF version:     1.7

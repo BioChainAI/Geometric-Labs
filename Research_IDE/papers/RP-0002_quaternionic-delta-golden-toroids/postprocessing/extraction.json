@@ -1,0 +1,10 @@
+{
+  "source_sha256": "2a2e46aba7261106c1b30d881d0630acbbe8a9ab74c4c7ecf2d92ace4f843ff2",
+  "command": "pdftotext -layout SOURCE.pdf extracted-layout.txt",
+  "tool": "Poppler pdftotext 25.03.0",
+  "text_characters": 8590,
+  "pdf_pages": 6,
+  "status": "derived-search-text-not-a-verified-transcription",
+  "limitations": "Equations, symbols, page order and glyphs may be lost or corrupted; cite/check the unchanged PDF. No OCR or formal proof verification was performed.",
+  "pdfinfo_postprocessing": "Trailing horizontal whitespace removed; extracted-layout.txt and source PDF unchanged."
+}

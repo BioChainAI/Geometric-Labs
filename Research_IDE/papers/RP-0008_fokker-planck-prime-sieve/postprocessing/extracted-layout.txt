@@ -1,0 +1,2315 @@
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+
+               The Geometric Engine of Time:
+              The Fokker-Planck Prime Sieve in
+                   Quaternionic Lattices
+                            BioChain AI — SHD-CCP Architecture Research
+                             Consolidated Technical Report (Continued Series)
+
+
+         Abstract
+         This installment of The Geometric Engine of Time formalizes the Fokker-Planck
+         prime sieve on quaternionic lattices and proves what it can and cannot do. On a
+         lattice the sieve is a master equation whose Gibbs state is positive on every node;
+         absorbing prime traps send all mass to the primes with the harmonic measure,
+         and on the infinite Hurwitz lattice the sieve is defined exactly when the Hurwitz
+         partition function converges. Drift along lattice lines without a potential cannot
+         sieve: by the cycle-current formula of the cubit installment it carries a current and
+         produces entropy, yet its stationary state is uniform. The sieve therefore does not
+         compute the primes. Under the series' Dual-Helix principle it proposes trap sites
+         and exact arithmetic certifies them, and the Engine's 30-node wheel gives the
+         proposer a proven bias of 3.75, the largest of any primorial wheel whose unit
+         classes fit the packet's 3-bit wheel field. The sieve lives in four dimensions. The
+         golden Clifford torus contains no lattice point, while its Fibonacci approximants
+         carry the points (F_m, F_{m+1}, F_{m−1}, F_m), whose prime norms beyond 3,
+         namely 7, 47 and 2207, are congruent to 7 mod 8 and so missing from every
+         three-dimensional lattice. In exact arithmetic the sieve has no drift, and a periodic
+         delta schedule returns to the identity within 12 repetitions or never. The
+         quaternions 1 ± 2i, 1 ± 2j, 1 ± 2k turn the six steps of the cubic lattice into a free
+         group whose words form a 6-regular hyperbolic tree over the cubic lattice; every
+         address factors back to its unique word, and reduction modulo a prime gives
+         Ramanujan graphs on which the sieve's diffusion mixes in 3.25 time units against
+         20.15 on a cubic torus of the same size. On the Einstein Tile the sieve reads the
+         Form 1 Hurwitz core in exact 64-bit arithmetic and certifies prime-norm anchor
+         packets with a 2,017-byte table. Anchored to the realized cubit, whose uncertainty
+         caps the informative quadrance near 2.3 × 10⁷, the Triple Quad Formula stays
+         exact in 64-bit integers, where double precision declares a non-collinear lattice
+         triangle collinear. Together these define a universal lattice standard on which
+         agents with no shared orientation, medium or history align non-locally by
+         invariants and locally by Horn's quaternion method, with every alignment certified
+         exactly and recorded under a Merkle root. Its use for AI communication, alignment
+         and governance is stated as a design proposal; the mathematics beneath it is
+         proven, established or computed.
+
+
+
+                                                       —1—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+      Editorial Note. This document is an installment of The Geometric Engine of Time (Hoard
+      2026a), cited in the series as Hoard (2026e), and formalizes the source note The Fokker-Planck
+      Prime Sieve in Quaternionic Lattices. It contains the sieve, its proofs and what it enables. The
+      status of every claim, the audit of the source note and of the companion papers, the open
+      problems with their test protocols, and the relation to earlier versions are collected in its
+      companion, Status of Claims, Audit and Open Problems (Hoard 2026h). The paper imports the
+      companion papers of the SHD-CCP research programme, cited as BioChain AI (2026a–i), the
+      proofs of The Fifteen Lemmas of the Geometric Engine (Hoard 2026, cited as Fifteen Lemmas),
+      and the metrology and exact results of A Proposal for a Standardization of the Cubit (Hoard
+      2026d), whose conventions it follows. All quantitative claims are annotated with status tags:
+      [PROVEN], [HEURISTIC], [CONJECTURAL], [OPEN], [SUPERSEDED], refined by five tags
+      defined under Epistemic Conventions and Scope.
+
+
+ Contents
+ Epistemic Conventions and Scope                                                                              3
+ 1 Sources                                                                                                    4
+       1.1 The Sources and Where They Enter                                                                    4
+       1.2 The Fifteen Lemmas in This Paper                                                                    5
+       1.3 The Cubit Standard in This Paper                                                                    6
+ 2 The Lattice Fokker-Planck Equation                                                                         7
+       2.1 The Master Equation and Its Stationary State                                                        7
+       2.2 Absorbing Traps and the Dual-Helix Sampler                                                          8
+       2.3 The Infinite Lattice and Drift Without a Potential                                                  9
+ 3 Geometry Proposes, Arithmetic Certifies                                                                   10
+       3.1 The Sieve as a Helix A Oracle                                                                     11
+       3.2 Exact Certification at Every Scale                                                                12
+ 4 The Four-Dimensional Setting                                                                              13
+       4.1 The Hurwitz Order and the Three-Square Obstruction                                                13
+       4.2 Canonical Forms and Unique Factorization                                                          14
+ 5 Prime Nodes on the Golden Clifford Torus                                                                  15
+       5.1 The Torus and the Delta Encoding                                                                  15
+       5.2 No Lattice Point on the Golden Torus                                                              15
+       5.3 Fibonacci Approximants and Lucas Primes                                                           16
+ 6 Exact Arithmetic and Closure                                                                              17
+ 7 Procedural Generation in Hyperbolic Space and the Standardization of Cubic Integers                       18
+       7.1 The Cubic Lattice as an Abelian Shadow                                                            18
+       7.2 Generation by Shift and Add                                                                       19
+       7.3 Why Coordinates Cannot Align Hyperbolic Agents                                                    19
+       7.4 A Finite Meeting Space by Congruence                                                              19
+       7.5 The Modular Group, the Engine's Channels and the Hurwitz Units                                    21
+       7.6 The Lorentz Lift and the Scalar-Zero Boundary                                                     21
+       7.7 The Standard for Procedurally Generated Cubic Integers                                            22
+ 8 The Sieve on the SHD-CCP 64-Bit Packet                                                                    22
+       8.1 The Einstein Tile                                                                                 23
+       8.2 The Sieve Pipeline on One Packet                                                                  24
+
+
+                                                       —2—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)         Geometric Engine of Time
+
+
+
+         8.3 TQF Pruning, Restated                                                                                   25
+ 9 A Universal Lattice for Interoperable Alignment and Governance                                                    26
+         9.1 The Problem: Agents Without a Shared Frame                                                              27
+         9.2 The Layers of the Standard                                                                              27
+         9.3 Non-Local Alignment by Invariants                                                                       28
+         9.4 Local Alignment and Exact Certification                                                                 28
+         9.5 One-Way Compatibility and Complementary Encodings                                                       29
+         9.6 Consensus, Governance and the Limits of a Coherence Score                                               29
+ 10 Relation to the Geometric Engine of Time                                                                         31
+ 11 Conclusion                                                                                                       33
+ A Computational Verification                                                                                        33
+ B Notation and Construction Catalogue                                                                               35
+ References                                                                                                          36
+
+
+
+
+ Epistemic Conventions and Scope
+ Every claim carries one of ten tags: the nine of the series, as fixed in the cubit installment
+ (Hoard 2026d, Table 1), and [CORRESPONDENCE], adopted from the Fifteen Lemmas. Claims
+ taken from a companion paper keep the tag that paper's own argument supports, which is not
+ always the tag the paper gave itself.
+
+                                  Table 1: Status tags used in this installment.
+
+   Tag                      Meaning                                                 Example in this paper
+
+   [PROVEN]                 A deductive result with a complete proof in this        No lattice point on the golden
+                            document. Series tag; exact arithmetic on stated        torus (Theorem 5.2)
+                            inputs is tagged [COMPUTED].
+
+   [CORRESPONDENCE]         Two finite sets of equal size, or two equal numbers;    W_Σ = 60 equals the exponent
+                            no structure-preserving map is claimed. Adopted         of 2I (Section 6)
+                            from the Fifteen Lemmas.
+
+   [DEFINITION]             A convention adopted here. It can be useful or not,     The sieve's reading of the
+                            but not true or false.                                  Einstein Tile (Definition 8.1)
+
+   [ESTABLISHED]            Standard mathematics, cited and not re-proved.          Lubotzky–Phillips–Sarnak
+                                                                                    Ramanujan graphs
+
+   [COMPUTED]               A number obtained by evaluating a stated formula.       Mixing time 3.25 on X(5, 13)
+                            Reproducible from Appendix A.
+
+   [EMPIRICAL]              A comparison with measured data.                        Not used in this paper
+
+   [HEURISTIC]              A modelling choice motivated by analogy, not            The lattice standard as an AI
+                            derived. Series tag.                                    alignment layer
+
+   [CONJECTURAL]            A claim that would need new evidence to be              Oracle bias above 1 for factoring
+                            accepted. Series tag.                                   (BioChain AI 2026a)
+
+   [OPEN]                   A stated question awaiting proof or test. Series tag.   A lattice line with infinitely many
+                                                                                    prime-norm nodes (companion,
+                                                                                    Problem 2)
+
+   [SUPERSEDED]             A claim of a source replaced by a corrected             The source note's prime-basis
+                            statement. Series tag.                                  expansion (Section 2.1)
+
+
+
+
+                                                        —3—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)       Geometric Engine of Time
+
+
+
+ Rule for mixed claims. As in the cubit installment (Hoard 2026d), a computed value of a
+ heuristic formula is tagged [HEURISTIC / COMPUTED]: the arithmetic is checked, but the
+ modelling choice is not thereby established. The precision horizons of Section 8.2 are the
+ example here.
+
+ What this paper does not claim.
+
+       It does not claim a faster primality test, prime sieve or factoring method. Every
+       construction that places a prime trap uses an exact primality test.
+       It does not claim that a geometric standard solves AI alignment. Section 9 proposes a
+       communication and certification layer, tagged [HEURISTIC] where it goes beyond the
+       mathematics.
+       It does not claim that the quaternionic lattice is a physical system. The Fokker-Planck
+       dynamics are a mathematical model; the cubit gives lattice addresses a physical scale
+       (Section 8.1), not the dynamics a physical mechanism.
+
+ Relation to the series. Section 1 maps every source, every lemma of the Fifteen Lemmas
+ and every result of the cubit installment used here to the sections that use it. Section 10 lists
+ where the Geometric Engine of Time supplies the most accurate method of calculation, and
+ where it is only the source of a construction.
+
+ Relation to the companion. This paper states and proves. Where it replaces a claim of the
+ source note or of a companion paper, it states the replacement and leaves the comparison to
+ the companion (Hoard 2026h), which also holds the consolidated status of claims, the errata,
+ the open problems and the history of this installment. Appendix A verifies the numbers of both
+ documents.
+
+ Notation. Inline mathematics is set in plain text (for example N(q) = a² + b² + c² + d²);
+ display equations are typeset.
+
+
+
+ 1 Sources
+ The paper formalizes one source note and draws on fifteen further sources: four installments of
+ the Engine series, the Fifteen Lemmas monograph, nine companion papers of the SHD-CCP
+ programme and one external paper on quantum codes.
+
+
+ 1.1 The Sources and Where They Enter
+ Each row of Table 2 names a source, what it supplies and the sections that use it. Section 10
+ states where a series construction is the most accurate way to calculate and where it is a
+ source only.
+
+                                 Table 2: Where each source enters this paper.
+
+   Label       Paper                                 What it supplies                                   Sections
+
+   Source      The Fokker-Planck Prime Sieve in      The master equation, the prime potential and       2, 3, 4, 8
+   note        Quaternionic Lattices                 traps, TQF lines, the precision horizon
+
+   Hoard       The Geometric Engine of Time:         W_Σ = 60, the 30-node closure, the TQF area        3, 4, 6, 7.5,
+   2026a       Mathematical Architecture of the 6-   invariant, the C₃ × C₂ channels, the alternating   8, 9, 10
+               Channel, 5-Tier Toroidal Orbital      embedding
+               Calculator
+
+
+                                                       —4—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)          Geometric Engine of Time
+
+
+
+   Label         Paper                                 What it supplies                                   Sections
+
+   Hoard         The Torsional Markov Memory-          Cycle currents of a non-gradient drift             2.3
+   2026b         Offload Pump
+
+   Hoard         The Hyperbolic Sparsemax Pump         The rational Lorentz lift and the kernel Q_h       7.6
+   2026c
+
+   Hoard         A Proposal for a Standardization of   Tag conventions; the cycle-current formula; the    2.3, 3.1,
+   2026d         the Cubit                             base-6 and ℤ/30 wheels; the realized cubit, its    4.2, 8, 9,
+                                                       uncertainty and medium-free modes; the joint       10
+                                                       0.5 s closure; the cube group of the tier
+                                                       rotations
+
+   Fifteen       The Fifteen Lemmas of the             Proofs of Lemmas 1 to 15 and the Einstein Tile     2 to 10
+   Lemmas        Geometric Engine (Hoard 2026)
+
+   BioChain      A Unified Dual-Helix Framework for    Geometry proposes, arithmetic certifies; the       2, 3, 7.6, 9
+   AI 2026a      Geometrically-Guided Pollard's Rho    FP4 sampler; the Lorentz lift; the Oracle Bias
+                                                       Hypothesis
+
+   BioChain      The Golden Strassen-Clifford          The Helix A and Helix B roles                      3
+   AI 2026b      Geodesic Embedding
+
+   BioChain      Quaternionic Delta Encoding on        The golden Clifford torus and its delta encoding   5
+   AI 2026c      Golden Strassen-Clifford Toroids
+
+   BioChain      Topological Symmetry Folding and      The hyperbolic projection; the question whether    6, 7
+   AI 2026d      Hyperbolic Projection in the SHD-     it runs on shifts
+                 CCP Framework
+
+   BioChain      SHD-CCP Review: The 3-Nested          The translation requirement, the S-plane scan      8, 9
+   AI 2026e      Decoding Framework                    with TQF pruning, Codex crystallization
+
+   BioChain      The Chiral Compression Engine         Dual-Helix governance and Proof-of-Manifold        9.6
+   AI 2026f
+
+   BioChain      SHD-CCP Review: The Trefoil           16 fibres × 4 phases as an addressing of the 64    8.1
+   AI 2026g      Projection Protocol                   bits
+
+   BioChain      Quaternion Equilibrium and Voxel      S³ parallelizability, the scalar key, the master   4.1, 7.6,
+   AI 2026h      Alignment                             quaternion, the coherence Φ                        9.3
+
+   BioChain      Proof: Triple-Quad Function on a 3-   Scale-normalized quads                             9.3
+   AI 2026i      Folded Packet
+
+   Butt et al.   Complementary 3D color codes for      Complementary encodings, a one-way                 9.5
+   2026          transversal quantum logic             transversal CNOT, invariant stabilizers
+                 (arXiv:2607.05107)
+
+       Editorial Note. Two labelling points. The series cites this installment as Hoard (2026e), the
+       Fifteen Lemmas audit and protocol notes as Hoard (2026f) and (2026g), and the companion
+       to this paper as Hoard (2026h), so the companion papers of the SHD-CCP programme are
+       cited as BioChain AI (2026a–i), as the Fifteen Lemmas cite them. One source is not a series
+       paper: Complementary 3D color codes for transversal quantum logic is by F. Butt, L.
+       Colmenarez, E. Weilandt, T. Peham, R. Wille and M. Müller (RWTH Aachen,
+       Forschungszentrum Jülich and TU Munich), and is cited as external work.
+
+
+ 1.2 The Fifteen Lemmas in This Paper
+ Nine of the fifteen lemmas carry proofs this paper uses. Lemma 3 enters only through Lemma
+ 5, Lemma 12 is used in the companion, and Lemmas 1, 2, 6 and 10 do not bear on the sieve.
+ Every imported statement was re-checked before use (Appendix A, sections W to Y).
+
+
+
+                                                         —5—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)          Geometric Engine of Time
+
+
+
+                             Table 3: Results of the Fifteen Lemmas used in this paper.
+
+   Fifteen Lemmas result           Used in      What it does here
+
+   Lemma 4, Parts 2, 4 and 5       3.1, 8.2,    Weitzenböck bound A_R ≤ S²/3; the powers of the tier spinor h; the
+                                   10           Legendre split of the wheel
+
+   Lemma 5, Parts 2, 4, 5 and      4.1, 8.2,    The cube group O and its lift 2O; the primes of the box [−2, 2]⁴; a
+   6(a)                            8.3, 9.4     lattice proof of Theorem 8.4; the Gram form of the TQF
+
+   Lemma 7, Part 3(d) and (e)      2.3, 9.6     Drift without a potential does not sieve; four records closed by a
+                                                product survive one loss
+
+   Lemma 8, Step 2 and             4.1, 5.1,    The matrix L(q); the ghost map; the inclusion SU(2) ⊂ SL(2, ℂ); the
+   Propositions 6.2 to 6.5         7.4, 7.6     {4,3,5} honeycomb; the trefoil on the golden torus
+
+   Lemma 9, Parts 1 to 3           7.7, 9.4     Triplet classes mod 30; CRT addresses with closed-form inverses;
+                                                the rational Cayley map
+
+   Lemma 11, Parts 2, 3 and 5;     5.1, 5.3,    Density depends on frequencies, not radii; the two-gap golden
+   Proposition 11.4                9.2          circle; the 30-pulse clock window
+
+   Lemma 13, Parts 1 to 3          6, 7.1       Rational finite orders are 1, 2, 3, 4 or 6; denominators grow without
+                                                bound; integer bit growth
+
+   Lemma 14, Parts 1 to 4          2, 3.1       The Gibbs and harmonic measures; the infinite Hurwitz lattice; the
+                                                Circularity Boundary
+
+   Lemma 15                        8.2, 9.6     Merkle roots certify; an 8-bit header only filters
+
+   §6.1, the Einstein Tile         8            The packet on which the sieve runs
+
+   §7.2 and Theorems 7.5, 7.8,     7.1, 7.6,    History loss in unit chains; the hidden spin sign; what an exchange
+   7.10 and 7.19                   9.3, 9.6     preserves; generic freeness
+
+
+
+ 1.3 The Cubit Standard in This Paper
+ The cubit installment (Hoard 2026d) contributes a physical unit and five exact results. Each
+ strengthens a step of the sieve or of the standard built on it, and each was re-checked in
+ Appendix A, section Z.
+
+                             Table 4: Results of the cubit installment used in this paper.
+
+   Cubit result (Hoard 2026d)                     Used in     What it does here
+
+   Proposition 4.8, the cycle current, with       2.3         Prices the drift without a potential: a positive current
+   Kolmogorov's criterion and entropy                         and positive entropy production, with no selection
+   production
+
+   Theorem 4.9 and the Remark on the 30-node      3.1         Base-6 against ℤ/30; ℤ/30 is the best wheel that fits
+   wheel                                                      the tile's 3-bit field (Proposition 3.3)
+
+   Section 3.5, the uncertainty budget, and       8.2         A physical precision horizon near Q ≈ 2.3 × 10⁷; why
+   Remark 4.3, numerical conditioning                         the TQF is evaluated in integers
+
+   Section 3.2, Proposition 3.1 and Lemma 3.2     8.1, 9.2,   The cubit as the unit of the scale register; the 4 × 4 ×
+                                                  9.3         4 voxel cube of edge λ/4; medium-free mode
+                                                              invariants
+
+   Section 4.1, shortest and joint closures       9.2, 10     The 0.5 s window shared by caesium, 40 Hz and 432
+                                                              Hz, proved there first
+
+   Proposition 4.6(3) and Appendix E              4.2, 9.4,   Stated sign conventions for rotations; the Engine's tier
+                                                  10          rotations generate the cube group O
+
+
+
+
+                                                         —6—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                                                          Geometric Engine of Time
+
+
+
+ 2 The Lattice Fokker-Planck Equation
+ On a lattice the Fokker-Planck equation is a master equation; its stationary state is positive on
+ every node, so exact support on primes needs absorbing traps, and the Dual-Helix sampler of
+ the series behaves the same way.
+
+ Status: [ESTABLISHED] and [PROVEN]. Sources: source note §§1–2; BioChain AI (2026a),
+ §3.7, equation (23), read here as a killing term; Hoard (2026b) for non-gradient drift, made
+ exact by Fifteen Lemmas, Lemma 7 Part 3(e), and priced by the cycle-current formula of Hoard
+ (2026d), Proposition 4.8; Fifteen Lemmas, Lemma 14, which proves Propositions 2.2 and 2.3
+ independently and extends them to the infinite Hurwitz lattice.
+
+
+ 2.1 The Master Equation and Its Stationary State
+ The source note writes the continuum equation:
+                              ∂ρ       ∂                   ∂2
+                                 = −∑     [D1 (q) ρ] + ∑
+                                            (i)                   (i,j)
+                                                                [D (q) ρ]
+                              ∂t      ∂qi                ∂qi ∂qj 2
+                                 ​                     ​           ​             ​                       ​                       ​       ​
+
+
+
+
+                                                               ​                                                         ​   ​
+
+
+
+
+                                              i                                                    i,j
+
+ Derivatives in q are not defined on lattice nodes, so the evolution of a probability vector on a
+ lattice is a master equation, the generator of a continuous-time Markov chain.
+
+       Definition 2.1 (Lattice Master Equation). [DEFINITION] Formalizes source §1.
+       Let Λ be a finite set of lattice nodes joined by nearest-neighbour edges, V a real
+       potential on Λ and D > 0 a diffusion constant. The probability vector ρ(t) evolves by:
+                               dρb
+                                   = ∑(ρa kab − ρb kba ),                                                kab = D e−(Vb −Va )/2
+                                     ​
+
+
+                                                                                                                                     ​       ​
+
+
+
+
+                                         ​         ​       ​           ​             ​    ​                          ​
+
+
+
+
+                               dt
+                                             a∼b
+
+ Its continuum limit is a Fokker-Planck equation with drift proportional to −∇V and constant
+ diffusion. The note's prime potential, with minima only where the quadrance Q is prime,
+ depends on a node only through Q; its gradient is radial, not along TQF lines, and placing its
+ minima requires knowing which quadrances are prime [HEURISTIC].
+
+       Proposition 2.2 (Gibbs Stationary State). [PROVEN] Formalizes source §§1–2;
+       also Fifteen Lemmas, Lemma 14 Part 1.
+       For the master equation of Definition 2.1 on a connected finite lattice, the unique
+       stationary distribution is:
+                                                                                           e−Va     ​
+
+
+
+
+                                                                           ρss
+                                                                            a =
+                                                                                         ∑b∈Λ e−Vb
+                                                                             ​                                   ​
+
+
+
+                                                                                                             ​
+
+
+
+                                                                                               ​
+
+
+
+
+       It is strictly positive on every node, so no stationary state with positive diffusion is
+       supported only on prime-quadrance nodes.
+
+       Proof. Since e^(−V_a) k_ab = D e^(−(V_a + V_b)/2) = e^(−V_b) k_ba, the Gibbs
+       vector satisfies detailed balance on every edge and is stationary. A connected finite
+       chain is irreducible, so its stationary distribution is unique and strictly positive
+       (Perron–Frobenius). ■
+
+ Remark (Concentration Against Speed). [COMPUTED] On the 4 × 4 × 4 lattice with
+ coordinates 0 to 3, set V = 0 on the 25 prime-quadrance nodes and V = ΔV on the other 39,
+
+
+
+                                                                                         —7—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)        Geometric Engine of Time
+
+
+
+ with D = 1. Raising the barrier concentrates mass on prime nodes but slows relaxation: the
+ spectral gap falls 29-fold between ΔV = 0 and ΔV = 8 (Table 5).
+
+                 Table 5: Gibbs mass on the prime-quadrance nodes of the 4 × 4 × 4 lattice.
+
+   Barrier ΔV       Prime-node mass                    Spectral gap (units of D)       Smallest node weight
+
+   0                0.3906                             0.5858                          1.56 × 10⁻²
+
+   1                0.6354                             0.5371                          9.35 × 10⁻³
+
+   2                0.8257                             0.3984                          4.47 × 10⁻³
+
+   4                0.9722                             0.1548                          7.12 × 10⁻⁴
+
+   8                0.9995                             0.0203                          1.34 × 10⁻⁵
+
+ The note's "prime basis" expansion ρ = Σ c_p(t) Φ_p e^(−λ_p t) is [SUPERSEDED]: functions
+ on prime shells cannot represent a uniform start, and the time dependence is counted twice.
+ The expansion of the dynamics is over the eigenvectors of the generator:
+                                       ∣Λ∣−1
+                               ρ(t) = ∑ ck ϕk e−λk t ,
+                                               ​   ​    ​
+                                                             ​
+
+
+
+
+                                                                   0 = λ0 < λ1 ≤ λ2 ≤ ⋯
+                                                                          ​    ​   ​
+
+
+
+
+                                       k=0
+
+
+ 2.2 Absorbing Traps and the Dual-Helix Sampler
+       Proposition 2.3 (Absorbing Traps and Harmonic Measure). [PROVEN]
+       Formalizes the selection rule of source §2 and the trap of source §4; also Fifteen
+       Lemmas, Lemma 14 Part 2.
+       Make every prime-quadrance node absorbing and keep the rates of Definition 2.1
+       elsewhere, on a connected finite lattice with at least one prime node. From any start
+       the mass converges to a distribution supported only on the prime nodes; its value at
+       a prime node a is the probability of first entering the prime set at a, the harmonic
+       measure of the prime set. Every transient mode decays at a rate of at least λ_min >
+       0.
+
+       Proof. Let L_TT be the generator restricted to the transient nodes and L_TA its rates
+       into the traps. Every transient node has a path to a trap, so −L_TT is invertible and
+       the transient mass decays at least as e^(−λ_min t). The mass absorbed from node t
+       is row t of (−L_TT)⁻¹ L_TA, the hitting distribution of the prime set. ■
+
+ Remark (The 4 × 4 × 4 Lattice). [COMPUTED] With V = 0 and D = 1 the 25 prime nodes
+ trap all the mass; the slowest transient mode decays at λ_min = 1.402, the mean absorption
+ time from a uniform start is 0.295 in units of 1/D, and the final trap masses range from 0.031
+ to 0.045.
+
+ The Dual-Helix report samples candidates with ∂ρ/∂t = ∇·(D(Q)∇ρ) − V(Q)ρ, with D(Q) = 1/(1 +
+ αχ(Q)) slowed by the TQF collinearity feature χ (BioChain AI 2026a, equation 23). The term
+ −Vρ removes mass at rate V: it is a killing term, a soft trap.
+
+       Proposition 2.4 (Killing Concentrates but Does Not Select). [PROVEN]
+       Formalizes BioChain AI (2026a), equation (23), on a lattice.
+       Let the killing rate be 0 on prime nodes and κ > 0 on the others. The total mass
+       decays, and the normalized surviving mass converges to the left Perron eigenvector
+
+
+                                                                 —8—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+       of the generator minus diag(κ), which is strictly positive on every node of a
+       connected lattice.
+
+       Proof. The generator minus a non-negative diagonal has non-negative off-diagonal
+       entries and an irreducible pattern, so by Perron–Frobenius its leading eigenvalue is
+       real and simple with a strictly positive eigenvector, and every other mode decays
+       faster relative to it. ■
+
+ Remark (Killing Is Slower and Costlier). [COMPUTED] On the same lattice, killing rates κ
+ = 1, 4, 16 and 64 on composite nodes give quasi-stationary prime-node masses 0.437, 0.575,
+ 0.835 and 0.955, while the surviving mass decays at rates 0.563, 1.699, 2.649 and 2.911.
+ Gibbs barriers reach higher concentration without destroying mass, and only absorbing traps
+ give exact support.
+
+
+ 2.3 The Infinite Lattice and Drift Without a Potential
+ Two results of the Fifteen Lemmas complete the picture: the sieve extends from a finite box to
+ the whole Hurwitz lattice exactly when a series converges, and a drift along lattice lines with
+ no potential cannot sieve at all.
+
+       Proposition 2.5 (The Sieve on the Infinite Hurwitz Lattice). [PROVEN] Fifteen
+       Lemmas, Lemma 14 Part 3; the sharpness statement is new.
+       On the infinite Hurwitz lattice with a radial potential V(q) = V(N(q)), the Gibbs state of
+       Proposition 2.2 exists exactly when the partition function converges:
+                                                    ∞
+                                    ZH (β) = 1 + ∑ 24 σodd (n) e−βV (n) < ∞
+                                        ​                 ​         ​
+
+
+
+
+                                                    n=1
+
+       For V(n) = α ln n this holds exactly when βα > 2, and every linear trap V(n) = κn with
+       κ > 0 qualifies.
+
+       Proof. The shell of norm n holds 24σ_odd(n) Hurwitz integers (Proposition 4.1), which
+       gives the series. For V = α ln n it is 24 Σ σ_odd(n) n^(−s) with s = βα, and as a
+       Dirichlet series Σ σ_odd(n) n^(−s) = (1 − 2^(1−s)) ζ(s) ζ(s − 1). This converges for s
+       > 2 and diverges at s = 2, where ζ(s − 1) has its pole and 1 − 2^(1−s) = 1/2; with
+       positive terms it diverges for every s ≤ 2. A linear trap gives terms below 24 n²
+       e^(−βκn). ■
+
+ Remark (Measured). [COMPUTED] The partial sums of 24 Σ σ_odd(n) n^(−s) to n = 1,000
+ and 4,000 are 150.2 and 177.5 at s = 2, still growing, and 35.57 and 35.59 at s = 3. The finite
+ boxes of this paper are truncations; a sieve on the whole lattice needs a potential that confines
+ at least as fast as (2/β) ln n.
+
+       Proposition 2.6 (Drift Without a Potential Does Not Sieve). [PROVEN] Fifteen
+       Lemmas, Lemma 7 Part 3(e); the entropy rate uses Hoard (2026d), Proposition 4.8(4);
+       formalizes the "collinear flow" of source §4.
+       On the torus (ℤ/4)³, give every forward step +e_k probability w_k/W and every
+       reverse step −e_k probability ρ_k w_k/W, the same at every cell, with W = 2(w₁ + w₂
+       + w₃), 0 < ρ_k ≤ 1 and the remaining mass on the diagonal. The chain is doubly
+       stochastic, its unique stationary state is uniform, and each forward edge carries the
+
+
+                                                              —9—
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+       stationary current (1 − ρ_k)w_k/(64W), positive whenever ρ_k < 1. The chain
+       produces entropy at the rate σ = Σ_k (1 − ρ_k) w_k ln(1/ρ_k)/W per step, positive
+       whenever some ρ_k < 1.
+
+       Proof. Translation invariance gives every column the same multiset of entries as a
+       row, so columns sum to 1 and the uniform vector is stationary; the steps generate
+       the torus, so it is unique. The current on a forward edge is the forward flow minus the
+       reverse flow, (w_k − ρ_k w_k)/(64W). The entropy production of a stationary chain is
+       σ = ½ Σ (F_ab − F_ba) ln(F_ab/F_ba) with F_ab = μ_a K_ab (Schnakenberg 1976;
+       Hoard 2026d, Proposition 4.8(4)); each of the 64 forward edges along axis k
+       contributes (1 − ρ_k)w_k/(64W) times ln(1/ρ_k). ■
+
+ Remark (Current Without Selection). [COMPUTED] With weights 1, 2 and 3 and valves
+ 0.5, 0.7 and 0.9, the forward currents are 6.5 × 10⁻⁴, 7.8 × 10⁻⁴ and 3.9 × 10⁻⁴ and the
+ entropy production is 0.0494 per step, while the prime-node share stays 25/64 = 0.3906, the
+ barrier-zero value of Table 5. A drift along lines moves mass around the lattice but cannot
+ favour prime nodes. For drifts that vary from cell to cell the edge-wise statement fails, while
+ the net flux through each cross-section stays positive in trials (companion, Problem 6).
+
+ Remark (Kolmogorov's Criterion). [PROVEN] The cubit installment proves for a three-state
+ chain that the cycle current vanishes exactly when the products of the rates around the cycle
+ agree in both directions, and that the entropy production is then zero (Hoard 2026d,
+ Proposition 4.8(3) and (4)); Kolmogorov's criterion extends it to any finite chain: the stationary
+ state carries no current on any edge exactly when the rate products agree in both directions
+ around every cycle (Kolmogorov 1936). The two mechanisms of this section lie on opposite
+ sides of it. Gibbs rates k_ab = D e^(−(V_b − V_a)/2) have equal products around every cycle,
+ since the potential differences telescope, so a sieve driven by a potential carries no current
+ and produces no entropy in its stationary state. The drift of Proposition 2.6 has unequal
+ products around each axis loop, (w_k/W)⁴ against (ρ_k w_k/W)⁴, so it carries a current and
+ produces entropy (Appendix A, section Z). Selection comes only from the first kind and
+ circulation only from the second: a potential concentrates mass on the primes at no stationary
+ cost, while a pump pays continuously and concentrates nothing.
+       Editorial Note. Barriers, killing and traps can concentrate mass on primes, and all three
+       need the prime set as an input; drift alone cannot concentrate it at all. The Fifteen Lemmas
+       name this the Circularity Boundary (Lemma 14 Part 4), and Section 3 shows why it is not a
+       defect under the Dual-Helix principle of the series.
+
+
+
+ 3 Geometry Proposes, Arithmetic Certifies
+ The sieve does not need to compute primes: under the Dual-Helix principle it proposes trap
+ sites and an exact test certifies them, and the Engine's 30-node wheel gives the proposer a
+ proven bias of 3.75, the largest of any wheel that fits the packet's 3-bit wheel field.
+
+ Status: [PROVEN] and [COMPUTED]. Sources: BioChain AI (2026a), §§1, 4 and 5, for the
+ principle, the exactness theorem and the Oracle Bias Hypothesis; BioChain AI (2026b), §2, for
+ the Helix A and Helix B roles; Hoard (2026a), §5, read as ℤ/30 (Hoard 2026d, §4.6), most
+ accurate method; Hoard (2026d), Theorem 4.9, for the base-6 wheel; Fifteen Lemmas, Lemma
+ 14 Part 4 (the Circularity Boundary) and Lemma 4 Part 5 (the Legendre split).
+
+                                                       — 10 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ 3.1 The Sieve as a Helix A Oracle
+ In the Dual-Helix report, Helix A is a continuous geometric oracle that ranks candidates, and
+ Helix B reconstructs exact residues and applies a GCD test; every reported factor is exact
+ whatever the oracle does (BioChain AI 2026a, Theorem 4.1). The prime sieve has the same
+ shape. The Fokker-Planck dynamics of Section 2 decide where mass goes; an exact primality
+ test decides which nodes are traps. The Fifteen Lemmas prove the boundary between the two:
+ in the Gibbs limit and the trap limit alike, the limiting support is the set the potential or the trap
+ rule singles out, so a sieve that uses a primality test displays and samples a prime set rather
+ than computing it, and its dynamics belong in Helix A (Lemma 14 Part 4).
+
+       Proposition 3.1 (Certified Traps Are Exact). [PROVEN] The sieve analogue of
+       BioChain AI (2026a), Theorem 4.1.
+       If a trap is placed at a node only when an exact test certifies its norm prime, then
+       every node that absorbs mass has prime norm, whatever the potential, drift,
+       diffusion tensor or numerical precision of the dynamics.
+
+       Proof. Mass is absorbed only at trap nodes, and every trap node is certified. The
+       dynamics decide which certified node absorbs the mass, never whether a node is
+       certified. ■
+
+       Proposition 3.2 (The Wheel Is a Proven Oracle Bias). [PROVEN] Uses Hoard
+       (2026a), §5, read as ℤ/30 (Hoard 2026d, §4.6).
+       Let a candidate N > 5 pass the 30-node wheel when N mod 30 is one of the 8 units of
+       ℤ/30. Every prime above 5 passes, and the density of primes among passing integers
+       tends to 30/8 = 3.75 times their density among all integers.
+
+       Proof. A prime above 5 is coprime to 30. By Dirichlet's theorem the primes are
+       equidistributed among the φ(30) = 8 unit classes, while passing integers make up
+       8/30 of all integers, so the ratio of densities tends to 30/8. ■
+
+ Remark (The Bias Measured). [COMPUTED] Among the integers from 6 to 10⁷ the prime
+ density is 0.06646; among those passing the wheel it is 0.24922, a ratio of 3.7500. In the
+ notation of BioChain AI (2026a), Assumption 5.1, with B the event that a candidate is prime, U
+ the uniform candidate distribution and D the wheel-filtered one, Pr_D(B) = β Pr_U(B) with β →
+ 3.75. The Oracle Bias Hypothesis therefore holds for the prime task, as a theorem. For factoring
+ it remains [CONJECTURAL], and nothing here bears on it.
+
+ Remark (The Legendre Split). [PROVEN] The 8 wheel units split by the Legendre symbol
+ mod 5 into B₊ = {1, 11, 19, 29} and B₋ = {7, 13, 17, 23} (Fifteen Lemmas, Lemma 4 Part 5).
+ By Dirichlet's theorem each half carries half of the primes above 5. The class of a candidate is
+ one of the 8 values of the Einstein Tile's 3-bit wheel field (Section 8.1), and the Legendre
+ symbol reads its half without a lookup.
+
+       Proposition 3.3 (The Wheel That Fits the Tile). [PROVEN] Extends Hoard
+       (2026d), Theorem 4.9 and its Remark on the 30-node wheel.
+       For the primorial wheels modulo 6, 30 and 210, the unit classes number 2, 8 and 48,
+       the passing integers have density 1/3, 4/15 and 8/35, and the oracle bias tends to 3,
+       3.75 and 4.375. The 30-node wheel tests 20 % fewer candidates than the base-6
+
+
+                                                       — 11 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)          Geometric Engine of Time
+
+
+
+         wheel, and it is the largest primorial wheel whose unit classes fit a 3-bit field, which
+         they fill exactly.
+
+         Proof. The unit classes number φ(6) = 2, φ(30) = 8 and φ(210) = 48. As in Proposition
+         3.2, the primes above the largest prime factor of the modulus m are equidistributed
+         among the φ(m) unit classes, so the bias tends to m/φ(m). The ratio of candidate
+         densities is (8/30)/(1/3) = 0.8. Since 8 = 2³ and 48 > 8, ℤ/30 is the largest primorial
+         modulus whose units index into 3 bits. ■
+
+                              Table 6: Primorial wheels as oracles for the prime task.
+
+                                   Unit            Candidates         Bias          Measured, integers      Field
+   Modulus
+                                   classes         tested             limit         to 10⁷                  width
+
+   6, the base-6 wheel (Hoard      2               1/3 = 0.333        3             3.000                   1 bit
+   2026d)
+
+   30, the Engine's 30-node        8               4/15 = 0.267       3.75          3.750                   3 bits
+   wheel
+
+   210                             48              8/35 = 0.229       4.375         4.375                   6 bits
+
+ Remark (Why ℤ/30). [COMPUTED] A mod-210 wheel would raise the bias by a further 17 %
+ but needs a 6-bit field. On the Einstein Tile, whose wheel field has 3 bits (Section 8.1), ℤ/30 is
+ the best wheel available, and its eight classes use every code of the field. This is the precise
+ sense in which the Engine's wheel is the most accurate method for the packet while not being
+ the best wheel in general, as the cubit installment already noted (Hoard 2026d, §4.6; Appendix
+ A, section Z).
+
+
+ 3.2 Exact Certification at Every Scale
+ Helix B needs an exact primality test at the scale where traps are placed. Table 7 lists the test
+ and its arithmetic width at the three scales this paper uses.
+
+                                       Table 7: Exact primality certification by scale.
+
+                                                                     Arithmetic
+   Scale              Exact test                                                       Cost
+                                                                     width
+
+   Form 1 packet      Lookup in a bitmap of the 1,877 primes up      14-bit index      One memory read; the table is
+   core, N ≤          to 16,129                                                        2,017 bytes
+   16,129
+
+   64-bit word, N     Miller–Rabin with the twelve bases 2, 3, 5,    128-bit           At most 12 modular
+   < 2⁶⁴              …, 37, deterministic below 3.3 × 10²⁴          products          exponentiations
+                      (Sorenson and Webster 2017)
+
+   Horizon, Q ≈       The same test                                  80-bit            As above; the TQF needs two
+   10¹²                                                              products          128-bit products in Gram form
+                                                                                       (Table 13)
+
+ Combined with the wheel, 73.3 % of integer candidates and 65.7 % of Form 1 cores skip the
+ test altogether (Section 8.2).
+         Editorial Note. Correctness comes from Helix B, so Helix A may use any geometric
+         heuristic: a potential, a drift, the golden torus of Section 5 or the hyperbolic tree of Section 7.
+         Whether a potential defined without any primality test could still place its minima exactly on
+         the primes is recorded, with a falsifiable test, as Problem 9 of the companion; the sieve does
+         not depend on the answer.
+
+                                                           — 12 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ 4 The Four-Dimensional Setting
+ The sieve belongs in four dimensions: the Hurwitz order carries every prime, a quarter of the
+ primes never occur in three dimensions, and every integer quaternion has a canonical, frame-
+ free form.
+
+ Status: [ESTABLISHED] and [PROVEN]. Sources: source note §3; BioChain AI (2026h) for
+ the parallelizable 3-sphere and the scalar key; Conway and Smith (2003); Fifteen Lemmas,
+ Lemmas 5, 8 and 13 and §6.1; Hoard (2026d), Proposition 4.6(3), for stated sign conventions.
+
+
+ 4.1 The Hurwitz Order and the Three-Square Obstruction
+ A Hurwitz quaternion H = a + bi + cj + dk has four integer or four half-integer components; its
+ norm N(H) = a² + b² + c² + d² = HH̄ is a non-negative integer. The Hurwitz quaternions form a
+ ring with left and right division with remainder, and its 24 units form the binary tetrahedral
+ group 2T.
+
+       Proposition 4.1 (No Inert Primes; Norm Counts). [ESTABLISHED] Formalizes
+       source §3.
+       (1) Every rational prime p is the norm of a Hurwitz integer π, so p = ππ̄ and no prime
+       is inert. (2) The number of Hurwitz integers of norm n is 24 times the sum of the odd
+       divisors of n; for an odd prime p it is 24(p + 1). (3) A Hurwitz integer is irreducible
+       exactly when its norm is prime.
+
+ Part (1) is Lagrange's four-square theorem; parts (2) and (3) are Hurwitz's (Conway and Smith
+ 2003). An integer quaternion of prime norm is primitive, since g = gcd(a, b, c, d) gives g²
+ dividing p [PROVEN]; the note's stability condition is therefore automatic on prime shells.
+
+       Theorem 4.2 (Three-Square Obstruction). [ESTABLISHED] Gives the note's
+       "Prime Conflict in 3D" a precise form.
+       A positive integer is a sum of three squares exactly when it is not of the form 4ᵃ(8b +
+       7) (Legendre). Hence no prime p ≡ 7 (mod 8) is the quadrance of a point of ℤ³.
+
+ Remark (Missing Primes). [COMPUTED] Of the 17,984 primes below 200,000, 4,511 (25.08
+ %) are congruent to 7 mod 8 and none is a sum of three squares. The 4 × 4 × 4 lattice with
+ coordinates 0 to 3 has 25 prime-quadrance nodes and misses 7 and 23; the 4 × 4 × 4 × 4
+ lattice has 94 prime nodes and carries every prime up to 23. Centred on the origin, the Hurwitz
+ points of the box [−2, 2]⁴ reach exactly the primes 2, 3, 5, 7 and 13; 11 needs a coordinate of
+ absolute value 3 (Fifteen Lemmas, Lemma 5 Part 4) [PROVEN].
+
+ Remark (Why Four Dimensions, from the Companion Papers). [ESTABLISHED] The
+ voxel-alignment review rests on two facts it states informally (BioChain AI 2026h). The only
+ parallelizable spheres are S⁰, S¹, S³ and S⁷ (Bott and Milnor 1958; Kervaire 1958), and the only
+ normed division algebras over the reals have dimension 1, 2, 4 and 8 (Hurwitz 1898). These
+ are exactly the four columns of that paper's scaling table, and S³ is the unit sphere of the
+ quaternions. Its "locked state" w = 0 is the 2-sphere of unit pure quaternions, where the hairy-
+ ball theorem forbids a nowhere-vanishing tangent field; Section 7.6 identifies it with the
+ boundary at infinity of hyperbolic space.
+
+
+
+
+                                                       — 13 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)    Geometric Engine of Time
+
+
+
+ Remark (Quaternion Matrices). [ESTABLISHED] The 4 × 4 matrix L(q) of left multiplication
+ by q = w + xi + yj + zk satisfies L(q)ᵀL(q) = N(q)I and L(q) + L(q)ᵀ = 2wI, so it is a scaled
+ orthogonal matrix with det L(q) = N(q)² (Fifteen Lemmas, Lemma 8, Step 2). Section 9.3 uses
+ it.
+
+
+ 4.2 Canonical Forms and Unique Factorization
+ Two agents that store the same lattice point in frames differing by a unit see different
+ coordinates. A canonical associate removes that difference without any shared reference.
+
+       Proposition 4.3 (Canonical Associate). [PROVEN] Address normal form.
+       Let q be an integer quaternion with N(q) ≡ 1 (mod 4). Exactly one of its eight
+       associates uq, with u ∈ {±1, ±i, ±j, ±k}, has odd positive real part.
+
+       Proof. Squares are 0 or 1 mod 4, so N(q) ≡ 1 forces exactly one odd coordinate. The
+       real part of uq runs over ±a, ±b, ±c and ±d as u runs over the eight units, each
+       value once. The odd coordinate is non-zero, so it appears with positive sign exactly
+       once. ■
+
+ For other norms the canonical associate is defined as the lexicographic maximum of the 24
+ Hurwitz associates [DEFINITION]. The unit that carries q to its canonical form is the frame of q
+ relative to the standard.
+
+ Scope of the canonical associate. [DEFINITION] It normalizes lattice points used as
+ addresses. A quaternion that encodes a rotation must not be replaced by uq, since uq rotates
+ space differently. For rotations the Einstein Tile's Form 1 instead uses sign normalization, the
+ first non-zero coordinate positive, which leaves x ↦ QxQ̄ /N(Q) unchanged and moves the spinor
+ sign to the cycle-step field (Fifteen Lemmas, §6.1). The two normal forms answer different
+ questions: which lattice point, and which rotation. Either sign convention for rotations is valid
+ once it is stated; the cubit installment makes the same point for the logarithm of a unit
+ quaternion, where SLERP implementations replace q by −q when Re q < 0 (Hoard 2026d,
+ Proposition 4.6(3)).
+
+       Theorem 4.4 (Unique Factorization Modelled                              on    a    Norm    Order).
+       [ESTABLISHED] Conway and Smith (2003), Chapter 5.
+       Let H be a primitive Hurwitz integer of norm n = p₁p₂…p_k, with the primes taken in
+       a fixed order. Then H = π₁π₂…π_k with N(π_i) = p_i, and the factorization is unique up
+       to unit migration, the replacement of π_iπ_{i+1} by (π_i u)(u⁻¹π_{i+1}).
+
+ The ordered sequence of prime-norm factors, taken up to unit migration, is therefore a
+ canonical address of a primitive lattice point: it depends only on the point and the agreed order
+ of primes, not on any frame. Section 7 makes it explicit for norms that are powers of 5.
+       Editorial Note. The sieve, its traps and its canonical forms all live in the Hurwitz order of
+       four-dimensional space. Section 5 adds a sharper reason drawn from the golden torus of the
+       series.
+
+
+
+
+                                                       — 14 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)                Geometric Engine of Time
+
+
+
+ 5 Prime Nodes on the Golden Clifford Torus
+ The golden Clifford torus is the series' search surface, and it contains no lattice point, so no
+ prime trap can sit on it; its Fibonacci approximants do carry lattice points, whose norms are
+ Lucas numbers, and the prime ones beyond 3 are exactly primes that three dimensions cannot
+ hold.
+
+ Status: [PROVEN] and [COMPUTED]. Sources: BioChain AI (2026c), §§2–4, for the torus and
+ its delta encoding; BioChain AI (2026a), §3.7, which uses the torus as a decorrelating search
+ surface; Fifteen Lemmas, Lemmas 8 and 11.
+
+
+ 5.1 The Torus and the Delta Encoding
+ The golden Clifford torus is the set of unit quaternions with radius ratio r₁/r₂ = φ (BioChain AI
+ 2026c, §2.1), so that r₁² = (5 + √5)/10 and r₂² = (5 − √5)/10. Writing its points in complex form
+ makes the delta encoding transparent:
+                            q(θ1 , θ2 ) = r1 eiθ1 + r2 eiθ2 j,
+                                 ​   ​      ​
+                                                ​
+
+
+
+
+                                                       ​
+                                                           ​
+
+
+
+
+                                                                        r12 + r22 = 1,
+                                                                          ​     ​        r1 / r2 = φ
+                                                                                           ​   ​
+
+
+
+
+       Proposition 5.1 (Torus-Preserving Delta). [PROVEN] The delta encoding of
+       BioChain AI (2026c), §3.1, in torus-preserving form.
+       For real α and β, e^{iα} q(θ₁, θ₂) e^{iβ} = q(θ₁ + α + β, θ₂ + α − β). A phase step
+       (Δθ₁, Δθ₂) is therefore applied exactly, on the torus, by α = (Δθ₁ + Δθ₂)/2 and β =
+       (Δθ₁ − Δθ₂)/2.
+
+       Proof. e^{iα} commutes with e^{iθ}, and j e^{iβ} = e^{−iβ} j. Hence e^{iα} q
+       e^{iβ} = r₁ e^{i(θ₁ + α + β)} + r₂ e^{i(θ₂ + α − β)} j. ■
+
+ Appendix A, section L, confirms the two-sided step exact in 1,000 random trials.
+
+ Remark (Covering the Torus). [PROVEN] A sampler that runs a stream θ₁ = ω₁t, θ₂ = ω₂t
+ covers the torus densely exactly when ω₁/ω₂ is irrational (Kronecker); the Fifteen Lemmas
+ prove it with Weyl's criterion and show that the golden radii alone do not force it (Lemma 11
+ Parts 2 and 5). The choice ω₁/ω₂ = φ makes the stream dense, while a rational winding closes:
+ the (2, 3) trefoil K(s) = (r₁e^{2is}, r₂e^{3is}) lies on the golden Clifford torus and closes at s =
+ 2π (Fifteen Lemmas, Lemma 8, Proposition 6.5). The companion records how this replaces the
+ source's one-sided delta and its ergodicity claim (Hoard 2026h, Section 4.1).
+
+
+ 5.2 No Lattice Point on the Golden Torus
+       Theorem 5.2 (The Golden Torus Avoids the Lattice). [PROVEN] Bears on the
+       golden solitons of BioChain AI (2026c), §4.1.
+       No point of ℚ⁴ other than 0 lies on a Clifford torus with radius ratio φ, at any scale.
+
+       Proof. A point (a, b, c, d) on such a torus satisfies a² + b² = φ²(c² + d²). If c² + d² = 0
+       then a² + b² = 0 and the point is 0. Otherwise φ² = (a² + b²)/(c² + d²) would be
+       rational, but φ² = (3 + √5)/2 is irrational. ■
+
+ A prime trap therefore cannot be a node on the torus itself. The torus is a search surface, which
+ is how the Dual-Helix report uses it (BioChain AI 2026a, §3.7); exact nodes must come from a
+ nearby rational torus.
+
+
+                                                               — 15 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)    Geometric Engine of Time
+
+
+
+ 5.3 Fibonacci Approximants and Lucas Primes
+ The Fibonacci ratios F_{2m+1}/F_{2m−1} converge to φ², and each defines a rational Clifford
+ torus that does carry lattice points.
+
+       Theorem 5.3 (Lattice Points on the Fibonacci Tori). [PROVEN]
+       Let q_m = F_m + F_{m+1} i + F_{m−1} j + F_m k. Then (1) q_m lies on the Clifford
+       torus with radius ratio squared F_{2m+1}/F_{2m−1}, and N(q_m) = L_{2m}, the
+       Lucas number; (2) if L_{2m} is prime then m is a power of 2; (3) for m = 2^k with k
+       ≥ 1, L_{2m} ≡ 7 (mod 8), so these primes never occur as quadrances in three
+       dimensions.
+
+       Proof. (1) The identities F_m² + F_{m+1}² = F_{2m+1}, F_{m−1}² + F_m² =
+       F_{2m−1} and F_{2m+1} + F_{2m−1} = L_{2m} give both claims. (2) If m = 2^a b
+       with b odd and b > 1, then 2m/2^{a+1} = b is odd, so L_{2^{a+1}} divides
+       L_{2m}, and 3 ≤ L_{2^{a+1}} < L_{2m}. (3) For even m, L_{2m} = L_m² − 2. L_m
+       is odd because 3 does not divide m, so L_m² ≡ 1 and L_{2m} ≡ 7 (mod 8); Theorem
+       4.2 applies. ■
+
+ Remark (The First Approximants). [COMPUTED] Table 8 lists q_m for m = 1 to 8. The
+ norms are prime for m = 1, 2, 4 and 8, giving 3, 7, 47 and 2207, and the distance of the radius
+ ratio from φ² shrinks by a factor of about φ⁴ ≈ 6.85 per step. Among even n ≤ 800, L_n is prime
+ only for n = 2, 4, 8 and 16.
+
+               Table 8: Lattice points on the Fibonacci approximants of the golden Clifford torus.
+
+   m    q_m                 Norm L_{2m}          Prime     Norm mod 8        Distance of the ratio from φ²
+
+   1    (1, 1, 0, 1)        3                    yes       3                 6.18 × 10⁻¹
+
+   2    (1, 2, 1, 1)        7                    yes       7                 1.18 × 10⁻¹
+
+   3    (2, 3, 1, 2)        18                   no        2                 1.80 × 10⁻²
+
+   4    (3, 5, 2, 3)        47                   yes       7                 2.65 × 10⁻³
+
+   5    (5, 8, 3, 5)        123                  no        3                 3.87 × 10⁻⁴
+
+   6    (8, 13, 5, 8)       322                  no        2                 5.65 × 10⁻⁵
+
+   7    (13, 21, 8, 13)     843                  no        3                 8.24 × 10⁻⁶
+
+   8    (21, 34, 13, 21)    2207                 yes       7                 1.20 × 10⁻⁶
+
+ Whether infinitely many L_{2^k} are prime is open (companion, Problem 1); L₃₂ = 4,870,847 =
+ 1087 × 4481 is the first composite one.
+
+ Remark (The Discrete Golden Circle). [ESTABLISHED] The one-dimensional counterpart is
+ the Three-Distance Theorem: the points k/φ mod 1 for 0 ≤ k < N leave at most three gap
+ lengths, and when N = F_m exactly two, in ratio φ: F_{m−1} gaps of length φ^{−(m−2)} and
+ F_{m−2} of length φ^{−(m−1)} (Sós 1958; Fifteen Lemmas, Lemma 11 Part 3). In both
+ settings Fibonacci truncation is where the golden structure becomes exactly finite: on the circle
+ as a two-gap partition, on the torus as the lattice points q_m.
+       Editorial Note. The golden torus and the prime sieve meet as the Dual-Helix principle
+       predicts: the irrational torus is the Helix A search surface, and the Fibonacci lattice nodes are
+       where Helix B can certify. The approximants also give the sharpest reason yet for four
+       dimensions: the prime nodes 7, 47 and 2207 are invisible to any three-dimensional lattice.
+
+                                                       — 16 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ 6 Exact Arithmetic and Closure
+ Exact Hurwitz arithmetic removes drift from the sieve's lattice evolution outright, and in exact
+ arithmetic a periodic schedule of deltas returns to the identity within 12 repetitions or never.
+
+ Status: [PROVEN]. Sources: Fifteen Lemmas, Lemma 13, whose proofs are imported; Hoard
+ (2026a), §I.1, for W_Σ = 60, source only.
+
+       Theorem 6.1 (Exact Deltas Close Within 12 Repetitions or Never). [PROVEN]
+       Fifteen Lemmas, Lemma 13 Parts 1 and 2; the corollary for schedules is new.
+       Let w be a product of rational unit quaternions. If w has finite order, that order is 1, 2,
+       3, 4 or 6, so w¹² = 1. Otherwise no power of w is 1; for example the powers of (3 +
+       4i)/5 have exact denominators 5ⁿ. In particular the elements of order 5, 8 and 10 in
+       the binary octahedral and icosahedral groups 2O and 2I are irrational and cannot
+       occur in exact arithmetic, and a periodic schedule of rational deltas that returns at all
+       returns within 12 repetitions.
+
+       Proof. A finite-order unit quaternion is cos θ + û sin θ with θ a rational multiple of π,
+       and its real part cos θ is rational. By Niven's theorem cos θ ∈ {0, ±1/2, ±1}, so the
+       order divides 12. For (3 + 4i)/5: 3 + 4i = (2 + i)² in the Gaussian integers, and the
+       prime 2 − i never divides a power of 2 + i, so 5 never divides both components of (3
+       + 4i)ⁿ. ■
+
+       Proposition 6.2 (Exact Arithmetic Has No Drift). [PROVEN] Uses Fifteen
+       Lemmas, Lemma 13 Part 3.
+       Integer and Hurwitz quaternions form rings closed under multiplication, and N(pq) =
+       N(p)N(q) exactly. A lattice evolution computed in integer or half-integer arithmetic
+       accumulates no rounding error, and the sieve needs no periodic reset. A product of k
+       integer quaternions with coordinates below 2^b has coordinates below
+       2^{k(b+2)−2}, so exactness lasts as long as the word width allows; Section 7.2
+       gives a much sharper bound for the norm-5 generators.
+
+       Proof. Closure and the multiplicativity of the norm are ring identities. Each coordinate
+       of a product AB is a signed sum of four products of coordinates, so its largest
+       coordinate is at most 4 times the product of the largest coordinates of A and B;
+       induction over k factors gives the bound. ■
+
+ Rational, rather than integer, evolution does drift in width: by Theorem 6.1 its denominators
+ grow without bound unless the schedule has finite order. Floating-point evolutions still need a
+ reset; the right one is a renormalization or a snap to the nearest lattice point, at any interval.
+ The companion examines the 720-step cycle that the symmetry-folding paper proposes for this
+ purpose (Hoard 2026h, Section 4.4).
+
+ Remark (The Engine's 60). [CORRESPONDENCE] The exponent of 2I is 60, the Engine's
+ total winding W_Σ (Hoard 2026a, §I.1); 2I is also SL(2, 5), of order 120, and its rotation image
+ A₅ has order 60 (Section 7.5). By Theorem 6.1, 2I cannot be realized exactly, so the equality is
+ a numerical correspondence; no mechanism is claimed.
+
+
+
+
+                                                       — 17 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ 7 Procedural Generation in Hyperbolic Space and the
+ Standardization of Cubic Integers
+ The six quaternions 1 ± 2i, 1 ± 2j, 1 ± 2k are the six steps of the cubic lattice made non-
+ commuting. Their words grow a 6-regular hyperbolic tree whose abelian shadow is the cubic
+ lattice; every address factors back to a unique word; and reduction modulo a prime turns the
+ tree into a finite Ramanujan graph on which agents can meet.
+
+ Status: [ESTABLISHED], [PROVEN] and [COMPUTED]. Sources: BioChain AI (2026d), §3
+ and §8, horizon 2, for hyperbolic branching and the shift question; BioChain AI (2026a), §3.3,
+ and BioChain AI (2026h) for the Lorentz lift and the scalar key; Hoard (2026a), §III.1, for C₃ ×
+ C₂, source only; Lubotzky, Phillips and Sarnak (1988); Serre (1980); Fifteen Lemmas, Lemmas 8,
+ 9 and 13 and Theorems 7.4, 7.8 and 7.19.
+
+
+ 7.1 The Cubic Lattice as an Abelian Shadow
+       Definition 7.1 (The Norm-5 Generators). [DEFINITION]
+       S₅ = {1 + 2i, 1 − 2i, 1 + 2j, 1 − 2j, 1 + 2k, 1 − 2k}. Each element has norm 5, and
+       its conjugate is its inverse up to the scalar 5. The shadow map σ sends 1 ± 2i, 1 ± 2j,
+       1 ± 2k to the cubic steps ±e₁, ±e₂, ±e₃ of ℤ³, and a word to the sum of its steps.
+
+       Theorem 7.2 (Free Generation and Unique Addresses). [ESTABLISHED]
+       Lubotzky, Phillips and Sarnak (1988); [COMPUTED] for L ≤ 5.
+       (1) Modulo scalars, S₅ generates a free group of rank 3, whose Cayley graph is the 6-
+       regular tree. (2) The reduced words of length L, those never followed by their own
+       conjugate, give 6 × 5^{L−1} distinct quaternions, and up to sign these are exactly
+       the primitive quaternions of norm 5^L with odd real part and even imaginary parts.
+       (3) Hence each such quaternion has a unique word, recovered by repeated right
+       division: exactly one g in S₅ leaves qḡ divisible by 5.
+
+ Appendix A, section P, checks (2) against a direct enumeration for every L ≤ 5 and checks (3)
+ on 2,000 random words of length up to 12, all recovered exactly.
+
+ Two results of the Fifteen Lemmas place Theorem 7.2. First, freeness begins with each letter: 1
+ + 2i is a Gaussian prime not associate to its conjugate, so by the argument of Fifteen Lemmas,
+ Lemma 13 Part 1, no power of it is real, and no one-letter word ever closes [PROVEN]. Second,
+ generic tuples of unit quaternions generate free groups (Epstein 1971; Fifteen Lemmas,
+ Theorem 7.19); S₅ is an explicit integral instance in which every relation-free word is also
+ exactly computable. The contrast with units is sharp. A product of Hurwitz units forgets its
+ factors: the 13,824 three-step chains of units give only 24 products, 576 chains each, so no
+ scheme rebuilds a unit chain's history from its product (Fifteen Lemmas, §7.2). A product of
+ norm-5 generators remembers its factors, because each step multiplies the norm by a prime.
+
+ In ℤ³ the six steps commute, so a walk of length L reaches only O(L³) points. In the tree they do
+ not commute, and the number of addresses grows as 5^L: the tree is a discrete hyperbolic
+ space, and ℤ³ is its image under abelianization [PROVEN], since the abelianization of the free
+ group on three generators is ℤ³ and σ is that map.
+
+
+
+
+                                                       — 18 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)    Geometric Engine of Time
+
+
+
+                          Table 9: Tree addresses against their cubic-lattice shadows.
+
+   Depth     Tree               Cubic-lattice           Addresses per            Distinct closed words at the
+   L         addresses          shadows                 shadow                   origin
+
+   1         6                  6                       1.0                      0
+
+   2         30                 18                      1.7                      0
+
+   3         150                44                      3.4                      0
+
+   4         750                85                      8.8                      24
+
+   5         3,750              146                     25.7                     0
+
+   6         18,750             231                     81.2                     360
+
+   7         93,750             344                     272.5                    0
+
+   8         468,750            489                     958.6                    6,120
+
+
+
+ 7.2 Generation by Shift and Add
+       Proposition 7.3 (Generator Steps Need No Multiplier). [PROVEN] Answers
+       BioChain AI (2026d), §8, horizon 2, for S₅.
+       For u ∈ {±i, ±j, ±k}, (1 + 2u)q = q + 2(uq) and q(1 + 2u) = q + 2(qu). Multiplying
+       by a unit u permutes the four coordinates of q and changes signs. Each generation
+       step is therefore one signed permutation, one left shift by one bit and one four-lane
+       addition.
+
+       Proof. Distributivity gives the first identities. Left multiplication by i sends a + bi + cj
+       + dk to −b + ai − dj + ck, and j and k act likewise. ■
+
+ The norm grows by 5 per step and each coordinate is at most 5^{L/2} in absolute value. A
+ signed byte therefore holds every address to depth 6, 18,750 of them at depth 6, and a 64-bit
+ signed coordinate holds every address to depth 54 [COMPUTED].
+
+
+ 7.3 Why Coordinates Cannot Align Hyperbolic Agents
+ Table 9 states the interoperability problem exactly. Two agents that generate content in the
+ tree but compare only cubic coordinates cannot tell apart, on average, 958 different addresses
+ at depth 8, and 6,120 distinct closed words return to the same origin. Agents that compare
+ floating-point hyperbolic coordinates fail the other way: in the hyperboloid model a point at
+ distance d has coordinates of size about e^d/2, so a fixed number of significant bits resolves
+ positions ever more coarsely with depth [ESTABLISHED]. Exact integer quaternions avoid
+ both failures: the address is the quaternion, and by Theorem 7.2 the quaternion determines its
+ word.
+
+
+ 7.4 A Finite Meeting Space by Congruence
+ A tree has no finite place to meet. Reducing the generators modulo a second prime folds the
+ tree into a finite graph that keeps its expansion.
+
+       Theorem 7.4 (Ramanujan Meeting Graphs). [ESTABLISHED] Lubotzky, Phillips
+       and Sarnak (1988).
+
+
+
+                                                       — 19 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)         Geometric Engine of Time
+
+
+
+       For a prime q ≡ 1 (mod 4), q ≠ 5, map S₅ into PGL(2, 𝔽_q) using a square root of −1
+       mod q. The Cayley graph X(5, q) is 6-regular, on PSL(2, 𝔽_q) when 5 is a square mod
+       q and on PGL(2, 𝔽_q), bipartite, otherwise. Every eigenvalue other than ±6 has
+       absolute value at most 2√5 ≈ 4.472.
+
+ Remark (Against the Cubic Torus). [COMPUTED] Table 10 compares X(5, 13) and X(5, 29)
+ with cubic tori of nearly the same size. Both families are 6-regular, so the comparison isolates
+ the effect of non-commuting steps. The mixing time is the first time at which the sieve's
+ diffusion, the continuous-time walk with generator A − 6I, is within 1 % of uniform in total
+ variation from a point start.
+
+           Table 10: The sieve's diffusion on Ramanujan graphs and on cubic tori of the same degree.
+
+   Graph                     Nodes     Second eigenvalue        Spectral gap     Eccentricity    Mixing time (1 %)
+
+   X(5, 13), on PGL(2, 13)   2,184     4.2497                   1.7503           7               3.25
+
+   Cubic torus 13³           2,197     5.7709                   0.2291           18              20.15
+
+   X(5, 29), on PSL(2, 29)   12,180    4.4420                   1.5580           8               3.80
+
+   Cubic torus 23³           12,167    5.9258                   0.0742           33              62.15
+
+       Proposition 7.5 (Mixing in Logarithmic Time). [ESTABLISHED] Levin, Peres and
+       Wilmer (2017), Chapters 12 and 20.
+       For the continuous-time walk on a regular graph with n nodes and spectral gap γ, the
+       distance to uniform from any start is at most ½√n e^{−γt}. On X(5, q), γ ≥ 6 − 2√5
+       ≈ 1.528 for every q, so the mixing time grows like log n; on the cubic torus m³, γ =
+       2(1 − cos(2π/m)) ≈ 4π²/m², and it grows like n^{2/3}.
+
+ Growing the graph 5.6-fold raises the mixing time from 3.25 to 3.80 on the Ramanujan graphs
+ and from 20.15 to 62.15 on the tori.
+
+ Remark (A Second Hyperbolic Cube Structure). [ESTABLISHED] and [PROVEN]. The
+ Fifteen Lemmas give a geometric counterpart to the norm-5 tree. A regular honeycomb {p, q,
+ r} is spherical, Euclidean or hyperbolic as sin(π/p) sin(π/r) exceeds, equals or falls below
+ cos(π/q); for cubes, {4,3,3} gives 0.612, the cubic tiling {4,3,4} gives 0.5, and {4,3,5} gives
+ 0.416, the compact hyperbolic honeycomb in which five cubes meet at each edge with dihedral
+ angles of 72° (Coxeter 1973; Fifteen Lemmas, Theorem 7.4). In the Klein model its cell is the
+ cube [−a, a]³ with a² = √5 − 2 = φ⁻³, and the boosts to its six face-neighbours have cosh ϑ = φ
+ (Fifteen Lemmas, Lemma 8, Proposition 6.4). Table 11 compares the two structures.
+
+                                Table 11: Two hyperbolic structures over the cube.
+
+   Property                  Norm-5 tree (Section 7.1)                   {4,3,5} honeycomb
+
+   Cells                     Nodes of the 6-regular tree                 Cubes, five around each edge
+
+   Steps                     1 ± 2i, 1 ± 2j, 1 ± 2k                      Boosts across the six faces, cosh ϑ = φ
+
+   Arithmetic                Integers; shift and add                     The number field ℚ(√φ), of degree 4
+
+   Growth                    6 × 5^{L−1} addresses at depth L            Exponential in hyperbolic radius
+
+   Finite quotient           Ramanujan graphs X(5, q)                    Not used here
+
+   Role in the standard      Addresses and the meeting space             Geometry and rendering of cells
+
+
+
+
+                                                           — 20 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ The tree is exact in integers and therefore carries addresses; the honeycomb carries the
+ geometry of cubes, exactly but over ℚ(√φ). The two are complementary readings of
+ "procedurally generated cubes in hyperbolic space" [DEFINITION].
+
+
+ 7.5 The Modular Group, the Engine's Channels and the Hurwitz Units
+       Proposition 7.6 (Folding the Modular Group by Primes). [ESTABLISHED]
+       Serre (1980); [COMPUTED] order profiles.
+       (1) PSL(2, ℤ) is the free product C₂ * C₃, and its abelianization is C₂ × C₃ ≅ ℤ/6. (2)
+       SL(2, 𝔽₃) is the binary tetrahedral group 2T, the 24 Hurwitz units, and SL(2, 𝔽₅) is the
+       binary icosahedral group 2I, of order 120, whose image PSL(2, 𝔽₅) ≅ A₅ has order 60.
+       (3) In SL(2, ℤ) the generators S and ST have orders 4 and 6, the orders of the Hurwitz
+       unit i and of the Engine's tier rotation h.
+
+ The Engine's six channels form C₃ × C₂ (Hoard 2026a, §III.1). By (1), that finite group is the
+ abelian shadow of the hyperbolic modular group, as ℤ³ is the shadow of the norm-5 tree; the
+ abelianization of a free product is the product of the abelianizations [PROVEN]. By (2),
+ reducing the modular group modulo 3 lands on the sieve's unit group, and modulo 5 on a group
+ whose exponent is the Engine's 60. Appendix A, section K, confirms that S and T generate both
+ finite groups and that their element-order profiles match 2T and 2I exactly. That the Engine's
+ constants reappear here is recorded, not explained [CORRESPONDENCE].
+
+
+ 7.6 The Lorentz Lift and the Scalar-Zero Boundary
+       Proposition 7.7 (The Scalar Key Is the Ideal Boundary). [PROVEN] Connects
+       BioChain AI (2026a), Definition 3.6, with BioChain AI (2026h).
+       For a unit quaternion q = w + v with w > 0, the Lorentz lift q̃ = (1/w, v/w) lies on the
+       hyperboloid t² − x² − y² − z² = 1. As w → 0 from above, q̃ runs off to the boundary at
+       infinity, which is the 2-sphere of directions v/|v|.
+
+       Proof. t² − |v|²/w² = (1 − |v|²)/w² = w²/w² = 1. As w → 0, |v| → 1 and every coordinate
+       of q̃ diverges along the direction of v. ■
+
+ The voxel-alignment review's "locked state" w = 0, where the hairy-ball theorem bites, is
+ therefore the ideal boundary of hyperbolic 3-space, and its "scalar key" w > 0 is what places a
+ state inside it (BioChain AI 2026h). The rational hyperbolic quadrance Q_h = ⟨p̃, q̃⟩² − 1 of the
+ Dual-Helix report is invariant under every Lorentz transformation, so it compares lifted states
+ from any frame [ESTABLISHED]. The lift itself comes from Hoard (2026c).
+
+       Proposition 7.8 (The Ghost Map). [PROVEN] Fifteen Lemmas, Lemma 8,
+       Proposition 6.2, and Theorem 7.8.
+       Compose the rational Cayley map C_rat(p) = (1 − ‖p‖², 2p)/(1 + ‖p‖²) with the
+       Lorentz lift of Proposition 7.7. The result
+                                                    1 + ∥p∥2   2p
+                                         G(p) = (            ,       )
+                                                    1 − ∥p∥ 1 − ∥p∥2
+                                                           2
+                                                              ​           ​
+
+
+
+
+       is a bijection from the open unit ball onto the hyperboloid sheet, an isometry from
+       the Poincaré ball model, rational on rational points, and equivariant under every
+
+
+                                                       — 21 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+       rotation. Between two projected states, Q_h = ⟨G_i, G_j⟩² − 1 = sinh² d_H(G_i, G_j), a
+       rational, symmetric kernel that vanishes only when the states coincide.
+
+ So Q_h, used heuristically in the Dual-Helix report, has an exact meaning: it is a function of
+ hyperbolic distance alone. Appendix A, section X, checks the distance formula exactly on 500
+ pairs of rational points. The projection of quaternion states into hyperbolic 3-space proposed by
+ the symmetry-folding paper (BioChain AI 2026d, §3) is realized exactly by the lift and the ghost
+ map; its group-theoretic form is the inclusion SU(2) ⊂ SL(2, ℂ) as the stabilizer of a base point
+ of hyperbolic space (Fifteen Lemmas, Lemma 8, Proposition 6.3).
+
+
+ 7.7 The Standard for Procedurally Generated Cubic Integers
+       Definition 7.9 (Standard Procedural Integer). [DEFINITION]
+       A procedurally generated lattice point is exchanged as its depth L, its canonical
+       associate (Proposition 4.3) and its reduced word over S₅, optionally with its image in
+       PSL(2, 𝔽_q) for an agreed q. A word of depth L takes ⌈log₂(6 × 5^{L−1})⌉ bits: 15
+       bits at depth 6.
+
+ Any agent recovers the word from the integer quaternion alone (Theorem 7.2) and the
+ quaternion from the word by shifts and adds (Proposition 7.3). Two agents need agree only on
+ S₅ and, to meet, on q. For integers rather than lattice points, the Einstein Tile's Form 2 carries
+ three 10-bit residues modulo the prime triplet (881, 883, 887), decoded in O(1) by Garner's
+ algorithm with closed-form inverses on [0, 690,017,701) (Fifteen Lemmas, Lemma 9 Part 2)
+ [PROVEN]. This removes the interoperability barrier of Section 7.3: positions are compared as
+ exact words, not as coordinates in a frame neither agent can see. For other primes p ≡ 1 (mod
+ 4) the same construction gives p + 1 generators and a (p + 1)-regular tree; p = 5 is the case
+ whose generators are the cubic directions.
+       Editorial Note. Prime triplets (p, p + 2, p + 6) enter the standard only as CRT moduli: every
+       triplet with p > 5 lies in one of two classes mod 30, (11, 13, 17) or (17, 19, 23), and the three
+       moduli are pairwise coprime for every prime p > 3 (Fifteen Lemmas, Lemma 9 Parts 1 and 2).
+       The generators that provably produce free, uniquely factorable hyperbolic structure are
+       quaternions of prime norm.
+
+
+
+ 8 The Sieve on the SHD-CCP 64-Bit Packet
+ The sieve runs on the Einstein Tile of the Fifteen Lemmas: it reads the Form 1 Hurwitz core in
+ exact 64-bit arithmetic, certifies prime-norm anchor packets with a 2,017-byte table, gives
+ every lattice address a frame-free canonical form, and prunes a stream losslessly where the
+ TQF, read correctly, allows. Anchored to the realized cubit, its Triple Quad Formula stays exact
+ in 64-bit integers.
+
+ Status: [DEFINITION], [PROVEN] and [COMPUTED]. Sources: Fifteen Lemmas, §6.1 (the
+ Einstein Tile), Lemma 5 Parts 5 and 6(a), Lemma 4 Part 2 and Lemma 15; BioChain AI (2026e)
+ for the decoding stages; Hoard (2026a), §IV, for exact TQF arithmetic, most accurate method;
+ Hoard (2026d), §§3.2 and 3.5, Proposition 3.1 and Remark 4.3, for the physical scale and the
+ precision horizon.
+
+
+
+                                                       — 22 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)       Geometric Engine of Time
+
+
+
+ 8.1 The Einstein Tile
+ The Fifteen Lemmas fix the layout of the 64-bit SHD-CCP packet as the Einstein Tile, whose
+ design rule is that a receiver knows how to decode a packet before decoding it: fixed fields at
+ fixed positions, and a 4-bit Form ID that selects the reading of the rest (Fifteen Lemmas, §6.1).
+ This paper adopts it; the companion maps the three layouts of the earlier companion papers
+ onto it (Hoard 2026h, Section 4.6). Table 12 lists its fields and what the sieve does with each.
+
+               Table 12: The Einstein Tile (Fifteen Lemmas, §6.1) and the sieve's use of each field.
+
+   Bits     Field            Content                                            Use by the sieve
+
+   61–      Cycle step k     The exact spinor state (1 + i)^{k+1}               Carries the spinor sign that Form 1
+   63                                                                           normalizes away
+
+   58–      Wheel unit       One of the 8 units mod 30, split into B₊ and B₋    Proposed: the class of N mod 30 for
+   60                        by the Legendre symbol mod 5                       an anchor packet (Section 3.1;
+                                                                                Proposition 3.3)
+
+   56–      Structure        Which structure, or the implied fourth             Not used
+   57       selector
+
+   56–      South Halo       Bits 56–63 read as one byte                        A cache filter only, never an
+   63       header                                                              integrity check (Fifteen Lemmas,
+                                                                                Lemma 15)
+
+   48–      Gate byte        Locus, C₉ or D₃ sector and sense, harmonic flag    Not used
+   55
+
+   44–      Step-            Circle phase, half-cube, ghost index or frame      Not used
+   47       multiplexed      coordinate
+            index
+
+   40–      Form ID          Selects the reading of the core word and gate      The sieve acts on Form 1; Form 2
+   43                        byte                                               carries CRT addresses
+
+   36–      Stream slot      Engine position or projection                      Not used
+   39
+
+   32–      Scale register   Dyadic level, Fibonacci index or frequency         Scale in dyadic multiples 2^k C₀ of
+   35                                                                           the cubit C₀ = λ/16 (Hoard 2026d,
+                                                                                §3.2)
+
+   0–31     Core word        Form 1: doubled Hurwitz coordinates 2Q, gcd-       The sieve's input
+                             reduced and sign-normalized, with a loss flag in
+                             the top bit of the w byte
+
+          Definition 8.1 (The Sieve's Reading of the Tile). [DEFINITION]
+          The sieve reads a packet only when its Form ID is 1 and the loss flag is clear, so that
+          the core is an exact Hurwitz quaternion Q with doubled coordinates D = 2Q, D_w ∈
+          [0, 127] and D_x, D_y, D_z ∈ [−127, 127], all of one parity. Its outputs (the norm, the
+          wheel class, the certificate and the canonical address) are derived quantities that
+          every receiver recomputes from the core; none of them is stored in the core.
+
+ Remark (Physical Scale). [DEFINITION] With the scale register in cubits, the Form 1 lattice
+ has a physical reading. At level 0 adjacent nodes are C₀ = λ/16 apart, a 4 × 4 × 4 block is the
+ voxel cube of the cubit installment, whose edge is λ/4, and one node step along a plane wave
+ advances the phase by π/8 (Hoard 2026d, Proposition 3.1, [PROVEN] there). Level k multiplies
+ every length by 2^k, so level 4 makes the node spacing one wavelength. The reading adds no
+
+
+
+
+                                                        — 23 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ constraint on the sieve, whose arithmetic is unit-free; it fixes what a lattice address means
+ when two agents exchange physical positions (Section 9.2).
+
+
+ 8.2 The Sieve Pipeline on One Packet
+ Each step below is exact; steps 2 to 6 store nothing.
+
+    1. Check that the Form ID is 1 and the loss flag is clear; otherwise the core is not exact and
+       the sieve does not run.
+    2. Compute N(Q) = (D_w² + D_x² + D_y² + D_z²)/4 ≤ 16,129, a 14-bit integer.
+    3. Apply the wheel: keep N if N mod 30 is a unit or N ∈ {2, 3, 5} (Proposition 3.3). 34.26 % of
+       encodable cores pass.
+    4. Certify with one lookup in a 2,017-byte bitmap of the 1,877 primes up to 16,129. Cores of
+       prime norm, 14.36 % of the 265,314,240 encodable states, are anchor packets: irreducible
+       and primitive (Proposition 4.1). They reach 1,712 of the 1,877 primes; the others need
+       coordinates outside the byte range.
+    5. For an address, take a copy of Q to its canonical associate (Proposition 4.3). The stored
+       core keeps the tile's sign normalization, because it encodes a rotation.
+    6. Address the core: when N = 5^L, factor it into S₅ (Theorem 7.2), which fits the Form 1
+       range to depth 5 (3,750 addresses at that depth); otherwise factor it by prime norms in
+       the agreed order (Theorem 4.4). Integers in [0, 690,017,701) can instead travel as Form 2
+       CRT addresses (Section 7.7).
+    7. Key the Codex on a hash of the canonical form, not of the raw bits, so that one shape seen
+       in two frames is one Codex entry (BioChain AI 2026e, Stage 4). The key is for lookup;
+       integrity comes from the Merkle root of Section 9.6.
+    8. Across a stream of packets, prune a packet whose core is the linear prediction of its
+       neighbours (Proposition 8.3) and store the run length.
+
+       Proposition 8.2 (Packet-Scale Arithmetic Is Exact in 64 Bits). [PROVEN] Uses
+       Fifteen Lemmas, Lemma 5 Part 6(a).
+       For three Form 1 cores with difference vectors u and v in doubled units, the quadrea
+       is
+                            AR = S 2 − 2 (Q21 + Q22 + Q23 ) = 4 (Q2 Q3 − ⟨u, v⟩2 ) ≥ 0,
+                               ​              ​      ​      ​        ​   ​
+
+
+
+
+       with Q₂, Q₃ ≤ 258,064 < 2¹⁸ and Q₂Q₃ < 2³⁶. Both forms are exact in 64-bit integers;
+       the Gram form needs 36 bits, the S² form 40.
+
+       Proof. With A at the origin, Q₂ = |u|², Q₃ = |v|² and Q₁ = |u − v|², and expanding gives
+       the Gram identity, which is non-negative by Cauchy–Schwarz. Doubled coordinates
+       differ by at most 254 per axis, so each quadrance is at most 4 × 254² = 258,064 and
+       Q₂Q₃ is at most 66,597,028,096 < 2³⁶; S ≤ 774,192 gives S² < 2⁴⁰. ■
+
+ The Gram form also makes the collinearity test a Cauchy–Schwarz equality, ⟨u, v⟩² = Q₂Q₃, and
+ with the Weitzenböck bound A_R ≤ S²/3 (Fifteen Lemmas, Lemma 4 Part 2) it bounds the
+ quadrea by the larger route.
+
+
+
+
+                                                         — 24 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)         Geometric Engine of Time
+
+
+
+    Table 13: Arithmetic widths on the Form 1 core, at the cubit realization horizon and at the precision
+                                             horizon of the source note.
+
+                                           Cubit realization, Q
+   Quantity            Form 1 core                                   Source-note horizon, Q ≈ 10¹²
+                                           ≈ 2.3 × 10⁷
+
+   Norm                14 bits             25 bits                   40 bits
+
+   Quadrance of a      18 bits, doubled    27 bits                   40 bits
+   difference          units
+
+   Quadrea, Gram       36 bits: exact in   53 bits: exact in int64   About 80 bits: two widening 64 × 64 → 128-bit
+   form Q₂Q₃           int64                                         products (Fifteen Lemmas, Lemma 5 Part 6(a))
+
+   Quadrea, S² form    40 bits: exact in   57 bits: exact in int64   85 bits: needs 128-bit integers
+                       int64
+
+   Primality           2,017-byte          Miller–Rabin, 64-bit      Miller–Rabin, 80-bit products
+   certificate         bitmap lookup       products
+
+   Generator step      Shift and add       Shift and add             Shift and add
+   over S₅
+
+ Wide integers are needed only at the source note's horizon. On the Form 1 core the Gram form
+ fits in 64 bits with 28 bits to spare, and on lattices anchored to the realized cubit with 11 to
+ spare.
+
+ Remark (The Precision Horizon). [HEURISTIC / COMPUTED] The source note's angular
+ resolution δθ ≈ 1/√Q gives Q ≥ 10¹² for six decimal places, coordinates near 10⁶ and 40 of 64
+ bits (62.5 %). About 4.2 × 10¹⁸ points of ℤ³ and 4.9 × 10²⁴ of ℤ⁴ lie below that horizon, against
+ 37,607,912,018 primes. For lattices anchored to physical positions the cubit sets a lower
+ ceiling. C₀ is realized with a relative standard uncertainty of 2.09 × 10⁻⁴, dominated by the
+ real-air equation of state (Hoard 2026d, §3.5), so angular detail finer than that carries no
+ information, and the same rule gives Q ≈ 1/(2.09 × 10⁻⁴)² ≈ 2.3 × 10⁷: coordinates up to
+ 4,785, or 13 bits per axis. That is 44,000 times below the source note's horizon, and the Gram
+ form there needs at most 53 bits (Table 13; Appendix A, section Z). The resolution rule δθ ≈ 1/
+ √Q is the heuristic part; the widths that follow from it are computed.
+
+ Remark (Why the TQF Is Evaluated Exactly). [COMPUTED] The cubit installment shows
+ that double precision cannot evaluate the quadrea of a thin astrophysical triangle (Hoard
+ 2026d, Remark 4.3). On the lattice the same failure decides collinearity wrongly. For A = (0, 0,
+ 0), B = (10⁶, 1, 0) and C = (2 × 10⁶ + 1, 2, 0), whose quadrances are near 4 × 10¹², the exact
+ quadrea is 4 and the Gram form returns 4, while double precision returns 0 and declares the
+ triangle collinear (Appendix A, section Z). The collinearity tests of Section 8.3 are therefore
+ always evaluated in integers.
+
+
+ 8.3 TQF Pruning, Restated
+ The decoding framework scans the 6 faces of the 4 × 4 × 4 cube, 3 layers deep, 18 scans in
+ all, and prunes the middle node of any triple that satisfies the TQF, "ensuring there is no data
+ loss" (BioChain AI 2026e, Stage 3).
+
+        Proposition 8.3 (What TQF Pruning Removes). [PROVEN] Restates BioChain AI
+        (2026e), Stage 3.
+        (1) Every triple of points on one lattice scan line satisfies the TQF, so the test as
+        stated prunes every interior node whatever the data. (2) For samples (k, f_k) at
+
+                                                           — 25 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+       equally spaced positions, the TQF holds for three consecutive samples exactly when
+       f_{k−1} − 2f_k + f_{k+1} = 0; pruning those nodes and storing the end values and
+       run length is lossless. (3) The relation Q₁ + Q₂ = Q₃ drawn in the same paper is the
+       right-angle condition of Pythagoras, not collinearity.
+
+       Proof. (1) The TQF holds exactly for collinear triples (Wildberger 2005), and a scan
+       line is a line. (2) Three points (k − 1, f_{k−1}), (k, f_k), (k + 1, f_{k+1}) are collinear
+       exactly when the two slopes agree, that is when the second difference vanishes; the
+       pruned values are then recovered by linear interpolation. (3) Q(A, C) + Q(B, C) =
+       Q(A, B) holds exactly when the angle at C is right. ■
+
+ Appendix A, section O, checks (2) on 20,000 random triples and (3) on 336 lattice triangles.
+ The midpoint test "2Q₃" of the same stage is the special case Q(A₁, A₃) = 4Q(A₁, A₂) of a
+ collinear, equally spaced triple.
+
+ The TQF also limits where prime traps can sit along a flow line.
+
+       Theorem 8.4 (No Collinear Prime Triple). [PROVEN] Formalizes source §4; a
+       second, lattice proof is Fifteen Lemmas, Lemma 5 Part 5.
+       Let three points have integer pairwise quadrances Q₁, Q₂, Q₃ satisfying the TQF (Q₁ +
+       Q₂ + Q₃)² = 2(Q₁² + Q₂² + Q₃²). If Q₁ and Q₂ are prime, Q₃ is not. In particular, no
+       collinear triple of lattice points has three prime quadrances.
+
+       Proof. The TQF holds exactly when √Q₃ = |√Q₁ ± √Q₂|, so Q₃ = Q₁ + Q₂ ± 2√(Q₁Q₂).
+       Since Q₃ is an integer, Q₁Q₂ is a perfect square; for primes this forces Q₁ = Q₂ = p,
+       and then Q₃ is 0 or 4p, neither of them prime. ■
+
+ Lattice proof. If A, B, C lie on a lattice line, write B − A = sv and C − A = tv with v primitive of
+ norm N and s, t distinct non-zero integers. The quadrances are s²N, t²N and (s − t)²N. The first
+ two are prime only if s² = t² = 1 and N = p is prime; then t = −s and (s − t)²N = 4p. ■
+
+ Whether a single lattice line nevertheless meets infinitely many nodes of prime norm is a case
+ of Bunyakovsky's conjecture (companion, Problem 2); the companion also records how the
+ source note's example triple 2, 3, 5 is a right triangle rather than a collinear one (Hoard 2026h,
+ Section 3).
+
+
+
+ 9 A Universal Lattice for Interoperable Alignment and
+ Governance
+ The sieve's mathematics gives agents that share no frame, medium, clock or history what they
+ need to communicate exactly: one number system, invariants they can compare from any
+ frame, canonical addresses, a finite space to meet in, and certificates that do not depend on
+ trust. Its use for AI alignment and governance is a design proposal [HEURISTIC]; each layer's
+ mathematics carries its own tag.
+
+ Status: [PROVEN], [ESTABLISHED] and [HEURISTIC]. Sources: BioChain AI (2026h) for the
+ master quaternion and the coherence Φ; BioChain AI (2026f), §4, for Dual-Helix governance
+ and Proof-of-Manifold; BioChain AI (2026a) for the separation of proposal from certification;
+ BioChain AI (2026e), Stages 1 and 4, for the translation requirement and the Codex; BioChain
+
+
+                                                       — 26 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)      Geometric Engine of Time
+
+
+
+ AI (2026i), §9, for scale-normalized quads; Hoard (2026d), §§3.2, 3.5 and 4.1, Lemma 3.2 and
+ Appendix E, for the unit, the clock windows and the cube group; Hoard (2026a) for the register;
+ Butt et al. (2026); Horn (1987); Fifteen Lemmas, Lemmas 5, 7, 9 and 15, Proposition 11.4 and
+ Theorems 7.5 and 7.10.
+
+
+ 9.1 The Problem: Agents Without a Shared Frame
+ The decoding framework states the goal as "the minimum viable translation requirements for
+ any higher-order complexity system to be able to communicate its implied logic through a
+ physics and mathematically verifiable system" (BioChain AI 2026e, Stage 1). Two agents
+ meeting for the first time may differ in five ways: the orientation of their frames, their unit of
+ length, their clock, their procedural history, and the kind of data they hold. Data of different
+ kinds become comparable only after each agent maps them into the lattice with its own
+ encoder. The standard can then align the lattice representations exactly; whether two encoders
+ mean the same thing by the same point is a semantic question that no geometry settles, and
+ Section 9.6 keeps it outside every certificate.
+
+
+ 9.2 The Layers of the Standard
+ Each layer of Table 14 removes one way in which two agents can differ, and each rests on a
+ result of this paper or of the series.
+
+                                 Table 14: Layers of the universal lattice standard.
+
+   Layer           What the agents agree on                        Supplied by              Status
+
+   1 Number        Exact integer and Hurwitz arithmetic; no        Sections 4 and 6         [PROVEN]
+                   floating-point state
+
+   2 Packet        The Einstein Tile and its Form IDs              Section 8; Fifteen       [DEFINITION]
+                                                                   Lemmas, §6.1
+
+   3 Scale         One unit of length, the cubit C₀ = v/(16        Hoard 2026d, §§3.2 and   [DEFINITION];
+                   f_cal), realized to 0.22 mm (k = 2), in the     3.5; Section 8.1         realization
+                   scale register                                                           [COMPUTED]
+
+   4 Tick          The 60-pulse register and the shared            Hoard 2026a, §V; Hoard   [DEFINITION]; window
+                   windows of integer carriers: 2 pulses for       2026d, §4.1; Fifteen     arithmetic [PROVEN]
+                   caesium alone, 30 pulses (0.5 s) for            Lemmas, Proposition
+                   caesium, 40 Hz and 432 Hz together              11.4
+
+   5 Frame         Canonical associates for addresses, sign        Sections 4.2 and 9.3     [PROVEN]
+                   normalization for rotations; invariants N, Q,
+                   A_R and Φ_M
+
+   6 Address       Reduced words over S₅; prime-norm factor        Sections 4.2 and 7       [ESTABLISHED],
+                   sequences; Form 2 CRT residues                                           [PROVEN]
+
+   7 Meeting       The Ramanujan graph X(5, q) for an agreed       Section 7.4              [ESTABLISHED]
+   space           prime q
+
+   8               Exact checks of every claim that crosses        Section 3; BioChain AI   [PROVEN]
+   Certification   between agents, recorded under a 256-bit        2026a; Fifteen Lemmas,
+                   Merkle root                                     Lemma 15
+
+   9               Proposals scored by geometry, accepted          BioChain AI 2026f,       [HEURISTIC]
+   Governance      only on certificates                            2026h
+
+
+
+
+                                                          — 27 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ 9.3 Non-Local Alignment by Invariants
+ Non-local alignment compares agents that share no neighbourhood and no frame, so it can use
+ only quantities every frame computes alike.
+
+       Proposition 9.1 (Frame-Free Invariants and the Corrected Coherence).
+       [PROVEN] Gives the coherence of BioChain AI (2026h) its sign-invariant form.
+       Let u and v be unit quaternions, and let a frame change act on every voxel state by q
+       ↦ uqv. (1) It preserves every norm, every pairwise quadrance, the TQF and the
+       quadrea A_R. (2) The coherence Φ = (1/N)‖Σ q̂ _i‖ of the voxel-alignment review is
+       invariant under it, but not under q_i ↦ −q_i, which represents the same rotation. (3)
+       The largest eigenvalue Φ_M of M = (1/N) Σ q̂ _i q̂ _iᵀ is invariant under both, lies
+       between 1/4 and 1, and equals 1 exactly when all q̂ _i agree up to sign.
+
+       Proof. (1) The map is linear with |uqv| = |q|, so it is an isometry of ℝ⁴, and every
+       listed quantity is built from distances. (2) Σ uq̂ _i v = u(Σ q̂ _i)v has the same length;
+       replacing one q̂ _i by its negative changes the sum. (3) M becomes RMRᵀ for the
+       orthogonal matrix R of the frame change, and q̂ q̂ ᵀ is unchanged by sign; M has trace
+       1, so its largest of four eigenvalues is at least 1/4, and it equals 1 exactly when M has
+       rank one. ■
+
+ Remark (Measured). [COMPUTED] For 64 voxel states near a common pole, Φ = 0.9969
+ before and after a random frame change and 0.0331 after random sign flips; Φ_M = 0.9938 in
+ all three cases. Matching anchors between two frames by their sorted quadrances to all other
+ anchors, a frame-free signature, is correct in 499 of 500 trials (Appendix A, sections S and T).
+
+ The sign correction is not cosmetic. At the Engine's two handshake windows, steps 2 and 6 of
+ the cycle, the spinors are i and −i: the same half-turn with opposite spin sign, so a partner sees
+ the same spatial orientation, and the spin sign is the one bit the geometry never exposes
+ (Fifteen Lemmas, Theorem 7.5). A coherence score that changes when q becomes −q
+ measures that hidden bit rather than alignment; Φ_M does not.
+
+ Scale-normalized quads, as in the folded-packet paper, make the signatures invariant under a
+ change of unit as well (BioChain AI 2026i, §9), so two agents can match anchors before they
+ agree on a length. The cubit supplies the physical counterpart.
+
+ Remark (Medium-Free Invariants). [PROVEN] Hoard (2026d), Lemma 3.2. If an enclosure
+ measures N_x, N_y and N_z cubits, each realized in the air it contains, its mode frequencies are
+ 8 f_cal √(l²/N_x² + m²/N_y² + n²/N_z²), whatever the temperature, pressure and composition of
+ that air. Frame-free invariants remove the orientation an agent cannot share; cubit units
+ remove the medium. Two agents that exchange lengths as cubit counts rather than in metres
+ agree on the phase geometry at f_cal of everything they describe, though their air differs
+ (Appendix A, section Z).
+
+
+ 9.4 Local Alignment and Exact Certification
+ Once anchors are matched, local alignment finds the rotation between the frames and then
+ certifies it.
+
+       Proposition 9.2 (Horn's Quaternion Solution). [ESTABLISHED] Horn (1987).
+
+
+
+                                                       — 28 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+       For matched point sets, the rotation that minimizes the sum of squared distances is
+       given by the unit eigenvector of the largest eigenvalue of a symmetric 4 × 4 matrix
+       built from their cross-covariance.
+
+ Remark (Two Agents, Measured). [COMPUTED] In 500 trials, agent B held agent A's 12
+ integer anchors under an unknown cube rotation, in shuffled order, with noise of standard
+ deviation 0.05. Horn's rotation was within 3.2 × 10⁻³ of the truth; rounded, it was an exact
+ lattice symmetry that mapped every anchor exactly in all 500 trials, including the one trial in
+ which signature matching had swapped two anchors of identical signature. The certificate, not
+ the matching, decides. For a rotation that is not a lattice symmetry the solution is accurate to
+ about 10⁻³ but can be certified only to a tolerance: local alignment is exact up to the symmetry
+ group of the lattice.
+
+ That group is exact: x ↦ 2ρ_g(x) maps the core cube onto the voxel cube exactly when ρ_g lies
+ in the 24-element rotation group O, whose spinor lift 2O contains all 24 Hurwitz units (Fifteen
+ Lemmas, Lemma 5 Part 2) [PROVEN]. It is also the group the Engine's own tier maps
+ generate: Rot_x(π/2) and Rot_y(π/2), the alternating tier orientations of Hoard (2026a, §2.3),
+ generate all 24 rotations of O, and the adjacent-tier rotation h of Proposition 10.1 is one of
+ them (Hoard 2026d, Appendix E; Appendix A, section Z) [PROVEN]. For a rotation outside O,
+ the rational Cayley map gives exact rational unit quaternions without square roots (Fifteen
+ Lemmas, Lemma 9 Part 3), so an agent can snap Horn's answer to a nearby rational rotation
+ and certify that rotation exactly; only the claim that it is the true rotation stays approximate.
+
+
+ 9.5 One-Way Compatibility and Complementary Encodings
+ An external result on quantum codes gives a precise model of partial compatibility
+ [ESTABLISHED]. Butt et al. (2026) pair the tetrahedral [[15, 1, 3]] colour code with its
+ Hadamard-transformed twin. A transversal CNOT preserves the code space only from the
+ tetrahedral code to its twin; the reverse direction needs a pieceable round-robin CZ gate with a
+ mid-circuit measurement of the stabilizers that stay invariant throughout. The Eastin–Knill
+ theorem forbids a universal transversal gate set in any single code.
+
+ Read as an analogy [HEURISTIC]: two agents whose lattice charts differ by a global transform
+ can translate cheaply in a direction whose checks are invariants of that transform; the other
+ direction needs checks interleaved during translation, on the invariant set of Section 9.3, which
+ here consists of norms, canonical words and images mod q. No single chart makes every
+ operation cheap for every agent, so the standard fixes the invariants, not one privileged frame.
+
+
+ 9.6 Consensus, Governance and the Limits of a Coherence Score
+ On the meeting graph X(5, q) any diffusive consensus, such as gossip averaging, converges in
+ logarithmic time (Proposition 7.5): 3.80 time units to 1 % on 12,180 nodes, against 62.15 on a
+ cubic torus of the same size and degree (Table 10).
+
+ The chiral engine paper splits governance between a fluid Helix A, the BioStrata Open Plane,
+ and a crystalline Helix B, the HyperSim Genesis Chain, with Proof-of-Manifold verification by the
+ TQF (BioChain AI 2026f, §4). The Dual-Helix principle fixes what each side may do. A certificate
+ can establish that a packet is well formed, that its claims are consistent across frames, and
+ that it was derived by stated operations from stated inputs. It cannot establish that its content
+
+
+                                                       — 29 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+ is true or that a decision is good. Φ measures agreement among packets, so a coherent error
+ scores as high as a coherent truth, and once Φ becomes a target agents can raise it without
+ becoming more accurate. Φ therefore belongs to Helix A as an advisory score, not to Helix B as
+ a "Truth Score" (BioChain AI 2026h). The token economics of BioChain AI (2026f), §4.3, are
+ outside the scope of this paper.
+
+ Two results of the Fifteen Lemmas fix what Helix B stores. A record of nested state is certified
+ only by a collision-resistant hash chain: with τ_d = H(G_d ‖ τ_{d+1}), equal 256-bit roots for
+ different states exhibit a collision of H, while any 64-bit label of a 12-layer state with 2⁷²
+ configurations has some value with at least 256 preimages, and a linear checksum such as
+ CRC-32 can be steered to any target (Lemma 15) [PROVEN]. And four records closed by
+ H₁H₂H₃H₄ = 1 survive the loss of any one, since each is the inverse product of the other three,
+ but not of two (Lemma 7 Part 3(d)) [PROVEN]: closure buys erasure tolerance, not capacity.
+ What an exchange preserves is likewise fixed: the shared geometry at the handshake windows,
+ the address, the hyperbolic distance and the root hash, but never a chain's history, since
+ products are not injective (Fifteen Lemmas, Theorem 7.10).
+
+ Proposal (The Alignment Handshake). [HEURISTIC] A protocol for two agents with no
+ shared history; every step is exact or explicitly certified, and Figure 1 draws it.
+
+    1. Exchange invariants: norm spectra, counts of prime-norm anchor packets, images mod q.
+       No frame is needed.
+    2. Match anchors by frame-free signatures (Proposition 9.1).
+    3. Solve the relative frame by Horn's quaternion and snap it to the lattice symmetry group
+       when it lies there (Proposition 9.2).
+    4. Certify exactly; on failure, return to step 1 with more anchors.
+    5. Exchange addresses as reduced words over S₅ or Form 2 residues, at clock windows both
+       carriers share (Hoard 2026d, §4.1; Fifteen Lemmas, Proposition 11.4), and meet in X(5, q)
+       for consensus (Section 7).
+    6. Record certificates on Helix B under a 256-bit Merkle root; keep heuristic scores such as
+       Φ_M advisory on Helix A.
+
+
+
+
+                                                       — 30 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+
+   Figure 1: The alignment handshake. Steps 1 to 3 propose; step 4 certifies with integer arithmetic and
+              loops back on failure; steps 5 and 6 share addresses and record the certificates.
+
+       Editorial Note. Nothing in this section claims that a geometric standard aligns the values of
+       AI systems. It addresses the layer beneath: how systems that cannot see each other's
+       frames can exchange states exactly, agree on what was said, and keep a record that does
+       not depend on trusting either party. The companion fixes a preregistered test of the
+       handshake between real systems, with its decision rule (Hoard 2026h, Problem 8).
+
+
+
+ 10 Relation to the Geometric Engine of Time
+ The Geometric Engine of Time supplies the most accurate method at four points of the sieve:
+ exact TQF arithmetic, the 30-node wheel, exact tier rotations and the closure clock; at three
+ more it is the source of an identity that standard mathematics carries. The Fifteen Lemmas
+ supply the proofs at each point, and the cubit installment sharpens three of them.
+
+
+
+
+                                                       — 31 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)          Geometric Engine of Time
+
+
+
+             Table 15: Where the Geometric Engine of Time and its companion papers enter this paper.
+
+   Section      Series result                       Role here                  Most accurate method?
+
+   8, 9         Hoard 2026a, §IV (TQF area          Collinearity, pruning,     Yes. Exact in int64 at packet scale
+                invariant), in exact arithmetic;    packet arithmetic          (Proposition 8.2); two 128-bit products
+                Gram form from Fifteen Lemmas,                                 at the horizon
+                Lemma 5 Part 6(a)
+
+   3, 8         Hoard 2026a, §V, read as ℤ/30       Wheel pre-filter before    Yes, for the packet. A proven bias of
+                (Hoard 2026d, §4.6 and Theorem      certification              3.75, the largest of any wheel fitting
+                4.9); Legendre split from Fifteen                              the 3-bit field (Propositions 3.2 and
+                Lemmas, Lemma 4 Part 5                                         3.3)
+
+   4, 7.5,      Hoard 2026a, §II.3 (alternating     Tier rotation h as a       Yes. Exact integer and half-integer
+   9.4          embedding); Fifteen Lemmas,         Hurwitz unit; the tier     arithmetic (Proposition 10.1)
+                Lemma 4 Part 4; Hoard 2026d,        maps generate the
+                Appendix E                          cube group O
+
+   9.2          Hoard 2026a, §V (30-node closure    Clock windows of the       Yes, for the closure arithmetic: 0.5 s is
+                of 0.5 s); Hoard 2026d, §4.1;       handshake                  the shortest window shared by
+                Fifteen Lemmas, Proposition 11.4                               caesium, 40 Hz and 432 Hz
+
+   6, 7.5       Hoard 2026a, §I.1 (W_Σ = 60)        Exponent of 2I; order of   Source only. A correspondence; 2I is
+                                                    PSL(2, 5)                  not exactly representable (Theorem
+                                                                               6.1)
+
+   7.5          Hoard 2026a, §III.1 (C₃ × C₂)       Abelian shadow of          Source only. The modular group is the
+                                                    PSL(2, ℤ) = C₂ * C₃        method
+
+   2            Hoard 2026b (cycle current);        Drift along TQF lines      Source only. Drift without a potential
+                Fifteen Lemmas, Lemma 7 Part                                   carries a current and produces entropy
+                3(e); Hoard 2026d, Proposition                                 but leaves the stationary state uniform
+                4.8                                                            (Proposition 2.6)
+
+          Proposition 10.1 (The Engine's Tier Rotation Is a Hurwitz Unit). [PROVEN]
+          The power table is Fifteen Lemmas, Lemma 4 Part 4; the cube group is Hoard
+          (2026d), Appendix E.
+          The quaternion h = (1 − i + j + k)/2 that carries an even tier of the Engine to the
+          next odd tier is one of the 24 Hurwitz units. Its powers are h² = −h̄ , h³ = −1, h⁴ = −h,
+          h⁵ = h̄ and h⁶ = 1, so h has order 6, and conjugation by h is the 120° rotation about
+          (−1, 1, 1)/√3 that carries the tiers, an element of the cube group O that the tier
+          orientations generate. Left multiplication by h preserves the norm of every Hurwitz
+          integer and maps each prime shell onto itself.
+
+          Proof. All four components of h equal ±1/2, so h is a Hurwitz integer, N(h) = 1 and
+          Re(h) = 1/2. A unit quaternion satisfies q² − 2Re(q)q + 1 = 0, so h² = h − 1 = −h̄ ,
+          since h̄ = 1 − h; the other powers follow, with h³ = −1 the first real power and h⁶ = 1
+          the first equal to 1. The conjugates hih̄ = −k, hjh̄ = −i and hkh̄ = j give the rotation.
+          Norms multiply, so N(hq) = N(q). ■
+
+ Remark (Thirty). [CORRESPONDENCE] The reduced words of length 2 over S₅ number 6 ×
+ 5 = 30, the node count of the Engine's closure, and 720 = 24 × 30 is the number of Hurwitz
+ units times that count. Both are equalities of numbers; no map between the structures is
+ claimed.
+          Editorial Note. The Engine enters the sieve where exact arithmetic matters: its TQF, its
+          wheel and its rotations are the most accurate methods available at those points, and the
+          Fifteen Lemmas prove each. Its constants 60 and C₃ × C₂ reappear in the hyperbolic
+
+
+                                                         — 32 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+       constructions of Section 7 as group-theoretic correspondences; the series should treat them
+       as observations until a construction derives one from the other.
+
+
+
+ 11 Conclusion
+ The Fokker-Planck prime sieve is the Helix A half of a Dual-Helix system: a geometric process
+ that proposes where the primes are, paired with exact arithmetic that certifies them. Its
+ mathematics is exact, and its use for communication between agents is stated as a design.
+
+ What the sieve is. On a lattice the sieve is a master equation. Its Gibbs state is positive on
+ every node of a finite lattice, and on the infinite Hurwitz lattice exactly when the Hurwitz
+ partition function converges; absorbing traps send all mass to the prime set with the harmonic
+ measure; killing concentrates without selecting; and drift without a potential carries a current
+ and produces entropy but leaves the stationary state uniform (Propositions 2.2 to 2.6). By
+ Kolmogorov's criterion a potential selects at no stationary cost while a pump circulates without
+ selecting. Certified traps are exact whatever the dynamics, and the Engine's wheel gives the
+ proposer a proven bias of 3.75, the largest of any primorial wheel that fits the packet's 3-bit
+ field (Propositions 3.1 to 3.3). The sieve lives in four dimensions, where every prime splits,
+ every lattice point has a canonical associate and primitive points factor uniquely in a fixed
+ norm order. The golden Clifford torus holds no lattice point, and its Fibonacci approximants
+ carry the points q_m whose prime norms 7, 47 and 2207 are invisible to three dimensions
+ (Theorems 5.2 and 5.3). Exact arithmetic has no drift, and exact delta schedules close within
+ 12 repetitions or never (Section 6).
+
+ What it enables. The norm-5 quaternions 1 ± 2i, 1 ± 2j, 1 ± 2k grow a hyperbolic tree over
+ the cubic lattice by shifts and adds alone, with unique addresses and Ramanujan quotients on
+ which diffusion mixes in logarithmic time, so procedurally generated cubic integers can be
+ exchanged as exact words rather than as coordinates in a frame neither agent can see (Section
+ 7). On the Einstein Tile the sieve runs in exact 64-bit arithmetic, certifies anchor packets with a
+ 2,017-byte table, keys the Codex on canonical forms and prunes streams losslessly (Section 8).
+ Anchored to the realized cubit, the lattice has a physical scale, a precision ceiling near Q ≈ 2.3
+ × 10⁷ under which the Triple Quad Formula stays exact in 64-bit integers, and invariants that
+ hold in any air. These define a universal lattice standard on which agents with no shared frame,
+ medium or history align by invariants, solve their relative frame by Horn's quaternion, snap it
+ to the cube group the Engine's own tier maps generate, and record every certificate under a
+ Merkle root (Section 9).
+
+ Where the rest is. Every claim of the source note and of the companion papers that this
+ paper corrects or replaces, the status of every claim, the open problems with their test
+ protocols, and the relation to earlier versions of this installment are collected in the companion
+ (Hoard 2026h).
+
+
+
+ A Computational Verification
+ One script, verify_fp_sieve.py, reproduces every number in this paper and in its companion
+ (Hoard 2026h) and asserts every identity. Sections W to Y check every result imported from the
+
+
+
+
+                                                       — 33 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)          Geometric Engine of Time
+
+
+
+ Fifteen Lemmas before it is used, and section Z every result taken from or strengthened by the
+ cubit installment. It runs in about 90 seconds and passes all checks.
+
+ Running it. python3 verify_fp_sieve.py needs numpy, scipy and sympy, prints a report
+ section by section, and writes the key values to fp_results.json.
+
+                                   Table A1: Sections of the verification script.
+
+   Section   What it checks               Outcome
+
+   A         Arithmetic of the source     Q ≥ 10¹²; 2⁴⁰ ≈ 1.1 × 10¹²; A_R(2, 3, 5) = 24
+             note
+
+   B         Theorem 8.4                  No prime triple among prime pairs below 2,000; 10,227 collinear lattice
+                                          triples checked
+
+   C         Theorem 4.2                  4,511 of 17,984 primes below 200,000 are never three-square sums, all ≡
+                                          7 mod 8
+
+   D         Prime nodes of the 4 × 4     25 and 94 nodes; 7 and 23 missing in 3D
+             × 4 and 4 × 4 × 4 × 4
+             lattices
+
+   E         Hurwitz integers;            24 units; norm counts 24σ_odd(n); no inert prime below 10,000; h of order
+             Proposition 10.1             6
+
+   F         Proposition 2.2              Table 5; prime-node mass below 1 for every barrier
+
+   G         Proposition 2.3              Support on 25 prime nodes; λ_min = 1.402; mean absorption time 0.295
+
+   H         Integer width at Q ≈ 10¹²    85 bits for S²; int64 wraps
+             (Table 13)
+
+   I         The wheel on integers        26.7 % of quadrances pass; every prime passes
+
+   J         Companion, Theorem 4.2       Exponents 12, 24 and 60; periodic schedules close; random 720-step
+                                          products close in 92 of 2,000 runs
+
+   K         Proposition 7.6              SL(2, 3) and SL(2, 5) have the order profiles of 2T and 2I and are
+                                          generated by S and T
+
+   L         Proposition 5.1; Theorem     r₁² and r₂² exact; one-sided delta off the torus in 1,000 of 1,000; two-sided
+             5.2; companion, Section      exact in 1,000 of 1,000
+             4.1
+
+   M         Theorem 5.3                  Table 8; even n ≤ 800 with L_n prime are 2, 4, 8, 16; L_{2^k} ≡ 7 mod 8;
+                                          L₃₂ = 1087 × 4481
+
+   N         Companion, Proposition       Both trefoil symmetries to 4 × 10⁻¹⁵
+             4.1
+
+   O         Proposition 8.3; Section     Scan-line triples collinear; second difference on 20,000 cases; right angle
+             4.1                          on 336 triangles; L(q) identities
+
+   P         Theorem 7.2; Proposition     6 × 5^{L−1} words, equal to direct enumeration for L ≤ 5; 2,000 of 2,000
+             7.3                          factorizations; shift and add; Table 9
+
+   Q         Theorem 7.4; Proposition     Table 10; every nontrivial eigenvalue within 2√5
+             7.5
+
+   R         Byte-core statistics of an   Kept for comparison with section Y (companion, Section 1)
+             earlier packet reading
+
+   S         Proposition 9.1              Φ frame-invariant, not sign-invariant; Φ_M invariant under both
+
+   T         Section 9.4                  Signature matching 499 of 500; exact certificate 500 of 500
+
+   U         Proposition 3.2              β = 3.7500 on the integers 6 to 10⁷
+
+   V         Proposition 2.4              Quasi-stationary prime-node mass 0.437 to 0.955, always below 1
+
+
+
+                                                         — 34 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)           Geometric Engine of Time
+
+
+
+   Section      What it checks              Outcome
+
+   W            Fifteen Lemmas,             Box primes 2, 3, 5, 7, 13; Gram form and Weitzenböck bound; Legendre
+                Lemmas 4, 5, 9, 11, 13      split; triplet classes and Garner inverses for all primes to 20,000; finite
+                and 14                      rational orders 1, 2, 3, 4, 6; partition sums diverge at s = 2 and converge
+                                            at s = 3; ν_Cs ≡ 30 mod 60
+
+   X            Fifteen Lemmas,             Ghost map exact on 500 rational pairs; {4,3,5} constants; D₃ as six
+                Lemmas 7 and 8,             integer rotations; 13,824 unit chains give 24 products; uniform stationary
+                Theorem 7.4, §7.2           state under line drift
+
+   Y            Section 8 on the Form 1     Norm ≤ 16,129; 1,712 of 1,877 primes reached; 14.36 % prime-norm
+                core                        states; 34.26 % pass the wheel; 2,017-byte bitmap; Gram form in 36 bits;
+                                            S₅ words to depth 5
+
+   Z            Hoard 2026d,                Drift entropy production 0.0494 per step; Kolmogorov products equal for
+                Propositions 4.8 and 4.6,   Gibbs rates; wheels mod 6, 30, 210 with biases 3, 3.75, 4.375 and fields of
+                Theorem 4.9, §§3.5 and      1, 3, 6 bits; realization horizon Q = 2.29 × 10⁷ with Gram form in 53 bits;
+                4.1, Lemma 3.2,             double precision returns 0 for a quadrea of 4; closures of 2, 6, 10 and 30
+                Appendix E                  pulses; tier rotations generate O, which contains h; cubit-scaled modes
+                                            independent of v
+
+
+
+
+ B Notation and Construction Catalogue
+ For completeness, every symbol and construction this installment uses is listed below.
+
+                                    Table B1: Notation and construction catalogue.
+
+   Symbol / Object          Meaning
+
+   q = w + xi + yj + zk     Quaternion state
+
+   N(q) = qq̄               Norm, the sum of the squared components; the quadrance from the origin
+
+   Q, S, A_R                Pairwise quadrance; S = Q₁ + Q₂ + Q₃; quadrea A_R = S² − 2ΣQ_i² = 4(Q₂Q₃ − ⟨u, v⟩²)
+                            (Hoard 2026a, §IV; Fifteen Lemmas, Lemma 5)
+
+   Λ, ρ(t), V, D, β         Lattice nodes, probability vector, potential, diffusion constant, barrier parameter; rates
+                            k_ab = D e^(−β(V_b − V_a)/2), β = 1 unless stated
+
+   κ                        Killing rate on composite nodes (Proposition 2.4)
+
+   L_TT, L_TA, λ_min        Generator on transient nodes, rates into traps, slowest transient decay rate
+
+   Z_H(β)                   Hurwitz partition function 1 + Σ 24σ_odd(n)e^(−βV(n)) (Proposition 2.5)
+
+   w_k, ρ_k; σ (Section     Forward weights and reverse valves of a drift on (ℤ/4)³; its entropy production per step
+   2)                       (Proposition 2.6)
+
+   β (bias)                 Oracle bias Pr_D(B)/Pr_U(B) (BioChain AI 2026a, Assumption 5.1); 3.75 for the wheel
+
+   B₊, B₋                   Wheel units split by the Legendre symbol mod 5: {1, 11, 19, 29} and {7, 13, 17, 23}
+
+   Hurwitz integer; 2T      Quaternion with four integer or four half-integer components; its 24 units
+
+   2O, 2I                   Binary octahedral (48) and icosahedral (120) groups; exponents 24 and 60; not exactly
+                            representable beyond 2T
+
+   L(q)                     Matrix of left multiplication by q; L(q)ᵀL(q) = N(q)I
+
+   Canonical associate      The associate uq with odd positive real part, for addresses (Proposition 4.3)
+
+   φ; r₁, r₂                Golden ratio; radii of the golden Clifford torus, r₁² = (5 + √5)/10
+
+   q(θ₁, θ₂)                r₁e^{iθ₁} + r₂e^{iθ₂}j, a point of a Clifford torus
+
+   F_m, L_m; q_m            Fibonacci and Lucas numbers; q_m = (F_m, F_{m+1}, F_{m−1}, F_m)
+
+   S₅                       The norm-5 generators 1 ± 2i, 1 ± 2j, 1 ± 2k (Definition 7.1)
+
+
+
+                                                           — 35 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)           Geometric Engine of Time
+
+
+
+   Symbol / Object         Meaning
+
+   σ (Section 7)           Shadow map from words over S₅ to ℤ³
+
+   X(5, q)                 Lubotzky–Phillips–Sarnak Ramanujan graph on PSL(2, 𝔽_q) or PGL(2, 𝔽_q)
+
+   γ, t_mix                Spectral gap; time to 1 % total variation from a point start
+
+   {4,3,5}                 The compact hyperbolic honeycomb of cubes, five around each edge
+
+   S, T                    Generators of SL(2, ℤ): S of order 4, ST of order 6
+
+   q̃ = (1/w, v/w)         Lorentz lift of a unit quaternion q = w + v (Proposition 7.7; Hoard 2026c)
+
+   C_rat, G                Rational Cayley map u ↦ (1 − ‖u‖², 2u)/(1 + ‖u‖²) and ghost map G = q̃ ∘ C_rat (Fifteen
+                           Lemmas, Lemma 8)
+
+   Q_h                     Rational hyperbolic quadrance ⟨p̃, q̃⟩² − 1 = sinh² of the hyperbolic distance
+
+   Φ, Φ_M                  Coherence of BioChain AI (2026h); its sign-invariant eigenvalue form (Proposition 9.1)
+
+   h = (1 − i + j + k)/2   The Engine's adjacent-tier rotation (Proposition 10.1)
+
+   30-node wheel           The 8 unit classes mod 30 (Hoard 2026d, §4.6); the best wheel for a 3-bit field
+                           (Proposition 3.3)
+
+   C₀, f_cal, u_rel        The cubit v/(16 f_cal), its calibration frequency and its relative standard uncertainty 2.09
+                           × 10⁻⁴ (Hoard 2026d)
+
+   Einstein Tile; Form     The 64-bit packet of the Fifteen Lemmas; its Hurwitz form; doubled core coordinates
+   1; D = 2Q
+
+   τ_d                     Merkle chain τ_d = H(G_d ‖ τ_{d+1}) (Fifteen Lemmas, Lemma 15)
+
+   Helix A, Helix B        Heuristic proposer and exact certifier (BioChain AI 2026a)
+
+
+
+
+ References
+    1. BioChain AI — SHD-CCP Architecture Research (2026a). A Unified Dual-Helix Framework for
+       Geometrically-Guided Pollard's Rho: Cyclic Feature Embeddings, Quadrance Oracles, and
+       Exact Certification. Consolidated Technical Report.
+    2. BioChain AI — SHD-CCP Architecture Research (2026b). The Golden Strassen-Clifford
+       Geodesic Embedding: A c-Parameterized Geometric Moduli Space.
+    3. BioChain AI — SHD-CCP Architecture Research (2026c). Quaternionic Delta Encoding on
+          Golden Strassen-Clifford Toroids: Wave Collision and Sub-Cubic Matrix Optimization in the
+          SHD-CCP 64-bit Protocol.
+    4. BioChain AI — SHD-CCP Architecture Research (2026d). Topological Symmetry Folding and
+       Hyperbolic Projection in the SHD-CCP Framework: A 720:1 Quaternionic Cyclic System.
+       Posted on Academia.edu.
+    5. BioChain AI — Schism Labs (2026e). SHD-CCP Review: The 3-Nested Decoding Framework.
+    6. BioChain AI — SHD-CCP Architecture Group / Schism Labs (2026f). The Chiral Compression
+          Engine: Geometric Synchronization of the SHD-CCP Protocol, version 2.0. February 2026.
+    7. BioChain AI — Schism Labs (2026g). SHD-CCP Review: The Trefoil Projection Protocol.
+    8. BioChain AI — Schism Labs (2026h). SHD-CCP Quaternion Equilibrium and Voxel
+       Alignment: Review.
+    9. BioChain AI — Research & Development (2026i). Extending the Framework: Triple-Quad
+       Function on a 3-Folded Packet.
+
+
+
+                                                         — 36 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+  10. Bott, R. & Milnor, J. (1958). On the parallelizability of the spheres. Bulletin of the American
+      Mathematical Society 64, 87–89.
+  11. Bunyakovsky, V. (1857). Sur les diviseurs numériques invariables des fonctions
+      rationnelles entières. Mémoires de l'Académie des Sciences de St-Pétersbourg 6, 305–329.
+  12. Butt, F., Colmenarez, L., Weilandt, E., Peham, T., Wille, R. & Müller, M. (2026).
+      Complementary 3D color codes for transversal quantum logic. arXiv:2607.05107 [quant-
+      ph].
+  13. Conway, J. H. & Smith, D. A. (2003). On Quaternions and Octonions. A K Peters.
+  14. Coxeter, H. S. M. (1973). Regular Polytopes, 3rd edition. Dover.
+  15. Eastin, B. & Knill, E. (2009). Restrictions on transversal encoded quantum gate sets.
+      Physical Review Letters 102, 110502.
+  16. Epstein, D. B. A. (1971). Almost all subgroups of a Lie group are free. Journal of Algebra 19,
+      261–262.
+  17. Hoard, G. (2026). The Fifteen Lemmas of the Geometric Engine: A Unified Projective,
+      Quaternionic, and Metrological Monograph for the SHD-CCP 64-Bit Cubic Protocol. BioChain
+      AI — SHD-CCP Architecture Research, Consolidated Technical Monograph, October 16,
+      2026. Cited as Fifteen Lemmas.
+  18. Hoard, G. (2026a). The Geometric Engine of Time: Mathematical Architecture of the 6-
+       Channel, 5-Tier Toroidal Orbital Calculator. BioChain AI — SHD-CCP Architecture Research,
+       Consolidated Technical Report (Continued Series). Posted on Academia.edu.
+  19. Hoard, G. (2026b). The Torsional Markov Memory-Offload Pump: A Three-Scale
+      Quaternionic Delta-Chain with Inverse Compensation and Non-Equilibrium Circulation. Owl
+      Academy / BioChain AI Technical Report.
+  20. Hoard, G. (2026c). The Hyperbolic Sparsemax Pump: A Rational, Parity-Safe Executable
+       Kernel for the SHD-CCP Lattice. BioChain AI / Owl Academy Companion Paper.
+  21. Hoard, G. (2026d). The Geometric Engine of Time: A Proposal for a Standardization of the
+      Cubit. BioChain AI — SHD-CCP Architecture Research, Consolidated Technical Report
+      (Continued Series).
+  22. Hoard, G. (2026h). The Geometric Engine of Time: The Fokker-Planck Prime Sieve in
+      Quaternionic Lattices — Companion: Status of Claims, Audit and Open Problems. BioChain
+       AI — SHD-CCP Architecture Research, Consolidated Technical Report (Continued Series).
+  23. Horn, B. K. P. (1987). Closed-form solution of absolute orientation using unit quaternions.
+      Journal of the Optical Society of America A 4, 629–642.
+  24. Hurwitz, A. (1898). Über die Composition der quadratischen Formen von beliebig vielen
+      Variablen. Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen, 309–316.
+  25. Hurwitz, A. (1919). Vorlesungen über die Zahlentheorie der Quaternionen. Springer, Berlin.
+  26. Kervaire, M. (1958). Non-parallelizability of the n-sphere for n > 7. Proceedings of the
+      National Academy of Sciences 44, 280–283.
+  27. Kolmogorov, A. (1936). Zur Theorie der Markoffschen Ketten. Mathematische Annalen 112,
+      155–160.
+  28. Legendre, A.-M. (1798). Essai sur la théorie des nombres. Duprat, Paris.
+  29. Levin, D. A., Peres, Y. & Wilmer, E. L. (2017). Markov Chains and Mixing Times, 2nd edition.
+      American Mathematical Society.
+
+
+
+                                                       — 37 —
+BioChain AI — SHD-CCP Architecture Research | Consolidated Technical Report (Continued)   Geometric Engine of Time
+
+
+
+  30. Lubotzky, A., Phillips, R. & Sarnak, P. (1988). Ramanujan graphs. Combinatorica 8, 261–
+      277.
+  31. Niven, I. (1956). Irrational Numbers. Carus Mathematical Monographs 11. Mathematical
+      Association of America.
+  32. Norris, J. R. (1997). Markov Chains. Cambridge University Press.
+  33. Risken, H. (1989). The Fokker-Planck Equation: Methods of Solution and Applications, 2nd
+      edition. Springer.
+  34. Schnakenberg, J. (1976). Network theory of microscopic and macroscopic behavior of
+      master equation systems. Reviews of Modern Physics 48, 571–585.
+  35. Serre, J.-P. (1980). Trees. Springer.
+  36. Sorenson, J. & Webster, J. (2017). Strong pseudoprimes to twelve prime bases.
+       Mathematics of Computation 86, 985–1003.
+  37. Sós, V. T. (1958). On the distribution mod 1 of the sequence nα. Annales Universitatis
+      Scientiarum Budapestinensis de Rolando Eötvös Nominatae, Sectio Mathematica 1, 127–
+      134.
+  38. Source note (2026). The Fokker-Planck Prime Sieve in Quaternionic Lattices. Manuscript, 3
+      pp., May 2026.
+  39. Wildberger, N. J. (2005). Divine Proportions: Rational Trigonometry to Universal Geometry.
+       Wild Egg Books.
+
+ Prime count. π(10¹²) = 37,607,912,018 is the established value (OEIS A006880).
+
+ Submission details. Corresponding author: [name, affiliation, ORCID and email to be
+ completed before submission]. Keywords: Geometric Engine of Time; Fifteen Lemmas; acoustic
+ cubit; SHD-CCP; Einstein Tile; Fokker-Planck equation; Hurwitz quaternions; Ramanujan graphs;
+ hyperbolic procedural generation; golden Clifford torus; Lucas numbers; Triple Quad Formula;
+ Dual-Helix certification; AI interoperability.
+
+
+
+
+                                                       — 38 —
+

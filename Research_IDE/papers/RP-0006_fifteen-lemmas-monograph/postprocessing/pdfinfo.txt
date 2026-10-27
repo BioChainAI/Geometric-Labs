@@ -1,0 +1,19 @@
+Title:           The Geometric Engine of Time: The Fifteen Lemmas of the Geometric Engine
+Creator:         Chromium
+Producer:        Skia/PDF m141
+CreationDate:    Mon Oct 19 04:45:38 2026 UTC
+ModDate:         Mon Oct 19 04:45:38 2026 UTC
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          no
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           36
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       715783 bytes
+Optimized:       no
+PDF version:     1.4
