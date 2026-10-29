@@ -1,0 +1,74 @@
+{
+  "schema": "geometric-labs.geometric-clock-validation.v1",
+  "date": "2026-10-28",
+  "base_commit": "69624113091ec245133b7bace2d26b29951124f1",
+  "package": "geometric-clock",
+  "version": "0.1.0",
+  "semantic_profile": "geometric-clock-pulse-v1",
+  "pytest": [
+    {
+      "python": "3.10.22",
+      "status": "PASS",
+      "counts": {
+        "tests": 72,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "report_sha256": "1321734c8f5170e8f48639cc32fb0f871daf70f2d946bc21382acf3468a06705"
+    },
+    {
+      "python": "3.12.14",
+      "status": "PASS",
+      "counts": {
+        "tests": 72,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "report_sha256": "2fbef52a11ab4f48833802191cf41674e0c7c5e4f1739728cb4ee44cd1cbecee"
+    }
+  ],
+  "mypy_strict": {
+    "status": "PASS",
+    "source_files": 12
+  },
+  "standalone": {
+    "wheel_install_no_deps": "PASS",
+    "isolated_import_outside_checkout": "PASS",
+    "pytest_absent": true,
+    "ticker_cli": "PASS",
+    "handshake_cli": "PASS"
+  },
+  "ecosystem_acceptance": {
+    "status": "PASS",
+    "report_sha256": "79a1d049a5680a481871003d9351b4c6602fc44168beebc321e7186d3abf357a",
+    "python": "3.12.14"
+  },
+  "pages": {
+    "tests": 15,
+    "status": "PASS",
+    "browser_smoke": "PASS"
+  },
+  "request_sha256": "dd8f36260f947c6e0f2b22222987301fce0fa5fba8b9edeee31ccaddcf7e7759",
+  "source_sha256": {
+    "geometric_clock/__init__.py": "4db4df8f6aa0d0b12e59478b88afbd480feebbfc69e54b5ab944b7e234cb0933",
+    "geometric_clock/__main__.py": "488791f25d063638bb0b98e6f382d52be633ba34eb419876006d177154184329",
+    "geometric_clock/core/__init__.py": "9c697363feafdcaa43c6d6449385e22bee7e8029f0f2d2979d0852026ad38698",
+    "geometric_clock/core/holonomy.py": "73dc7283315ccc4b637810620d4699fa6b8092b0f163c05d42418fe57b5ef08c",
+    "geometric_clock/core/invariants.py": "99ed4e3a789118d8bc3400c9f1cf6fd4d047e4f1405c14aa2a41ab31f1b33923",
+    "geometric_clock/core/parity.py": "ff18580d6151a5bca0342cb1b4468fb7313e17f6a6116946735e1d004c6d6694",
+    "geometric_clock/core/spinor.py": "b7f929c453f1e627b8df5bd94324a19e24b277e724ffc6f3ebb1ac0098c0822d",
+    "geometric_clock/engine/__init__.py": "4e8282a8e93d561d45d15ae911fe729ca4862571106b0cd24e747529bb597721",
+    "geometric_clock/engine/clock.py": "a3d7a31da6e7165cb5a5d023907dfdd0f7a7d0201d576b9b474f539942017da9",
+    "geometric_clock/engine/tile.py": "83b078a46e022b28770a34583eb4c7eec39a10a17d8cbec4fae1d82494480312",
+    "geometric_clock/py.typed": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "geometric_clock/sync/__init__.py": "0875c2566859f54034e8a58e4f9a64ffef359f6d8be31118436f3a663089f6d3",
+    "geometric_clock/sync/handshake.py": "b52caa79cd97d5b8efd46241870b7c76b1bf11aa929956d194bfab7e5dffe4a7"
+  },
+  "limits": [
+    "Exact logical SI anchoring; no physical frequency/time synchronization measurement.",
+    "Out-of-band common references and orientation histories in local simulation; no authentication claim.",
+    "No canonical profile promotion, Markov stationary-current proof, hardware or memory-compression result."
+  ]
+}

@@ -58,6 +58,11 @@ commands above replace that workspace assumption for this integration only.
 
 ## Scope and limits
 
+The additive [geometric-clock package](experiments/geometric_clock/README.md)
+provides a separately installable exact logical ticker and local byte-handshake
+simulation. Its `geometric-clock-pulse-v1` profile is a candidate, not a replacement
+for canonical SHD-CCP semantics or the federation's clock/uncertainty metadata.
+
 The demo starts an ephemeral loopback-only server, sends three authorized
 reference observations, tests 11 actual HTTP refusals, checks private RAG does
 not appear in exported events, then closes the server and local databases.
