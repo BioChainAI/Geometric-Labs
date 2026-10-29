@@ -113,6 +113,18 @@
       "label": "catalog/library check job",
       "source": "ci",
       "target": "research_ide"
+    },
+    {
+      "source": "spec",
+      "target": "clock",
+      "kind": "reference",
+      "label": "frozen header/vector envelope conformance; clock semantics remain separate"
+    },
+    {
+      "source": "clock",
+      "target": "integration",
+      "kind": "planned",
+      "label": "future peer envelope and measured clock-reference integration"
     }
   ],
   "schema": "geometric-labs.site-sections.v1",
@@ -220,6 +232,17 @@
       "role": "Multiscale image features → fold3 → 64-cell Euclidean/Lorentz routing → class and semantic outputs → typed sidecar.",
       "status": "experimental",
       "title": "AlexNet-H/GEOT RFC 0.2 CPU reference"
+    },
+    {
+      "entry": "ecosystem/experiments/geometric_clock/README.md",
+      "id": "clock",
+      "title": "Exact logical geometric clock",
+      "status": "implemented",
+      "matches": [
+        "ecosystem/experiments/geometric_clock/"
+      ],
+      "role": "Exact Cs-cycle accounting, projective spinor windows, rational 720/72/10 history and a local two-clock handshake.",
+      "limits": "Standalone logical simulation under a declared SI anchoring and common references; not physical clock synchronization or a canonical protocol update."
     },
     {
       "entry": "ecosystem/experiments/alexnet_get/README.md",
