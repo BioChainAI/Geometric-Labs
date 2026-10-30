@@ -161,7 +161,7 @@ def validate_artifact(output):
     status = json.loads((output/'data/status.json').read_text())
     if status['schema'] != 'geometric-labs.pages-status.v1' or len(status['files']) != status['tracked_files']:
         raise ValueError('invalid generated snapshot schema/count')
-    for relative in ('index.html', 'Research_IDE/index.html'):
+    for relative in ('index.html', 'Research_IDE/index.html', 'circuit-seth/index.html', 'circuit-seth/explorer.html'):
         page = output/relative
         if not page.is_file(): raise ValueError('missing published route: ' + relative)
         parser = Links(); parser.feed(page.read_text())
@@ -226,6 +226,10 @@ def build(output, *, root=ROOT, require_clean=False):
     (output/'index.html').write_text(html)
     (output/'data/status.json').write_text(json.dumps(data, indent=2, sort_keys=True)+'\n')
     (output/'.nojekyll').write_text('')
+    # Explicit Circuit-SETH teaching assets; archived research PDFs remain excluded.
+    (output/'circuit-seth').mkdir()
+    for name in ('index.html', 'explorer.html', 'tutorial.css', 'tutorial.js'):
+        shutil.copy2(root/'site/circuit-seth'/name, output/'circuit-seth'/name)
     # Explicit publication allowlist, not an entire-repository upload.
     cp = root/CHECKPOINT
     for source, destination in [('index.html','index.html'), ('README.md','README.md'),

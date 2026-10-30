@@ -78,6 +78,12 @@ class PageBuild(unittest.TestCase):
             build.build(output)
             data=build.validate_artifact(output)
             self.assertEqual(data['schema'],'geometric-labs.pages-status.v1')
+            for name in ('index.html', 'explorer.html', 'tutorial.css', 'tutorial.js'):
+                self.assertEqual((output/'circuit-seth'/name).read_bytes(), (ROOT/'site/circuit-seth'/name).read_bytes())
+            tutorial = output/'circuit-seth/tutorial.js'
+            tutorial.unlink()
+            with self.assertRaises(ValueError): build.validate_artifact(output)
+            tutorial.write_bytes((ROOT/'site/circuit-seth/tutorial.js').read_bytes())
             self.assertFalse((output/'src').exists())
             self.assertFalse((output/'ecosystem').exists())
             self.assertEqual((output/'research-ide/index.html').read_bytes(),(ROOT/'Research_IDE/index.html').read_bytes())

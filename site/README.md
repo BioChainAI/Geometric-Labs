@@ -134,3 +134,13 @@ do not disable TLS, suppress failed checks or publish an unvalidated fallback.
 Rollback is a reviewed revert to prior site source/workflow followed by a new
 main-branch Pages deployment. Do not delete research history or modify core
 mathematics to fix presentation. Keep the dated checkpoint immutable.
+
+## Circuit-SETH teaching pages
+
+`circuit-seth/index.html` explains the research scaffold and includes two local
+interactive teaching models. `circuit-seth/explorer.html` preserves the supplied
+HTML unchanged, including its external Tailwind, font and KaTeX dependencies.
+The builder explicitly copies these pages and their two first-party assets;
+source PDFs and experiment archives are not added to the published artifact.
+Both routes are validated for local links. Deploy through the existing main
+branch Pages workflow after review; feature-branch pushes do not publish them.

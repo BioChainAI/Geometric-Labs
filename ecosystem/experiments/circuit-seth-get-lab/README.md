@@ -45,3 +45,10 @@ blueprint [CONJECTURAL] hypotheses to [OPEN]. [COMPUTED] needs reproducible evid
 [PROVEN] needs a reviewed mathematical proof, beyond passing tests. Theorem 5.1 and
 5.14 citations remain source claims pending review. All seven automated guardrails
 are planned, not implemented; `validate_scaffold.py` checks only this scaffold.
+
+## Visual guides
+
+The companion tutorial source is `site/circuit-seth/index.html`; the unchanged
+uploaded visual explorer is `site/circuit-seth/explorer.html`. The Pages builder
+publishes both under `circuit-seth/` with a homepage navigation link.
+The tutorial distinguishes planned research modules from browser teaching models.

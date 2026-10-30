@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Circuit-SETH Lab · A guided field notebook</title>
+<meta name="description" content="A companion guide to the Circuit-SETH GET research scaffold, four geometric systems and five planned experiments.">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="tutorial.css">
+<script defer src="tutorial.js">
+</script>
+</head>
+<body>
+<header>
+<a href="../index.html">GEOMETRIC LABS / FIELD NOTES</a>
+<nav aria-label="Tutorial navigation">
+<a href="#systems">Systems</a>
+<a href="#lab">Lab map</a>
+<a href="#experiments">Experiments</a>
+<a href="explorer.html">Visual explorer ↗</a>
+</nav>
+</header>
+<main>
+<section class="hero">
+<p class="eyebrow">Circuit-SETH GET / Companion 01</p>
+<h1>From geometric ideas<br>to testable claims.</h1>
+<p class="lede">A guided tour of the research environment: what each system proposes, how the pieces connect, and what evidence would make the next step meaningful.</p>
+<span class="tag">Research scaffold · implementations open</span>
+<div class="actions">
+<a class="button" href="explorer.html">Launch the visual explorer ↗</a>
+<a class="button secondary" href="#systems">Start the guided tour ↓</a>
+</div>
+<p class="rail">The folder structure, source archive and scaffold validator exist. Compiler passes, five experiments, proof files and seven automated theorem guardrails are placeholders. These pages explain the proposal; they do not execute the Python pipeline or establish a Circuit-SETH result.</p>
+<p>
+<small>The supplied explorer is preserved unchanged and loads Tailwind, fonts and KaTeX from external services. Its formulas and status labels reflect the source document. Use this companion for the repository’s implementation status.</small>
+</p>
+</section>
+<section>
+<p class="eyebrow">01 / The research question</p>
+<h2>Can structure reduce branching?</h2>
+<p>Circuit-SAT asks whether an assignment makes a Boolean circuit accept. The proposal investigates whether special geometric circuit families admit a verifiable encoding that removes some branching. Extending a result to arbitrary bounded-depth circuits requires a separate argument.</p>
+<div class="steps" aria-label="Proposed pipeline">
+<span>Circuit</span>
+<span>→ Null-cone lift</span>
+<span>→ Pump</span>
+<span>→ Router</span>
+<span>→ Residual search</span>
+<span>→ Witness check</span>
+</div>
+</section>
+<section id="systems">
+<p class="eyebrow">02 / Four proposed systems</p>
+<h2>Follow the compiler passes.</h2>
+<div class="grid">
+<article class="card">
+<p class="eyebrow">PASS 01 / OPEN</p>
+<h3>Twistor · null-cone lift</h3>
+<p>Represent a three-dimensional point as X(x) = (x, ‖x‖²/2, 1). The lifted vector has zero norm under the specified indefinite bilinear form.</p>
+<p>The proposed compiler would translate suitable constraints into sphere equations and examine exact dependencies. A general Boolean clause-to-sphere encoding and recoverable variable locking still require proofs.</p>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/03_geometric_compiler_passes/pass1_twistor_null_cone.py">
+<code>pass1_twistor_null_cone.py</code> ↗</a>
+</article>
+<article class="card">
+<p class="eyebrow">PASS 02 / OPEN</p>
+<h3>Torsional · 720 → 72 → 10</h3>
+<p>An open chain of compatible increments can telescope to its endpoints. The three gears organize fine frames into aggregates.</p>
+<p>Endpoint evaluation is useful only after the coboundary structure is established. Reading or validating the chain still costs work; constraints on intermediate states must survive. A cyclic product equal to one is not a closure test.</p>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/03_geometric_compiler_passes/pass2_torsional_markov_pump.py">
+<code>pass2_torsional_markov_pump.py</code> ↗</a>
+</article>
+<article class="card">
+<p class="eyebrow">PASS 03 / OPEN</p>
+<h3>Orbital · C₃ × C₂ routing</h3>
+<p>Pair frame residues modulo 8 and modulo 3 to obtain a 24-frame schedule. Six handshake slots connect the proposed orbital channels.</p>
+<p>The planned router combines tier transformations, D₃ symmetry and branch recovery. Single-erasure recovery needs a specified codec; two erasures are generally ambiguous. The proposed Form 3 layout conflicts with the existing local profile.</p>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/03_geometric_compiler_passes/pass3_orbital_crt_router.py">
+<code>pass3_orbital_crt_router.py</code> ↗</a>
+</article>
+<article class="card">
+<p class="eyebrow">PASS 04 / OPEN</p>
+<h3>Dual helix · propose, then certify</h3>
+<p>Use a graph walk to propose residual candidates, then check candidates with exact arithmetic and the original circuit.</p>
+<p>A Ramanujan spectral gap concerns mixing, not a SAT-search speedup. The residual solver, graph construction and witness verifier are future implementations. Headers and residue checks alone are not general SAT certificates.</p>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/03_geometric_compiler_passes/pass4_dual_helix_ramanujan.py">
+<code>pass4_dual_helix_ramanujan.py</code> ↗</a>
+</article>
+</div>
+</section>
+<section id="playground">
+<p class="eyebrow">03 / Try the ideas</p>
+<h2>Two small, transparent models.</h2>
+<p>These browser calculations are teaching aids. They are independent of the unimplemented research modules.</p>
+<div class="grid">
+<article class="demo">
+<h3>The branching budget</h3>
+<p>If a sound encoding could eliminate a fraction α of n Boolean decisions, exhaustive search over the remainder has base b = 2^(1 − α). This model excludes encoding and verification costs.</p>
+<label for="alpha">Hypothetical eliminated fraction α: <strong id="alpha-value">0.25</strong>
+</label>
+<input id="alpha" type="range" min="0" max="1" step="0.01" value="0.25">
+<output id="budget" aria-live="polite">
+</output>
+<svg viewBox="0 0 400 65" role="img" aria-label="Illustration of eliminated and remaining decisions">
+<rect width="400" height="28" fill="#304054" rx="5"/>
+<rect id="locked" width="100" height="28" fill="#88d9cf" rx="5"/>
+<text x="0" y="55" fill="#b8c6da" font-size="13">Teal: hypothetical eliminated fraction</text>
+</svg>
+<small>A slider value is an assumption, not a measurement of α_GET or evidence of asymptotic savings.</small>
+</article>
+<article class="demo">
+<h3>The 24-frame router</h3>
+<p>Move through one joint schedule. Every pair (frame mod 8, frame mod 3) occurs once per cycle. Highlighted handshake slots satisfy frame mod 4 = 2.</p>
+<label for="frame">Frame: <strong id="frame-value">0</strong>
+</label>
+<input id="frame" type="range" min="0" max="23" step="1" value="0">
+<output id="route" aria-live="polite">
+</output>
+<div class="steps" id="slots" aria-label="Six handshake frames">
+</div>
+<small>The source calls 2, 10, 18 onloads; their partners 12 frames later are 14, 22, 6. This schedule alone does not implement wire transport or error correction.</small>
+</article>
+</div>
+</section>
+<section id="lab">
+<p class="eyebrow">04 / Inside the workspace</p>
+<h2>Six directories. Five layers plus specifications.</h2>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Directory</th>
+<th>Responsibility</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/00_epistemic_specs">
+<code>00_epistemic_specs/</code>
+</a>
+</td>
+<td>Tags, C1–C5 proof obligations and obstruction audit plans.</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/01_core_substrate">
+<code>01_core_substrate/</code>
+</a>
+</td>
+<td>Planned exact fields, rational rotations, CRT tracks and a separately specified tile adapter.</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/02_circuit_seth_benchmarks">
+<code>02_circuit_seth_benchmarks/</code>
+</a>
+</td>
+<td>Planned netlists, circuit families, planted cases and DIMACS intake.</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/03_geometric_compiler_passes">
+<code>03_geometric_compiler_passes/</code>
+</a>
+</td>
+<td>The four passes and master pipeline; all entry points currently raise NotImplementedError.</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/04_use_case_experiments">
+<code>04_use_case_experiments/</code>
+</a>
+</td>
+<td>Five script skeletons; no experimental results recorded.</td>
+</tr>
+<tr>
+<td>
+<a href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab/05_proofs_and_monographs">
+<code>05_proofs_and_monographs/</code>
+</a>
+</td>
+<td>Open proof obligations and a draft registration, not an externally timestamped preregistration.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+<code>tests/</code> contains planned research-test placeholders. <code>validate_scaffold.py</code> checks the 27 planned files’ existence, Python syntax and hashes of three archived uploads. It does not test the proposed algorithms.</p>
+</section>
+<section id="experiments">
+<p class="eyebrow">05 / The experiment notebook</p>
+<h2>Five questions to preregister.</h2>
+<div class="grid">
+<article class="card">
+<span class="tag">OPEN · not run</span>
+<h3>01 · The depth-two cliff</h3>
+<p>Sweep clause growth and measure certified eliminated variables. Compare against an explicit baseline and count all encoding costs; finite sizes cannot settle asymptotics.</p>
+</article>
+<article class="card">
+<span class="tag">OPEN · not run</span>
+<h3>02 · Open holonomy</h3>
+<p>Compare a reversible cascade’s serial product with its endpoint expression. Include non-coboundary and externally constrained intermediate states as negative controls.</p>
+</article>
+<article class="card">
+<span class="tag">OPEN · not run</span>
+<h3>03 · Branch erasure</h3>
+<p>Check single-branch recovery against original data. Treat any mismatch or silent acceptance of ambiguous two-branch loss as failure.</p>
+</article>
+<article class="card">
+<span class="tag">OPEN · not run</span>
+<h3>04 · Residual graph mixing</h3>
+<p>Compare graph-walk mixing with declared reference walks and separately measure witness finding. The filename mentions CDCL, but a solver configuration and fair CDCL protocol remain to be specified.</p>
+</article>
+<article class="card">
+<span class="tag">OPEN · not run</span>
+<h3>05 · End-to-end witnesses</h3>
+<p>Measure encoding plus evaluation and verify every returned witness against the original circuit. One failing witness rejects correctness; finite successes do not prove polynomial runtime.</p>
+</article>
+</div>
+</section>
+<section id="guardrails">
+<p class="eyebrow">06 / Keep the evidence honest</p>
+<h2>Seven planned obstruction checks.</h2>
+<ol>
+<li>
+<strong>Header trap:</strong> a routing header is a filter, never a witness certificate.</li>
+<li>
+<strong>History loss:</strong> preserve intermediate constraints; reject unrecoverable erasures.</li>
+<li>
+<strong>Bit growth:</strong> account for exact numerators and denominators, rather than silently truncating rotations.</li>
+<li>
+<strong>Torsion:</strong> retain finite phases in a valid modular representation.</li>
+<li>
+<strong>Mixing versus selection:</strong> distinguish stationary distribution, mixing rate and target discovery.</li>
+<li>
+<strong>Vacuous closure:</strong> use open-boundary checks; a cyclic telescoping identity can conceal drift.</li>
+<li>
+<strong>Hidden costs:</strong> report table sizes, preprocessing, query work and bounded-horizon assumptions separately.</li>
+</ol>
+<p>These are the blueprint’s proposed checks associated with Theorems 5.1 and 5.14. Their automated implementations and the cited mathematical claims remain open to review.</p>
+</section>
+<section>
+<p class="eyebrow">07 / Reproduce the current state</p>
+<h2>Start with what runs today.</h2>
+<p>From the repository root:</p>
+<pre>
+<code>python3 ecosystem/experiments/circuit-seth-get-lab/validate_scaffold.py
+make verify-all</code>
+</pre>
+<p>The first command validates the scaffold. The second exercises the existing exact-arithmetic reference suite and golden vectors. A passing reference suite does not establish the proposed compiler’s correctness.</p>
+<p>Next: specify a versioned codec, formalize one restricted circuit family, implement a pass with positive and adversarial fixtures, then register and run a bounded experiment. Promote a claim to COMPUTED only with reproducible evidence; PROVEN requires a mathematical proof.</p>
+<div class="actions">
+<a class="button" href="explorer.html">Explore the visual monograph ↗</a>
+<a class="button secondary" href="https://github.com/BioChainAI/Geometric-Labs/tree/codex/circuit-seth-get-scaffold/ecosystem/experiments/circuit-seth-get-lab">Browse the lab source ↗</a>
+</div>
+</section>
+</main>
+<footer>
+<p>Geometric Labs · Circuit-SETH research companion</p>
+<p>
+<a href="../index.html">Project home</a> · <a href="index.html">Tutorial</a> · <a href="explorer.html">Visual explorer</a>
+</p>
+<p>Browser models illustrate definitions. No theorem prover or research pipeline runs in these pages.</p>
+</footer>
+</body>
+</html>
