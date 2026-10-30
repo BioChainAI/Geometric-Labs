@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "status": "scaffold_only",
+  "modules": [
+    "00_epistemic_specs/epistemic_tags.py",
+    "00_epistemic_specs/axioms_c1_to_c5.md",
+    "00_epistemic_specs/obstruction_guardrails.py",
+    "01_core_substrate/einstein_tile_64b.py",
+    "01_core_substrate/track_b_exact_fields.py",
+    "01_core_substrate/track_c_rational_cayley.py",
+    "01_core_substrate/track_r_triplet_crt.py",
+    "01_core_substrate/track_a_float_proposer.py",
+    "02_circuit_seth_benchmarks/ac0_netlist.py",
+    "02_circuit_seth_benchmarks/cliff_generators.py",
+    "02_circuit_seth_benchmarks/planted_geometric_sat.py",
+    "02_circuit_seth_benchmarks/dimacs_ingest.py",
+    "03_geometric_compiler_passes/pass1_twistor_null_cone.py",
+    "03_geometric_compiler_passes/pass2_torsional_markov_pump.py",
+    "03_geometric_compiler_passes/pass3_orbital_crt_router.py",
+    "03_geometric_compiler_passes/pass4_dual_helix_ramanujan.py",
+    "03_geometric_compiler_passes/integrable_compiler.py",
+    "04_use_case_experiments/exp01_d2_schuler_cliff_sweep.py",
+    "04_use_case_experiments/exp02_torsional_holonomy_d3_ac0.py",
+    "04_use_case_experiments/exp03_branch_erasure_fault_sat.py",
+    "04_use_case_experiments/exp04_ramanujan_vs_cdcl_kernel.py",
+    "04_use_case_experiments/exp05_hybrid_circuit_seth_prover.py",
+    "05_proofs_and_monographs/theorem_integrable_d2_subclasses.tex",
+    "05_proofs_and_monographs/theorem_branch_codec_bijection.tex",
+    "tests/test_zero_point_identities.py",
+    "tests/test_64bit_register_roundtrip.py",
+    "tests/test_obstruction_traps.py"
+  ],
+  "sources": [
+    {
+      "path": "sources/circuit_seth_experimental_lab_proof_scaffolding_blueprint.md",
+      "sha256": "2284344e2b57b6f28630a396d82d94ca9fc8efdcc1cbb73baff22829a0d697c2"
+    },
+    {
+      "path": "sources/the_geometric_engine_of_time_circuit_seth_architecture_explorer.html",
+      "sha256": "179c67b744fdf1228025adebb2f391e669291e0ab47b3d27cc3169c9a3e10346"
+    },
+    {
+      "path": "sources/The_Geometric_Engine_of_Time_Zero-Point_Cycle_Hyperbolic_Euler_Conditional_PNP.pdf",
+      "sha256": "7d55dffccbd4c5b09949bba1060d2fc7fab5c2d7bbbc275fd4a62f79af03951e"
+    }
+  ],
+  "guardrails": {
+    "1": "not_implemented",
+    "2": "not_implemented",
+    "3": "not_implemented",
+    "4": "not_implemented",
+    "5": "not_implemented",
+    "6": "not_implemented",
+    "7": "not_implemented"
+  }
+}

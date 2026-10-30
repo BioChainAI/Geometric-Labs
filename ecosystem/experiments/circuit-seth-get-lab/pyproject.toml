@@ -1,0 +1,9 @@
+[project]
+name = "circuit-seth-get-lab"
+version = "0.0.1"
+description = "Circuit-SETH research planning scaffold"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+research = ["sympy", "numpy", "scipy", "mpmath"]
