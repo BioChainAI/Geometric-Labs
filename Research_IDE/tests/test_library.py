@@ -34,7 +34,7 @@ class TestLibrary(unittest.TestCase):
         self.tmp = Path(tempfile.mkdtemp())
         for name in ("templates", "papers", "inbox"):
             shutil.copytree(ROOT / name, self.tmp / name)
-        for name in ("index.html", "ide.lock.json", "official-corpus.js"):
+        for name in ("index.html", "ide.lock.json") + library.IDE_ASSETS:
             shutil.copy(ROOT / name, self.tmp / name)
         for stale in (self.tmp / "inbox").iterdir():
             if stale.name != "README.md":
@@ -154,6 +154,14 @@ class TestLibrary(unittest.TestCase):
         (self.paper / "manifest.json").write_text(
             json.dumps(self.manifest() | {"title": "Renamed"}))
         self.assertRejected("CATALOG.json is stale")
+
+    def test_ide_assets_must_be_locked(self):
+        (self.tmp/'ide-safety.js').write_text('changed helper')
+        self.assertRejected('ide-safety.js does not match')
+        lock = json.loads((self.tmp/'ide.lock.json').read_text())
+        lock['assets'] = [a for a in lock['assets'] if a['file'] != 'ide-safety.js']
+        (self.tmp/'ide.lock.json').write_text(json.dumps(lock))
+        self.assertRejected('ide-safety.js is not recorded in ide.lock.json')
 
     def test_ide_lock_mismatch_rejected(self):
         with (self.tmp / "index.html").open("a") as handle:

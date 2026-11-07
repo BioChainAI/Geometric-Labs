@@ -28,7 +28,8 @@ jobs:
       - name: Validate scanner and page contracts
         run: python -m unittest discover -s tools/pages/tests -v
       - name: Build and validate curated site artifact
-        run: python tools/pages/build.py --require-clean --output "$RUNNER_TEMP/geometric-pages"
+        # Also downloads each pinned CDN file once and compares it with the page's integrity hash.
+        run: python tools/pages/build.py --require-clean --verify-remote-integrity --output "$RUNNER_TEMP/geometric-pages"
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,25 +1,68 @@
 {
  "file": "index.html",
  "name": "Geometric Labs PDF-to-Markdown & LaTeX Research IDE",
- "ide_version": "SHD-CCP IDE v3.3 — official release corpus",
+ "ide_version": "SHD-CCP IDE v3.3.1 — pinned dependencies, in-memory API keys",
  "upload_name": "geometric_labs_pdf_to_markdown_latex_research_ide_11.html",
  "guide": "docs/MASTER_OPERATION_GUIDE.md",
  "runtime_dependencies": [
-  "https://cdn.tailwindcss.com",
-  "https://cdn.jsdelivr.net/npm/katex@0.16.8",
-  "https://cdn.jsdelivr.net/npm/marked (unpinned)",
-  "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174",
-  "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128",
-  "https://unpkg.com/lucide@latest (unpinned)"
+  {
+   "url": "https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.css",
+   "integrity": "sha384-NJ/T2p1ROqNH3Yico+wdWm5Rv2rlinAOvV25Sw1zLOaxg8yLDPVv8GGAUccx50rh"
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.js",
+   "integrity": "sha384-vaygNa7Kw+54Zb42f7K+4bfhZp4vWSHPJMKwd7nVmlgSvRADUrCRRdCpc1/CJwO+"
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/contrib/auto-render.min.js",
+   "integrity": "sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz"
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/marked@18.1.1/lib/marked.umd.js",
+   "integrity": "sha384-rATToyt6602Jnq8c7w8HZwmyOUgPL7mzxX01FBWoV48ns/EgkakGozpES+PnaYOI"
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/dompurify@3.4.17/dist/purify.min.js",
+   "integrity": "sha384-P0JNneQf81HOl9VwNXK76cQ9VMD6Nfsnepxb0cCOg8+UzEdzgPHAPV4wVQrvYQSx"
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs",
+   "integrity": "sha384-+0ti2moQlmLN7WZHE2RHIf5lV8hHxhxEalN0il3YZceG26fUPyOkR0hp9daxk1i7"
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs",
+   "integrity": "sha384-ToeVvShCxKc6CEvhHeMt0Q8A06pSPDbAlngO9nokrDmh914gk/pYd0N7D0a4Lz2o"
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js",
+   "integrity": "sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu"
+  },
+  {
+   "url": "https://cdn.jsdelivr.net/npm/lucide@1.61.0/dist/umd/lucide.min.js",
+   "integrity": "sha384-wx1iBc8a89SnsJAxZPb9eNEoMn4t/Wg111+QJyasxB9Om4SDDtkJeBuXx4NiRwa8"
+  }
  ],
- "sha256": "fd25d067684ce6afc27d840532afd2e0ee8dccc0f8881c3205e0717d5588b24f",
- "bytes": 330621,
- "locked": "2026-10-27",
- "previous_ide_sha256": "cf6014732eb39d4ae3019e5ca0e48e0b481586997a6b271f3f069012b673ed36",
+ "stylesheet": {
+  "file": "ide-tailwind.css",
+  "generator": "Tailwind CSS v3.4.19",
+  "config": "tools/pages/tailwind/research-ide.config.cjs"
+ },
+ "sha256": "4c7ace83cb58713207199574fce084743cfe6bd970b8f774e22a9b0dc8798e8e",
+ "bytes": 333294,
+ "locked": "2026-11-07",
+ "previous_ide_sha256": "fd25d067684ce6afc27d840532afd2e0ee8dccc0f8881c3205e0717d5588b24f",
  "assets": [
   {
    "file": "official-corpus.js",
    "sha256": "bb92d111525039c58bfab61853f9ca61d98965eace35a2d8cb581670cbbf8ed8"
+  },
+  {
+   "file": "ide-safety.js",
+   "sha256": "e5c8b7d37fb046da98d0b5b86b679586770140dddd6df8f877519bca3038830a"
+  },
+  {
+   "file": "ide-tailwind.css",
+   "sha256": "838adaf0a5ec4fdae0ef74aba16efc811b0579a3276c985090de2c235844e73d"
   }
  ]
 }

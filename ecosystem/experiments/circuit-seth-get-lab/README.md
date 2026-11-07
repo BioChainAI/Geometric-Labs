@@ -48,7 +48,8 @@ are planned, not implemented; `validate_scaffold.py` checks only this scaffold.
 
 ## Visual guides
 
-The companion tutorial source is `site/circuit-seth/index.html`; the unchanged
-uploaded visual explorer is `site/circuit-seth/explorer.html`. The Pages builder
+The companion tutorial source is `site/circuit-seth/index.html`; the uploaded visual
+explorer is published from `site/circuit-seth/explorer.html` with pinned, hash-checked
+dependencies and a prebuilt stylesheet, while the unchanged upload stays in `sources/`. The Pages builder
 publishes both under `circuit-seth/` with a homepage navigation link.
 The tutorial distinguishes planned research modules from browser teaching models.
