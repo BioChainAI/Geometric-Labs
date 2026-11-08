@@ -155,6 +155,166 @@ class Links(HTMLParser):
             if name in attrs: self.links.append(attrs[name])
 
 
+PINNED_CDN = re.compile(r'https://cdn\.jsdelivr\.net/npm/(?:@[a-z0-9._-]+/)?[a-z0-9._-]+@\d+\.\d+\.\d+/[^?#\s]+')
+PINNED_PACKAGE = re.compile(r'https://cdn\.jsdelivr\.net/npm/(?:@[a-z0-9._-]+/)?[a-z0-9._-]+@\d+\.\d+\.\d+/')
+INTEGRITY = re.compile(r'sha(?:384|512)-[A-Za-z0-9+/]+={0,2}')
+# Stylesheets whose content varies by browser and so cannot carry an integrity hash, each with the
+# font host it uses. They cannot run script; each page's Content-Security-Policy limits them to
+# their own hosts.
+UNHASHABLE_STYLESHEETS = {'https://fonts.googleapis.com/css2?': 'https://fonts.gstatic.com/'}
+PUBLISHED_ASSETS = {'research-ide': ('official-corpus.js', 'ide-safety.js', 'ide-tailwind.css'),
+                    'circuit-seth': ('tutorial.css', 'tutorial.js', 'explorer-tailwind.css')}
+# CSP sources accepted besides the exact pinned files a page loads (allowlist, per directive).
+CSP_KEYWORDS = {'script-src': {"'self'", "'none'", "'unsafe-inline'", "'wasm-unsafe-eval'"},
+                'style-src': {"'self'", "'none'", "'unsafe-inline'"},
+                'font-src': {"'self'", "'none'", 'data:'}}
+CSP_HASH = re.compile(r"'sha(?:256|384|512)-[A-Za-z0-9+/]+={0,2}'")
+# String specifiers of static and dynamic imports in an inline module script.
+MODULE_IMPORT = re.compile(r"""(?:\bimport\s*\(?|\bfrom)\s*(['"`])(.*?)\1""", re.S)
+
+
+def first_attributes(attrs):
+    """Attributes by name; the first occurrence wins, as in browsers."""
+    result = {}
+    for key, value in attrs:
+        result.setdefault(key, value)
+    return result
+
+
+def url_parts(url):
+    """Split a URL attribute as a browser reads it: outer spaces and inner tabs/newlines dropped,
+    backslashes read as slashes."""
+    return urlsplit(re.sub(r'[\t\n\r]', '', url.strip()).replace('\\', '/'))
+
+
+def is_external(url):
+    parts = url_parts(url)
+    return bool(parts.scheme or parts.netloc)
+
+
+class Resources(HTMLParser):
+    """External scripts and stylesheets of one page with their integrity attributes, the CSP metas
+    with their position, and anything that could load script without being listed here."""
+    def __init__(self):
+        super().__init__(); self.external = []; self.csp = []; self.problems = []
+        self.elements = 0; self.first_load = None; self.in_head = False; self.module = None
+    def handle_starttag(self, tag, attrs):
+        attrs = first_attributes(attrs); self.elements += 1
+        if tag == 'head': self.in_head = True
+        elif tag == 'body': self.in_head = False
+        if tag == 'base': self.problems.append('a base element is not allowed')
+        if tag == 'meta' and (attrs.get('http-equiv') or '').strip().lower() == 'content-security-policy':
+            self.csp.append({'policy': attrs.get('content') or '', 'position': self.elements, 'in_head': self.in_head})
+        if tag in ('script', 'link') and self.first_load is None:
+            self.first_load = self.elements
+        url = None
+        if tag == 'script':
+            url = attrs.get('src') or attrs.get('href') or attrs.get('xlink:href')
+            kind = (attrs.get('type') or '').strip().lower()
+            if kind == 'importmap': self.problems.append('an import map is not allowed')
+            if url is None and kind == 'module': self.module = []
+        elif tag == 'link' and 'stylesheet' in (attrs.get('rel') or '').lower().split():
+            url = attrs.get('href')
+        if url is not None and is_external(url):
+            self.external.append({'tag': tag, 'url': url, 'integrity': attrs.get('integrity'),
+                                  'crossorigin': attrs.get('crossorigin')})
+    def handle_data(self, data):
+        if self.module is not None: self.module.append(data)
+    def handle_endtag(self, tag):
+        if tag == 'head': self.in_head = False
+        if tag == 'script' and self.module is not None:
+            for _, specifier in MODULE_IMPORT.findall(''.join(self.module)):
+                if is_external(specifier):
+                    self.problems.append('an inline module imports an external file: ' + specifier)
+            self.module = None
+
+
+def csp_sources(policy, directive):
+    """Sources of the first occurrence of a directive (later duplicates are ignored, as in browsers)."""
+    for part in policy.split(';'):
+        words = part.split()
+        if words and words[0].lower() == directive:
+            return words[1:]
+    return None
+
+
+def csp_location(url):
+    """The CSP source that allows exactly this file: the URL without query or fragment."""
+    parts = urlsplit(url)
+    return f'{parts.scheme}://{parts.netloc}{parts.path}'
+
+
+def check_external_resources(name, text):
+    """Every external script/stylesheet is pinned with SRI, and the page CSP lists exactly those files."""
+    parser = Resources(); parser.feed(text); parser.close()
+    if parser.problems:
+        raise ValueError(f'{name}: {parser.problems[0]}')
+    if not parser.external:
+        return []
+    if len(parser.csp) != 1:
+        raise ValueError('page with external resources needs one Content-Security-Policy: ' + name)
+    meta = parser.csp[0]
+    if not meta['in_head'] or meta['position'] > parser.first_load:
+        raise ValueError(name + ': the Content-Security-Policy meta must be in <head>, before any script or stylesheet')
+    used = {'script': set(), 'link': set()}
+    font_bases = set()
+    for item in parser.external:
+        unhashable = next((prefix for prefix in UNHASHABLE_STYLESHEETS
+                           if item['tag'] == 'link' and item['url'].startswith(prefix)), None)
+        if not unhashable:
+            if not PINNED_CDN.fullmatch(item['url']):
+                raise ValueError('external resource must be an exact-version jsDelivr npm file: ' + item['url'])
+            if not item['integrity'] or not INTEGRITY.fullmatch(item['integrity']) or item['crossorigin'] != 'anonymous':
+                raise ValueError('external resource needs integrity and crossorigin="anonymous": ' + item['url'])
+        used[item['tag']].add(csp_location(item['url']))
+        if item['tag'] == 'link':
+            font_bases.add(UNHASHABLE_STYLESHEETS[unhashable] if unhashable else PINNED_PACKAGE.match(item['url']).group(0))
+    policy = meta['policy']
+    for directive, tag in (('script-src', 'script'), ('style-src', 'link')):
+        sources = csp_sources(policy, directive)
+        if sources is None:
+            raise ValueError(f'{name}: CSP lacks {directive}')
+        listed = set()
+        for source in sources:
+            if source.lower() in CSP_KEYWORDS[directive] or CSP_HASH.fullmatch(source):
+                continue
+            if source not in used[tag]:
+                raise ValueError(f'{name}: CSP {directive} allows a source other than the pinned files in use: {source}')
+            listed.add(source)
+        if listed != used[tag]:
+            raise ValueError(f'{name}: CSP {directive} must list exactly {sorted(used[tag])}')
+    for source in csp_sources(policy, 'font-src') or []:
+        if source.lower() not in CSP_KEYWORDS['font-src'] and not any(
+                source.startswith(base) or source + '/' == base for base in font_bases):
+            raise ValueError(f'{name}: CSP font-src source is outside the pinned stylesheet packages: {source}')
+    for directive in ('default-src', 'object-src', 'base-uri'):
+        if [s.lower() for s in csp_sources(policy, directive) or []] != ["'none'"]:
+            raise ValueError(name + ": CSP needs default-src, object-src and base-uri 'none'")
+    return parser.external
+
+
+def verify_remote_integrity(output, opener=None):
+    """Fetch every pinned CDN file named by the published pages and compare it with its integrity."""
+    import base64
+    from urllib.request import Request, urlopen
+    opener = opener or (lambda url: urlopen(Request(url, headers={'User-Agent': 'geometric-labs-pages'}), timeout=60).read())
+    checked = {}
+    for page in sorted(Path(output).resolve().rglob('*.html')):
+        for item in check_external_resources(page.name, page.read_text()):
+            if not item['integrity'] or item['url'] in checked:
+                continue
+            algorithm, expected = item['integrity'].split('-', 1)
+            try:
+                body = opener(item['url'])
+            except OSError as exc:
+                raise ValueError(f"could not download {item['url']}: {exc}") from exc
+            actual = base64.b64encode(hashlib.new(algorithm, body).digest()).decode()
+            if actual != expected:
+                raise ValueError('integrity mismatch for ' + item['url'])
+            checked[item['url']] = item['integrity']
+    return checked
+
+
 def validate_artifact(output):
     """Validate generated JSON, homepage and compatibility redirect links."""
     output = Path(output).resolve()
@@ -184,6 +344,12 @@ def validate_artifact(output):
         raise ValueError('missing published workbench/checkpoint')
     if not (output/'research-ide/official-corpus.js').is_file():
         raise ValueError('missing official corpus loader')
+    for folder, names in PUBLISHED_ASSETS.items():
+        for name in names:
+            if not (output/folder/name).is_file():
+                raise ValueError('missing published asset: ' + folder + '/' + name)
+    for page in sorted(output.rglob('*.html')):
+        check_external_resources(page.relative_to(output).as_posix(), page.read_text())
     corpus = json.loads((output/'research-ide/official/CATALOG.json').read_text())
     if corpus.get('schema') != 'geometric-labs.official-corpus.v1':
         raise ValueError('unknown official corpus schema')
@@ -228,7 +394,7 @@ def build(output, *, root=ROOT, require_clean=False):
     (output/'.nojekyll').write_text('')
     # Explicit Circuit-SETH teaching assets; archived research PDFs remain excluded.
     (output/'circuit-seth').mkdir()
-    for name in ('index.html', 'explorer.html', 'tutorial.css', 'tutorial.js'):
+    for name in ('index.html', 'explorer.html') + PUBLISHED_ASSETS['circuit-seth']:
         shutil.copy2(root/'site/circuit-seth'/name, output/'circuit-seth'/name)
     # Explicit publication allowlist, not an entire-repository upload.
     cp = root/CHECKPOINT
@@ -239,8 +405,9 @@ def build(output, *, root=ROOT, require_clean=False):
                                 ('research-ide.log','research-ide.log'), ('cryptographic-research.log','cryptographic-research.log')]:
         target=output/'checkpoint'/destination; target.parent.mkdir(exist_ok=True)
         shutil.copy2(cp/source,target)
-    (output/'research-ide').mkdir(); shutil.copy2(root/'Research_IDE/index.html', output/'research-ide/index.html')
-    shutil.copy2(root/'Research_IDE/official-corpus.js', output/'research-ide/official-corpus.js')
+    (output/'research-ide').mkdir()
+    for name in ('index.html',) + PUBLISHED_ASSETS['research-ide']:
+        shutil.copy2(root/'Research_IDE'/name, output/'research-ide'/name)
     (output/'research-ide/official').mkdir()
     shutil.copy2(root/'Research_IDE/official/CATALOG.json', output/'research-ide/official/CATALOG.json')
     for row in corpus['documents']:
@@ -259,9 +426,14 @@ def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,default=Path('/tmp/geometric-labs-pages'))
     p.add_argument('--require-clean',action='store_true')
+    p.add_argument('--verify-remote-integrity',action='store_true',
+                   help='after building, download each pinned CDN file and compare it with its integrity hash')
     args=p.parse_args()
     data=build(args.output,require_clean=args.require_clean)
     print(f"Built {args.output}: {data['tracked_files']} tracked paths, {len(data['sections'])} sections; source {data['source_commit'][:12]}")
+    if args.verify_remote_integrity:
+        checked=verify_remote_integrity(args.output)
+        print(f'Verified {len(checked)} pinned CDN files against their integrity hashes.')
     print('Scientific test evidence is historical, not re-executed by this build.')
 
 

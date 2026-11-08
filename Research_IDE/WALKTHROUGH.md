@@ -15,9 +15,9 @@ For the full reference of every IDE control, the LaTeX rules and the agent DOM A
 
 **You need**
 
-* A Chromium browser (Chrome, Edge or Brave). Firefox and Safari work, but they download files instead of letting you choose where to save.
+* A Chromium browser (Chrome, Edge or Brave), version 119 or later. Firefox 121+ and Safari 17.4+ work, but they download files instead of letting you choose where to save. Older browsers cannot read PDFs in the IDE (PDF.js 4.10.38 needs these versions) and say so when you open one.
 * Python 3.10+ and `make`. Both are already required by the rest of this repository.
-* An Internet connection. The IDE loads Tailwind, KaTeX, Marked, PDF.js, Three.js and Lucide from public CDNs (listed in `ide.lock.json`).
+* An Internet connection. The IDE loads KaTeX, Marked, DOMPurify, PDF.js, Three.js and Lucide from jsDelivr at exact versions, each checked against an integrity hash (listed in `ide.lock.json`). Its Tailwind styles are a local file, `ide-tailwind.css`.
 * Optional: an API key for Google AI Studio or OpenRouter, or a local Ollama, for AI transcription.
 * Optional, for Step 12: Lean 4 through [`elan`](https://github.com/leanprover/elan).
 
@@ -25,7 +25,7 @@ For the full reference of every IDE control, the LaTeX rules and the agent DOM A
 
 1. **The IDE keeps everything in memory.** Reloading or closing the tab discards your transcription, flowchart edits and Cosmo-ID history. Export early and often (Step 4 makes this painless).
 2. **The IDE does not run Lean.** The InfoView, the `PASS` badges and the node status (`✓ Proven`, `⚡ Tactic Ready`, `🚧 Scaffold`) are labels you set. The 9 built-in flowchart nodes start as `✓ Proven`. A proof counts as checked only after Step 12.
-3. **API keys are stored in the browser's `localStorage` in plain text.** Use your own machine and browser profile. Never paste a key into a file in this repository.
+3. **API keys are kept in the tab's memory only.** They are never written to browser storage, so you enter them again after a reload. Builds before v3.3.1 saved keys in `localStorage`; the IDE deletes those on load and tells you once. Never paste a key into a file in this repository.
 
 ---
 
@@ -68,9 +68,11 @@ Skip this step if you only want the local, zero-API extraction.
    | Local Ollama | `ollama pull qwen2.5vl:7b`, then `OLLAMA_ORIGINS="http://localhost:8080" ollama serve`. URL defaults to `http://localhost:11434/api/generate` | Fully offline; nothing leaves your machine |
    | Deterministic Heuristic OCR | Nothing | No network calls at all |
 
-3. Click **Save Configuration**.
+3. Click **Save Configuration**. The provider, model and Ollama URL are remembered in this browser; API keys stay in memory for this tab only.
 
 > Cloud providers receive the page images and text you send them. Do not use them for papers you are not allowed to share.
+
+> The page's security policy allows network calls only to the Gemini and OpenRouter APIs and to Ollama at `http://localhost:11434` or `http://127.0.0.1:11434`. An Ollama server on another host or port is refused by the browser.
 
 ---
 
@@ -388,9 +390,12 @@ The IDE does not remember past sessions, so reload the paper's latest files:
 
 | Symptom | Fix |
 | :--- | :--- |
-| Page is unstyled, or the PDF canvas stays blank | CDN scripts are blocked. Check the browser console and your network or ad-blocker. |
+| Math, icons or the PDF canvas stay blank | CDN scripts are blocked. Check the browser console and your network or ad-blocker. |
+| Console reports an `integrity` or Content-Security-Policy error | A CDN file did not match its pinned hash, or something tried to load from an unlisted host. The page refuses it by design; do not remove the hash or the policy. Report it with the console message. |
 | **Save to Repo** downloads instead of opening a dialog | Your browser lacks the File System Access API (Firefox, Safari), or the page is not served from `http://localhost`. Download to `inbox/` instead. |
 | AI buttons fall back to local extraction or report an error | Check the key and model in **AI: Auto**. For Ollama, confirm `OLLAMA_ORIGINS` includes `http://localhost:8080` and the model is pulled. |
+| An image shows as a link `[image: …]` in **Live Render** | The page loads images only from this site and from `data:`/`blob:` addresses, so images from other web addresses are not fetched. Open the link, or embed the image as a `data:` URI. |
+| Opening a PDF says it needs a newer browser | PDF.js 4.10.38 needs Chrome or Edge 119, Firefox 121 or Safari 17.4 or later. Update the browser; **Source PDF** still opens the official papers. |
 | Table cells split in **Live Render** | A raw `\|` inside maths in a table row. Use `\lvert … \rvert`. |
 | `ingest` says `KEEP` | A different file with that name is already filed. Use `--replace` if the new one supersedes it. |
 | `check`: `untracked file` | Run `make track PAPER=RP-…`. |

@@ -73,8 +73,16 @@ only a previously marked generated directory; unrelated directories are refused.
    or claim that historical checks were rerun.
 5. **Validate:** run site tests/build; inspect desktop/mobile, search, filters,
    empty/error states, links and recorded-evidence labels. The committed site
-   validator checks local root-page links and an artifact allowlist. It does not
-   perform external link health checks or verify the older Research IDE browser.
+   validator checks local root-page links and an artifact allowlist. It also
+   requires every external script or stylesheet on a published page to be an
+   exact-version jsDelivr file with an `integrity` hash and `crossorigin`, and the
+   page's Content-Security-Policy to list exactly those files by path, never a whole
+   host (the Google Fonts stylesheet is the one listed exception). The policy must
+   be a single `<meta>` in `<head>`, ahead of every script and stylesheet; scheme-
+   relative files count as external, and inline module imports of remote files,
+   import maps and `<base>` are refused. `--verify-remote-integrity` downloads
+   each pinned file and compares it with its hash; CI runs it. The validator does
+   not perform external link health checks.
 6. **Review the artifact:** it should contain homepage assets/data, selected
    checkpoint files and the Research IDE with its generated official catalog,
    corpus loader and exactly the selected official PDFs. Archived predecessors,
@@ -117,7 +125,8 @@ fallback link. Pages paths are case-sensitive.
 - `data/status.json`: machine-readable build scan; exact-source GitHub links.
 - `checkpoint/`: frozen historical overview/map/inventory and its evidence.
 - `research-ide/index.html`: versioned IDE with the official collection. It uses its
-  declared external CDN assets and manual exports; Lean is not run in the page.
+  pinned, integrity-checked CDN files (listed in `Research_IDE/ide.lock.json`), the
+  local `ide-safety.js` and `ide-tailwind.css`, and manual exports; Lean is not run in the page.
 - `research-ide/official-corpus.js` and `research-ide/official/CATALOG.json`: the
   local official-collection loader and selected metadata.
 - `research-ide/papers/.../source/*.pdf`: only source PDFs selected by that
@@ -138,9 +147,14 @@ mathematics to fix presentation. Keep the dated checkpoint immutable.
 ## Circuit-SETH teaching pages
 
 `circuit-seth/index.html` explains the research scaffold and includes two local
-interactive teaching models. `circuit-seth/explorer.html` preserves the supplied
-HTML unchanged, including its external Tailwind, font and KaTeX dependencies.
-The builder explicitly copies these pages and their two first-party assets;
+interactive teaching models. `circuit-seth/explorer.html` is the supplied HTML with
+its dependencies hardened: KaTeX is pinned on jsDelivr with integrity hashes, the
+Tailwind runtime script is replaced by the prebuilt `explorer-tailwind.css` (same
+theme; `tools/pages/tailwind/build.sh`), and a Content-Security-Policy is added.
+The Google Fonts stylesheet remains (it cannot carry an integrity hash). The
+unchanged original is preserved, hash-recorded, in
+`ecosystem/experiments/circuit-seth-get-lab/sources/`.
+The builder explicitly copies these pages and their first-party assets;
 source PDFs and experiment archives are not added to the published artifact.
 Both routes are validated for local links. Deploy through the existing main
 branch Pages workflow after review; feature-branch pushes do not publish them.

@@ -36,6 +36,8 @@ CATALOG_JSON = "CATALOG.json"
 CATALOG_MD = "CATALOG.md"
 IDE_FILE = "index.html"
 IDE_LOCK = "ide.lock.json"
+# Local files the IDE page loads; their SHA-256 values are recorded in the IDE lock.
+IDE_ASSETS = ("official-corpus.js", "ide-safety.js", "ide-tailwind.css")
 
 FOLDERS = ("source", "markdown", "audits", "lean", "flowcharts", "cosmo", "workflows",
            "postprocessing")
@@ -233,10 +235,15 @@ def check(root: Path) -> list[str]:
             errors.append(f"{IDE_FILE} does not match {IDE_LOCK} (run lock-ide and "
                           f"record the new IDE version in CHANGELOG.md)")
         if lock_path.is_file():
-            for asset in load_json(lock_path).get('assets', []):
+            assets = load_json(lock_path).get('assets', [])
+            for asset in assets:
                 path = root/asset['file']
                 if not path.is_file() or sha256(path) != asset['sha256']:
                     errors.append(f"{asset['file']} does not match {IDE_LOCK}")
+            recorded = {asset['file'] for asset in assets}
+            for name in IDE_ASSETS:
+                if (root/name).is_file() and name not in recorded:
+                    errors.append(f"{name} is not recorded in {IDE_LOCK} (run lock-ide)")
     return errors
 
 
@@ -451,8 +458,8 @@ def lock_ide(root: Path) -> dict:
     lock = load_json(lock_path) if lock_path.is_file() else {}
     lock.update({"file": IDE_FILE, "sha256": sha256(root / IDE_FILE),
                  "bytes": (root / IDE_FILE).stat().st_size, "locked": today()})
-    if (root/'official-corpus.js').is_file():
-        lock['assets'] = [{'file': 'official-corpus.js', 'sha256': sha256(root/'official-corpus.js')}]
+    lock['assets'] = [{'file': name, 'sha256': sha256(root/name)} for name in IDE_ASSETS
+                      if (root/name).is_file()]
     dump_json(lock_path, lock)
     return lock
 

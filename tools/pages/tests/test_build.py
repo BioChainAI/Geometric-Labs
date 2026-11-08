@@ -78,8 +78,10 @@ class PageBuild(unittest.TestCase):
             build.build(output)
             data=build.validate_artifact(output)
             self.assertEqual(data['schema'],'geometric-labs.pages-status.v1')
-            for name in ('index.html', 'explorer.html', 'tutorial.css', 'tutorial.js'):
+            for name in ('index.html', 'explorer.html', 'tutorial.css', 'tutorial.js', 'explorer-tailwind.css'):
                 self.assertEqual((output/'circuit-seth'/name).read_bytes(), (ROOT/'site/circuit-seth'/name).read_bytes())
+            for name in ('index.html', 'official-corpus.js', 'ide-safety.js', 'ide-tailwind.css'):
+                self.assertEqual((output/'research-ide'/name).read_bytes(), (ROOT/'Research_IDE'/name).read_bytes())
             tutorial = output/'circuit-seth/tutorial.js'
             tutorial.unlink()
             with self.assertRaises(ValueError): build.validate_artifact(output)
@@ -145,6 +147,107 @@ class PageBuild(unittest.TestCase):
         js=(ROOT/'site/assets/site.js').read_text()
         self.assertNotIn('innerHTML',js)
         self.assertIn('textContent',js)
+
+
+SCRIPT_URL = 'https://cdn.jsdelivr.net/npm/demo@1.2.3/dist/demo.min.js'
+STYLE_URL = 'https://cdn.jsdelivr.net/npm/demo@1.2.3/dist/demo.min.css'
+PAGE_CSP = ("default-src 'none'; script-src 'self' 'unsafe-inline' " + SCRIPT_URL + "; style-src 'self' " + STYLE_URL
+            + "; font-src https://cdn.jsdelivr.net/npm/demo@1.2.3/dist/fonts/ data:; object-src 'none'; base-uri 'none'")
+CSP_META = '<meta http-equiv="Content-Security-Policy" content="' + PAGE_CSP + '">'
+PAGE_HEAD = ('<!DOCTYPE html><html><head><title>t</title>\n' + CSP_META + '\n'
+             '<script src="' + SCRIPT_URL + '" integrity="sha384-{digest}" crossorigin="anonymous"></script>\n'
+             '<link rel="stylesheet" href="' + STYLE_URL + '" integrity="sha384-{digest}" crossorigin="anonymous">\n'
+             '</head><body></body></html>')
+
+
+class ExternalResources(unittest.TestCase):
+    """Published pages load third-party files only pinned, hash-checked and listed file by file in the CSP."""
+    def page(self, digest='A'*64):
+        return PAGE_HEAD.replace('{digest}', digest)
+
+    def test_published_pages_pass(self):
+        for page in ('Research_IDE/index.html', 'site/circuit-seth/explorer.html'):
+            resources = build.check_external_resources(page, (ROOT/page).read_text())
+            self.assertTrue(resources, page)
+        for page in ('site/index.html', 'site/circuit-seth/index.html'):
+            self.assertEqual(build.check_external_resources(page, (ROOT/page).read_text()), [])
+
+    def test_fixture_page_passes(self):
+        self.assertEqual(len(build.check_external_resources('fixture', self.page())), 2)
+        local_module = self.page().replace('</head>', '<script type="module">import "./local.js"; import("../x.js");</script></head>')
+        self.assertEqual(len(build.check_external_resources('fixture', local_module)), 2)
+        hashed = self.page().replace("'unsafe-inline'", "'sha256-" + 'B'*43 + "='")
+        self.assertEqual(len(build.check_external_resources('fixture', hashed)), 2)
+
+    def test_unpinned_unhashed_or_unlisted_resources_fail(self):
+        good = self.page()
+        tag = '<script src="' + SCRIPT_URL + '"'
+        for bad in (good.replace(' integrity="sha384-' + 'A'*64 + '"', '', 1),
+                    good.replace(' crossorigin="anonymous"', '', 1),
+                    good.replace('demo@1.2.3/dist/demo.min.js', 'demo/dist/demo.min.js'),
+                    good.replace('demo@1.2.3/dist/demo.min.js', 'demo@latest/dist/demo.min.js'),
+                    good.replace(SCRIPT_URL, 'https://cdn.tailwindcss.com'),
+                    good.replace(SCRIPT_URL, 'https://unpkg.com/demo@1.2.3/dist/demo.min.js'),
+                    # CSP sources: every file listed, nothing else
+                    good.replace(' ' + SCRIPT_URL + ';', ';', 1),
+                    good.replace("script-src 'self'", "script-src 'self' https://extra.example", 1),
+                    good.replace("script-src 'self'", "script-src 'self' 'unsafe-eval'", 1),
+                    good.replace("script-src 'self'", "script-src 'self' 'strict-dynamic'", 1),
+                    good.replace("script-src 'self' 'unsafe-inline' " + SCRIPT_URL, "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net", 1),
+                    good.replace("script-src 'self' 'unsafe-inline' " + SCRIPT_URL, "script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/demo@1.2.3/", 1),
+                    good.replace("script-src 'self'", "script-src 'self' unpinned.example", 1),
+                    good.replace("script-src 'self'", "script-src 'self' data:", 1),
+                    good.replace("script-src 'self'", "script-src 'self' blob:", 1),
+                    good.replace("style-src 'self'", "style-src 'self' https://cdn.jsdelivr.net", 1),
+                    good.replace('font-src https://cdn.jsdelivr.net/npm/demo@1.2.3/dist/fonts/', 'font-src https://cdn.jsdelivr.net', 1),
+                    good.replace("default-src 'none'", "default-src *", 1),
+                    good.replace("default-src 'none'", "DEFAULT-SRC *; default-src 'none'", 1),
+                    good.replace("<meta http-equiv=\"Content-Security-Policy\"", '<meta name="x"', 1),
+                    # policy position: a meta CSP applies only to what follows it, and only in <head>
+                    good.replace(CSP_META + '\n', '', 1).replace('</head>', CSP_META + '</head>', 1),
+                    good.replace(CSP_META + '\n', '', 1).replace('<body>', '<body>' + CSP_META, 1),
+                    good.replace(CSP_META, CSP_META + CSP_META, 1),
+                    # loads the gate must see
+                    good.replace(tag, '<script src="//cdn.jsdelivr.net/npm/demo@1.2.3/dist/demo.min.js"', 1),
+                    good.replace(tag, '<script src="//unpinned.example/x.js" src="' + SCRIPT_URL + '"', 1),
+                    good.replace('<body>', '<body><svg><script href="https://unpinned.example/x.js"></script></svg>', 1),
+                    good.replace('</head>', '<script type="module">import "https://cdn.jsdelivr.net/npm/demo/dist/demo.mjs";</script></head>', 1),
+                    good.replace('</head>', '<script type="module">import(\'//unpinned.example/x.js\');</script></head>', 1),
+                    good.replace('</head>', '<script type="importmap">{"imports": {}}</script></head>', 1),
+                    good.replace('<title>t</title>', '<title>t</title><base href="https://unpinned.example/">', 1)):
+            with self.assertRaises(ValueError, msg=bad[:600]): build.check_external_resources('fixture', bad)
+
+    def test_scheme_relative_script_needs_pin_and_policy(self):
+        page = '<!DOCTYPE html><html><head><title>t</title><script src="//unpinned.example/lib.js"></script></head><body></body></html>'
+        with self.assertRaises(ValueError): build.check_external_resources('fixture', page)
+        local = page.replace('//unpinned.example/lib.js', 'assets/lib.js')
+        self.assertEqual(build.check_external_resources('fixture', local), [])
+
+    def test_unhashable_font_stylesheet_is_the_only_exception(self):
+        page = (ROOT/'site/circuit-seth/explorer.html').read_text()
+        build.check_external_resources('explorer', page)
+        swapped = page.replace('https://fonts.googleapis.com/css2?', 'https://fonts.example.com/css2?')
+        with self.assertRaises(ValueError): build.check_external_resources('explorer', swapped)
+
+    def test_remote_integrity_check_compares_downloaded_bytes(self):
+        import base64, hashlib
+        body = b'console.log("pinned")'
+        digest = base64.b64encode(hashlib.sha384(body).digest()).decode()
+        with tempfile.TemporaryDirectory() as directory:
+            (Path(directory)/'page.html').write_text(self.page(digest))
+            checked = build.verify_remote_integrity(directory, opener=lambda url: body)
+            self.assertEqual(len(checked), 2)
+            with self.assertRaises(ValueError):
+                build.verify_remote_integrity(directory, opener=lambda url: body + b' ')
+
+    def test_missing_page_asset_fails_artifact_gate(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output=Path(directory)/'site';build.build(output)
+            for folder, name in (('research-ide', 'ide-safety.js'), ('circuit-seth', 'explorer-tailwind.css')):
+                path = output/folder/name; data = path.read_bytes(); path.unlink()
+                with self.assertRaises(ValueError): build.validate_artifact(output)
+                path.write_bytes(data)
+            build.validate_artifact(output)
 
 
 if __name__=='__main__': unittest.main()

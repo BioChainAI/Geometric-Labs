@@ -85,14 +85,16 @@ Additional local checks:
 
 ```sh
 node --test Research_IDE/tests/official-corpus.test.cjs  # from repository root
+node --test Research_IDE/tests/ide-safety.test.cjs
 python3 Research_IDE/tools/browser_smoke.py \
   --site-dir /tmp/geometric-official-pages \
   --dependency-dir /tmp/geometric-official-browser-deps \
   --output-dir /tmp/geometric-official-ide-browser
 ```
 
-The optional browser tool requires Playwright/Chromium and local `pdf.min.js` plus
-`pdf.worker.min.js` from **pdfjs-dist@3.11.174**. It blocks other CDNs to exercise
+The optional browser tool requires Playwright/Chromium and local `pdf.min.mjs` plus
+`pdf.worker.min.mjs` from the `build/` folder of the **pdfjs-dist@4.10.38** npm package
+(the exact published files: the page checks their integrity hashes). It blocks other CDNs to exercise
 fallbacks and checks real PDF loading and manual imports; it is not a visual
 certification of CDN styling, the 3D viewer or AI calls. The Python CI remains
 standard-library only. See the wave status report for actual executed checks.

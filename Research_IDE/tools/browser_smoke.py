@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Optional Chromium workflow check, with local PDF.js 3.11.174 test dependencies.
+"""Optional Chromium workflow check, with local PDF.js 4.10.38 test dependencies.
 
-Supply pdf.min.js and pdf.worker.min.js from pdfjs-dist@3.11.174 in --dependency-dir.
+Supply build/pdf.min.mjs and build/pdf.worker.min.mjs from the pdfjs-dist@4.10.38 npm package in
+--dependency-dir. They must be the exact published files: the page checks their integrity hashes.
 Other CDNs are blocked to exercise the IDE's metadata/manual-import fallbacks.
 This is a functional check, not a visual review of CDN styling or the 3D viewer.
 """
@@ -21,7 +22,8 @@ parser.add_argument('--site-dir', type=Path, required=True)
 parser.add_argument('--dependency-dir', type=Path, required=True)
 parser.add_argument('--output-dir', type=Path, required=True)
 args = parser.parse_args()
-for name in ('pdf.min.js', 'pdf.worker.min.js'):
+PDFJS = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/'
+for name in ('pdf.min.mjs', 'pdf.worker.min.mjs'):
     if not (args.dependency_dir/name).is_file():
         parser.error('missing pinned PDF.js test dependency: ' + name)
 args.output_dir.mkdir(parents=True, exist_ok=True)
@@ -42,17 +44,19 @@ with tempfile.TemporaryDirectory(prefix='official-ide-browser-') as directory:
             def route_request(route):
                 url = route.request.url
                 if url.startswith(base): route.continue_()
-                elif '/pdf.js/3.11.174/pdf.min.js' in url:
-                    route.fulfill(path=str(args.dependency_dir/'pdf.min.js'), content_type='text/javascript')
-                elif '/pdf.js/3.11.174/pdf.worker.min.js' in url:
-                    route.fulfill(path=str(args.dependency_dir/'pdf.worker.min.js'), content_type='text/javascript')
+                elif url in (PDFJS + 'pdf.min.mjs', PDFJS + 'pdf.worker.min.mjs'):
+                    # crossorigin="anonymous" module scripts need a CORS response for the integrity check.
+                    route.fulfill(path=str(args.dependency_dir/url.rsplit('/', 1)[1]), content_type='text/javascript',
+                                  headers={'Access-Control-Allow-Origin': '*'})
                 else: route.abort()
             context.route('**/*', route_request)
+            # The page's Content-Security-Policy refuses string evaluation, so wait_for_function
+            # predicates are written as functions ("() => ...").
             page = context.new_page(); errors = []
             page.on('pageerror', lambda error: errors.append(str(error)))
             page.goto(base+'index.html')
-            page.wait_for_function('papersState.filter(p => p.officialRecord).length === ' + str(len(expected)))
-            page.wait_for_function("document.getElementById('badgeCount_biochain').textContent === '" + str(len(expected)) + "'")
+            page.wait_for_function('() => papersState.filter(p => p.officialRecord).length === ' + str(len(expected)))
+            page.wait_for_function("() => document.getElementById('badgeCount_biochain').textContent === '" + str(len(expected)) + "'")
             assert page.evaluate('activeCorpusTab') == 'biochain'
             assert set(page.evaluate('papersState.map(p => p.id)')) == expected
             assert page.locator('#badgeCount_biochain').inner_text() == str(len(expected))
@@ -65,30 +69,30 @@ with tempfile.TemporaryDirectory(prefix='official-ide-browser-') as directory:
             page.locator('#corpusSearchInput').fill('')
             page.locator('#mdFileInput').set_input_files({'name': 'archived-note.md',
                 'mimeType': 'text/markdown', 'buffer': b'# Archived note\n\nManually imported.'})
-            page.wait_for_function("papersState.some(p => p.workspaceTab === 'custom' && p.title === 'Archived note')")
+            page.wait_for_function("() => papersState.some(p => p.workspaceTab === 'custom' && p.title === 'Archived note')")
             assert page.evaluate('activeCorpusTab') == 'custom'
             assert set(page.evaluate("papersState.filter(p => p.workspaceTab === 'biochain').map(p => p.id)")) == expected
             checks.append('Manual archived Markdown import stays in the Research Desk and does not change the official collection.')
             page.evaluate("switchCorpusTab('biochain')")
             page.locator('#officialOpenPdf').click(force=True)
-            page.wait_for_function('getActivePaper().pdfDoc !== null', timeout=30000)
-            page.wait_for_function("document.getElementById('officialPdfStatus').textContent.includes('SHA-256 checked')", timeout=30000)
+            page.wait_for_function('() => getActivePaper().pdfDoc !== null', timeout=30000)
+            page.wait_for_function("() => document.getElementById('officialPdfStatus').textContent.includes('SHA-256 checked')", timeout=30000)
             assert page.evaluate('getActivePaper().pdfDoc.numPages') == corpus['documents'][0]['pages']
             assert page.evaluate("document.getElementById('pdfRenderCanvas').width") > 0
-            checks.append('Original official PDF loads through real PDF.js 3.11.174, passes SHA-256 and renders pages in the inspector.')
+            checks.append('Original official PDF loads through real PDF.js 4.10.38 (integrity-checked modules), passes SHA-256 and renders pages in the inspector.')
             # An imported PDF is a working document, even while official releases were selected.
             source = args.site_dir/'research-ide'/corpus['documents'][0]['pdf_path']
             page.locator('#pdfFileInput').set_input_files(str(source))
-            page.wait_for_function("papersState.some(p => p.workspaceTab === 'custom' && p.pdfDoc)", timeout=30000)
+            page.wait_for_function("() => papersState.some(p => p.workspaceTab === 'custom' && p.pdfDoc)", timeout=30000)
             assert page.evaluate('activeCorpusTab') == 'custom'
             assert len(page.evaluate("papersState.filter(p => p.workspaceTab === 'biochain')")) == len(expected)
             checks.append('Manual PDF import never becomes an official publication.')
             tampered = context.new_page()
             tampered.route('**/papers/**/*.pdf', lambda route: route.fulfill(status=200, body=b'changed PDF'))
             tampered.goto(base+'index.html')
-            tampered.wait_for_function("document.getElementById('badgeCount_biochain').textContent === '" + str(len(expected)) + "'")
+            tampered.wait_for_function("() => document.getElementById('badgeCount_biochain').textContent === '" + str(len(expected)) + "'")
             tampered.locator('#officialOpenPdf').click(force=True)
-            tampered.wait_for_function("document.getElementById('officialPdfStatus').textContent.includes('hash mismatch')")
+            tampered.wait_for_function("() => document.getElementById('officialPdfStatus').textContent.includes('hash mismatch')")
             assert tampered.evaluate('getActivePaper().pdfDoc') is None
             checks.append('Tampered PDF bytes fail before parsing and cannot appear as a checked official source.')
             broken = context.new_page()
@@ -98,7 +102,7 @@ with tempfile.TemporaryDirectory(prefix='official-ide-browser-') as directory:
             assert broken.evaluate("papersState.filter(p => p.workspaceTab === 'biochain').length") == 0
             broken.unroute('**/official/CATALOG.json')
             broken.locator('#officialRetryButton').click(force=True)
-            broken.wait_for_function('papersState.length === ' + str(len(expected)))
+            broken.wait_for_function('() => papersState.length === ' + str(len(expected)))
             checks.append('Catalog failure is explicit; retry restores only official entries without falling back to samples.')
             assert not errors, errors
             browser.close()

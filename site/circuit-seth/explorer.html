@@ -4,40 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>The Geometric Engine of Time — Full Technical Monograph & 64-Bit Register Map</title>
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <!-- Security policy: scripts and styles only from 'self' and the exact pinned jsDelivr files below, plus the
+       Google Fonts stylesheet; fonts only from KaTeX's pinned font folder and Google Fonts; no network calls.
+       'self' is the shared biochainai.github.io origin (every project site on it), not only this site. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.js https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/contrib/auto-render.min.js; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.css https://fonts.googleapis.com/css2; font-src https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/fonts/ https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <!-- Tailwind CSS v3.4.19, prebuilt from this page's original configuration (tools/pages/tailwind/) -->
+  <link rel="stylesheet" href="explorer-tailwind.css">
+  <!-- Google Fonts: Inter & JetBrains Mono (stylesheet only; its content varies by browser, so it cannot carry an integrity hash) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- KaTeX for Exact Mathematical Typesetting -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace'],
-          },
-          colors: {
-            slate: {
-              850: '#151e2e',
-              900: '#0f172a',
-              950: '#060b14',
-            },
-            amber: {
-              450: '#f59e0b',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.css" integrity="sha384-NJ/T2p1ROqNH3Yico+wdWm5Rv2rlinAOvV25Sw1zLOaxg8yLDPVv8GGAUccx50rh" crossorigin="anonymous">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.js" integrity="sha384-vaygNa7Kw+54Zb42f7K+4bfhZp4vWSHPJMKwd7nVmlgSvRADUrCRRdCpc1/CJwO+" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
 
   <style>
     body {

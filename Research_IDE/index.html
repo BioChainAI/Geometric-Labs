@@ -5,26 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Geometric-Labs PDF-to-Markdown & LaTeX Research IDE</title>
 
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Security policy: scripts and styles only from 'self' and the exact pinned jsDelivr files below, fonts
+       only from KaTeX's pinned font folder; network calls only to 'self' and the configured AI providers.
+       'self' is the shared biochainai.github.io origin (every project site on it), not only this site. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.js https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/contrib/auto-render.min.js https://cdn.jsdelivr.net/npm/marked@18.1.1/lib/marked.umd.js https://cdn.jsdelivr.net/npm/dompurify@3.4.17/dist/purify.min.js https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js https://cdn.jsdelivr.net/npm/lucide@1.61.0/dist/umd/lucide.min.js; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.css; font-src https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/fonts/ data:; img-src 'self' data: blob:; connect-src 'self' https://generativelanguage.googleapis.com https://openrouter.ai http://localhost:11434 http://127.0.0.1:11434; worker-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+
+  <!-- Tailwind CSS v3.4.19, prebuilt for this page (tools/pages/tailwind/) -->
+  <link rel="stylesheet" href="ide-tailwind.css">
 
   <!-- KaTeX for High-Speed Mathematical LaTeX Rendering -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.css" integrity="sha384-NJ/T2p1ROqNH3Yico+wdWm5Rv2rlinAOvV25Sw1zLOaxg8yLDPVv8GGAUccx50rh" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/katex.min.js" integrity="sha384-vaygNa7Kw+54Zb42f7K+4bfhZp4vWSHPJMKwd7nVmlgSvRADUrCRRdCpc1/CJwO+" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/katex@0.18.11/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
 
-  <!-- Marked.js for Markdown parsing -->
-  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Marked.js for Markdown parsing; DOMPurify sanitises its output before display -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@18.1.1/lib/marked.umd.js" integrity="sha384-rATToyt6602Jnq8c7w8HZwmyOUgPL7mzxX01FBWoV48ns/EgkakGozpES+PnaYOI" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/dompurify@3.4.17/dist/purify.min.js" integrity="sha384-P0JNneQf81HOl9VwNXK76cQ9VMD6Nfsnepxb0cCOg8+UzEdzgPHAPV4wVQrvYQSx" crossorigin="anonymous"></script>
 
-  <!-- PDF.js & Preloaded Worker for zero-failure PDF parsing across file://, iframe, and GitHub Pages -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js"></script>
+  <!-- PDF.js modules: the worker module is preloaded so parsing runs on the page thread through
+       window.pdfjsWorker, without a cross-origin Worker. Both define their globals before window.onload. -->
+  <script type="module" src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs" integrity="sha384-+0ti2moQlmLN7WZHE2RHIf5lV8hHxhxEalN0il3YZceG26fUPyOkR0hp9daxk1i7" crossorigin="anonymous"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs" integrity="sha384-ToeVvShCxKc6CEvhHeMt0Q8A06pSPDbAlngO9nokrDmh914gk/pYd0N7D0a4Lz2o" crossorigin="anonymous"></script>
 
   <!-- Three.js for 3D Origin-Centered [-2,2]^3 Cosmo-ID Voxel Lattice Visualization -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js" integrity="sha384-CI3ELBVUz9XQO+97x6nwMDPosPR5XvsxW2ua7N1Xeygeh1IxtgqtCkGfQY9WWdHu" crossorigin="anonymous"></script>
 
   <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@1.61.0/dist/umd/lucide.min.js" integrity="sha384-wx1iBc8a89SnsJAxZPb9eNEoMn4t/Wg111+QJyasxB9Om4SDDtkJeBuXx4NiRwa8" crossorigin="anonymous"></script>
 
   <style>
     :root {
@@ -678,13 +685,13 @@
             <option value="gemini-3-flash-preview">Gemini 3 Flash Preview (Fast OCR & LaTeX)</option>
             <option value="gemini-2.5-pro">Gemini 2.5 Pro (Deep Mathematical Reasoning)</option>
           </select>
-          <label class="block text-slate-400 font-mono mb-1 pt-1">Google AI Studio API Key (Saved in Browser):</label>
-          <input id="modalUserGeminiKey" type="password" placeholder="AIzaSy..." class="w-full bg-slate-950 border border-slate-800 rounded p-2 text-slate-200 font-mono" />
+          <label class="block text-slate-400 font-mono mb-1 pt-1">Google AI Studio API Key (kept in this tab's memory only):</label>
+          <input id="modalUserGeminiKey" type="password" autocomplete="off" spellcheck="false" placeholder="AIzaSy..." class="w-full bg-slate-950 border border-slate-800 rounded p-2 text-slate-200 font-mono" />
         </div>
 
         <div id="modalOpenRouterSection" class="space-y-2 hidden">
-          <label class="block text-slate-400 font-mono mb-1">OpenRouter API Key:</label>
-          <input id="modalOpenRouterKey" type="password" placeholder="sk-or-v1-..." class="w-full bg-slate-950 border border-slate-800 rounded p-2 text-slate-200 font-mono" />
+          <label class="block text-slate-400 font-mono mb-1">OpenRouter API Key (kept in this tab's memory only):</label>
+          <input id="modalOpenRouterKey" type="password" autocomplete="off" spellcheck="false" placeholder="sk-or-v1-..." class="w-full bg-slate-950 border border-slate-800 rounded p-2 text-slate-200 font-mono" />
         </div>
 
         <div id="modalOllamaSection" class="space-y-2 hidden">
@@ -832,13 +839,21 @@
 
   <!-- APPLICATION SCRIPT -->
   <script src="official-corpus.js"></script>
+  <script src="ide-safety.js"></script>
   <script>
     if (!window.lucide) window.lucide = { createIcons() {} };
-    (function configurePdfJsWorker() {
-      if (!window.pdfjsLib) return;
-      const cdnWorkerUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-      window.pdfjsLib.GlobalWorkerOptions.workerSrc = cdnWorkerUrl;
-    })();
+
+    // API keys are kept in page memory only. Remove any key an earlier build saved in this browser.
+    function browserStorage() {
+      try { return window.localStorage; } catch (e) { return null; }
+    }
+    function readPreference(name, fallback) {
+      try { return browserStorage()?.getItem(name) || fallback; } catch (e) { return fallback; }
+    }
+    function writePreference(name, value) {
+      try { browserStorage()?.setItem(name, value); } catch (e) { /* storage unavailable */ }
+    }
+    const removedStoredKeyItems = IdeSafety.removeStoredApiKeys(browserStorage());
 
     const WHEEL_30_UNITS = [1, 7, 11, 13, 17, 19, 23, 29];
     const B_PLUS_HELIX = new Set([1, 11, 19, 29]);
@@ -958,12 +973,12 @@
     let pdfScale = 1.0;
     let pdfViewMode = 'canvas';
 
-    let runtimeAiProvider = localStorage.getItem('gl_ai_provider') || 'gemini';
-    let runtimeGeminiModel = localStorage.getItem('gl_gemini_model') || 'gemini-2.5-flash';
-    let runtimeUserGeminiKey = localStorage.getItem('gl_gemini_key') || '';
-    let runtimeOpenRouterKey = localStorage.getItem('gl_openrouter_key') || '';
+    let runtimeAiProvider = readPreference('gl_ai_provider', 'gemini');
+    let runtimeGeminiModel = readPreference('gl_gemini_model', 'gemini-2.5-flash');
+    let runtimeUserGeminiKey = '';   // memory only, never stored
+    let runtimeOpenRouterKey = '';   // memory only, never stored
     let runtimeOpenRouterModel = 'qwen/qwen2.5-vl-72b-instruct:free';
-    let runtimeOllamaUrl = localStorage.getItem('gl_ollama_url') || 'http://localhost:11434/api/generate';
+    let runtimeOllamaUrl = readPreference('gl_ollama_url', 'http://localhost:11434/api/generate');
     let runtimeOllamaModel = 'qwen2.5vl:7b';
 
     function buildSpecimenPagesFromMarkdown(mdText, title = '') {
@@ -1075,6 +1090,9 @@
       document.getElementById('officialOpenPdf').disabled = !!paper.officialLoading;
     }
 
+    // PDF.js 4.10.38 calls Promise.withResolvers, which older browsers lack.
+    const PDF_BROWSER_NOTE = 'Reading PDFs needs Chrome or Edge 119, Firefox 121, Safari 17.4 or a later version.';
+
     async function loadOfficialPdf(paperId) {
       const paper = papersState.find(p => p.id === paperId && p.officialRecord);
       if (!paper || paper.officialLoading) return;
@@ -1085,6 +1103,7 @@
       status.textContent = 'Loading and checking the original PDF…';
       try {
         if (!window.pdfjsLib) throw new Error('PDF reader could not load. Use Source PDF or retry when PDF.js is available.');
+        if (typeof Promise.withResolvers !== 'function') throw new Error(PDF_BROWSER_NOTE + ' Source PDF remains available.');
         const doc = paper.officialRecord;
         const response = await fetch(doc.pdf_path);
         const bytes = await OfficialCorpus.verifiedBytes(response, doc.source_sha256);
@@ -1807,8 +1826,8 @@ STRICT RULES:
           let lastErr = null;
           for (const modelName of candidateModels) {
             try {
-              const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${effectiveKey}`;
-              const rawResult = await fetchGeminiWithBackoff(apiUrl, payload, 2);
+              const request = IdeSafety.geminiRequest(modelName, effectiveKey, payload);
+              const rawResult = await fetchGeminiWithBackoff(request, 2);
               const cleaned = stripOuterMarkdownCodeFence(rawResult);
               if (cleaned) return cleaned;
             } catch (modelErr) {
@@ -1838,20 +1857,14 @@ STRICT RULES:
       try {
         const arrayBuffer = await file.arrayBuffer();
 
-        // Use disableWorker: true with preloaded pdf.worker.min.js so PDF.js uses window.pdfjsWorker
-        // synchronously without cross-origin Blob/Worker failures, and slice buffer to prevent detachment.
-        let pdfDocInstance = null;
-        try {
-          pdfDocInstance = await window.pdfjsLib.getDocument({
-            data: new Uint8Array(arrayBuffer.slice(0)),
-            disableWorker: true
-          }).promise;
-        } catch (primaryErr) {
-          console.warn('Primary main-thread PDF loader fallback:', primaryErr);
-          pdfDocInstance = await window.pdfjsLib.getDocument({
-            data: new Uint8Array(arrayBuffer.slice(0))
-          }).promise;
-        }
+        // The preloaded pdf.worker.min.mjs module sets window.pdfjsWorker, so PDF.js parses on the page
+        // thread without a cross-origin Worker. Slice the buffer to prevent detachment.
+        if (!window.pdfjsLib) throw new Error('PDF reader could not load. Retry when PDF.js is available.');
+        if (typeof Promise.withResolvers !== 'function') throw new Error(PDF_BROWSER_NOTE);
+        const pdfDocInstance = await window.pdfjsLib.getDocument({
+          data: new Uint8Array(arrayBuffer.slice(0)),
+          isEvalSupported: false
+        }).promise;
 
         loadedPdfDoc = pdfDocInstance;
         currentPdfPage = 1;
@@ -1998,14 +2011,11 @@ STRICT RULES:
       }
     }
 
-    async function fetchGeminiWithBackoff(url, payload, retries = 3) {
+    // request = IdeSafety.geminiRequest(...): the key travels in the x-goog-api-key header.
+    async function fetchGeminiWithBackoff(request, retries = 3) {
       for (let attempt = 0; attempt < retries; attempt++) {
         try {
-          const res = await fetch(url, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
+          const res = await fetch(request.url, request.init);
           if (res.status === 429 && attempt < retries - 1) {
             await new Promise(r => setTimeout(r, Math.pow(2, attempt) * 1000));
             continue;
@@ -2095,30 +2105,9 @@ STRICT RULES:
         return;
       }
 
-      // Protect LaTeX display ($$...$$, \[...\], \begin{...}...\end{...}) and inline ($...$, \(...\)) blocks from Markdown mangling
-      const mathPlaceholders = [];
-      const protectedMarkdown = rawMarkdown.replace(
-        /(\$\$[\s\S]*?\$\$)|(\\\[[\s\S]*?\\\])|(\\begin\{(equation\*?|align\*?|aligned|gather\*?|multline\*?|pmatrix|bmatrix|vmatrix|cases)\}[\s\S]*?\\end\{\4\})|(\\\([\s\S]*?\\\))|(\$(?!\$)[^\$\n]+?\$)/g,
-        (match) => {
-          const token = `@@LATEX_TOKEN_${mathPlaceholders.length}@@`;
-          mathPlaceholders.push(match);
-          return token;
-        }
-      );
-
-      let htmlOut = '';
-      if (window.marked && typeof window.marked.parse === 'function') {
-        htmlOut = window.marked.parse(protectedMarkdown);
-      } else {
-        htmlOut = `<pre class="whitespace-pre-wrap font-mono text-xs">${escapeHtml(protectedMarkdown)}</pre>`;
-      }
-
-      // Restore LaTeX tokens prior to KaTeX auto-render pass
-      htmlOut = htmlOut.replace(/@@LATEX_TOKEN_(\d+)@@/g, (_, idx) => {
-        return mathPlaceholders[parseInt(idx, 10)] || '';
-      });
-
-      previewPane.innerHTML = htmlOut;
+      // LaTeX spans are protected from Markdown, restored as text, and the whole result is sanitised
+      // (DOMPurify) before display. KaTeX then typesets the math from the sanitised text nodes.
+      previewPane.innerHTML = IdeSafety.renderMarkdown(rawMarkdown, { marked: window.marked, purify: window.DOMPurify });
 
       if (window.renderMathInElement) {
         try {
@@ -2542,7 +2531,7 @@ STRICT RULES:
                 <div class="flex items-center gap-2">
                   <span class="text-[9px] text-slate-500 truncate max-w-[130px]" title="Canonical Registry Binding">[${escapeHtml(f.registryKey)}]</span>
                   <button
-                    onclick="copyToClipboard('${escapeAttr(f.latex)}')"
+                    onclick="copyFormulaTex(${f.idx})"
                     class="text-slate-400 hover:text-white flex items-center gap-1 transition"
                     title="Copy TeX"
                   >
@@ -2555,7 +2544,7 @@ STRICT RULES:
                 class="cursor-pointer bg-slate-950 hover:bg-slate-950/80 p-2 rounded border border-slate-800/90 hover:border-sky-500/40 text-slate-200 overflow-x-auto text-sm font-mono formula-render-target transition"
                 title="Click to highlight in Markdown source (${lineLabel})"
               >
-                $$${f.latex}$$
+                $$${escapeHtml(f.latex)}$$
               </div>
               <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-0.5">
                 <span class="truncate" title="${escapeAttr(f.actionSummary)}">⚡ ${escapeHtml(f.actionSummary)}</span>
@@ -3986,7 +3975,7 @@ STRICT RULES:
 
                 <!-- Rendered LaTeX Formula Preview + Editable TeX Source -->
                 <div class="bg-slate-950 border border-slate-800/90 rounded-lg p-2 text-slate-200 overflow-x-auto text-xs font-mono fc-step-math-render">
-                  $$${st.latex}$$
+                  $$${escapeHtml(st.latex)}$$
                 </div>
 
                 <input
@@ -4325,8 +4314,8 @@ ${node.leanCode}`;
           systemInstruction: { parts: [{ text: systemPrompt }] }
         };
         const modelName = effectiveKey ? runtimeGeminiModel : 'gemini-2.5-flash';
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${modelName}:generateContent?key=${effectiveKey}`;
-        const rawRes = await fetchGeminiWithBackoff(apiUrl, payload, 2);
+        const request = IdeSafety.geminiRequest(modelName, effectiveKey, payload);
+        const rawRes = await fetchGeminiWithBackoff(request, 2);
         const cleanLean = stripOuterMarkdownCodeFence(rawRes);
         if (cleanLean && cleanLean.length > 20) {
           node.leanCode = cleanLean;
@@ -5548,6 +5537,11 @@ ${node.leanCode}`;
       }
     }
 
+    function copyFormulaTex(formulaIdx) {
+      const formula = extractedFormulasRegistry.find(f => f.idx === formulaIdx);
+      if (formula) copyToClipboard(formula.latex);
+    }
+
     function copyToClipboard(text) {
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(text).then(() => showToast('Copied TeX to clipboard'));
@@ -6117,15 +6111,10 @@ ${node.leanCode}`;
       runtimeOpenRouterKey = document.getElementById('modalOpenRouterKey').value.trim();
       runtimeOllamaUrl = document.getElementById('modalOllamaUrl').value.trim();
 
-      try {
-        localStorage.setItem('gl_ai_provider', runtimeAiProvider);
-        localStorage.setItem('gl_gemini_model', runtimeGeminiModel);
-        localStorage.setItem('gl_gemini_key', runtimeUserGeminiKey);
-        localStorage.setItem('gl_openrouter_key', runtimeOpenRouterKey);
-        localStorage.setItem('gl_ollama_url', runtimeOllamaUrl);
-      } catch (e) {
-        // Ignore storage quota errors in restricted browsing modes
-      }
+      // Only non-secret preferences are remembered; API keys stay in this tab's memory.
+      writePreference('gl_ai_provider', runtimeAiProvider);
+      writePreference('gl_gemini_model', runtimeGeminiModel);
+      writePreference('gl_ollama_url', runtimeOllamaUrl);
 
       const labelMap = {
         gemini: runtimeUserGeminiKey ? 'AI: Gemini (Key Set)' : 'AI: Gemini',
@@ -6138,7 +6127,7 @@ ${node.leanCode}`;
       showToast(`Saved AI Provider (${runtimeAiProvider})`);
     }
 
-    function showToast(message) {
+    function showToast(message, durationMs = 3200) {
       const container = document.getElementById('toastContainer');
       const toast = document.createElement('div');
       toast.className = 'bg-slate-900 border border-slate-700 text-slate-200 px-3 py-2 rounded-lg shadow-2xl text-xs font-mono pointer-events-auto flex items-center gap-2 animate-bounce';
@@ -6149,7 +6138,7 @@ ${node.leanCode}`;
         toast.style.opacity = '0';
         toast.style.transition = 'opacity 0.3s ease';
         setTimeout(() => toast.remove(), 300);
-      }, 3200);
+      }, durationMs);
     }
 
     function escapeHtml(str) {
@@ -6173,6 +6162,9 @@ ${node.leanCode}`;
 
       switchCorpusTab('biochain');
       loadOfficialCorpus();
+      if (removedStoredKeyItems.length > 0) {
+        showToast('AI API keys are now kept in memory for this tab only. A key saved in this browser by an earlier version was deleted; enter it again in AI settings when needed.', 12000);
+      }
 
       // Enable drag-and-drop for both .pdf and .md/.tex files anywhere on the IDE window
       window.addEventListener('dragover', (e) => {

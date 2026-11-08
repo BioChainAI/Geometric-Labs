@@ -11,7 +11,7 @@ The [eight-repository research archive](archive/README.md) retains original and 
 PDFs, repository relevance, labels and source hashes. New official references inherit
 applicable mappings with provenance. See [official collection maintenance](official/README.md).
 
-The IDE is a single browser page. It keeps your work in memory only. Nothing survives a page reload unless you export it. The library is how those exports become a searchable, hash-checked database in git.
+The IDE is a single browser page. It keeps your work, and any AI API key you enter, in memory only. Nothing survives a page reload unless you export it. The library is how those exports become a searchable, hash-checked database in git.
 
 **New here? Read [WALKTHROUGH.md](WALKTHROUGH.md).** It takes one paper from PDF to a verified, catalogued entry, step by step.
 
@@ -21,8 +21,10 @@ The IDE is a single browser page. It keeps your work in memory only. Nothing sur
 Research_IDE/
 ├── index.html                  IDE v3.3; official collection and manual Research Desk
 ├── official-corpus.js          catalog validation, metadata and source hash checks
+├── ide-safety.js               Markdown sanitising, Gemini request and stored-key clean-up helpers
+├── ide-tailwind.css            prebuilt Tailwind CSS v3.4.19 (tools/pages/tailwind/build.sh)
 ├── official/                  generated official catalog and collection procedure
-├── ide.lock.json               IDE version, SHA-256 and CDN dependencies
+├── ide.lock.json               IDE version, SHA-256 of the page and local assets, pinned CDN files with integrity hashes
 ├── WALKTHROUGH.md              step-by-step guide: PDF → library entry
 ├── README.md                   this file
 ├── CHANGELOG.md                changes to the IDE build and this folder's tooling
