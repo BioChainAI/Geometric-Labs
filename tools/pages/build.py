@@ -163,7 +163,8 @@ INTEGRITY = re.compile(r'sha(?:384|512)-[A-Za-z0-9+/]+={0,2}')
 # their own hosts.
 UNHASHABLE_STYLESHEETS = {'https://fonts.googleapis.com/css2?': 'https://fonts.gstatic.com/'}
 PUBLISHED_ASSETS = {'research-ide': ('official-corpus.js', 'ide-safety.js', 'ide-tailwind.css'),
-                    'circuit-seth': ('tutorial.css', 'tutorial.js', 'explorer-tailwind.css')}
+                    'circuit-seth': ('tutorial.css', 'tutorial.js', 'explorer-tailwind.css'),
+                    'geocubit-crypto': ('explainer.css', 'explainer.js', 'protocol.md')}
 # CSP sources accepted besides the exact pinned files a page loads (allowlist, per directive).
 CSP_KEYWORDS = {'script-src': {"'self'", "'none'", "'unsafe-inline'", "'wasm-unsafe-eval'"},
                 'style-src': {"'self'", "'none'", "'unsafe-inline'"},
@@ -321,7 +322,7 @@ def validate_artifact(output):
     status = json.loads((output/'data/status.json').read_text())
     if status['schema'] != 'geometric-labs.pages-status.v1' or len(status['files']) != status['tracked_files']:
         raise ValueError('invalid generated snapshot schema/count')
-    for relative in ('index.html', 'Research_IDE/index.html', 'circuit-seth/index.html', 'circuit-seth/explorer.html'):
+    for relative in ('index.html', 'Research_IDE/index.html', 'circuit-seth/index.html', 'circuit-seth/explorer.html', 'geocubit-crypto/index.html'):
         page = output/relative
         if not page.is_file(): raise ValueError('missing published route: ' + relative)
         parser = Links(); parser.feed(page.read_text())
@@ -396,6 +397,10 @@ def build(output, *, root=ROOT, require_clean=False):
     (output/'circuit-seth').mkdir()
     for name in ('index.html', 'explorer.html') + PUBLISHED_ASSETS['circuit-seth']:
         shutil.copy2(root/'site/circuit-seth'/name, output/'circuit-seth'/name)
+    # Reviewed standalone GCC explainer: no third-party runtime dependencies.
+    (output/'geocubit-crypto').mkdir()
+    for name in ('index.html',) + PUBLISHED_ASSETS['geocubit-crypto']:
+        shutil.copy2(root/'site/geocubit-crypto'/name, output/'geocubit-crypto'/name)
     # Explicit publication allowlist, not an entire-repository upload.
     cp = root/CHECKPOINT
     for source, destination in [('index.html','index.html'), ('README.md','README.md'),
