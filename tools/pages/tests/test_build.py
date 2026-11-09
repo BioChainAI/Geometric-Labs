@@ -93,6 +93,30 @@ class PageBuild(unittest.TestCase):
             build.build(output)
             build.validate_artifact(output)
 
+    def test_geocubit_explainer_is_first_party_and_published(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory)/'site'
+            build.build(output)
+            for name in ('index.html', 'explainer.css', 'explainer.js', 'protocol.md'):
+                self.assertEqual((output/'geocubit-crypto'/name).read_bytes(),
+                                 (ROOT/'site/geocubit-crypto'/name).read_bytes())
+            homepage = (output/'index.html').read_text()
+            self.assertIn('href="geocubit-crypto/index.html"', homepage)
+            page = output/'geocubit-crypto/index.html'
+            parsed = build.Links(); parsed.feed(page.read_text())
+            self.assertIn('protocol.md', parsed.links)
+            self.assertIn('explainer.js', parsed.links)
+            build.validate_artifact(output)
+            (output/'geocubit-crypto/explainer.js').unlink()
+            with self.assertRaises(ValueError):
+                build.validate_artifact(output)
+
+    def test_geocubit_explainer_requires_local_assets_only(self):
+        html = (ROOT/'site/geocubit-crypto/index.html').read_text()
+        self.assertEqual(build.check_external_resources('geocubit-crypto/index.html', html), [])
+        self.assertIn('content="default-src', html)
+        self.assertIn('connect-src \'none\'', html)
+
     def test_broken_link_and_traversal_fail_artifact_gate(self):
         with tempfile.TemporaryDirectory() as directory:
             output=Path(directory)/'site';build.build(output)

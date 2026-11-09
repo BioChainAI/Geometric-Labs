@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#09141c">
+<meta name="description" content="An interactive, source-aware explainer of Geometric Cubit, the Geometric Engine of Time, post-quantum cryptography, geometric hashing, intrinsic clocks, handshakes and longitudinal-wave embedding.">
+<title>Geometric Cubit Cryptography · Geometric Labs</title>
+<link rel="stylesheet" href="explainer.css">
+<script src="explainer.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the explainer</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">◇</span> GEOMETRIC <strong>LABS</strong><span class="brand-divider"></span><span class="brand-sub">GCC / RESEARCH</span></a>
+    <nav aria-label="Primary navigation">
+      <a href="#model">System</a><a href="#cubit">Cubit</a><a href="#handshake">Handshake</a><a href="#security">Security</a><a href="#sources">Sources</a>
+    </nav>
+    <a class="nav-source" href="https://github.com/BioChainAI/Geometric-Labs/tree/main/Cryptographic_Research">Research repository ↗</a>
+  </div>
+</header>
+<main id="main">
+<section class="hero layout" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <div class="eyebrow"><span class="signal-dot"></span> OPEN RESEARCH / EXPLAINER V0.1 / NOV 2026</div>
+    <h1 id="hero-title">A cryptographic system <em>with geometry inside.</em></h1>
+    <p class="hero-lead">How a local acoustic cubit, a geometric clock, hyperbolic addresses, quaternionic state and longitudinal-wave signals could become one coherent protocol—<strong>without treating geometry as an unproven substitute for security.</strong></p>
+    <div class="hero-actions"><a class="btn primary" href="#model">Explore the architecture <span aria-hidden="true">↘</span></a><a class="btn secondary" href="#handshake">Trace the handshake</a></div>
+    <p class="hero-note"><span class="tiny-ring" aria-hidden="true"></span> This is a research blueprint and teaching simulation, not deployed encryption or a production security certification.</p>
+  </div>
+  <div class="hero-visual" aria-label="Stylized layered cube, spinor orbit and network grid. A conceptual diagram, not experimental data." role="img">
+    <div class="visual-grid"></div><div class="visual-heading">THE GEOMETRIC ENGINE / 64-BIT TILE</div>
+    <svg viewBox="0 0 470 420" class="hero-svg" aria-hidden="true">
+      <defs><linearGradient id="orbitGradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#83e5d5"/><stop offset="1" stop-color="#eab96c"/></linearGradient></defs>
+      <g class="orbit-lines" fill="none" stroke="url(#orbitGradient)" stroke-width="1.2">
+        <ellipse cx="235" cy="208" rx="177" ry="76" transform="rotate(-35 235 208)"/>
+        <ellipse cx="235" cy="208" rx="177" ry="76" transform="rotate(35 235 208)"/>
+        <ellipse cx="235" cy="208" rx="172" ry="76" transform="rotate(90 235 208)"/>
+        <circle cx="235" cy="208" r="123" stroke-dasharray="3 9" opacity=".55"/>
+      </g>
+      <g fill="none" stroke="#c0f0dc" stroke-width="1.6"><path d="M235 89 338 148V267L235 327 132 267V148Z M235 89V208L338 148M235 208 132 148M235 208V327M132 267l103-59 103 59M132 148l206 119M338 148 132 267"/></g>
+      <g fill="#d5f3e0"><circle cx="235" cy="89" r="4"/><circle cx="338" cy="148" r="4"/><circle cx="132" cy="148" r="4"/><circle cx="235" cy="208" r="7"/><circle cx="235" cy="327" r="4"/></g>
+      <g fill="#92bdc5" font-size="12" font-family="monospace"><text x="253" y="77">S³</text><text x="351" y="140">H³</text><text x="65" y="286">Δq</text><text x="255" y="355">T²</text></g>
+    </svg>
+    <div class="visual-footer"><span>GEOMETRY = CONTEXT</span><span>CRYPTOGRAPHY = HARDNESS</span></div>
+  </div>
+</section>
+<section class="metric-band" aria-label="System principles"><div class="layout metrics">
+  <div><strong>01</strong><span>Physical calibration is local.</span></div>
+  <div><strong>02</strong><span>Shared coordinates are canonical.</span></div>
+  <div><strong>03</strong><span>Keys come from audited primitives.</span></div>
+  <div><strong>04</strong><span>Experimental features are optional.</span></div>
+</div></section>
+<section id="model" class="section layout" aria-labelledby="model-title">
+  <div class="section-head"><div><div class="eyebrow">01 / SYSTEM MODEL</div><h2 id="model-title">Seven layers. One trust boundary.</h2></div><p>The geometry enriches representation, addressing, timing and physical evidence. Post-quantum key establishment and authentication remain the cryptographic root of trust.</p></div>
+  <div class="architecture">
+    <div class="layer-panel" role="group" aria-label="Choose an architecture layer">
+      <button class="layer-choice active" data-layer="physical" aria-pressed="true"><span>01</span><b>Local cubit &amp; calibration</b><small>Acoustic metrology</small></button>
+      <button class="layer-choice" data-layer="canonical" aria-pressed="false"><span>02</span><b>Canonical geometric context</b><small>Fixed-point / transcript</small></button>
+      <button class="layer-choice" data-layer="crypto" aria-pressed="false"><span>03</span><b>Post-quantum cryptography</b><small>ML-KEM / ML-DSA / KMAC</small></button>
+      <button class="layer-choice" data-layer="hyperbolic" aria-pressed="false"><span>04</span><b>Hyperbolic address space</b><small>Routing &amp; topology</small></button>
+      <button class="layer-choice" data-layer="clock" aria-pressed="false"><span>05</span><b>Geometric intrinsic clock</b><small>8 × 3 → 24 phases</small></button>
+      <button class="layer-choice" data-layer="simulation" aria-pressed="false"><span>06</span><b>Forced simulation</b><small>Candidate cost primitive</small></button>
+      <button class="layer-choice" data-layer="waves" aria-pressed="false"><span>07</span><b>Longitudinal wave channel</b><small>Optional physical binding</small></button>
+    </div>
+    <article class="layer-detail" aria-live="polite">
+      <div class="detail-top"><span id="layer-tag" class="tag amber">DEFINITION</span><span id="layer-index" class="mono quiet">01 / 07</span></div>
+      <h3 id="layer-title">Local cubit &amp; calibration</h3><p id="layer-summary">A measured acoustic wavelength defines a local engineering length; it is not a secret key.</p>
+      <div class="formula-box" id="layer-formula">C₀ = v(local) / (16 · fcal)</div>
+      <div class="detail-columns"><div><h4>Useful for</h4><p id="layer-use">Physical array spacing, coordinate normalization and calibration provenance.</p></div><div><h4>Does not prove</h4><p id="layer-limit">Universal nonlocal length standards or cryptographic hardness.</p></div></div>
+      <p class="learn-more" id="layer-next">Click a different layer to examine its protocol role and assumptions.</p>
+    </article>
+  </div>
+  <div class="principle"><span aria-hidden="true">✳</span><p><strong>Design rule:</strong> the 64-bit Einstein Tile may encode geometric routing state, but it cannot replace a 256-bit hash, a post-quantum public key, a signature or an authenticated frame. A South Halo, CRC, or geometric consistency check is not a MAC.</p></div>
+</section>
+<section id="cubit" class="section alt" aria-labelledby="cubit-title"><div class="layout">
+  <div class="section-head"><div><div class="eyebrow">02 / FROM MEASUREMENT TO CONTEXT</div><h2 id="cubit-title">The cubit is local. The format can be global.</h2></div><p>The manuscript defines <strong>C₀ = v / (16 f<sub>cal</sub>)</strong>, where v is local sound speed. Its nonlocal stellar/holonomy extensions remain conjectural. A network can instead agree on an authenticated dimensionless coordinate convention.</p></div>
+  <div class="two-up">
+    <article class="panel calculator">
+      <div class="panel-label"><span class="tag neutral">INTERACTIVE / ENGINEERING MODEL</span><span class="mono quiet">fcal = 40 Hz</span></div>
+      <h3>Acoustic cubit calibrator</h3><label for="speed">Local sound speed <output id="speed-label" for="speed">343.99 m/s</output></label>
+      <input id="speed" type="range" min="330" max="360" step=".01" value="343.99">
+      <label for="distance">Measured distance <output id="distance-label" for="distance">2.00 m</output></label>
+      <input id="distance" type="range" min=".5" max="10" step=".05" value="2">
+      <div class="calc-results"><div><small>Local cubit</small><strong id="cubit-value">0.53748 m</strong></div><div><small>Dimensionless coordinate x / C₀</small><strong id="normalized-value">3.721</strong></div></div>
+      <p class="annotation">Illustrates the definition only. Real calibration requires measured medium state, traceability, uncertainty and signed provenance. These values are <em>never</em> treated as entropy.</p>
+    </article>
+    <article class="panel context-panel">
+      <div class="panel-label"><span class="tag teal">DESIGN PROPOSAL</span><span class="mono quiet">GCC / CONTEXT V1</span></div><h3>What two remote nodes actually agree on</h3>
+      <div class="context-row"><span>01</span><p><strong>Geometry profile</strong><small>Manifold · atlas · coordinate encoding</small></p></div>
+      <div class="context-row"><span>02</span><p><strong>Calibration statement</strong><small>SI reference · uncertainty · issuer · expiry</small></p></div>
+      <div class="context-row"><span>03</span><p><strong>Canonical representation</strong><small>Fixed-width integers · explicit endian · no float drift</small></p></div>
+      <div class="context-row"><span>04</span><p><strong>Authenticated commitment</strong><small>TupleHash / SHA3 / signed transcript</small></p></div>
+      <p class="annotation">“Non-local standardization” means independently verifiable agreement over networks, <strong>not</strong> faster-than-light signaling or identical acoustic conditions at distant sites.</p>
+    </article>
+  </div>
+</div></section>
+<section id="clock" class="section layout" aria-labelledby="clock-title">
+  <div class="section-head"><div><div class="eyebrow">03 / GEOMETRIC ENGINE OF TIME</div><h2 id="clock-title">An intrinsic logical clock—not a substitute for freshness.</h2></div><p>The zero-point eight-step spinor cycle and threefold offset produce a 24-frame schedule. A monotonic epoch and message counters keep that cycle from repeating into an accepted replay.</p></div>
+  <div class="clock-grid">
+    <article class="panel"><div class="panel-label"><span class="tag neutral">INTERACTIVE / EXACT MODULAR ARITHMETIC</span></div><h3>Advance the frame</h3>
+      <label for="tick">Logical step <output for="tick" id="tick-label">0</output></label><input type="range" id="tick" min="0" max="119" step="1" value="0">
+      <div class="button-row"><button type="button" id="tick-back">← Previous</button><button type="button" id="tick-forward">Next →</button><button type="button" id="tick-reset">Reset</button></div>
+      <div class="clock-data"><div><small>Spinor phase</small><strong id="spinor-value">0 / 8</strong></div><div><small>Threefold phase</small><strong id="triad-value">0 / 3</strong></div><div><small>24-frame epoch</small><strong id="frame-value">0</strong></div></div>
+      <div class="phase-track" id="phase-track" aria-label="Eight-step phase indicator"></div>
+      <p class="annotation">A cyclic phase repeats. The full anti-replay identity also contains a non-wrapping session epoch and sequence number.</p>
+    </article>
+    <article class="panel clock-explain"><h3>Why 8 × 3?</h3><div class="formula-box">phase(n) = (n mod 8, n mod 3)<span class="formula-caption">joint period = lcm(8, 3) = 24</span></div><p>Eight spinor steps bring the idealized phase back to its starting value. Three independent 120° triads describe a second cyclic index. The combined finite schedule can organize deterministic computation and frame selection.</p><p><strong>Security boundary:</strong> this phase is predictable and periodic. It is neither a nonce nor a key. A physical clock has additional offset, drift, propagation-delay and uncertainty terms.</p><p class="footnote">The Engine's conditional traversal results apply to specified procedurally integrable families; they do not prove arbitrary P = NP or generic O(1) computation.</p></article>
+  </div>
+</section>
+<section id="handshake" class="section alt" aria-labelledby="handshake-title"><div class="layout">
+  <div class="section-head"><div><div class="eyebrow">04 / AUTHENTICATED PROTOCOL</div><h2 id="handshake-title">A geometric handshake with a post-quantum core.</h2></div><p>Every context byte, clock field and supported algorithm is transcript-bound. The geometric coordinates help identify the session; the cryptographic assurance comes from ML-KEM, signatures, KMAC and AEAD.</p></div>
+  <div class="handshake-layout">
+    <div class="handshake-flow" id="handshake-flow">
+      <div class="participant-header"><span>ALICE / INITIATOR</span><span>BOB / RESPONDER</span></div>
+      <button class="exchange active" data-step="0" aria-pressed="true"><span class="exchange-order">1</span><span><b>ClientHello →</b><small>Suites · context hash A · nonce A</small></span><span aria-hidden="true">→</span></button>
+      <button class="exchange" data-step="1" aria-pressed="false"><span class="exchange-order">2</span><span><b>← Signed ServerHello</b><small>Nonce B · ephemeral ML-KEM key · suite</small></span><span aria-hidden="true">←</span></button>
+      <button class="exchange" data-step="2" aria-pressed="false"><span class="exchange-order">3</span><span><b>ClientKey + Finished A →</b><small>KEM ciphertext · signature · confirmation</small></span><span aria-hidden="true">→</span></button>
+      <button class="exchange" data-step="3" aria-pressed="false"><span class="exchange-order">4</span><span><b>← Finished B</b><small>Key confirmation · anti-replay commit</small></span><span aria-hidden="true">←</span></button>
+      <button class="exchange" data-step="4" aria-pressed="false"><span class="exchange-order">5</span><span><b>Authenticated records ↔</b><small>AEAD · counters · epoch rotation</small></span><span aria-hidden="true">↔</span></button>
+    </div>
+    <article class="handshake-detail panel" aria-live="polite"><div class="panel-label"><span class="tag teal">DESIGN SKETCH / NOT IMPLEMENTED</span><span id="hs-count" class="mono quiet">STEP 1 / 5</span></div><h3 id="hs-title">ClientHello: state what you support</h3><p id="hs-description">Alice chooses supported protocol versions, a fresh random nonce and a digest of her canonical geometric context.</p><div id="hs-code" class="code-sample">A → B: version, supported_suites, ctxA, nonceA</div><div class="panel-divider"></div><h4>What is checked</h4><p id="hs-check">Version and algorithm negotiation must eventually be covered by the signed transcript.</p><div class="button-row"><button type="button" id="hs-previous">← Previous</button><button type="button" id="hs-next">Next step →</button></div></article>
+  </div>
+  <div class="math-note"><strong>Session derivation (abstract)</strong><code>root = KMAC256(sharedSecret, encode(transcriptHash, ctxA, ctxB, epoch), 256, "GCC-ROOT-v1")</code><span>The formal profile must fix exact byte encodings, signature contexts, confirmation order, algorithms and public-key validation. Never implement this diagram as a homemade cryptographic library.</span></div>
+</div></section>
+<section id="hash" class="section layout" aria-labelledby="hash-title">
+  <div class="section-head"><div><div class="eyebrow">05 / CANONICAL GEOMETRIC HASHES</div><h2 id="hash-title">Hash the geometry. Don't confuse it with a key.</h2></div><p>Canonicalization is the essential bridge: two nodes must agree on the exact bytes representing a point. A secure hash then commits to that representation. Geometry alone supplies no preimage hardness.</p></div>
+  <div class="two-up">
+    <article class="panel"><div class="panel-label"><span class="tag neutral">INTERACTIVE / UNKEYED SHA-256 DEMO</span></div><h3>Transcript-binding laboratory</h3><label for="geometry-input">Geometric context string</label><input id="geometry-input" type="text" value="H3|atlas=1|x=3.721|epoch=0" maxlength="180" spellcheck="false"><label for="message-input">Payload</label><input id="message-input" type="text" value="hello geometric world" maxlength="180" spellcheck="false">
+      <p class="annotation">Demo encodes each UTF-8 field with a 32-bit big-endian length. Browser SHA-256 is used only for pedagogy; the proposed authenticated profile uses canonical binary tuples with SHA3/TupleHash/KMAC.</p>
+      <div class="hash-output"><small>SHA-256 of length-prefixed demo tuple</small><output id="hash-result" aria-live="polite">Computing…</output></div>
+    </article>
+    <article class="panel"><h3>Public commitment vs. keyed authentication</h3><div class="formula-box">H = SHA3-256(encode(G, message))</div><p>Anyone can recompute a public content commitment. It detects modification relative to an authenticated expected value, but cannot prove who sent it.</p><div class="formula-box">tag = KMAC256(K, encode(G, message), 256, "GCH-v1")</div><p>A keyed MAC authenticates under an established secret. The geometric context remains public associated data, <strong>not</strong> a source of secret entropy.</p><p class="annotation">Fixed-point quantization, normalization of equivalent quaternions, field lengths, integer overflow and cross-platform representations require explicit negative tests.</p></article>
+  </div>
+</section>
+<section id="frontiers" class="section alt" aria-labelledby="frontiers-title"><div class="layout">
+  <div class="section-head"><div><div class="eyebrow">06 / THREE RESEARCH FRONTIERS</div><h2 id="frontiers-title">Interesting geometry. Different security claims.</h2></div><p>These mechanisms can be evaluated separately. None should silently become a confidentiality or authentication primitive.</p></div>
+  <div class="frontier-grid">
+    <article class="frontier-card"><span class="tag amber">OPEN / HARDNESS</span><div class="frontier-icon">H³</div><h3>Hyperbolic cryptography</h3><p>Use hyperbolic group paths for compact hierarchy and routing. Quaternionic delta chains preserve order; they are generally invertible, so noncommutativity is not a trapdoor.</p><small>Test: address collisions, exact canonical forms, group attacks and quantum algorithms.</small></article>
+    <article class="frontier-card"><span class="tag amber">HEURISTIC / COST</span><div class="frontier-icon">∮</div><h3>Forced simulation</h3><p>Commit to sequential geometric state transitions as a possible work-cost or anti-spam mechanism. Fast-forward, precomputation and parallel shortcuts must be investigated.</p><small>Test: work-depth lower bounds, CPU/GPU baselines and quantum speedups.</small></article>
+    <article class="frontier-card"><span class="tag amber">EXPERIMENTAL / CHANNEL</span><div class="frontier-icon">∿</div><h3>Longitudinal waves</h3><p>Acoustic carriers may embed authenticated symbols, calibration beacons or auxiliary channel measurements; they remain observable, spoofable, replayable and jammable.</p><small>Test: BER, SNR, replay, multipath and eavesdropper location.</small></article>
+  </div>
+  <div class="eth-strip"><span class="eth-glyph">ETH</span><div><h3>What the 2026 ETH research changes—and what it doesn't.</h3><p>OpenAI published a subexponential SAT/#SAT algorithm claim and accompanying formalization that, if its stated scope and proof checks stand, would refute the classical Exponential Time Hypothesis. Community review and practical constants matter. <strong>Refuting ETH does not prove P = NP, break ML-KEM, or establish hardness for a geometric puzzle.</strong> The Geometric Engine's conditional traversal theorem is a separate, narrower claim.</p></div><a href="https://github.com/openai/math/tree/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026">Read primary source ↗</a></div>
+</div></section>
+<section id="security" class="section layout" aria-labelledby="security-title">
+  <div class="section-head"><div><div class="eyebrow">07 / SECURITY AUDIT</div><h2 id="security-title">Design for the adversary, not the diagram.</h2></div><p>Choose a threat to see which controls are necessary. The absence of an attack in a geometric model is not a cryptographic proof.</p></div>
+  <div class="threat-controls" role="group" aria-label="Threat filter">
+    <button class="threat active" data-threat="quantum" aria-pressed="true">Quantum</button><button class="threat" data-threat="mitm" aria-pressed="false">Active MITM</button><button class="threat" data-threat="replay" aria-pressed="false">Replay</button><button class="threat" data-threat="device" aria-pressed="false">Device compromise</button><button class="threat" data-threat="physical" aria-pressed="false">Physical signal</button><button class="threat" data-threat="precision" aria-pressed="false">Canonicalization</button>
+  </div>
+  <article class="threat-detail panel" aria-live="polite"><div><span id="threat-status" class="tag amber">QUANTUM ADVERSARY</span><h3 id="threat-title">Harvest-now, decrypt-later</h3><p id="threat-description">Recorded ciphertext may be attacked by a future quantum computer. Classical RSA/ECDH-only handshakes are insufficient for long-lived secrecy.</p></div><div class="threat-mitigation"><h4>Minimum control</h4><p id="threat-control">Deploy authenticated post-quantum key establishment with suitable forward secrecy and long-term credential rotation.</p><h4>Residual limitation</h4><p id="threat-residual">A post-quantum algorithm does not eliminate endpoint compromise, bad randomness or side-channel attacks.</p></div></article>
+  <table class="status-table"><caption>Cryptographic status ledger</caption><thead><tr><th>Component</th><th>Status</th><th>Permitted role</th></tr></thead><tbody>
+    <tr><td>ML-KEM / ML-DSA / SLH-DSA</td><td><span class="tag teal">STANDARDIZED PQ</span></td><td>Key establishment and authentication</td></tr>
+    <tr><td>SHA-3 / SHAKE / KMAC</td><td><span class="tag teal">STANDARDIZED</span></td><td>Hash, XOF, MAC, domain separation</td></tr>
+    <tr><td>Acoustic cubit C₀</td><td><span class="tag neutral">DEFINITION</span></td><td>Measurement, calibration, normalized context</td></tr>
+    <tr><td>Quaternion / hyperbolic encoding</td><td><span class="tag neutral">ESTABLISHED MATH</span></td><td>Structure, address, reversible state representation</td></tr>
+    <tr><td>Geometric 8×3 clock</td><td><span class="tag neutral">PROTOCOL PROPOSAL</span></td><td>Schedule, epoch labels, transcript context</td></tr>
+    <tr><td>Forced-simulation one-wayness</td><td><span class="tag amber">UNPROVEN</span></td><td>Research only; not a security root</td></tr>
+    <tr><td>Prime solitons / nonlocal cubit physics</td><td><span class="tag amber">CONJECTURAL</span></td><td>Physics/math research only</td></tr>
+  </tbody></table>
+</section>
+<section id="roadmap" class="section alt" aria-labelledby="roadmap-title"><div class="layout">
+  <div class="section-head"><div><div class="eyebrow">08 / IMPLEMENTATION PROGRAM</div><h2 id="roadmap-title">From a precise representation to a reviewable protocol.</h2></div><p>Build safe, independently useful pieces first. Require a measurement or falsification criterion before promoting a geometric security claim.</p></div>
+  <ol class="roadmap">
+    <li><span>01 / NOW</span><div><h3>Freeze canonical context</h3><p>Profile IDs, fixed-point coordinates, length-delimited encoding, reference hashes, malformed-input and cross-platform vectors.</p></div><b>Format conformance</b></li>
+    <li><span>02 / NEXT</span><div><h3>Implement audited PQ session plumbing</h3><p>Use maintained cryptographic libraries; formalize the negotiated transcript, ephemeral KEM lifecycle, signatures, key confirmation and AEAD records.</p></div><b>Protocol tests</b></li>
+    <li><span>03 / EXPERIMENT</span><div><h3>Benchmark geometric extensions</h3><p>Hyperbolic routing, logical clock, wave tagging and optional simulation cost; compare with controls and record negative results.</p></div><b>Measured baselines</b></li>
+    <li><span>04 / REVIEW</span><div><h3>External cryptanalysis and standardization</h3><p>Independent adversarial review, formal-model verification, revision tracking, test vectors, and limited interoperable profiles.</p></div><b>No production claim yet</b></li>
+  </ol>
+</div></section>
+<section id="sources" class="section layout" aria-labelledby="sources-title">
+  <div class="section-head"><div><div class="eyebrow">09 / SOURCE MAP</div><h2 id="sources-title">Trace every layer back to evidence.</h2></div><p>This explainer integrates the author's Geometric Engine series with standards and publicly reported 2026 complexity research. The project-specific math is not represented as a NIST-approved cryptographic primitive.</p></div>
+  <div class="source-grid">
+    <a href="https://github.com/BioChainAI/Geometric-Labs/tree/main/Research_IDE/official"><span>PROJECT PAPERS</span><b>Geometric Engine of Time &amp; cubit corpus</b><small>Original proposals, revisions, local provenance ↗</small></a>
+    <a href="https://github.com/BioChainAI/Geometric-Labs/tree/main/Cryptographic_Research"><span>PROJECT EXPERIMENTS</span><b>Cryptographic Research / CR-0001</b><small>One-way-function negative control &amp; registry ↗</small></a>
+    <a href="https://csrc.nist.gov/pubs/fips/203/final"><span>STANDARD</span><b>NIST FIPS 203 — ML-KEM</b><small>Post-quantum key encapsulation ↗</small></a>
+    <a href="https://csrc.nist.gov/pubs/fips/204/final"><span>STANDARD</span><b>NIST FIPS 204 — ML-DSA</b><small>Post-quantum digital signatures ↗</small></a>
+    <a href="https://csrc.nist.gov/pubs/fips/205/final"><span>STANDARD</span><b>NIST FIPS 205 — SLH-DSA</b><small>Stateless hash-based signatures ↗</small></a>
+    <a href="https://csrc.nist.gov/pubs/sp/800/185/final"><span>STANDARD</span><b>NIST SP 800-185 — TupleHash &amp; KMAC</b><small>Structured hashing &amp; authentication ↗</small></a>
+    <a href="https://github.com/openai/math/blob/main/lean/docs/378.md"><span>FORMAL RESEARCH</span><b>ETH claim — Lean documentation</b><small>Algorithmic scope and complexity bound ↗</small></a>
+    <a href="https://arxiv.org/abs/2611.00517"><span>INDEPENDENT ANALYSIS</span><b>Limits and Constants of OpenAI's ETH Refutation</b><small>Asymptotics vs. practical crossover ↗</small></a>
+  </div>
+  <div class="footer-disclaimer"><strong>Scope statement:</strong> this artifact is an educational research interpretation and a protocol concept, not a formal security proof or implementation of any primitive. For a detailed draft specification and explicit rejection criteria, read <a href="protocol.md">the companion protocol RFC</a>.</div>
+</section>
+</main>
+<footer><div class="layout footer-content"><div><strong>GEOMETRIC LABS <span> / CRYPTOGRAPHIC EXPLAINER</span></strong><p>Geometry proposes · arithmetic certifies · cryptography authenticates.</p></div><div><a href="../index.html">Lab home</a><a href="protocol.md">Protocol RFC</a><a href="https://github.com/BioChainAI/Geometric-Labs">Source repository ↗</a></div></div></footer>
+</body></html>

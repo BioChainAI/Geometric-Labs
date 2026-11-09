@@ -158,3 +158,19 @@ The builder explicitly copies these pages and their first-party assets;
 source PDFs and experiment archives are not added to the published artifact.
 Both routes are validated for local links. Deploy through the existing main
 branch Pages workflow after review; feature-branch pushes do not publish them.
+
+## Geometric Cubit Cryptography research explainer
+
+The [Geometric Cubit Cryptography walkthrough](geocubit-crypto/index.html) is an
+additive, static teaching application with first-party CSS/JS and no network
+requests. It illustrates the local cubit, 24-frame logical clock, canonical
+geometric hashes, abstract post-quantum handshake, threats, and research
+limitations; it does not deploy cryptography or assert geometric one-wayness.
+
+The companion [experimental RFC](geocubit-crypto/protocol.md) records explicit
+source status, threats, wire-format requirements, validation gates and upgrade
+criteria. The Pages builder copies only the four reviewed files in
+`site/geocubit-crypto/` and validates the emitted HTML links and resource policy.
+Do not treat a feature-branch source link as a deployed Pages URL: publication
+still requires reviewed merge to `main`, the Pages build and successful deploy.
+
